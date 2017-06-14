@@ -1,0 +1,25 @@
+0, 122, 204 - VS blue.
+21, 21, 21 - jellybeans bg.
+62, 62, 66 - VS scrollbar+separator
+45, 45, 48 - VS titlebars
+37, 37, 38 - VS content
+134, 95, 197 - VS shortcut logo
+
+--
+
+0, 204, 82 - green
+45, 72, 99 - mute blue
+45, 99, 79 - mute green
+82, 45, 99 - mute purple - 66, 50, 73 (*) | 56, 37, 65
+99, 45, 45 - mute red
+
+--
+
+0, 0, 65 - vim darkblue bg
+192, 192, 192 - vim darkblue fg
+
+-- 
+
+40, 42, 54 - dracula bg
+0, 34, 64 - cobalt bg
+0, 43, 54 - solarised bg

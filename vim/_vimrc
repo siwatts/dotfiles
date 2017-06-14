@@ -1,0 +1,173 @@
+set nobackup
+set number
+set numberwidth=3
+set printoptions=number:y
+syntax on
+set hlsearch
+set ruler
+
+" Text width, auto word wrap. 0 off.
+set tw=0
+"set tw=100
+
+" Disable all blinking:
+:set guicursor+=a:blinkon0
+" Remove previous setting:
+":set guicursor-=a:blinkon0
+" Restore default setting:
+":set guicursor&
+
+" Disable highlighting until a search. Toggle with ??.
+let hlstate=0
+nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
+
+"color darkblue
+color elflord
+"color evening
+"color murphy
+"color zenburn
+
+" Mappings
+
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
+
+" Scrolling
+nmap <Up> 
+nmap <Down> 
+nmap <Left> 5
+nmap <Right> 5
+nmap <S-Up> ddkP
+nmap <S-Down> ddp
+nmap <S-Left> dd5kP
+nmap <S-Right> dd4jp
+
+"nmap <Up> 
+"nmap <Down> 
+"nmap <Left> 
+"nmap <Right> 
+"nmap <S-Up> 
+"nmap <S-Down> 
+"nmap <S-Left> 5
+"nmap <S-Right> 5
+
+nmap <Space> <Nop>
+let mapleader=" "
+map <Leader>y "+y
+map <Leader>Y "+y$
+"map <Leader>d "+d
+"map <Leader>D "+D
+"map <Leader>x "+x
+"map <Leader>X "+X
+"map <Leader>c "+c
+"map <Leader>C "+C
+"map <Leader>s "+s
+"map <Leader>S "+S
+map <Leader>p "+p
+map <Leader>P "+P
+
+nmap <C-Enter> "+p
+imap <C-Enter> <C-R>+
+
+nmap <Leader>, g;
+nmap <Leader>. g,
+
+nmap <Leader>w :w<CR>
+nmap <Leader>W :w 
+nmap <Leader>q :q<CR>
+nmap <Leader>Qq :q!<CR>
+nmap <Leader>QQ :qa!<CR>
+nmap <Leader>x :wq<CR>
+
+"nmap <Leader>s :Vex<CR>
+nmap <Leader>v :vnew<CR>
+nmap <Leader>d :diffthis<CR><C-w>w:diffthis<CR><C-w>w
+nmap <Leader>e :Ex<CR><CR>
+
+nmap <Leader>o o<ESC>o
+nmap <Leader>O O<ESC>O
+nmap <Leader><CR> o<ESC>o<ESC>O
+
+nmap <Leader>h 5h
+nmap <Leader>j 5j
+nmap <Leader>k 5k
+nmap <Leader>l 5l
+
+"nmap <Leader>i 0f(a
+"nmap <Leader>a 0f(%i
+nmap <Leader>f 0f
+nmap <Leader>F $F
+
+nmap <Leader>c o// 
+nmap <Leader>C O// 
+nmap <Leader>t o// TODO: 
+nmap <Leader>T O// TODO: 
+
+nmap <Leader>, 
+nmap <Leader>. <C-i>
+
+"nmap <Leader>s i r
+"nmap <Leader>S a r
+nmap <Leader>i i r
+nmap <Leader>a a r
+
+" Convert property into assignment.
+nmap <Leader>n ^WWElD^dwdWA = , // p==
+
+"vmap > >gv
+"vmap < <gv
+
+nnoremap Y y$
+nnoremap S ^C
+
+"nmap <CR> zz
+"nmap <S-Enter> o<Esc>
+"nmap <C-Enter> "+p
+
+"imap <S-Enter> <Esc>
+
+"nmap <Space> i
+"nmap <S-Space> a
+
+"imap <S-Space> <Esc>
+
+nmap <Leader>/ I// <Esc>$
+nmap // I// <Esc>$
+nmap ?? ^dw
+
+vmap y ygv<Esc>
+vmap <CR> "+y
+vmap <Leader>y "+y
+
+"nmap <Space> zz
+"nmap <S-Space> mp5kzt`p
+nmap <Leader><Space> zz
+nmap <S-Space> zz
+
+" Shift Enter to return to normal mode.
+nmap <CR> o<Esc>
+nmap <S-Enter> O<Esc>
+imap <S-Enter> <Esc>
+
+" Mash jk to return to normal mode. kk to enter single command.
+imap jj <Esc>
+imap jk <Esc>
+imap kj <Esc>
+imap kk 
+
+nmap n nzz
+nmap N Nzz
+
+" Enter to return to normal mode. Shift-Enter or Enter to return to insert with newline.
+"nnoremap <CR> a<CR>
+"nmap <S-Enter> o<Esc>
+"imap <CR> <Esc>
+"inoremap <S-Enter> <CR>
+
+" Space i/a, Enter <ESC>/o

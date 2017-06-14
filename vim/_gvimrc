@@ -1,0 +1,56 @@
+set nobackup
+set number
+set numberwidth=3
+"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+set mouse=c
+
+set guifont=Consolas:h11
+"set lines=45 columns=110
+set lines=48 columns=150
+
+"set guioptions-=m  "remove menu bar
+"set guioptions-=T  "remove toolbar
+"set guioptions-=r  "remove right-hand scroll bar
+"set guioptions-=L  "remove left-hand scroll bar
+
+"color dracula
+color darkblue
+"color gruvbox
+"color cobalt
+"color twilightSW
+"color twilight
+"color molokai
+"color bespin
+"color Tommorrow-Night
+"color cobalt2
+"color badwolf
+"color desert
+"color railscasts
+"color evening
+"color elflord
+"color murphy
+"color solarized
+"let g:zenburn_high_Contrast = 1
+"let g:zenburn_old_Visual = 1
+"let g:zenburn_alternate_Visual = 1
+"color zenburn
+
+:syntax on
+":syntax on
+":autocmd FileType *      set formatoptions=tcql nocindent comments&
+":autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
+":
+":set autoindent
+":set autowrite
+":ab #d #define
+":ab #i #include
+":ab #b /********************************************************
+":ab #e ********************************************************/
+":ab #l /*------------------------------------------------------*/
+":set sw=4
+":set notextmode
+":set notextauto
+":set hlsearch
+":set incsearch
+":set textwidth=70
