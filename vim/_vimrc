@@ -2,9 +2,18 @@ set nobackup
 set number
 set numberwidth=3
 set printoptions=number:y
-syntax on
 set hlsearch
 set ruler
+
+" Also smartindent and autoindent to play with.
+filetype plugin indent on
+
+syntax on
+
+" Tab settings.
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " Text width, auto word wrap. 0 off.
 set tw=0
