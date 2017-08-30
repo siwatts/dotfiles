@@ -4,6 +4,8 @@ set numberwidth=3
 set printoptions=number:y
 set hlsearch
 set ruler
+"set encoding=utf8
+"set fileencoding=utf8
 
 " Also smartindent and autoindent to play with.
 filetype plugin indent on
@@ -14,6 +16,9 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"set autoindent
+"set smartindent
+""set cindent
 
 " Text width, auto word wrap. 0 off.
 set tw=0

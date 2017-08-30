@@ -5,9 +5,15 @@ set numberwidth=3
 
 set mouse=c
 
+" Set font for MS Windows
 set guifont=Consolas:h11
+
+" Window size
 "set lines=45 columns=110
 set lines=48 columns=150
+
+" Maximise window for MS Windows
+"au GUIEnter * simalt ~x
 
 "set guioptions-=m  "remove menu bar
 "set guioptions-=T  "remove toolbar
@@ -36,8 +42,7 @@ color darkblue
 "let g:zenburn_alternate_Visual = 1
 "color zenburn
 
-:syntax on
-":syntax on
+syntax on
 ":autocmd FileType *      set formatoptions=tcql nocindent comments&
 ":autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
 ":
