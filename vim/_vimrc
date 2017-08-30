@@ -7,8 +7,11 @@ set ruler
 "set encoding=utf8
 "set fileencoding=utf8
 
-" Also smartindent and autoindent to play with.
+" Indent settings. Detect filetype, or use auto & smart indent together.
 filetype plugin indent on
+"set autoindent
+"set smartindent
+""set cindent
 
 syntax on
 
@@ -16,9 +19,6 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-"set autoindent
-"set smartindent
-""set cindent
 
 " Text width, auto word wrap. 0 off.
 set tw=0
