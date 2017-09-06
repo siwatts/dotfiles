@@ -47,6 +47,7 @@ color elflord
 
 " Mappings
 
+" Disable middle mouse
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 map <2-MiddleMouse> <Nop>
@@ -61,19 +62,6 @@ nmap <Up> 
 nmap <Down> 
 nmap <Left> 5
 nmap <Right> 5
-nmap <S-Up> ddkP
-nmap <S-Down> ddp
-nmap <S-Left> dd5kP
-nmap <S-Right> dd4jp
-
-"nmap <Up> 
-"nmap <Down> 
-"nmap <Left> 
-"nmap <Right> 
-"nmap <S-Up> 
-"nmap <S-Down> 
-"nmap <S-Left> 5
-"nmap <S-Right> 5
 
 nmap <Space> <Nop>
 let mapleader=" "
@@ -93,17 +81,11 @@ map <Leader>P "+P
 nmap <C-Enter> "+p
 imap <C-Enter> <C-R>+
 
-nmap <Leader>, g;
-nmap <Leader>. g,
-
 nmap <Leader>w :w<CR>
-nmap <Leader>W :w 
 nmap <Leader>q :q<CR>
-nmap <Leader>Qq :q!<CR>
-nmap <Leader>QQ :qa!<CR>
 nmap <Leader>x :wq<CR>
 
-"nmap <Leader>s :Vex<CR>
+nmap <Leader>s :Vex<CR>
 nmap <Leader>v :vnew<CR>
 nmap <Leader>d :diffthis<CR><C-w>w:diffthis<CR><C-w>w
 nmap <Leader>e :Ex<CR><CR>
@@ -117,18 +99,10 @@ nmap <Leader>j 5j
 nmap <Leader>k 5k
 nmap <Leader>l 5l
 
-"nmap <Leader>i 0f(a
-"nmap <Leader>a 0f(%i
-nmap <Leader>f 0f
-nmap <Leader>F $F
-
 nmap <Leader>c o// 
 nmap <Leader>C O// 
 nmap <Leader>t o// TODO: 
 nmap <Leader>T O// TODO: 
-
-nmap <Leader>, 
-nmap <Leader>. <C-i>
 
 "nmap <Leader>s i r
 "nmap <Leader>S a r
@@ -138,22 +112,8 @@ nmap <Leader>a a r
 " Convert property into assignment.
 nmap <Leader>n ^WWElD^dwdWA = , // p==
 
-"vmap > >gv
-"vmap < <gv
-
 nnoremap Y y$
 nnoremap S ^C
-
-"nmap <CR> zz
-"nmap <S-Enter> o<Esc>
-"nmap <C-Enter> "+p
-
-"imap <S-Enter> <Esc>
-
-"nmap <Space> i
-"nmap <S-Space> a
-
-"imap <S-Space> <Esc>
 
 nmap <Leader>/ I// <Esc>$
 nmap // I// <Esc>$
@@ -163,30 +123,20 @@ vmap y ygv<Esc>
 vmap <CR> "+y
 vmap <Leader>y "+y
 
-"nmap <Space> zz
-"nmap <S-Space> mp5kzt`p
-nmap <Leader><Space> zz
-nmap <S-Space> zz
-
-" Shift Enter to return to normal mode.
 nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
-"imap <S-Enter> <Esc>
+imap <S-Enter> O
 
 " Mash jk to return to normal mode. kk to enter single command.
 imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
 imap kk 
-imap <S-Enter> O
 
 nmap n nzz
 nmap N Nzz
 
 " Enter to return to normal mode. Shift-Enter or Enter to return to insert with newline.
-"nnoremap <CR> a<CR>
 "nmap <S-Enter> o<Esc>
 "imap <CR> <Esc>
 "inoremap <S-Enter> <CR>
-
-" Space i/a, Enter <ESC>/o
