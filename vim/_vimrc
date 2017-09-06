@@ -37,8 +37,12 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 
 "color darkblue
 color elflord
+"color default
+"color desert
 "color evening
 "color murphy
+"color torte
+"color slate
 "color zenburn
 
 " Mappings
@@ -167,13 +171,14 @@ nmap <S-Space> zz
 " Shift Enter to return to normal mode.
 nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
-imap <S-Enter> <Esc>
+"imap <S-Enter> <Esc>
 
 " Mash jk to return to normal mode. kk to enter single command.
 imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
 imap kk 
+imap <S-Enter> O
 
 nmap n nzz
 nmap N Nzz

@@ -7,13 +7,15 @@ set mouse=c
 
 " Set font for MS Windows
 set guifont=Consolas:h11
+" Or for Linux
+"set guifont=Monospace\ 11
 
 " Window size
 "set lines=45 columns=110
 set lines=48 columns=150
 
 " Maximise window for MS Windows
-"au GUIEnter * simalt ~x
+au GUIEnter * simalt ~x
 
 "set guioptions-=m  "remove menu bar
 "set guioptions-=T  "remove toolbar
@@ -23,19 +25,16 @@ set lines=48 columns=150
 "color dracula
 color darkblue
 "color gruvbox
-"color cobalt
-"color twilightSW
 "color twilight
 "color molokai
-"color bespin
-"color Tommorrow-Night
-"color cobalt2
-"color badwolf
 "color desert
-"color railscasts
+"color cobalt
+"color bespin
 "color evening
 "color elflord
 "color murphy
+"color torte
+"color slate
 "color solarized
 "let g:zenburn_high_Contrast = 1
 "let g:zenburn_old_Visual = 1
