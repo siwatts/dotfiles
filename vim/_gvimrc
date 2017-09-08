@@ -26,9 +26,13 @@ au GUIEnter * simalt ~x
 color darkblue
 "color gruvbox
 "color twilight
+"color vilight
+"color jellybeans
 "color molokai
+"color molokayo
 "color desert
 "color cobalt
+"color cobalt2
 "color bespin
 "color evening
 "color elflord
@@ -42,6 +46,27 @@ color darkblue
 "color zenburn
 
 syntax on
+" Backgrounds:
+"hi Normal guibg=#151515
+"hi Normal guibg=#001020
+"hi Normal guibg=#000515
+"hi Normal guibg=#150000
+"hi Normal guibg=#000030
+"hi Normal guibg=#100000
+" Cursor:
+" yellow
+"hi Cursor guibg=#ffff00
+"hi Cursor guibg=#ffcc00
+hi Cursor guibg=#ffd700
+" green/cyan
+"hi Cursor guibg=#00ff00
+"hi Cursor guibg=#00cc00
+"hi Cursor guibg=#00ccff
+"hi Cursor guibg=#8bb91c
+" magenta
+"hi Cursor guibg=#ff00aa
+"hi Cursor guibg=#ff44ff
+"hi Cursor guibg=#ff66ff
 ":autocmd FileType *      set formatoptions=tcql nocindent comments&
 ":autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
 ":
