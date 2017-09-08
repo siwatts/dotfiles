@@ -140,3 +140,8 @@ nmap N Nzz
 "nmap <S-Enter> o<Esc>
 "imap <CR> <Esc>
 "inoremap <S-Enter> <CR>
+
+nmap <F4> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
+imap <F4> =strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
+nmap <F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
+imap <F3> =strftime("%d/%m/%Y %H:%M:%S")<CR>
