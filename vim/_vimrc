@@ -37,6 +37,7 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 
 "color darkblue
 color elflord
+"color twilight256
 "color default
 "color desert
 "color evening
@@ -44,6 +45,7 @@ color elflord
 "color torte
 "color slate
 "color zenburn
+set background=dark
 
 " Mappings
 
