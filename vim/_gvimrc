@@ -45,6 +45,17 @@ color darkblue
 "let g:zenburn_alternate_Visual = 1
 "color zenburn
 
+" Jellybeans overrides
+"let g:jellybeans_overrides = {
+"\    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
+"\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
+"\              'attr': 'bold' },
+"\    'Comment': { 'guifg': 'cccccc' },
+"\}
+"let g:jellybeans_overrides = {
+"\    'background': { 'guibg': '212121' },
+"\}
+
 syntax on
 " Backgrounds:
 "hi Normal guibg=#151515

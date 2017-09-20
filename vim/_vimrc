@@ -90,7 +90,7 @@ nmap <Leader>x :wq<CR>
 nmap <Leader>s :Vex<CR>
 nmap <Leader>v :vnew<CR>
 nmap <Leader>d :diffthis<CR><C-w>w:diffthis<CR><C-w>w
-nmap <Leader>e :Ex<CR><CR>
+nmap <Leader>e :Ex<CR>
 
 nmap <Leader>o o<ESC>o
 nmap <Leader>O O<ESC>O
