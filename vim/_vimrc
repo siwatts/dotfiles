@@ -23,6 +23,9 @@ set expandtab
 " Text width, auto word wrap. 0 off.
 set tw=0
 "set tw=100
+" Default textwidth for markdown and text files.
+au BufRead,BufNewFile *.md setlocal textwidth=100
+au BufRead,BufNewFile *.txt setlocal textwidth=100
 
 " Disable all blinking:
 :set guicursor+=a:blinkon0
