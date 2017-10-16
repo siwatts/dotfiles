@@ -20,3 +20,47 @@ xterm*vt100*geometry: 100x50
 
 ! 256 color mode for vim etc. Can make program specific.
 xterm*termName: xterm-256color
+
+! Invert to white on black, if not overriding colors below.
+!xterm*reverseVideo: true
+
+! Dracula Xresources palette
+xterm*foreground: #F8F8F2
+xterm*background: #282A36
+xterm*color0: #000000
+xterm*color8: #4D4D4D
+xterm*color1: #FF5555
+xterm*color9: #FF6E67
+xterm*color2: #50FA7B
+xterm*color10: #5AF78E
+xterm*color3: #F1FA8C
+xterm*color11: #F4F99D
+xterm*color4: #BD93F9
+xterm*color12: #CAA9FA
+xterm*color5: #FF79C6
+xterm*color13: #FF92D0
+xterm*color6: #8BE9FD
+xterm*color14: #9AEDFE
+xterm*color7: #BFBFBF
+xterm*color15: #E6E6E6
+
+!! Molokai theme
+!xterm*background: #101010
+!xterm*foreground: #d0d0d0
+!xterm*cursorColor: #d0d0d0
+!xterm*color0: #101010
+!xterm*color1: #960050
+!xterm*color2: #66aa11
+!xterm*color3: #c47f2c
+!xterm*color4: #30309b
+!xterm*color5: #7e40a5
+!xterm*color6: #3579a8
+!xterm*color7: #9999aa
+!xterm*color8: #303030
+!xterm*color9: #ff0090
+!xterm*color10: #80ff00
+!xterm*color11: #ffba68
+!xterm*color12: #5f5fee
+!xterm*color13: #bb88dd
+!xterm*color14: #4eb4fa
+!xterm*color15: #d0d0d0
