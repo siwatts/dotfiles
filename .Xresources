@@ -1,0 +1,13 @@
+xterm*faceName: DejaVu Sans Mono Book
+xterm*faceSize: 11
+
+xterm*loginshell: true
+
+xterm*savelines: 2000
+
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+
+xterm*scrollTtyOutput: false
+
+xterm*vt100*geometry: 100x50
