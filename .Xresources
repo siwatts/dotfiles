@@ -3,7 +3,7 @@ xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 11
 
 ! Load config etc.
-xterm*loginshell: true
+xterm*loginshell: false
 
 ! Line history
 xterm*savelines: 2000
