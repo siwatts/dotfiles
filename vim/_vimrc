@@ -28,7 +28,7 @@ au BufRead,BufNewFile *.md setlocal textwidth=100
 au BufRead,BufNewFile *.txt setlocal textwidth=100
 
 " Disable all blinking:
-:set guicursor+=a:blinkon0
+set guicursor+=a:blinkon0
 " Remove previous setting:
 ":set guicursor-=a:blinkon0
 " Restore default setting:
@@ -38,10 +38,16 @@ au BufRead,BufNewFile *.txt setlocal textwidth=100
 let hlstate=0
 nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
 
+" 256 color mode
+"if $COLORTERM == 'gnome-terminal'
+set t_Co=256
+"endif
+
 "color darkblue
 color elflord
 "color twilight256
 "color default
+"colors zellner
 "color desert
 "color evening
 "color murphy

@@ -1,13 +1,22 @@
+! Fonts
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 11
 
+! Load config etc.
 xterm*loginshell: true
 
+! Line history
 xterm*savelines: 2000
 
+! Scrollbar.
 xterm*rightScrollBar: true
 xterm*ScrollBar: true
 
+! Scroll to bottom when new lines.
 xterm*scrollTtyOutput: false
 
+! Window size.
 xterm*vt100*geometry: 100x50
+
+! 256 color mode for vim etc. Can make program specific.
+xterm*termName: xterm-256color

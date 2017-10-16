@@ -25,3 +25,10 @@ Editor setup.
 
 Push only current branch.
 - `git config --global push.default simple`
+
+XTerm
+-----
+
+- Config in `~/.Xresources`
+
+- After modifying, `xrdb -merge ~/.Xresources` to bring in changes, then reopen xterm.

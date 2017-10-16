@@ -68,7 +68,7 @@ syntax on
 " yellow
 "hi Cursor guibg=#ffff00
 "hi Cursor guibg=#ffcc00
-hi Cursor guibg=#ffd700
+"hi Cursor guibg=#ffd700
 " green/cyan
 "hi Cursor guibg=#00ff00
 "hi Cursor guibg=#00cc00
@@ -78,19 +78,3 @@ hi Cursor guibg=#ffd700
 "hi Cursor guibg=#ff00aa
 "hi Cursor guibg=#ff44ff
 "hi Cursor guibg=#ff66ff
-":autocmd FileType *      set formatoptions=tcql nocindent comments&
-":autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
-":
-":set autoindent
-":set autowrite
-":ab #d #define
-":ab #i #include
-":ab #b /********************************************************
-":ab #e ********************************************************/
-":ab #l /*------------------------------------------------------*/
-":set sw=4
-":set notextmode
-":set notextauto
-":set hlsearch
-":set incsearch
-":set textwidth=70
