@@ -13,6 +13,12 @@ filetype plugin indent on
 "set smartindent
 ""set cindent
 
+" 256 color mode
+" Don't need this. Vim reads number of colors from $TERM.
+"if $COLORTERM == 'gnome-terminal'
+"set t_Co=256
+"endif
+
 syntax on
 
 " Tab settings.
@@ -37,11 +43,6 @@ set guicursor+=a:blinkon0
 " Disable highlighting until a search. Toggle with ??.
 let hlstate=0
 nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
-
-" 256 color mode
-"if $COLORTERM == 'gnome-terminal'
-set t_Co=256
-"endif
 
 "color darkblue
 color elflord
