@@ -32,3 +32,11 @@ XTerm
 - Config in `~/.Xresources`
 
 - After modifying, `xrdb -merge ~/.Xresources` to bring in changes, then reopen xterm.
+
+Cygwin
+------
+
+To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local
+`.bashrc`.
+
+- `export DISPLAY=:0`

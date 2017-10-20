@@ -9,6 +9,8 @@
     prompt = false
 [push]
     default = simple
+    # Simple was introduced in a later version of git.
+    # default = current
 [color]
     diff = auto
     status = auto
