@@ -16,6 +16,7 @@ xterm*ScrollBar: true
 xterm*scrollTtyOutput: false
 
 ! Window size.
+!xterm*vt100*geometry: 130x50
 xterm*vt100*geometry: 100x50
 !xterm*vt100*geometry: 80x30
 
@@ -161,3 +162,38 @@ xterm*color15: #E6E6E6
 !!! white dark/light
 !*color7:                S_base2
 !*color15: S_base3
+
+!! Twilight
+!! special
+!xterm*foreground:   #a7a7a7
+!xterm*background:   #1e1e1e
+!xterm*cursorColor:  #a7a7a7
+!! black
+!xterm*color0:       #1e1e1e
+!xterm*color8:       #5f5a60
+!! red
+!xterm*color1:       #cf6a4c
+!xterm*color9:       #cf6a4c
+!! green
+!xterm*color2:       #8f9d6a
+!xterm*color10:      #8f9d6a
+!! yellow
+!xterm*color3:       #f9ee98
+!xterm*color11:      #f9ee98
+!! blue
+!xterm*color4:       #7587a6
+!xterm*color12:      #7587a6
+!! magenta
+!xterm*color5:       #9b859d
+!xterm*color13:      #9b859d
+!! cyan
+!xterm*color6:       #afc4db
+!xterm*color14:      #afc4db
+!! white
+!xterm*color7:       #a7a7a7
+!xterm*color15:      #ffffff
+
+! Make bold text brighter. Must hardcode foreground color.
+!xterm*boldMode: false
+!xterm*colorBDMode: true
+!xterm*colorBD: rgb:fc/fc/fc
