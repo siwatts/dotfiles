@@ -5,6 +5,8 @@ set numberwidth=3
 
 set mouse=c
 
+syntax on
+
 " Set font for MS Windows
 set guifont=Consolas:h11
 " Or for Linux
@@ -15,7 +17,7 @@ set guifont=Consolas:h11
 set lines=48 columns=150
 
 " Maximise window for MS Windows
-au GUIEnter * simalt ~x
+"au GUIEnter * simalt ~x
 
 "set guioptions-=m  "remove menu bar
 "set guioptions-=T  "remove toolbar
@@ -56,7 +58,6 @@ color darkblue
 "\    'background': { 'guibg': '212121' },
 "\}
 
-syntax on
 " Backgrounds:
 "hi Normal guibg=#151515
 "hi Normal guibg=#001020
@@ -78,3 +79,5 @@ syntax on
 "hi Cursor guibg=#ff00aa
 "hi Cursor guibg=#ff44ff
 "hi Cursor guibg=#ff66ff
+" black foreground
+"hi Cursor guifg=#000000

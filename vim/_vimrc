@@ -44,18 +44,51 @@ set guicursor+=a:blinkon0
 let hlstate=0
 nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
 
-"color darkblue
-color elflord
+"" Jellybeans
+"let g:jellybeans_overrides = {
+"\   'background': { 'guibg': '212121', '256ctermbg': '234' },
+"\}
+"let g:jellybeans_overrides = {
+"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
+"\}
+""lucius bg
+"let g:jellybeans_overrides = {
+"\   'background': { 'guibg': '303030', '256ctermbg': '236' },
+"\}
+"let g:jellybeans_overrides = {
+"\   'background': { 'guibg': '3f3f3f', '256ctermbg': '237' },
+"\}
+"let g:jellybeans_overrides = {
+"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\}
+
+"" Darkblue256
+"let g:darkblue256_overrides = {
+"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\}
+
+"" Nofrils
+"let g:nofrils_strbackgrounds=1
+"let g:nofrils_heavycomments=1
+"let g:nofrils_heavylinenumbers=1
+
+"let g:zenburn_high_Contrast=1
+
+color default
+"color jellybeans
+"color wombat256mod
+"color desert256
 "color twilight256
-"color default
-"colors zellner
-"color desert
-"color evening
-"color murphy
-"color torte
-"color slate
+"color dracula
 "color zenburn
+"color lucius
+"color PaperColor
+"color gruvbox
+"color triplejelly
+"color nofrils-dark
+"
 set background=dark
+"set background=light
 
 " Mappings
 
@@ -127,9 +160,8 @@ nmap <Leader>n ^WWElD^dwdWA = , // p==
 nnoremap Y y$
 nnoremap S ^C
 
-nmap <Leader>/ I// <Esc>$
 nmap // I// <Esc>$
-nmap ?? ^dw
+nmap <Leader>// ^dw
 
 vmap y ygv<Esc>
 vmap <CR> "+y
