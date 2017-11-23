@@ -61,6 +61,13 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 "let g:jellybeans_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 "\}
+let g:jellybeans_overrides = {
+\   'background': { 'guibg': '212121', '256ctermbg': '234' },
+\   'Constant': { 'guifg': 'e5786d', '256ctermfg': '173' },
+\   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
+\   'String': { 'guifg': '95e454', '256ctermfg': '113' },
+\   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
+\}
 
 "" Darkblue256
 "let g:darkblue256_overrides = {
@@ -128,6 +135,7 @@ imap <C-Enter> <C-R>+
 
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
+nmap <Leader>Q :qa<CR>
 nmap <Leader>x :wq<CR>
 
 nmap <Leader>s :Vex<CR>
