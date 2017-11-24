@@ -44,7 +44,7 @@ set guicursor+=a:blinkon0
 let hlstate=0
 nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
 
-"" Jellybeans
+"" Jellybeans:
 "let g:jellybeans_overrides = {
 "\   'background': { 'guibg': '212121', '256ctermbg': '234' },
 "\}
@@ -61,9 +61,15 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 "let g:jellybeans_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 "\}
+"" JellybeansCustom:
+"\   'Constant': { 'guifg': 'e5786d', '256ctermfg': '173' },
+"\   'Constant': { 'guifg': 'ff5f5f', '256ctermfg': '203' },
+"\   'Constant': { 'guifg': 'ff8787', '256ctermfg': '210' },
+"\   'Identifier': { 'guifg': 'af87ff', '256ctermfg': '141' },
+"\   'Identifier': { 'guifg': 'af87d7', '256ctermfg': '140' },
 let g:jellybeans_overrides = {
-\   'background': { 'guibg': '212121', '256ctermbg': '234' },
-\   'Constant': { 'guifg': 'e5786d', '256ctermfg': '173' },
+\   'background': { 'guibg': '212121', '256ctermbg': '235' },
+\   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
 \   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
 \   'String': { 'guifg': '95e454', '256ctermfg': '113' },
 \   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
@@ -74,7 +80,7 @@ let g:jellybeans_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 "\}
 
-"" Nofrils
+"" Nofrils:
 "let g:nofrils_strbackgrounds=1
 "let g:nofrils_heavycomments=1
 "let g:nofrils_heavylinenumbers=1
