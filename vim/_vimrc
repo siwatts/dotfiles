@@ -6,6 +6,7 @@ set hlsearch
 set ruler
 "set encoding=utf8
 "set fileencoding=utf8
+set showcmd
 
 " Indent settings. Detect filetype, or use auto & smart indent together.
 filetype plugin indent on
@@ -67,17 +68,24 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 "\   'Constant': { 'guifg': 'ff8787', '256ctermfg': '210' },
 "\   'Identifier': { 'guifg': 'af87ff', '256ctermfg': '141' },
 "\   'Identifier': { 'guifg': 'af87d7', '256ctermfg': '140' },
+"\   'Special': { 'guifg': 'f1fa8c', '256ctermfg': '228' },
+"\   'Special': { 'guifg': 'ffff60', '256ctermfg': '227' },
 let g:jellybeans_overrides = {
 \   'background': { 'guibg': '212121', '256ctermbg': '235' },
 \   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
 \   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
 \   'String': { 'guifg': '95e454', '256ctermfg': '113' },
 \   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
+\   'Todo': { 'guibg': '000000', '256ctermbg': 'black' },
+\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
+\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
 \}
 
-"" Darkblue256
+"" Darkblue256:
 "let g:darkblue256_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
+"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
 "\}
 
 "" Nofrils:
@@ -99,7 +107,7 @@ color default
 "color gruvbox
 "color triplejelly
 "color nofrils-dark
-"
+
 set background=dark
 "set background=light
 
@@ -122,7 +130,8 @@ nmap <Left> 5
 nmap <Right> 5
 
 nmap <Space> <Nop>
-let mapleader=" "
+"let mapleader=" "
+map <Space> <Leader>
 map <Leader>y "+y
 map <Leader>Y "+y$
 "map <Leader>d "+d
@@ -175,6 +184,7 @@ nnoremap Y y$
 nnoremap S ^C
 
 nmap // I// <Esc>$
+vmap // :v/^$/norm 0i//??
 nmap <Leader>// ^dw
 
 vmap y ygv<Esc>
@@ -203,3 +213,6 @@ nmap <F4> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
 imap <F4> =strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 nmap <F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
 imap <F3> =strftime("%d/%m/%Y %H:%M:%S")<CR>
+
+vmap i :norm I
+vmap a :norm A
