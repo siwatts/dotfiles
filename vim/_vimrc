@@ -8,6 +8,10 @@ set ruler
 "set fileencoding=utf8
 set showcmd
 
+" Splits
+set splitright
+set splitbelow
+
 " Indent settings. Detect filetype, or use auto & smart indent together.
 filetype plugin indent on
 "set autoindent
