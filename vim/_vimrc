@@ -35,8 +35,7 @@ set expandtab
 set tw=0
 "set tw=100
 " Default textwidth for markdown and text files.
-au BufRead,BufNewFile *.md setlocal textwidth=100
-au BufRead,BufNewFile *.txt setlocal textwidth=100
+au BufRead,BufNewFile *.txt,*.md setlocal textwidth=100
 
 " Disable all blinking:
 set guicursor+=a:blinkon0
@@ -45,9 +44,10 @@ set guicursor+=a:blinkon0
 " Restore default setting:
 ":set guicursor&
 
-" Disable highlighting until a search. Toggle with ??.
+" Disable highlighting until a search. Toggle with F12, or quick hide with ??.
 let hlstate=0
-nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR><CR>
+nnoremap <F12> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR>
+nnoremap ?? :noh<CR>
 
 "" Jellybeans:
 "let g:jellybeans_overrides = {
@@ -74,10 +74,11 @@ nnoremap ?? :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \|
 "\   'Identifier': { 'guifg': 'af87d7', '256ctermfg': '140' },
 "\   'Special': { 'guifg': 'f1fa8c', '256ctermfg': '228' },
 "\   'Special': { 'guifg': 'ffff60', '256ctermfg': '227' },
+"\   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
 let g:jellybeans_overrides = {
 \   'background': { 'guibg': '212121', '256ctermbg': '235' },
 \   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
-\   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
+\   'Special': { 'guifg': 'd7d75f', '256ctermfg': '185' },
 \   'String': { 'guifg': '95e454', '256ctermfg': '113' },
 \   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
 \   'Todo': { 'guibg': '000000', '256ctermbg': 'black' },
@@ -86,6 +87,8 @@ let g:jellybeans_overrides = {
 \}
 
 "" Darkblue256:
+"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
+"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4', 'guibg': '212121', '256ctermbg': '235' },
 "let g:darkblue256_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 "\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
@@ -188,7 +191,7 @@ nnoremap Y y$
 nnoremap S ^C
 
 nmap // I// <Esc>$
-vmap // :v/^$/norm 0i//??
+vmap // :v/^$/norm 0i//
 nmap <Leader>// ^dw
 
 vmap y ygv<Esc>
@@ -199,11 +202,11 @@ nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
 imap <S-Enter> O
 
-" Mash jk to return to normal mode. kk to enter single command.
-imap jj <Esc>
+" Mash jk to return to normal mode.
+"imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
-imap kk 
+"imap kk 
 
 nmap n nzz
 nmap N Nzz
@@ -217,6 +220,8 @@ nmap <F4> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
 imap <F4> =strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 nmap <F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
 imap <F3> =strftime("%d/%m/%Y %H:%M:%S")<CR>
+nmap <F5> "=strftime("%d/%m/%Y %H:%M")<CR>p
+imap <F5> =strftime("%d/%m/%Y %H:%M")<CR>
 
 vmap i :norm I
 vmap a :norm A
