@@ -9,15 +9,16 @@ xterm*loginshell: false
 xterm*savelines: 2000
 
 ! Scrollbar.
-xterm*rightScrollBar: true
-xterm*ScrollBar: true
+xterm*rightScrollBar: false
+xterm*ScrollBar: false
 
 ! Scroll to bottom when new lines.
 xterm*scrollTtyOutput: false
 
-! Window size.
-!xterm*vt100*geometry: 130x50
-xterm*vt100*geometry: 100x50
+! Window size (large/med/small/tiny).
+!xterm*vt100*geometry: 150x50
+xterm*vt100*geometry: 130x50
+!xterm*vt100*geometry: 100x50
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -25,6 +26,11 @@ xterm*termName: xterm-256color
 
 ! Invert to white on black, if not overriding colors below.
 !xterm*reverseVideo: true
+
+! Manually set cursor (magenta / yellow / cyan)
+xterm*cursorColor: #ff66ff
+!xterm*cursorColor: #ffd700
+!xterm*cursorColor: #00ccff
 
 ! Dracula Xresources palette
 xterm*foreground: #F8F8F2
@@ -49,8 +55,7 @@ xterm*color15: #E6E6E6
 !! Jellybeans
 !xterm*foreground:   #e8e8d3
 !xterm*background:   #212121
-!!xterm*cursorColor:  #a7a7a7
-!xterm*cursorColor: #ff66ff
+!xterm*cursorColor:  #a7a7a7
 !! black
 !xterm*color0:       #3b3b3b
 !xterm*color8:       #3b3b3b
