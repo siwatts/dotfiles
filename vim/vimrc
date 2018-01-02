@@ -75,16 +75,16 @@ nnoremap ?? :noh<CR>
 "\   'Special': { 'guifg': 'f1fa8c', '256ctermfg': '228' },
 "\   'Special': { 'guifg': 'ffff60', '256ctermfg': '227' },
 "\   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
-let g:jellybeans_overrides = {
-\   'background': { 'guibg': '212121', '256ctermbg': '235' },
-\   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
-\   'Special': { 'guifg': 'd7d75f', '256ctermfg': '185' },
-\   'String': { 'guifg': '95e454', '256ctermfg': '113' },
-\   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
-\   'Todo': { 'guibg': '000000', '256ctermbg': 'black' },
-\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
-\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
-\}
+"let g:jellybeans_overrides = {
+"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
+"\   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
+"\   'Special': { 'guifg': 'd7d75f', '256ctermfg': '185' },
+"\   'String': { 'guifg': '95e454', '256ctermfg': '113' },
+"\   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
+"\   'Todo': { 'guibg': '000000', '256ctermbg': 'black' },
+"\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
+"\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
+"\}
 
 "" Darkblue256:
 "\   'background': { 'guibg': '212121', '256ctermbg': '235' },

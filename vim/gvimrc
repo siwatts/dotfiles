@@ -8,9 +8,9 @@ set mouse=c
 syntax on
 
 " Set font for MS Windows
-set guifont=Consolas:h11
+"set guifont=Consolas:h11
 " Or for Linux
-"set guifont=Monospace\ 11
+set guifont=Monospace\ 11
 
 " Window size
 "set lines=45 columns=110
