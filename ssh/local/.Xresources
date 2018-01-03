@@ -24,6 +24,11 @@ xterm*vt100*geometry: 130x50
 ! 256 color mode for vim etc. Can make program specific.
 xterm*termName: xterm-256color
 
+! Enable meta (Alt) key.
+xterm*metaSendsEscape: true
+
+! -- Colours: --
+
 ! Invert to white on black, if not overriding colors below.
 !xterm*reverseVideo: true
 
