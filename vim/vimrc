@@ -4,13 +4,22 @@ set numberwidth=3
 set printoptions=number:y
 set hlsearch
 set ruler
-"set encoding=utf8
-"set fileencoding=utf8
 set showcmd
+
+set encoding=utf8
+set fileencoding=utf8
 
 " Splits
 set splitright
 set splitbelow
+
+" Tab settings.
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Disable all blinking:
+set guicursor+=a:blinkon0
 
 " Indent settings. Detect filetype, or use auto & smart indent together.
 filetype plugin indent on
@@ -18,36 +27,27 @@ filetype plugin indent on
 "set smartindent
 ""set cindent
 
-" 256 color mode
-" Don't need this. Vim reads number of colors from $TERM.
-"if $COLORTERM == 'gnome-terminal'
-"set t_Co=256
-"endif
-
-syntax on
-
-" Tab settings.
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
 " Text width, auto word wrap. 0 off.
 set tw=0
 "set tw=100
 " Default textwidth for markdown and text files.
 au BufRead,BufNewFile *.txt,*.md setlocal textwidth=100
 
-" Disable all blinking:
-set guicursor+=a:blinkon0
-" Remove previous setting:
-":set guicursor-=a:blinkon0
-" Restore default setting:
-":set guicursor&
-
 " Disable highlighting until a search. Toggle with F12, or quick hide with ??.
 let hlstate=0
 nnoremap <F12> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR>
 nnoremap ?? :noh<CR>
+
+" ====================
+" Colours:
+" ====================
+
+"" Force 256 colour mode for xfce4-terminal
+"if $TERM == 'xterm'
+"    set t_Co=256
+"endif
+
+syntax on
 
 "" Jellybeans:
 "let g:jellybeans_overrides = {
@@ -91,8 +91,8 @@ nnoremap ?? :noh<CR>
 "\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4', 'guibg': '212121', '256ctermbg': '235' },
 "let g:darkblue256_overrides = {
 "\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
 "\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
+"\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
 "\}
 
 "" Nofrils:
@@ -101,9 +101,11 @@ nnoremap ?? :noh<CR>
 "let g:nofrils_heavylinenumbers=1
 
 "let g:zenburn_high_Contrast=1
+"let g:solarized_termcolors=256
 
 color default
 "color jellybeans
+"color darkblue256
 "color wombat256mod
 "color desert256
 "color twilight256
@@ -118,7 +120,14 @@ color default
 set background=dark
 "set background=light
 
-" Mappings
+"" Fall back to supported theme if in tty.
+"if $TERM == 'linux'
+"    color default
+"endif
+
+" ====================
+" Mappings:
+" ====================
 
 " Disable middle mouse
 map <MiddleMouse> <Nop>
@@ -131,14 +140,15 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 " Scrolling
-nmap <Up> 
-nmap <Down> 
-nmap <Left> 5
-nmap <Right> 5
+nmap <Up> <C-Y>
+nmap <Down> <C-E>
+nmap <Left> 5<C-Y>
+nmap <Right> 5<C-E>
+nmap <Space> <C-F>
 
-nmap <Space> <Nop>
+"nmap <Space> <Nop>
 "let mapleader=" "
-map <Space> <Leader>
+map \\ <Leader>
 map <Leader>y "+y
 map <Leader>Y "+y$
 "map <Leader>d "+d
@@ -163,6 +173,7 @@ nmap <Leader>x :wq<CR>
 nmap <Leader>s :Vex<CR>
 nmap <Leader>v :vnew<CR>
 nmap <Leader>d :diffthis<CR><C-w>w:diffthis<CR><C-w>w
+nmap <Leader>D :diffoff<CR><C-w>w:diffoff<CR><C-w>w
 nmap <Leader>e :Ex<CR>
 
 nmap <Leader>o o<ESC>o
@@ -179,19 +190,17 @@ nmap <Leader>C O//
 nmap <Leader>t o// TODO: 
 nmap <Leader>T O// TODO: 
 
-"nmap <Leader>s i r
-"nmap <Leader>S a r
-nmap <Leader>i i r
-nmap <Leader>a a r
-
-" Convert property into assignment.
-nmap <Leader>n ^WWElD^dwdWA = , // p==
+"nmap <Leader>s i <ESC>r
+"nmap <Leader>S a <ESC>r
+nmap <Leader>i i <ESC>r
+nmap <Leader>a a <ESC>r
 
 nnoremap Y y$
-nnoremap S ^C
+" Preserve indentation in VsVim
+"nnoremap S ^C
 
 nmap // I// <Esc>$
-vmap // :v/^$/norm 0i//
+vmap // :v/^$/norm 0i//<CR>
 nmap <Leader>// ^dw
 
 vmap y ygv<Esc>
@@ -200,13 +209,13 @@ vmap <Leader>y "+y
 
 nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
-imap <S-Enter> O
+imap <S-Enter> <C-O>O
 
 " Mash jk to return to normal mode.
 "imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
-"imap kk 
+"imap kk <C-O>
 
 nmap n nzz
 nmap N Nzz
@@ -217,11 +226,11 @@ nmap N Nzz
 "inoremap <S-Enter> <CR>
 
 nmap <F4> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
-imap <F4> =strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
+imap <F4> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 nmap <F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
-imap <F3> =strftime("%d/%m/%Y %H:%M:%S")<CR>
+imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
 nmap <F5> "=strftime("%d/%m/%Y %H:%M")<CR>p
-imap <F5> =strftime("%d/%m/%Y %H:%M")<CR>
+imap <F5> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
 
 vmap i :norm I
 vmap a :norm A
