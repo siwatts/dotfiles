@@ -1,3 +1,5 @@
+! ============= Xterm =============
+
 ! Fonts
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 11
@@ -18,7 +20,7 @@ xterm*scrollTtyOutput: false
 ! Window size (large/med/small/tiny).
 !xterm*vt100*geometry: 150x50
 xterm*vt100*geometry: 130x50
-!xterm*vt100*geometry: 100x50
+!xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -27,85 +29,269 @@ xterm*termName: xterm-256color
 ! Enable meta (Alt) key.
 xterm*metaSendsEscape: true
 
-! -- Colours: --
-
 ! Invert to white on black, if not overriding colors below.
 !xterm*reverseVideo: true
 
-! Manually set cursor (magenta / yellow / cyan)
-xterm*cursorColor: #ff66ff
-!xterm*cursorColor: #ffd700
-!xterm*cursorColor: #00ccff
+! ============= URxvt =============
+
+!! Fonts
+!URxvt*font: xft:terminus:size=11
+!URxvt*font: xft:mono:medium:size=11
+URxvt*font: xft:DejaVu Sans Mono:size=11
+
+! Load config etc.
+URxvt*loginshell: false
+
+! Line history
+URxvt*savelines: 2000
+
+! Scrollbar.
+URxvt*scrollBar_right: false
+URxvt*scrollBar: false
+
+!! Scroll to bottom when new lines.
+URxvt*scrollTtyOutput: false
+
+! Window size (large/med/small/tiny).
+!URxvt*geometry: 150x50
+!URxvt*geometry: 130x50
+URxvt*geometry: 100x30
+!URxvt*geometry: 80x30
+
+! 256 color mode for vim etc. Can make program specific.
+!URxvt*termName: rxvt-unicode-256color
+
+! Fade on focus lost.
+URxvt*fading: 40
+URxvt*fadeColor: #400000
+
+!! Background picture
+!URxvt*backgroundPixmap: /location/of/pic.jpg;style=tiled
+
+! Invert to white on black, if not overriding colors below.
+!URxvt*reverseVideo: true
+
+! ============= Colours =============
+
+! Manually set cursor (magenta / yellow / cyan / green)
+*cursorColor: #ff66ff
+!*cursorColor: #ffd700
+!*cursorColor: #00ccff
+!*cursorColor: #00ff00
+! Cursor foreground colour.
+*cursorColor2: #000000
 
 ! Dracula Xresources palette
-xterm*foreground: #F8F8F2
-xterm*background: #282A36
-xterm*color0: #000000
-xterm*color8: #4D4D4D
-xterm*color1: #FF5555
-xterm*color9: #FF6E67
-xterm*color2: #50FA7B
-xterm*color10: #5AF78E
-xterm*color3: #F1FA8C
-xterm*color11: #F4F99D
-xterm*color4: #BD93F9
-xterm*color12: #CAA9FA
-xterm*color5: #FF79C6
-xterm*color13: #FF92D0
-xterm*color6: #8BE9FD
-xterm*color14: #9AEDFE
-xterm*color7: #BFBFBF
-xterm*color15: #E6E6E6
+*foreground: #F8F8F2
+*background: #282A36
+*color0: #000000
+*color8: #4D4D4D
+*color1: #FF5555
+*color9: #FF6E67
+*color2: #50FA7B
+*color10: #5AF78E
+*color3: #F1FA8C
+*color11: #F4F99D
+*color4: #BD93F9
+*color12: #CAA9FA
+*color5: #FF79C6
+*color13: #FF92D0
+*color6: #8BE9FD
+*color14: #9AEDFE
+*color7: #BFBFBF
+*color15: #E6E6E6
+
+! Green (custom)
+!*foreground: #7bcf7b
+*foreground: #00bb00
+*background: #001100
+! black
+*color0: #000000
+*color8: #111111
+! red
+*color1: #81D034
+*color9: #81D034
+! green
+*color2: #00ff00
+*color10: #4dff4d
+! yellow
+*color3: #D7FF4D
+*color11: #D7FF4D
+! blue
+*color4: #34D488
+*color12: #34D488
+! magenta
+!*color5: #A4FF4D
+!*color13: #A4FF4D
+*color5: #7EB34B
+*color13: #7EB34B
+! cyan
+*color6: #4DFFAB
+*color14: #4DFFAB
+! white
+*color7: #c0ffc0
+*color15: #d0ffd0
+
+!! -----------------------------------------------------------------------------
+!! File: gruvbox-dark.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 6 Sep 2014
+!! -----------------------------------------------------------------------------
+!! hard contrast: *background: #1d2021
+!*background: #282828
+!! soft contrast: *background: #32302f
+!*foreground: #ebdbb2
+!! Black + DarkGrey
+!*color0:  #282828
+!*color8:  #928374
+!! DarkRed + Red
+!*color1:  #cc241d
+!*color9:  #fb4934
+!! DarkGreen + Green
+!*color2:  #98971a
+!*color10: #b8bb26
+!! DarkYellow + Yellow
+!*color3:  #d79921
+!*color11: #fabd2f
+!! DarkBlue + Blue
+!*color4:  #458588
+!*color12: #83a598
+!! DarkMagenta + Magenta
+!*color5:  #b16286
+!*color13: #d3869b
+!! DarkCyan + Cyan
+!*color6:  #689d6a
+!*color14: #8ec07c
+!! LightGrey + White
+!*color7:  #a89984
+!*color15: #ebdbb2
+
+!! Extra gruvbox
+!! -----------------------------------------------------------------------------
+!! File: gruvbox-urxvt256.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 13 Dec 2013
+!! -----------------------------------------------------------------------------
+!URxvt.color24:  #076678
+!URxvt.color66:  #427b58
+!URxvt.color88:  #9d0006
+!URxvt.color96:  #8f3f71
+!URxvt.color100: #79740e
+!URxvt.color108: #8ec07c
+!URxvt.color109: #83a598
+!URxvt.color130: #af3a03
+!URxvt.color136: #b57614
+!URxvt.color142: #b8bb26
+!URxvt.color167: #fb4934
+!URxvt.color175: #d3869b
+!URxvt.color208: #fe8019
+!URxvt.color214: #fabd2f
+!URxvt.color223: #ebdbb2
+!URxvt.color228: #f2e5bc
+!URxvt.color229: #fbf1c7
+!URxvt.color230: #f9f5d7
+!URxvt.color234: #1d2021
+!URxvt.color235: #282828
+!URxvt.color236: #32302f
+!URxvt.color237: #3c3836
+!URxvt.color239: #504945
+!URxvt.color241: #665c54
+!URxvt.color243: #7c6f64
+!URxvt.color244: #928374
+!URxvt.color245: #928374
+!URxvt.color246: #a89984
+!URxvt.color248: #bdae93
+!URxvt.color250: #d5c4a1
+
+!! -----------------------------------------------------------------------------
+!! File: gruvbox-light.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 6 Sep 2014
+!! -----------------------------------------------------------------------------
+!! hard contrast: *background: #f9f5d7
+!*background: #fbf1c7
+!! soft contrast: *background: #f2e5bc
+!*foreground: #3c3836
+!! Black + DarkGrey
+!*color0:  #fdf4c1
+!*color8:  #928374
+!! DarkRed + Red
+!*color1:  #cc241d
+!*color9:  #9d0006
+!! DarkGreen + Green
+!*color2:  #98971a
+!*color10: #79740e
+!! DarkYellow + Yellow
+!*color3:  #d79921
+!*color11: #b57614
+!! DarkBlue + Blue
+!*color4:  #458588
+!*color12: #076678
+!! DarkMagenta + Magenta
+!*color5:  #b16286
+!*color13: #8f3f71
+!! DarkCyan + Cyan
+!*color6:  #689d6a
+!*color14: #427b58
+!! LightGrey + White
+!*color7:  #7c6f64
+!*color15: #3c3836
 
 !! Jellybeans
-!xterm*foreground:   #e8e8d3
-!xterm*background:   #212121
-!xterm*cursorColor:  #a7a7a7
+!*foreground:   #e8e8d3
+!*background:   #212121
+!!*cursorColor:  #a7a7a7
 !! black
-!xterm*color0:       #3b3b3b
-!xterm*color8:       #3b3b3b
+!*color0:       #3b3b3b
+!*color8:       #3b3b3b
 !! red
-!xterm*color1:       #cf6a4c
-!xterm*color9:       #cf6a4c
+!*color1:       #cf6a4c
+!*color9:       #cf6a4c
 !! green
-!xterm*color2:       #99ad6a
-!xterm*color10:      #99ad6a
+!*color2:       #99ad6a
+!*color10:      #99ad6a
 !! yellow
-!xterm*color3:       #d8ad4c
-!xterm*color11:      #d8ad4c
+!*color3:       #d8ad4c
+!*color11:      #d8ad4c
 !! blue
-!xterm*color4:       #597bc5
-!xterm*color12:      #597bc5
+!*color4:       #597bc5
+!*color12:      #597bc5
 !! magenta
-!xterm*color5:       #a037b0
-!xterm*color13:      #a037b0
+!*color5:       #a037b0
+!*color13:      #a037b0
 !! cyan
-!xterm*color6:       #71b9f8
-!xterm*color14:      #71b9f8
+!*color6:       #71b9f8
+!*color14:      #71b9f8
 !! white
-!xterm*color7:       #adadad
-!xterm*color15:      #adadad
+!*color7:       #adadad
+!*color15:      #adadad
 
 !! Molokai theme
-!xterm*background: #101010
-!xterm*foreground: #d0d0d0
-!xterm*cursorColor: #d0d0d0
-!xterm*color0: #101010
-!xterm*color1: #960050
-!xterm*color2: #66aa11
-!xterm*color3: #c47f2c
-!xterm*color4: #30309b
-!xterm*color5: #7e40a5
-!xterm*color6: #3579a8
-!xterm*color7: #9999aa
-!xterm*color8: #303030
-!xterm*color9: #ff0090
-!xterm*color10: #80ff00
-!xterm*color11: #ffba68
-!xterm*color12: #5f5fee
-!xterm*color13: #bb88dd
-!xterm*color14: #4eb4fa
-!xterm*color15: #d0d0d0
+!*background: #101010
+!*foreground: #d0d0d0
+!!*cursorColor: #d0d0d0
+!*color0: #101010
+!*color1: #960050
+!*color2: #66aa11
+!*color3: #c47f2c
+!*color4: #30309b
+!*color5: #7e40a5
+!*color6: #3579a8
+!*color7: #9999aa
+!*color8: #303030
+!*color9: #ff0090
+!*color10: #80ff00
+!*color11: #ffba68
+!*color12: #5f5fee
+!*color13: #bb88dd
+!*color14: #4eb4fa
+!*color15: #d0d0d0
 
 !! Solarized dark:
 !#define S_base03        #002b36
@@ -119,7 +305,7 @@ xterm*color15: #E6E6E6
 !*background:            S_base03
 !*foreground:            S_base0
 !*fadeColor:             S_base03
-!*cursorColor:           S_base1
+!!*cursorColor:           S_base1
 !*pointerColorBackground:S_base01
 !*pointerColorForeground:S_base1
 !#define S_yellow        #b58900
@@ -167,7 +353,7 @@ xterm*color15: #E6E6E6
 !*background:            S_base3
 !*foreground:            S_base00
 !*fadeColor:             S_base3
-!*cursorColor:           S_base01
+!!*cursorColor:           S_base01
 !*pointerColorBackground:S_base1
 !*pointerColorForeground:S_base01
 !#define S_yellow        #b58900
@@ -205,33 +391,33 @@ xterm*color15: #E6E6E6
 
 !! Twilight
 !! special
-!xterm*foreground:   #a7a7a7
-!xterm*background:   #1e1e1e
-!xterm*cursorColor:  #a7a7a7
+!*foreground:   #a7a7a7
+!*background:   #1e1e1e
+!!*cursorColor:  #a7a7a7
 !! black
-!xterm*color0:       #1e1e1e
-!xterm*color8:       #5f5a60
+!*color0:       #1e1e1e
+!*color8:       #5f5a60
 !! red
-!xterm*color1:       #cf6a4c
-!xterm*color9:       #cf6a4c
+!*color1:       #cf6a4c
+!*color9:       #cf6a4c
 !! green
-!xterm*color2:       #8f9d6a
-!xterm*color10:      #8f9d6a
+!*color2:       #8f9d6a
+!*color10:      #8f9d6a
 !! yellow
-!xterm*color3:       #f9ee98
-!xterm*color11:      #f9ee98
+!*color3:       #f9ee98
+!*color11:      #f9ee98
 !! blue
-!xterm*color4:       #7587a6
-!xterm*color12:      #7587a6
+!*color4:       #7587a6
+!*color12:      #7587a6
 !! magenta
-!xterm*color5:       #9b859d
-!xterm*color13:      #9b859d
+!*color5:       #9b859d
+!*color13:      #9b859d
 !! cyan
-!xterm*color6:       #afc4db
-!xterm*color14:      #afc4db
+!*color6:       #afc4db
+!*color14:      #afc4db
 !! white
-!xterm*color7:       #a7a7a7
-!xterm*color15:      #ffffff
+!*color7:       #a7a7a7
+!*color15:      #ffffff
 
 ! Make bold text brighter. Must hardcode foreground color.
 !xterm*boldMode: false
@@ -239,22 +425,22 @@ xterm*color15: #E6E6E6
 !xterm*colorBD: rgb:fc/fc/fc
 
 !! Lucius
-!xterm*background:  #303030
-!xterm*foreground:  #d7d7d7
-!xterm*cursorColor: #87afd7
-!xterm*color0:      #303030
-!xterm*color8:      #303030
-!xterm*color1:      #ff5f5f
-!xterm*color9:      #ff5f5f
-!xterm*color2:      #afd787
-!xterm*color10:     #afd787
-!xterm*color3:      #d7d7af
-!xterm*color11:     #d7d7af
-!xterm*color4:      #87d7ff
-!xterm*color12:     #87d7ff
-!xterm*color5:      #d7afd7
-!xterm*color13:     #d7afd7
-!xterm*color6:      #87d7af
-!xterm*color14:     #87d7af
-!xterm*color7:      #d7d7d7
-!xterm*color15: #d7d7d7
+!*background:  #303030
+!*foreground:  #d7d7d7
+!!*cursorColor: #87afd7
+!*color0:      #303030
+!*color8:      #303030
+!*color1:      #ff5f5f
+!*color9:      #ff5f5f
+!*color2:      #afd787
+!*color10:     #afd787
+!*color3:      #d7d7af
+!*color11:     #d7d7af
+!*color4:      #87d7ff
+!*color12:     #87d7ff
+!*color5:      #d7afd7
+!*color13:     #d7afd7
+!*color6:      #87d7af
+!*color14:     #87d7af
+!*color7:      #d7d7d7
+!*color15: #d7d7d7
