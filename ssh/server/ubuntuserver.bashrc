@@ -31,8 +31,26 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
+    ## Xubuntu style
+    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
+
+    ## Fedora style
+    #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]]\$ '
+    ## Fedora style, bold
+    #export PS1='[\[\033[01;32m\]\u@\h \[\033[01;34m\]\W\[\033[00m\]]\$ '
+    ## Fedora style, full-bold
+    #export PS1='\[\033[01;37m\][\[\033[01;32m\]\u@\h \[\033[01;34m\]\W\[\033[01;37m\]]\$\[\033[00m\] '
+
+    # Xubuntu original
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
+    ## Xubuntu style
+    #export PS1='\u@\h:\w\$ '
+
+    ## Fedora style
+    #export PS1='[\u@\h \W]\$ '
+
+    # Xubuntu original
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
