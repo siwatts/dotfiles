@@ -32,7 +32,10 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
-    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
+    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+    ## Win-bash style
+    #export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]\n\$ '
 
     ## Fedora style
     #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]]\$ '
