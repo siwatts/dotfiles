@@ -30,12 +30,32 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Simple git status.
+git_prompt () {
+    # Parse branch name, if any.
+    BRANCH="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+    if [ -n "$BRANCH" ]; then
+        # We're in a git repository.
+        # Get the status:
+        if [ -n "$(git status --porcelain)" ]; then
+            # Dirty
+            echo -e "(\033[01;31m$BRANCH\033[00m) "
+        else
+            # Clean
+            #echo -e "(\033[01;32m$BRANCH\033[00m) " # Green
+            echo -e "(\033[01;33m$BRANCH\033[00m) " # Yellow
+        fi
+    fi
+}
+
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
     #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
     ## Win-bash style
     #export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]\n\$ '
+    ## Win-bash with git
+    #export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\] $(git_prompt)\n\$ '
 
     ## Fedora style
     #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]]\$ '
