@@ -6,8 +6,8 @@ set hlsearch
 set ruler
 set showcmd
 
-set encoding=utf8
-set fileencoding=utf8
+"set encoding=utf8
+"set fileencoding=utf8
 
 " Splits
 set splitright
@@ -200,10 +200,10 @@ nnoremap Y y$
 "nnoremap S ^C
 
 nmap // I// <Esc>$
-vmap // :v/^$/norm 0i//<CR>
+vmap // :v/^\s*$/norm 0i//<CR>
 nmap <Leader>// ^dw
 
-vmap y ygv<Esc>
+"vmap y ygv<Esc>
 vmap <CR> "+y
 vmap <Leader>y "+y
 
@@ -220,17 +220,15 @@ imap kj <Esc>
 nmap n nzz
 nmap N Nzz
 
-" Enter to return to normal mode. Shift-Enter or Enter to return to insert with newline.
-"nmap <S-Enter> o<Esc>
-"imap <CR> <Esc>
-"inoremap <S-Enter> <CR>
-
-nmap <F4> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
-imap <F4> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
-nmap <F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
-imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
-nmap <F5> "=strftime("%d/%m/%Y %H:%M")<CR>p
-imap <F5> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+" Insert datetime.
+nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
+imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+" With seconds.
+nmap <F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
+imap <F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
+" Javascript format datetime.
+nmap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
+imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A
