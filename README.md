@@ -31,9 +31,11 @@ Set username for repository.
 - Add username to repo url
     - `url = https://username@repository-url.com`
 
-# Rebase
+## Rebase
 
-- Rebase onto an updated master branch
+- Rebase work relative to a target commit that shares a common ancestor
+commit (which can be the same as the target commit), incorporating the 
+work since the divergence.
     - `git rebase master` from current location.
     - `git rebase master branchName`
     - `git rebase oldestcommit newestcommit`
@@ -43,16 +45,17 @@ Set username for repository.
     - `git rebase --continue`
     - `git rebase --abort`
 - Interactive rebase `-i` allows reordering and squashing of commits.
+    - `git rebase -i master`, all commits that have diverged from master.
     - Commits listed from oldest to newest.
-    - `pick`: Keep commit unchanged.
-    - `reword`: Keep commit and prompt to change commit message.
-    - `edit`: Pause to amend commit.
-    - `squash`: Roll commit into previous commit (ie. upwards). Prompt for a new
+        - `pick`: Keep commit unchanged.
+        - `reword`: Keep commit and prompt to change commit message.
+        - `edit`: Pause to amend commit.
+        - `squash`: Roll commit into previous commit (ie. upwards). Prompt for a new
 commit message.
-    - `message`.
-    - `fixup`: As squash, but exclude commit message. If only fixups then will
-      automatically take the picked commit's message.
-    - `exec`: Run command using shell?
+        - `message`.
+        - `fixup`: As squash, but exclude commit message. If only fixups then will
+          automatically take the picked commit's message.
+        - `exec`: Run command using shell?
 - If history has branched off between current and rebase target, will only
 affect commits this side of the branch point. Target always left unaffected.
 
@@ -79,7 +82,7 @@ set CHERE_INVOKING=1 & %ConEmuDrive%\cygwin64\bin\bash.exe --login -i
 
 ## Vim
 
-# Scripting vim:
+### Scripting vim
 
 - For simple regex use sed.
     - Convert files to unix style line endings: `sed -i 's/\r//g' *.py`
@@ -112,7 +115,7 @@ completed without exiting (contradicting vim docs?).
     - Outputs :print, :list, :number, :set commands to stdout. Everything else
       hidden.
 
-# Alphabetically sort and diff example
+### Alphabetically sort and diff example
 
 sort_and_diff.vim:
 ```
@@ -126,16 +129,29 @@ windo diffthis
 - Call as above on every subdirectory in current directory:
     - `for D in */; do vim -O $D*list* -S script.vim; done`
 
-# Other vim:
+### Other vim
 
 - Open vim on stdin contents with `-`
     - `ls -al | vim -`
     - `logfile.txt | grep 'phrase' -C5 | vim -`
 
-# Tmux
+## Tmux
 
 - Attach a new tmux session to the same windows as an existing session
     - `tmux new-session -t 'original session name or number' [-s 'name']`
+
+## Misc. Linux
+
+Grep for all matches recursively.
+- `grep -irn "search string" directory/ --include="*.c"`
+
+Pipe color to less.
+- `grep --color=always "foo" file.c | less -R`
+
+Find all files matching pattern recursively.
+- `find directory/ -name "*.c"`
+- `find directory/ -name "*.c" -type f`
+- `find directory/ -name "*.c" -type f -delete`
 
 ## Vim colors
 
