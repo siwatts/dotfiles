@@ -232,5 +232,5 @@ imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
 nmap <F5> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F5> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
 
-vmap i :norm I
-vmap a :norm A
+vmap <Leader>i :norm I
+vmap <Leader>a :norm A
