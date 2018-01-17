@@ -94,7 +94,7 @@ set CHERE_INVOKING=1 & %ConEmuDrive%\cygwin64\bin\bash.exe --login -i
     - `:windo`
 
 - Pass in ex commands with `-c`.
-- Vim remains open and interactive if file not closed by end of script.
+    - Vim remains open and interactive if file not closed by end of script.
     - `vim -c "g/^\s*$/d" file.txt`
     - `vim -O *list.txt -c "windo sort"`
 
@@ -111,11 +111,11 @@ set CHERE_INVOKING=1 & %ConEmuDrive%\cygwin64\bin\bash.exe --login -i
 - Run batch jobs containing ex commands with `-e -s`, this is not the same `-s`
 as above, but 'silent mode'. Didn't leave vim open interactively when script
 completed without exiting (contradicting vim docs?).
-    - vim -e -s < script.vim file.txt
-    - Outputs :print, :list, :number, :set commands to stdout. Everything else
-      hidden.
+    - `vim -e -s < script.vim file.txt`
+    - Outputs `:print`, `:list`, `:number`, `:set` commands to stdout.
+    Everything else hidden.
 
-### Alphabetically sort and diff example
+### Example: Alphabetically sort and diff
 
 sort_and_diff.vim:
 ```
@@ -126,7 +126,7 @@ windo diffthis
 
 - Call on foo_list.txt and bar_list.txt or similar:
     - `vim -O *list* -S sort_and_diff.vim`
-- Call as above on every subdirectory in current directory:
+- Call as above on every subdirectory in current directory, one by one:
     - `for D in */; do vim -O $D*list* -S script.vim; done`
 
 ### Other vim
