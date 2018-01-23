@@ -22,8 +22,8 @@ set expandtab
 set guicursor+=a:blinkon0
 
 " Indent settings. Detect filetype, or use auto & smart indent together.
+set autoindent
 filetype plugin indent on
-"set autoindent
 "set smartindent
 ""set cindent
 
@@ -31,7 +31,7 @@ filetype plugin indent on
 set tw=0
 "set tw=100
 " Default textwidth for markdown and text files.
-au BufRead,BufNewFile *.txt,*.md setlocal textwidth=100
+au BufRead,BufNewFile *.txt,*.md setlocal textwidth=80
 
 " Disable highlighting until a search. Toggle with F12, or quick hide with ??.
 let hlstate=0
