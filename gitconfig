@@ -9,8 +9,8 @@
     prompt = false
 [push]
     default = simple
-    # Simple was introduced in a later version of git.
-    # default = current
+    ## Simple was introduced in a later version of git.
+    #default = current
 [color]
     diff = auto
     status = auto
@@ -20,3 +20,6 @@
     pager = true
 [credential]
 	helper = cache --timeout=900
+#[user]
+    #email = 
+    #name = 
