@@ -163,6 +163,10 @@ Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
 - `call <SID>X("Normal", "cccccc", "303030", "")`
 
+Dracula.vim
+- Add Special group highlighting.
+- `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
+
 ### Useful Vimdiff highlighting
 
 Lots of vim colorschemes come without useful diff highlighting for some reason.
