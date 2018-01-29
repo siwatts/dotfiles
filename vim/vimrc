@@ -142,8 +142,8 @@ imap <4-MiddleMouse> <Nop>
 " Scrolling
 nmap <Up> <C-Y>
 nmap <Down> <C-E>
-nmap <Left> 5<C-Y>
-nmap <Right> 5<C-E>
+nmap <Left> zh
+nmap <Right> zl
 nmap <Space> <C-F>
 
 "nmap <Space> <Nop>
