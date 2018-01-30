@@ -19,8 +19,8 @@ xterm*scrollTtyOutput: false
 
 ! Window size (large/med/small/tiny).
 !xterm*vt100*geometry: 150x50
-xterm*vt100*geometry: 130x50
-!xterm*vt100*geometry: 100x30
+!xterm*vt100*geometry: 130x50
+xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
