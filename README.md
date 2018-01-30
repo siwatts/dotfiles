@@ -157,15 +157,17 @@ Find all files matching pattern recursively.
 
 Twilight256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
-- `call <SID>X("Normal", "e8e8d3", "212121", "")`
+    - `call <SID>X("Normal", "e8e8d3", "212121", "")`
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
-- `call <SID>X("Normal", "cccccc", "303030", "")`
+    - `call <SID>X("Normal", "cccccc", "303030", "")`
 
 Dracula.vim
-- Add Special group highlighting.
-- `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
+- Add Special group highlighting:
+    - `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
+- Clearer terminal comment colour:
+    - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
 
 ### Useful Vimdiff highlighting
 
@@ -184,6 +186,20 @@ call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
 hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
 hi DiffChange                   guibg=#2B5B77                   ctermbg=24
+hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
+```
+
+jellybeans, but white DiffChange text for legibility:
+```
+call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
+call s:X("DiffDelete","40000A","700009","","DarkRed","DarkRed")
+call s:X("DiffChange","FFFFFF","2B5B77","","White","DarkBlue")
+call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
+```
+```
+hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
+hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
+hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24
 hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
 ```
 
