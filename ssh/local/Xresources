@@ -101,6 +101,46 @@ URxvt*fadeColor: #ffffff
 *color7: #BFBFBF
 *color15: #E6E6E6
 
+!! Gruvbox light, but use high contrast (lighter) background, and swap all
+!! colours but black so that the standard colours are darker and the brighter
+!! variant is lighter. (This matches the gvim gruvbox light colors.)
+!! -----------------------------------------------------------------------------
+!! File: gruvbox-light.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 6 Sep 2014
+!! -----------------------------------------------------------------------------
+!! hard contrast: *background: #f9f5d7
+!!*background: #fbf1c7
+!*background: #f9f5d7
+!! soft contrast: *background: #f2e5bc
+!*foreground: #3c3836
+!! Black + DarkGrey
+!*color0:  #fdf4c1
+!*color8:  #928374
+!! DarkRed + Red
+!*color1:  #9d0006
+!*color9:  #cc241d
+!! DarkGreen + Green
+!*color2:  #79740e
+!*color10: #98971a
+!! DarkYellow + Yellow
+!*color3:  #b57614
+!*color11: #d79921
+!! DarkBlue + Blue
+!*color4:  #076678
+!*color12: #458588
+!! DarkMagenta + Magenta
+!*color5:  #8f3f71
+!*color13: #b16286
+!! DarkCyan + Cyan
+!*color6:  #427b58
+!*color14: #689d6a
+!! LightGrey + White
+!*color7:  #3c3836
+!*color15: #7c6f64
+
 !! Green (custom)
 !!*foreground: #7bcf7b
 !*foreground: #00bb00
@@ -168,6 +208,42 @@ URxvt*fadeColor: #ffffff
 !*color7:  #a89984
 !*color15: #ebdbb2
 
+!! -----------------------------------------------------------------------------
+!! File: gruvbox-light.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 6 Sep 2014
+!! -----------------------------------------------------------------------------
+!! hard contrast: *background: #f9f5d7
+!*background: #fbf1c7
+!! soft contrast: *background: #f2e5bc
+!*foreground: #3c3836
+!! Black + DarkGrey
+!*color0:  #fdf4c1
+!*color8:  #928374
+!! DarkRed + Red
+!*color1:  #cc241d
+!*color9:  #9d0006
+!! DarkGreen + Green
+!*color2:  #98971a
+!*color10: #79740e
+!! DarkYellow + Yellow
+!*color3:  #d79921
+!*color11: #b57614
+!! DarkBlue + Blue
+!*color4:  #458588
+!*color12: #076678
+!! DarkMagenta + Magenta
+!*color5:  #b16286
+!*color13: #8f3f71
+!! DarkCyan + Cyan
+!*color6:  #689d6a
+!*color14: #427b58
+!! LightGrey + White
+!*color7:  #7c6f64
+!*color15: #3c3836
+
 !! Extra gruvbox
 !! -----------------------------------------------------------------------------
 !! File: gruvbox-urxvt256.xresources
@@ -206,42 +282,6 @@ URxvt*fadeColor: #ffffff
 !URxvt.color246: #a89984
 !URxvt.color248: #bdae93
 !URxvt.color250: #d5c4a1
-
-!! -----------------------------------------------------------------------------
-!! File: gruvbox-light.xresources
-!! Description: Retro groove colorscheme generalized
-!! Author: morhetz <morhetz@gmail.com>
-!! Source: https://github.com/morhetz/gruvbox-generalized
-!! Last Modified: 6 Sep 2014
-!! -----------------------------------------------------------------------------
-!! hard contrast: *background: #f9f5d7
-!*background: #fbf1c7
-!! soft contrast: *background: #f2e5bc
-!*foreground: #3c3836
-!! Black + DarkGrey
-!*color0:  #fdf4c1
-!*color8:  #928374
-!! DarkRed + Red
-!*color1:  #cc241d
-!*color9:  #9d0006
-!! DarkGreen + Green
-!*color2:  #98971a
-!*color10: #79740e
-!! DarkYellow + Yellow
-!*color3:  #d79921
-!*color11: #b57614
-!! DarkBlue + Blue
-!*color4:  #458588
-!*color12: #076678
-!! DarkMagenta + Magenta
-!*color5:  #b16286
-!*color13: #8f3f71
-!! DarkCyan + Cyan
-!*color6:  #689d6a
-!*color14: #427b58
-!! LightGrey + White
-!*color7:  #7c6f64
-!*color15: #3c3836
 
 !! Jellybeans
 !*foreground:   #e8e8d3
