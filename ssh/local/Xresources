@@ -151,6 +151,42 @@ URxvt*fadeColor: #ffffff
 !*color7:  #3c3836
 !*color15: #7c6f64
 
+!! Dracula Inspired Light (30%/40%) (Custom)
+!*foreground: #282A36
+!*background: #F8F8F2
+!!*foreground: #000000
+!!*background: #FFDDAA
+!! black (dark/light)
+!*color0: #E6E6E6
+!*color8: #BFBFBF
+!! red #FF5555
+!*color1: #990000
+!*color9: #cc0000
+!! green #50FA7B
+!*color2: #059429
+!*color10: #06c636
+!! yellow #F1FA8C
+!*color3: #879306
+!*color11: #b4c408
+!!*color3: #b4c408
+!!*color11: #e1f50a
+!! blue (lilac) #BD93F9
+!*color4: #410891
+!*color12: #570bc1
+!! magenta #FF79C6
+!!*color5: #990057
+!!*color13: #cc0074
+!*color5: #cc0074
+!*color13: #ff0090
+!! cyan #8BE9FD
+!!*color6: #027b97
+!!*color14: #03a5c9
+!*color6: #03a5c9
+!*color14: #04cefb
+!! white
+!*color7: #000000
+!*color15: #4D4D4D
+
 !! Green (custom)
 !!*foreground: #7bcf7b
 !*foreground: #00bb00
@@ -181,6 +217,27 @@ URxvt*fadeColor: #ffffff
 !! white
 !*color7: #c0ffc0
 !*color15: #d0ffd0
+
+!! LuciusLight - https://github.com/jonathanfilip/lucius
+!*background:  #eeeeee
+!*foreground:  #444444
+!!*cursorColor: #5f87af
+!*color0:      #eeeeee
+!*color8:      #eeeeee
+!*color1:      #af0000
+!*color9:      #af0000
+!*color2:      #008700
+!*color10:     #008700
+!*color3:      #af5f00
+!*color11:     #af5f00
+!*color4:      #005faf
+!*color12:     #005faf
+!*color5:      #870087
+!*color13:     #870087
+!*color6:      #008787
+!*color14:     #008787
+!*color7:      #444444
+!*color15:     #444444
 
 !! -----------------------------------------------------------------------------
 !! File: gruvbox-dark.xresources
