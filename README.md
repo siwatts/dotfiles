@@ -158,6 +158,8 @@ Find all files matching pattern recursively.
 Twilight256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
     - `call <SID>X("Normal", "e8e8d3", "212121", "")`
+- Function group to lilac like GUI twilight.vim (cterm=139):
+    - `call <SID>X("Function", "a999ac", "", "")`
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
