@@ -7,6 +7,38 @@ fi
 
 # User specific aliases and functions
 
+# Editor:
+export VISUAL="vim"
+export EDITOR="$VISUAL"
+
+# Simple git status.
+git_prompt () {
+    # Parse branch name, if any.
+    BRANCH="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+    if [ -n "$BRANCH" ]; then
+        # We're in a git repository.
+        # Get the status:
+        if [ -n "$(git status --porcelain)" ]; then
+            # Working tree dirty
+            echo -e " (\033[0;31m$BRANCH\033[00m)" # Red
+            #echo -e " (\033[0;35m$BRANCH\033[00m)" # Magenta
+        else
+            # Working tree clean
+            echo -e " (\033[0;32m$BRANCH\033[00m)" # Green
+            #echo -e " (\033[0;33m$BRANCH\033[00m)" # Yellow
+        fi
+    fi
+}
+
+# 30m Black
+# 31m Red
+# 32m Green
+# 33m Yellow
+# 34m Blue
+# 35m Magenta
+# 36m Cyan
+# 37m White
+
 # From xubuntu default:
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -30,51 +62,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Simple git status.
-git_prompt () {
-    # Parse branch name, if any.
-    BRANCH="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-    if [ -n "$BRANCH" ]; then
-        # We're in a git repository.
-        # Get the status:
-        if [ -n "$(git status --porcelain)" ]; then
-            # Dirty
-            #echo -e " (\033[0;31m$BRANCH\033[00m)" # Red
-            echo -e " (\033[0;35m$BRANCH\033[00m)" # Magenta
-        else
-            # Clean
-            #echo -e " (\033[0;32m$BRANCH\033[00m)" # Green
-            echo -e " (\033[0;33m$BRANCH\033[00m)" # Yellow
-        fi
-    fi
-}
-
-# 30m Black
-# 31m Red
-# 32m Green
-# 33m Yellow
-# 34m Blue
-# 35m Magenta
-# 36m Cyan
-# 37m White
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
-    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\$ '
 
     ## Win-bash style
-    #export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]\n\$ '
-    ## Win-bash with git
-    export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt) \n\$ '
+    export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
 
     ## Fedora style
-    #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]]\$ '
-    ## Fedora style with git
-    #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]]$(git_prompt)\$ '
-    ## Fedora style, bold
-    #export PS1='[\[\033[01;32m\]\u@\h \[\033[01;34m\]\W\[\033[00m\]]\$ '
-    ## Fedora style, full-bold
-    #export PS1='\[\033[01;37m\][\[\033[01;32m\]\u@\h \[\033[01;34m\]\W\[\033[01;37m\]]\$\[\033[00m\] '
+    #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]$(git_prompt)]\$ '
 
     ## Xubuntu original
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
