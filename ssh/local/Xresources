@@ -151,6 +151,37 @@ URxvt*fadeColor: #ffffff
 !*color7:  #3c3836
 !*color15: #7c6f64
 
+!! Zenburn (Custom) (from gvim colours)
+!*background: #3f3f3f
+!! hard contrast: *background: #212121
+!*foreground: #dcdccc
+!! Black + DarkGrey
+!*color0:  #282828
+!*color8:  #928374
+!! DarkRed + Red
+!!*color1:  #cc9393
+!*color1:  #dca3a3
+!*color9:  #dca3a3
+!! DarkGreen + Green
+!!*color2:  #7f9f7f
+!*color2:  #82a282
+!*color10: #82a282
+!! DarkYellow + Yellow
+!*color3:  #efef8f
+!*color11: #efef8f
+!! DarkBlue + Blue
+!*color4:  #8cd0d3
+!*color12: #8cd0d3
+!! DarkMagenta + Magenta
+!*color5:  #c0bed1
+!*color13: #c0bed1
+!! DarkCyan + Cyan
+!*color6:  #f0dfaf
+!*color14: #f0dfaf
+!! LightGrey + White
+!*color7:  #a89984
+!*color15: #ebdbb2
+
 !! Dracula Inspired Light (30%/40%) (Custom)
 !*foreground: #282A36
 !*background: #F8F8F2
