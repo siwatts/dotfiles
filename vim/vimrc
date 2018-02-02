@@ -101,7 +101,12 @@ syntax on
 "let g:nofrils_heavylinenumbers=1
 
 "let g:zenburn_high_Contrast=1
+"let g:zenburn_transparent=1
 "let g:solarized_termcolors=256
+
+"let g:gruvbox_contrast_light='soft'
+"let g:gruvbox_contrast_light='medium'
+"let g:gruvbox_contrast_light='hard'
 
 color default
 "color jellybeans
@@ -119,6 +124,14 @@ color default
 
 set background=dark
 "set background=light
+
+"" Choose a random theme on startup
+"let schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'PaperColor', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+""set background=dark
+"let seconds = str2nr(strftime('%S'))
+"execute 'colorscheme ' . schemes[seconds % len(schemes)]
+""" Print name of chosen theme.
+"autocmd VimEnter * echo 'Utilising colourscheme: "' . schemes[seconds % len(schemes)] . '"'
 
 "" Fall back to supported theme if in tty.
 "if $TERM == 'linux'
