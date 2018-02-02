@@ -171,6 +171,16 @@ Dracula.vim
 - Clearer terminal comment colour:
     - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
 
+Gruvbox.vim
+- Add additional `white` light contrast setting:
+    - `let s:gb.light0_white = ['#eeeeee', 255]     " Almost white`
+    - `let s:gb.light0_white = ['#ffffff', 231]     " White`
+- Apply it:
+```
+elseif g:gruvbox_contrast_light == 'white'
+let s:bg0  = s:gb.light0_white
+```
+
 ### Useful Vimdiff highlighting
 
 Lots of vim colorschemes come without useful diff highlighting for some reason.

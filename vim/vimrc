@@ -107,6 +107,7 @@ syntax on
 "let g:gruvbox_contrast_light='soft'
 "let g:gruvbox_contrast_light='medium'
 "let g:gruvbox_contrast_light='hard'
+"let g:gruvbox_contrast_light='white'
 
 color default
 "color jellybeans
