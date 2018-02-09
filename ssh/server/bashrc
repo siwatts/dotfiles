@@ -22,10 +22,12 @@ git_prompt () {
             # Working tree dirty
             echo -e " (\001\033[0;31m\002$BRANCH\001\033[00m\002)" # Red
             #echo -e " (\001\033[0;35m\002$BRANCH\001\033[00m\002)" # Magenta
+            #echo -e " ($BRANCH)*" # No colour
         else
             # Working tree clean
             echo -e " (\001\033[0;32m\002$BRANCH\001\033[00m\002)" # Green
             #echo -e " (\001\033[0;33m\002$BRANCH\001\033[00m\002)" # Yellow
+            #echo -e " ($BRANCH)" # No colour
         fi
     fi
 }
