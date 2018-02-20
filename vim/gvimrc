@@ -14,7 +14,8 @@ set guifont=Monospace\ 11
 
 " Window size
 "set lines=45 columns=110
-set lines=48 columns=150
+set lines=45 columns=130
+"set lines=48 columns=150
 
 " Maximise window for MS Windows
 "au GUIEnter * simalt ~x
