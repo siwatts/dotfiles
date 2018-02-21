@@ -8,7 +8,7 @@ xterm*faceSize: 10
 xterm*loginshell: false
 
 ! Line history
-xterm*savelines: 2000
+xterm*savelines: 10000
 
 ! Scrollbar.
 xterm*rightScrollBar: false
@@ -39,11 +39,14 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:mono:medium:size=11
 URxvt*font: xft:DejaVu Sans Mono:size=10
 
+! Disable bold font.
+!URxvt*boldFont: xft:DejaVu Sans Mono:size=10
+
 ! Load config etc.
 URxvt*loginshell: false
 
 ! Line history
-URxvt*savelines: 2000
+URxvt*savelines: 10000
 
 ! Scrollbar.
 URxvt*scrollBar_right: false
@@ -62,8 +65,8 @@ URxvt*geometry: 100x30
 !URxvt*termName: rxvt-unicode-256color
 
 ! Fade on focus lost.
-URxvt*fading: 10
-URxvt*fadeColor: #ffffff
+!URxvt*fading: 10
+!URxvt*fadeColor: #ffffff
 
 !! Background picture
 !URxvt*backgroundPixmap: /location/of/pic.jpg;style=tiled
