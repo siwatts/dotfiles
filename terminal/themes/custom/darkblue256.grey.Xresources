@@ -1,0 +1,28 @@
+! - SW - 21/02/2018 - darkblue256.vim colours, grey bg.
+*background: #1e1e1e
+*foreground: #c0c0c0
+! Black + DarkGrey
+*color0: #000000
+*color8: #4D4D4D
+! DarkRed + Red
+*color1:  #ffa0a0
+*color9:  #ffa0a0
+! DarkGreen + Green
+*color2:  #60ff60
+*color10: #60ff60
+! DarkYellow + Yellow
+*color3:  #ffff60
+*color11: #ffff60
+! DarkBlue + Blue
+*color4:  #80a0ff
+*color12: #80a0ff
+! DarkMagenta + Magenta
+*color5:  #ff80ff
+*color13: #ff80ff
+! DarkCyan + Cyan
+*color6:  #40ffff
+*color14: #40ffff
+! LightGrey + White
+*color7: #BFBFBF
+*color15: #E6E6E6
+

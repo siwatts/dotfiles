@@ -1,0 +1,51 @@
+! - SW - 21/02/2018:
+! Gruvbox light, with alternate gvim backgrounds.
+! Swap colours so bright variants are lighter (matches the gvim gruvbox light
+! colors.)
+! -----------------------------------------------------------------------------
+! File: gruvbox-light.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+! ========================================
+! Backgrounds:
+! ========================================
+! Gruvbox normal:
+!*background: #fbf1c7
+! Gruvbox hard contrast:
+*background: #f9f5d7
+! White (231):
+!*background: #ffffff
+! Light grey (255) (lucius.vim):
+!*background: #eeeeee
+! Solarized light:
+!*background: #fdf6e3
+! ========================================
+*foreground: #3c3836
+! Black + DarkGrey
+*color0:  #fdf4c1
+*color8:  #928374
+! DarkRed + Red
+*color1:  #9d0006
+*color9:  #cc241d
+! DarkGreen + Green
+*color2:  #79740e
+*color10: #98971a
+! DarkYellow + Yellow
+*color3:  #b57614
+*color11: #d79921
+! DarkBlue + Blue
+*color4:  #076678
+*color12: #458588
+! DarkMagenta + Magenta
+*color5:  #8f3f71
+*color13: #b16286
+! DarkCyan + Cyan
+*color6:  #427b58
+*color14: #689d6a
+! LightGrey + White
+*color7:  #3c3836
+*color15: #7c6f64
+

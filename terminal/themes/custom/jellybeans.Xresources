@@ -1,0 +1,30 @@
+! - SW - 21/02/2018 - jellybeans.vim
+! Jellybeans (Custom)
+*foreground:   #e8e8d3
+*background:   #151515
+!*cursorColor:  #a7a7a7
+! black
+*color0:       #3b3b3b
+*color8:       #3b3b3b
+! red
+*color1:       #cf6a4c
+*color9:       #cf6a4c
+! green
+*color2:       #799d6a
+*color10:      #99ad6a
+! yellow
+*color3:       #ffb964
+*color11:      #fad07a
+! blue
+*color4:       #8197bf
+*color12:      #8197bf
+! magenta
+*color5:       #c6b6ee
+*color13:      #c6b6ee
+! cyan
+*color6:       #8fbfdc
+*color14:      #8fbfdc
+! white
+*color7:       #adadad
+*color15:      #adadad
+
