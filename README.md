@@ -1,8 +1,11 @@
 # Dotfiles and Misc.
 
-## Github
+## Git
 
-Can use `~/.gitconfig` for settings.
+### Config
+
+Can use `~/.gitconfig` file for these settings, or override on an individual
+basis:
 
 Identity.
 - `git config --global user.email "me@email.com"`
@@ -31,7 +34,7 @@ Set username for repository.
 - Add username to repo url
     - `url = https://username@repository-url.com`
 
-## Rebase
+### Rebasing
 
 - Rebase work relative to a target commit that shares a common ancestor
 commit (which can be the same as the target commit), incorporating the 
@@ -58,6 +61,30 @@ commit message.
         - `exec`: Run command using shell?
 - If history has branched off between current and rebase target, will only
 affect commits this side of the branch point. Target always left unaffected.
+
+### Traversing history
+
+- The primary parent of a merge commit is the target of the merge (that had the
+  second parent merged into it).
+
+- `~`: Ancestors of commit. Will traverse back through history down primary
+  parent commits.
+    - `HEAD~1`, primary parent.
+    - `HEAD~2`, primary parent's primary parent.
+
+- `^`: Parents of commit. Does not traverse back in history but accesses alternate parent commits.
+    - `HEAD^1`, `HEAD^2`, both merge parent commits.
+
+- Can combine `~` and `^`.
+    - `HEAD~1^1`, `HEAD~1^2`, both parent commits on a merge commit that was the
+      ancestor to the current HEAD location.
+    - `HEAD~1^1~2`, `HEAD~1^2~2`, each parent commit's second ancestor.
+
+- `HEAD^^` is not `HEAD^2`, but `HEAD^1^1` (ie. `(HEAD^1)^1` or `HEAD~2`).
+
+- `@{x}`: Previous git `reflog` locations.
+    - `HEAD@{0}`, current.
+    - `HEAD@{1}`, previous.
 
 ## XTerm / URxvt
 
