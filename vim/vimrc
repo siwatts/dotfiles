@@ -139,27 +139,30 @@ color default
 "set background=light
 
 " Choose a random theme on startup
-let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'PaperColor', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 
-function! RandomiseTheme()
+function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
-    call RandomiseThemeByNumber(seconds)
+    call RandomiseThemeByNumber(seconds, a:schemes)
 endfunction
 
-function! RandomiseThemeByDay()
+function! RandomiseThemeByDay(schemes)
     let day = str2nr(strftime('%d'))
-    call RandomiseThemeByNumber(day)
+    call RandomiseThemeByNumber(day, a:schemes)
 endfunction
 
-function! RandomiseThemeByNumber(num)
-    let scheme = g:schemes[a:num % len(g:schemes)]
+function! RandomiseThemeByNumber(num, schemes)
+    let scheme = a:schemes[a:num % len(a:schemes)]
     execute 'colorscheme ' . scheme
     "" Print resulting theme after open.
     echom 'Utilising colourscheme: "' . scheme . '"'
 endfunction
 
-map <F9> :call RandomiseTheme()<CR>
-map <F10> :call RandomiseThemeByDay()<CR>
+" Toggle background setting
+map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" Random
+map <F9> :call RandomiseTheme(g:schemes)<CR>
+map <F10> :call RandomiseThemeByDay(g:schemes)<CR>
 
 " Call colourscheme of the day on startup.
 "autocmd VimEnter * call RandomiseThemeByDay()
