@@ -1,0 +1,28 @@
+! Twilight256.vim colours (Custom)
+*background: #212121
+*foreground: #e8e8d3
+! Black + DarkGrey
+*color0: #000000
+*color8: #666666
+! DarkRed + Red
+*color1:  #cf6a4c
+*color9:  #cf6a4c
+! DarkGreen + Green
+*color2:  #8f9d6a
+*color10: #8f9d6a
+! DarkYellow + Yellow
+*color3:  #f9ee98
+*color11: #f9ee98
+! DarkBlue + Blue
+*color4:  #7587a6
+*color12: #7587a6
+! DarkMagenta + Magenta
+*color5:  #cda869
+*color13: #cda869
+! DarkCyan + Cyan
+*color6:  #afc4db
+*color14: #afc4db
+! LightGrey + White , or try ffffff,cccccc, and move black up from 000000
+*color7: #cccccc
+*color15: #828282
+

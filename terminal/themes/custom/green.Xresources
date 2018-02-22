@@ -1,0 +1,36 @@
+! - SW - 22/02/2018 -
+! Green (custom)
+!*foreground: #7bcf7b
+*foreground: #00ff00
+*background: #001500
+! black
+*color0: #000000
+*color8: #005f00
+! red
+!*color1: #81D034
+!*color9: #81D034
+*color1: #b0b034
+*color9: #b0b034
+! green
+!*color2: #00bb00
+!*color10: #00bb00
+*color2: #90ff00
+*color10: #90ff00
+! yellow
+*color3: #D7FF4D
+*color11: #D7FF4D
+! blue
+*color4: #34D488
+*color12: #34D488
+! magenta
+!*color5: #A4FF4D
+!*color13: #A4FF4D
+*color5: #7EB34B
+*color13: #7EB34B
+! cyan
+*color6: #4DFFAB
+*color14: #4DFFAB
+! white
+*color7: #d0ffd0
+*color15: #c0ffc0
+

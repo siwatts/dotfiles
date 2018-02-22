@@ -1,0 +1,31 @@
+! - SW - 22/02/2018 -
+! Colours from wombat256mod.vim and dracula.vim
+
+*background:   #242424
+*foreground:   #e3e0d7
+!*cursorColor:  #a7a7a7
+! black
+*color0:       #1e1e1e
+*color8:       #5f5a60
+! red (Wombat Constant)
+*color1:       #e5786d
+*color9:       #e5786d
+! green (Wombat String)
+*color2:       #95e454
+*color10:      #95e454
+! yellow (Dracula yellow)
+*color3:       #f1fa8c
+*color11:      #f1fa8c
+! blue (Wombat Statement)
+*color4:       #88b8f6
+*color12:      #88b8f6
+! magenta (Dracula purple)
+*color5:       #bd93f9
+*color13:      #bd93f9
+! cyan (Dracula cyan)
+*color6:       #8be9fd
+*color14:      #8be9fd
+! white
+*color7:       #ffffff
+*color15:      #a7a7a7
+

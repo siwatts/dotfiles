@@ -3,8 +3,8 @@
 ! hard contrast: *background: #212121
 *foreground: #dcdccc
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+*color0:  #212121
+*color8:  #5b605e
 ! DarkRed + Red
 !*color1:  #cc9393
 *color1:  #dca3a3
@@ -26,6 +26,6 @@
 *color6:  #f0dfaf
 *color14: #f0dfaf
 ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+*color7:  #dfdfdf
+*color15: #dfe4cf
 

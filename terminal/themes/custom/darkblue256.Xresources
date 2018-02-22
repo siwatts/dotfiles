@@ -1,6 +1,7 @@
 ! - SW - 21/02/2018 - darkblue256.vim colours.
 *background: #000040
-*foreground: #c0c0c0
+! Original Gvim: *foreground: #c0c0c0
+*foreground: #e0e0e0
 ! Black + DarkGrey
 *color0: #000000
 *color8: #4D4D4D
@@ -23,6 +24,6 @@
 *color6:  #40ffff
 *color14: #40ffff
 ! LightGrey + White
-*color7: #BFBFBF
-*color15: #E6E6E6
+*color7: #E6E6E6
+*color15: #BFBFBF
 

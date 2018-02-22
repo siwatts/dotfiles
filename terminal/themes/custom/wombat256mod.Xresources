@@ -1,0 +1,34 @@
+! Wombat256mod (Custom)
+*foreground:   #e3e0d7
+*background:   #242424
+!*cursorColor:  #a7a7a7
+! black
+*color0:       #1e1e1e
+*color8:       #5f5a60
+! red (Constant)
+*color1:       #e5786d
+*color9:       #e5786d
+! green (String)
+*color2:       #95e454
+*color10:      #95e454
+! yellow (Special)
+!*color3:       #eadead
+!*color11:      #eadead
+*color3:       #ffffaf
+*color11:      #ffffaf
+! blue (Statement)
+*color4:       #88b8f6
+*color12:      #88b8f6
+! magenta (Type)
+!*color5:       #d4d987
+!*color13:      #d4d987
+*color5:       #d7d787
+*color13:      #d7d787
+! cyan (Identifier) (afffff, match Directory)
+!*color6:       #cae982
+!*color14:      #cae982
+*color6:       #d7ff87
+*color14:      #d7ff87
+! white
+*color7:       #ffffff
+*color15:      #a7a7a7
