@@ -121,25 +121,36 @@ autocmd ColorScheme * call SetCustomDiff()
 "let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
 
-color default
-"color jellybeans
-"color darkblue256
-"color wombat256mod
-"color desert256
-"color twilight256
-"color dracula
-"color zenburn
-"color lucius
-"color PaperColor
-"color gruvbox
-"color triplejelly
-"color nofrils-dark
-
 "set background=dark
 "set background=light
 
-" Choose a random theme on startup
-let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+color default
+"color zellner
+
+"color wombat256mod
+"color dracula
+"color zenburn
+"color darkblue256
+"color jellybeans
+"color gruvbox
+"color lucius
+
+"" Fall back to supported theme if in tty or cygwin.
+if $TERM == 'linux' || $TERM == 'cygwin'
+    color default
+    set background=dark
+endif
+
+" ====================
+" Random colourscheme:
+" ====================
+
+" Scheme choices:
+let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+" Light
+let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
+" Dark
+let g:schemes_dark = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'inkpot', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'plasticcodewrap', 'railscasts', 'seoul256', 'simple-green', 'simple', 'sourcerer', 'spacegray', 'Tomorrow-Night-Blue', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -160,17 +171,15 @@ endfunction
 
 " Toggle background setting
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" Random light/dark
+map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Random
 map <F9> :call RandomiseTheme(g:schemes)<CR>
 map <F10> :call RandomiseThemeByDay(g:schemes)<CR>
 
-" Call colourscheme of the day on startup.
-"autocmd VimEnter * call RandomiseThemeByDay()
-
-"" Fall back to supported theme if in tty.
-"if $TERM == 'linux'
-"    color default
-"endif
+" Choose a random theme on startup
+"autocmd VimEnter * call RandomiseThemeByDay(g:schemes)
 
 " ====================
 " Mappings:
