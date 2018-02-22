@@ -1,7 +1,7 @@
 ! https://github.com/jonathanfilip/lucius/
 *background:  #eeeeee
 *foreground:  #000000
-*cursorColor: #5f87af
+!*cursorColor: #5f87af
 *color0:      #000000
 *color8:      #000000
 *color1:      #af0000

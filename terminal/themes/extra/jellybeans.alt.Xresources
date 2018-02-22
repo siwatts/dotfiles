@@ -1,7 +1,7 @@
 ! https://gist.github.com/meskarune/52703855720848586ec869adaeb1ed46
 
-*cursorColor: #d7d7d7
-*cursorColor2: #121212
+!*cursorColor: #d7d7d7
+!*cursorColor2: #121212
 *foreground: #adadad
 !foreground_bold: #efefef
 *background: #121212
