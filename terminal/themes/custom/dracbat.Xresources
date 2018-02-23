@@ -1,8 +1,22 @@
 ! - SW - 22/02/2018 -
 ! Colours from wombat256mod.vim and dracula.vim
 
-*background:   #242424
+!! -- Backgrounds --
+!! Wombat256:
+!*background:   #242424
+!! LuciusDark:
+*background:   #303030
+!! Dracula:
+!*background: #282A36
+!! Zenburn:
+!*background: #3f3f3f
+
+!! -- Foregrounds --
+!! Wombat256:
 *foreground:   #e3e0d7
+!! Dracula:
+!*foreground: #F8F8F2
+
 !*cursorColor:  #a7a7a7
 ! black
 *color0:       #1e1e1e

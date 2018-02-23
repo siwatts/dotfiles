@@ -11,10 +11,10 @@
 
 *background:            S_base3
 *foreground:            S_base00
-*fadeColor:             S_base3
-*cursorColor:           S_base01
-*pointerColorBackground:S_base1
-*pointerColorForeground:S_base01
+!*fadeColor:             S_base3
+!*cursorColor:           S_base01
+!*pointerColorBackground:S_base1
+!*pointerColorForeground:S_base01
 
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
