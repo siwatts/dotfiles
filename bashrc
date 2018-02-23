@@ -64,6 +64,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# PS1 prompt:
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
     #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\$ '
