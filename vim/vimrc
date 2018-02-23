@@ -97,11 +97,19 @@ syntax on
 
 " Override colorscheme diff highlighting.
 function! SetCustomDiff()
-    " Jellybeans:
-    hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
-    hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
-    hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24
-    hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
+    if $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256
+        " Restore default diff.
+        hi DiffAdd      ctermfg=none    ctermbg=1               term=bold
+        hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
+        hi DiffChange   ctermfg=none    ctermbg=5               term=bold
+        hi DiffText     ctermfg=none    ctermbg=1   cterm=bold  term=reverse
+    else
+        " Jellybeans:
+        hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
+        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
+        hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24
+        hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
+    endif
 endfunction
 
 " Apply custom diff whenever a colorscheme is applied.
