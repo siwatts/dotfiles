@@ -180,6 +180,9 @@ Find all files matching pattern recursively.
 - `find directory/ -name "*.c" -type f`
 - `find directory/ -name "*.c" -type f -delete`
 
+Rename files according to a pattern.
+- ``for f in *.txt; do mv "$f" "`echo $f | sed s/txt/csv/`"; done``
+
 ## Vim colors
 
 Twilight256.vim
