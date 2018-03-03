@@ -180,6 +180,15 @@ Find all files matching pattern recursively.
 - `find directory/ -name "*.c" -type f`
 - `find directory/ -name "*.c" -type f -delete`
 
+Fix X11 screentearing on AMD Radeon: `sudo vim /usr/share/X11/xorg.conf.d/20-radeon.conf`
+```
+Section "Device"
+    Identifier "Radeon"
+    Driver "radeon"
+    Option "TearFree" "on"
+EndSection
+```
+
 ## Vim colors
 
 Twilight256.vim
