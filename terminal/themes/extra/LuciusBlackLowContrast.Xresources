@@ -2,8 +2,8 @@
 *background:  #121212
 *foreground:  #bcbcbc
 !*cursorColor: #5f87af
-*color0:      #121212
-*color8:      #121212
+*color0:      #000000
+*color8:      #4D4D4D
 *color1:      #d75f5f
 *color9:      #d75f5f
 *color2:      #87af5f
@@ -16,6 +16,6 @@
 *color13:     #af87af
 *color6:      #5faf87
 *color14:     #5faf87
-*color7:      #bcbcbc
-*color15:     #bcbcbc
+*color7:      #E6E6E6
+*color15:     #BFBFBF
 
