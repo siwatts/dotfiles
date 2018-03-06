@@ -116,9 +116,9 @@ endfunction
 autocmd ColorScheme * call SetCustomDiff()
 
 "" Nofrils:
-"let g:nofrils_strbackgrounds=1
-"let g:nofrils_heavycomments=1
-"let g:nofrils_heavylinenumbers=1
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
+let g:nofrils_heavylinenumbers=1
 
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_transparent=1
@@ -126,7 +126,7 @@ autocmd ColorScheme * call SetCustomDiff()
 
 "let g:gruvbox_contrast_light='soft'
 "let g:gruvbox_contrast_light='medium'
-"let g:gruvbox_contrast_light='hard'
+let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
 
 "set background=dark
@@ -144,7 +144,7 @@ color default
 "color lucius
 
 "" Fall back to supported theme if in tty or cygwin.
-if $TERM == 'linux' || $TERM == 'cygwin'
+if $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256
     color default
     set background=dark
 endif

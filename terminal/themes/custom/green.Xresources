@@ -1,7 +1,7 @@
 ! - SW - 22/02/2018 -
 ! Green (custom)
 !*foreground: #7bcf7b
-*foreground: #00ff00
+*foreground: #00bb00
 *background: #001500
 ! black
 *color0: #000000
@@ -12,8 +12,10 @@
 *color1: #b0b034
 *color9: #b0b034
 ! green
-*color2: #00bb00
-*color10: #00bb00
+*color2: #95e454
+*color10: #95e454
+!*color2: #00bb00
+!*color10: #00bb00
 !*color2: #90ff00
 !*color10: #90ff00
 ! yellow
