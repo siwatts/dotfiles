@@ -178,10 +178,15 @@ Pipe color to less.
 Find all files matching pattern recursively.
 - `find directory/ -name "*.c"`
 - `find directory/ -name "*.c" -type f`
-- `find directory/ -name "*.c" -type f -delete`
+- `find directory/ -name "*.c" -not -name "keepme*" -type f`
+- `find directory/ -name "*.c" -not -name "keepme*" -type f -delete`
 
 Rename files according to a pattern.
 - ``for f in *.txt; do mv "$f" "`echo $f | sed s/txt/csv/`"; done``
+
+Shebangs
+- `#!/bin/bash`
+- `#!/usr/bin/env python`
 
 ## Vim colors
 

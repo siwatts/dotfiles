@@ -10,6 +10,8 @@ fi
 # Editor:
 export VISUAL="vim"
 export EDITOR="$VISUAL"
+# Use vi-like bash prompt.
+set -o vi
 
 # Simple git status.
 git_prompt () {
