@@ -12,6 +12,8 @@ export VISUAL="vim"
 export EDITOR="$VISUAL"
 # Use vi-like bash prompt.
 set -o vi
+# But keep Ctrl+L for 'clear'.
+bind -m vi-insert "\C-l":clear-screen
 
 # Simple git status.
 git_prompt () {

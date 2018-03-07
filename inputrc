@@ -1,0 +1,14 @@
+# Set vi mode for bash and other GNU readline programs.
+set editing-mode vi
+
+# Keymaps.
+$if mode=vi
+    set keymap vi-command
+    # vi-command mode mappings.
+    Control-l: clear-screen
+
+    set keymap vi-insert
+    # vi-insert mode mappings.
+    Control-l: clear-screen
+$endif
+
