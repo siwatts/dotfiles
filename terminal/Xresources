@@ -1,8 +1,14 @@
 ! ============= Xterm =============
 
 ! Fonts
-xterm*faceName: DejaVu Sans Mono Book
+xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 10
+! X11 core fonts.
+!xterm*font: 6x10
+!xterm*font: 8x13
+!xterm*font: 9x15
+!xterm*font: 10x20
+!xterm*font: 12x24
 
 ! Load config etc.
 xterm*loginshell: false
@@ -17,10 +23,12 @@ xterm*ScrollBar: false
 ! Scroll to bottom when new lines.
 xterm*scrollTtyOutput: false
 
-! Window size (large/med/small/tiny).
+! Window size (large -> small).
 !xterm*vt100*geometry: 150x50
-!xterm*vt100*geometry: 130x50
-xterm*vt100*geometry: 100x30
+!xterm*vt100*geometry: 130x40
+!xterm*vt100*geometry: 120x35
+xterm*vt100*geometry: 115x32
+!xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -34,31 +42,40 @@ xterm*metaSendsEscape: true
 
 ! ============= URxvt =============
 
-!! Fonts
-!URxvt*font: xft:terminus:size=11
-!URxvt*font: xft:mono:medium:size=11
+! Fonts
 URxvt*font: xft:DejaVu Sans Mono:size=10
+! X11 core fonts.
+!URxvt*font: 6x10
+!URxvt*font: 8x13
+!URxvt*font: 9x15
+!URxvt*font: 10x20
+!URxvt*font: 12x24
 
 ! Disable bold font.
 !URxvt*boldFont: xft:DejaVu Sans Mono:size=10
 
+! Fix character spacing.
+URxvt*letterSpace: -1
+
 ! Load config etc.
 URxvt*loginshell: false
 
-! Line history
+! Line history.
 URxvt*savelines: 10000
 
 ! Scrollbar.
 URxvt*scrollBar_right: false
 URxvt*scrollBar: false
 
-!! Scroll to bottom when new lines.
+! Scroll to bottom when new lines.
 URxvt*scrollTtyOutput: false
 
-! Window size (large/med/small/tiny).
+! Window size (large -> small).
 !URxvt*geometry: 150x50
-!URxvt*geometry: 130x50
-URxvt*geometry: 100x30
+!URxvt*geometry: 130x40
+!URxvt*geometry: 120x35
+URxvt*geometry: 115x32
+!URxvt*geometry: 100x30
 !URxvt*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
