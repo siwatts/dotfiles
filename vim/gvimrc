@@ -1,8 +1,4 @@
-set nobackup
-set number
-set numberwidth=3
-"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
+" Disable mouse
 set mouse=c
 
 syntax on
@@ -13,7 +9,7 @@ syntax on
 set guifont=Monospace\ 11
 
 " Window size
-"set lines=45 columns=110
+"set lines=40 columns=100
 set lines=45 columns=130
 "set lines=48 columns=150
 
@@ -25,60 +21,3 @@ set lines=45 columns=130
 "set guioptions-=r  "remove right-hand scroll bar
 "set guioptions-=L  "remove left-hand scroll bar
 
-"color dracula
-color darkblue
-"color gruvbox
-"color twilight
-"color vilight
-"color jellybeans
-"color molokai
-"color molokayo
-"color desert
-"color cobalt
-"color cobalt2
-"color bespin
-"color evening
-"color elflord
-"color murphy
-"color torte
-"color slate
-"color solarized
-"let g:zenburn_high_Contrast = 1
-"let g:zenburn_old_Visual = 1
-"let g:zenburn_alternate_Visual = 1
-"color zenburn
-
-" Jellybeans overrides
-"let g:jellybeans_overrides = {
-"\    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
-"\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
-"\              'attr': 'bold' },
-"\    'Comment': { 'guifg': 'cccccc' },
-"\}
-"let g:jellybeans_overrides = {
-"\    'background': { 'guibg': '212121' },
-"\}
-
-" Backgrounds:
-"hi Normal guibg=#151515
-"hi Normal guibg=#001020
-"hi Normal guibg=#000515
-"hi Normal guibg=#150000
-"hi Normal guibg=#000030
-"hi Normal guibg=#100000
-" Cursor:
-" yellow
-"hi Cursor guibg=#ffff00
-"hi Cursor guibg=#ffcc00
-"hi Cursor guibg=#ffd700
-" green/cyan
-"hi Cursor guibg=#00ff00
-"hi Cursor guibg=#00cc00
-"hi Cursor guibg=#00ccff
-"hi Cursor guibg=#8bb91c
-" magenta
-"hi Cursor guibg=#ff00aa
-"hi Cursor guibg=#ff44ff
-"hi Cursor guibg=#ff66ff
-" black foreground
-"hi Cursor guifg=#000000
