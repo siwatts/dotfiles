@@ -129,6 +129,9 @@ let g:nofrils_heavylinenumbers=1
 let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
 
+let g:seoul256_background=237
+let g:seoul256_light_background=256
+
 "set background=dark
 "set background=light
 
@@ -189,6 +192,8 @@ map <F10> :call RandomiseThemeByDay(g:schemes)<CR>
 
 " Choose a random theme on startup
 "autocmd VimEnter * call RandomiseThemeByDay(g:schemes)
+"autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light)
+"autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark)
 
 " ====================
 " Mappings:
