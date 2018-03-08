@@ -92,6 +92,10 @@ affect commits this side of the branch point. Target always left unaffected.
 
 - After modifying, `xrdb -merge ~/.Xresources` to bring in changes, then reopen xterm.
 
+- Change URxvt font while running:
+    - `printf '\33]50;%s\007' "8x13"`
+    - `printf '\33]50;%s\007' "xft:Monospace:size=10"`
+
 ## Cygwin
 
 To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local
