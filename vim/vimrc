@@ -170,7 +170,8 @@ function! RandomiseTheme(schemes)
 endfunction
 
 function! RandomiseThemeByDay(schemes)
-    let day = str2nr(strftime('%d'))
+    let day = str2nr(system("!date +\%j"))
+    "let day = str2nr(strftime('%d'))
     call RandomiseThemeByNumber(day, a:schemes)
 endfunction
 
