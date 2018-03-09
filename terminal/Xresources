@@ -27,8 +27,8 @@ xterm*scrollTtyOutput: false
 !xterm*vt100*geometry: 150x50
 !xterm*vt100*geometry: 130x40
 !xterm*vt100*geometry: 120x35
-xterm*vt100*geometry: 115x32
-!xterm*vt100*geometry: 100x30
+!xterm*vt100*geometry: 115x32
+xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -43,11 +43,11 @@ xterm*metaSendsEscape: true
 ! ============= URxvt =============
 
 ! Fonts
-URxvt*font: xft:DejaVu Sans Mono:size=10
+!URxvt*font: xft:DejaVu Sans Mono:size=10
 ! X11 core fonts.
 !URxvt*font: 6x10
 !URxvt*font: 8x13
-!URxvt*font: 9x15
+URxvt*font: 9x15
 !URxvt*font: 10x20
 !URxvt*font: 12x24
 
@@ -55,7 +55,7 @@ URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*boldFont: xft:DejaVu Sans Mono:size=10
 
 ! Fix character spacing.
-URxvt*letterSpace: -1
+!URxvt*letterSpace: -1
 
 ! Load config etc.
 URxvt*loginshell: false
@@ -74,8 +74,8 @@ URxvt*scrollTtyOutput: false
 !URxvt*geometry: 150x50
 !URxvt*geometry: 130x40
 !URxvt*geometry: 120x35
-URxvt*geometry: 115x32
-!URxvt*geometry: 100x30
+!URxvt*geometry: 115x32
+URxvt*geometry: 100x30
 !URxvt*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -84,6 +84,22 @@ URxvt*geometry: 115x32
 ! Fade on focus lost.
 !URxvt*fading: 10
 !URxvt*fadeColor: #ffffff
+
+!! Transparency.
+!! -------------
+!! True transparency (compositor).
+!URxvt*depth: 32
+!URxvt*background: rgba:0000/0000/0200/c800
+!!URxvt*background: rgba:2000/2000/2000/dddd
+!!URxvt*background: [85]#282A36
+!! -------------
+!! Pseudo transparency (show desktop).
+!URxvt*transparent: true
+!URxvt*shading: 25
+!URxvt*tintColor: #e0e0e6
+!!URxvt*tintColor: #e0e0f0
+!URxvt*blurRadius: 5
+!! -------------
 
 !! Background picture
 !URxvt*backgroundPixmap: /location/of/pic.jpg;style=tiled
