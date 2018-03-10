@@ -18,6 +18,11 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+"" Show invisible characters
+"set list
+"set listchars=tab:›\ ,space:⋅,trail:¬,extends:»,precedes:«
+""eol:¬,
+
 " Disable all blinking:
 set guicursor+=a:blinkon0
 
@@ -158,11 +163,13 @@ endif
 " ====================
 
 " Scheme choices:
-let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 " Light
 let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
 " Dark
-let g:schemes_dark = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'inkpot', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'plasticcodewrap', 'railscasts', 'seoul256', 'simple-green', 'simple', 'sourcerer', 'spacegray', 'Tomorrow-Night-Blue', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'spacegray', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -170,7 +177,7 @@ function! RandomiseTheme(schemes)
 endfunction
 
 function! RandomiseThemeByDay(schemes)
-    let day = str2nr(system("!date +\%j"))
+    let day = str2nr(system("date +\%j"))
     "let day = str2nr(strftime('%d'))
     call RandomiseThemeByNumber(day, a:schemes)
 endfunction
@@ -187,14 +194,14 @@ map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Random light/dark
 map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
-" Random
-map <F9> :call RandomiseTheme(g:schemes)<CR>
-map <F10> :call RandomiseThemeByDay(g:schemes)<CR>
+" Daily light/dark
+map <F9> :call RandomiseThemeByDay(g:schemes_light)<CR>
+map <F10> :call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup
-"autocmd VimEnter * call RandomiseThemeByDay(g:schemes)
-"autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light)
-"autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark)
+"autocmd VimEnter * call RandomiseThemeByDay(g:schemes) | call SetCustomDiff()
+"autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
+"autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
 
 " ====================
 " Mappings:
@@ -211,8 +218,8 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 " Scrolling
-nmap <Up> <C-Y>
-nmap <Down> <C-E>
+nmap <Up> zH
+nmap <Down> zL
 nmap <Left> zh
 nmap <Right> zl
 nmap <Space> <C-F>
