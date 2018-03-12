@@ -34,6 +34,15 @@ Set username for repository.
 - Add username to repo url
     - `url = https://username@repository-url.com`
 
+Line endings.
+- `git config --global core.autocrlf true`
+    - Always convert to CRLF on checkout, and to LF when adding to index.
+- `git config --global core.autocrlf input`
+    - Convert to CRLF on checkout if Windows, else convert to LF on checkout.
+    Always convert to LF when adding to index.
+- `git config --global core.autocrlf false`
+    - Do nothing. CRLF are added as CRLF etc.
+
 ### Rebasing
 
 - Rebase work relative to a target commit that shares a common ancestor
