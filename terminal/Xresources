@@ -4,7 +4,9 @@
 xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 10
 ! X11 core fonts.
-!xterm*font: 6x10
+!xterm*font: 6x13
+!xterm*font: 7x13
+!xterm*font: 7x14
 !xterm*font: 8x13
 !xterm*font: 9x15
 !xterm*font: 10x20
@@ -44,8 +46,11 @@ xterm*metaSendsEscape: true
 
 ! Fonts
 !URxvt*font: xft:DejaVu Sans Mono:size=10
+!URxvt*font: xft:Monospace:size=10
 ! X11 core fonts.
-!URxvt*font: 6x10
+!URxvt*font: 6x13
+!URxvt*font: 7x13
+!URxvt*font: 7x14
 !URxvt*font: 8x13
 URxvt*font: 9x15
 !URxvt*font: 10x20

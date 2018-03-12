@@ -105,6 +105,26 @@ affect commits this side of the branch point. Target always left unaffected.
     - `printf '\33]50;%s\007' "8x13"`
     - `printf '\33]50;%s\007' "xft:Monospace:size=10"`
 
+- X11 fixed fonts:
+    - 5x7
+    - 5x8
+    - 6x9
+    - 6x10
+    - 6x12
+    - 6x13
+    - 7x13
+    - 7x14
+    - 8x13
+    - 8x16
+    - 9x15
+    - 9x18
+    - 10x20
+    - 12x24
+    - `-adobe-*-medium-r-*-14-*-m-*`
+    - `-adobe-courier-medium-r-normal-*-14-*-*-*-*-*-*-*`
+    - `lucidasanstypewriter-12`
+    - `lucidasanstypewriter-14`
+
 ## Cygwin
 
 To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local
