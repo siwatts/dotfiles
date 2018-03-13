@@ -1,7 +1,8 @@
 ! ============= Xterm =============
 
 ! Fonts
-xterm*faceName: DejaVu Sans Mono
+!xterm*faceName: DejaVu Sans Mono
+xterm*faceName: Terminus
 xterm*faceSize: 10
 ! X11 core fonts.
 !xterm*font: 6x13
@@ -47,12 +48,13 @@ xterm*metaSendsEscape: true
 ! Fonts
 !URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*font: xft:Monospace:size=10
+URxvt*font: xft:Terminus:size=10
 ! X11 core fonts.
 !URxvt*font: 6x13
 !URxvt*font: 7x13
 !URxvt*font: 7x14
 !URxvt*font: 8x13
-URxvt*font: 9x15
+!URxvt*font: 9x15
 !URxvt*font: 10x20
 !URxvt*font: 12x24
 
