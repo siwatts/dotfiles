@@ -75,6 +75,8 @@ if [ "$color_prompt" = yes ]; then
 
     ## Win-bash style
     export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+    ## Actual win-bash
+    #export PS1='\n\[\033[0;32m\]\u@\h \[\033[0;33m\]\w\[\033[00m\]$(git_prompt)\n\$ '
 
     ## Fedora style
     #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]$(git_prompt)]\$ '

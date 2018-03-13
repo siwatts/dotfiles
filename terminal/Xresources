@@ -1,17 +1,18 @@
 ! ============= Xterm =============
 
-! Fonts
+!! -- Fonts --
 !xterm*faceName: DejaVu Sans Mono
-xterm*faceName: Terminus
-xterm*faceSize: 10
-! X11 core fonts.
-!xterm*font: 6x13
-!xterm*font: 7x13
-!xterm*font: 7x14
-!xterm*font: 8x13
-!xterm*font: 9x15
-!xterm*font: 10x20
-!xterm*font: 12x24
+!xterm*faceName: Terminus
+!xterm*faceSize: 10
+!! -- X11 core fonts --
+!! 6x13  | Tiny
+!! 7x13  | Small, condensed
+!! 8x13  | Small
+!! 7x14  | Medium, condensed
+!! 9x15  | Large
+!! 10x20 | Huge
+!! -adobe-*-medium-r-*-14-*-m-* | Courier
+xterm*font: 9x15
 
 ! Load config etc.
 xterm*loginshell: false
@@ -30,8 +31,8 @@ xterm*scrollTtyOutput: false
 !xterm*vt100*geometry: 150x50
 !xterm*vt100*geometry: 130x40
 !xterm*vt100*geometry: 120x35
-!xterm*vt100*geometry: 115x32
-xterm*vt100*geometry: 100x30
+xterm*vt100*geometry: 115x34
+!xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
@@ -45,24 +46,28 @@ xterm*metaSendsEscape: true
 
 ! ============= URxvt =============
 
-! Fonts
+!! Fonts.
+!! -------------
+!! Eg. urxvt256c -fn "9x15" -letsp -1
 !URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*font: xft:Monospace:size=10
-URxvt*font: xft:Terminus:size=10
-! X11 core fonts.
-!URxvt*font: 6x13
-!URxvt*font: 7x13
-!URxvt*font: 7x14
-!URxvt*font: 8x13
-!URxvt*font: 9x15
-!URxvt*font: 10x20
-!URxvt*font: 12x24
-
-! Disable bold font.
-!URxvt*boldFont: xft:DejaVu Sans Mono:size=10
-
-! Fix character spacing.
+!URxvt*font: xft:Terminus:size=10
+URxvt*font: 9x15
+!! -------------
+!! X11 core fonts.
+!! 6x13  | Tiny
+!! 7x13  | Small, condensed
+!! 8x13  | Small
+!! 7x14  | Medium, condensed (-letsp +1, normal)
+!! 9x15  | Large (-letsp -1, condensed)
+!! 10x20 | Huge
+!! -adobe-*-medium-r-*-14-*-m-* | Courier
+!! -------------
+!! Change letter spacing (-letsp).
 !URxvt*letterSpace: -1
+!! -------------
+!! Disable bold font.
+!URxvt*boldFont: 9x15
 
 ! Load config etc.
 URxvt*loginshell: false
@@ -81,8 +86,8 @@ URxvt*scrollTtyOutput: false
 !URxvt*geometry: 150x50
 !URxvt*geometry: 130x40
 !URxvt*geometry: 120x35
-!URxvt*geometry: 115x32
-URxvt*geometry: 100x30
+URxvt*geometry: 115x34
+!URxvt*geometry: 100x30
 !URxvt*geometry: 80x30
 
 ! 256 color mode for vim etc. Can make program specific.
