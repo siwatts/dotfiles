@@ -137,11 +137,11 @@ let g:gruvbox_contrast_light='hard'
 let g:seoul256_background=237
 let g:seoul256_light_background=256
 
-"set background=dark
-"set background=light
-
 color default
 "color zellner
+
+set background=dark
+"set background=light
 
 "color wombat256mod
 "color dracula
@@ -198,10 +198,12 @@ map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 map <F9> :call RandomiseThemeByDay(g:schemes_light)<CR>
 map <F10> :call RandomiseThemeByDay(g:schemes_dark)<CR>
 
-" Choose a random theme on startup
-"autocmd VimEnter * call RandomiseThemeByDay(g:schemes) | call SetCustomDiff()
-"autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
-"autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
+" Choose a random theme on startup, if supported.
+if has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 )
+    "autocmd VimEnter * call RandomiseThemeByDay(g:schemes) | call SetCustomDiff()
+    "autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
+    "autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
+endif
 
 " ====================
 " Mappings:

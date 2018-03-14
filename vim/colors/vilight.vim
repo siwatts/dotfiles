@@ -6,7 +6,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let g:colors_name="vilight2"
+let g:colors_name="vilight"
 
 hi Normal         guifg=#b6b6b6           guibg=#212121
 hi Cursor         guifg=#212121           guibg=#9ca9b7
@@ -24,7 +24,7 @@ hi NonText        guifg=#424242           guibg=NONE
 hi Search         guifg=#eedd82           guibg=NONE        gui=underline
 hi StatusLine     guifg=#9ca9b7           guibg=#424242     
 hi StatusLineNC   guifg=#9ca9b7           guibg=#212121     
-hi Visual         guifg=#212121           guibg=#9ca9b7     gui=NONE
+hi Visual         guifg=#212121           guibg=#9ca9b7     gui=italic
 hi WildMenu       guifg=#6c8095           guibg=#ffffff
 hi MatchParen	  guifg=#ffffff		      guibg=#6c8095     gui=NONE
 hi ErrorMsg	      guifg=#cf6a4c           guibg=NONE        gui=NONE
@@ -34,7 +34,7 @@ hi SpecialKey     guifg=#424242           guibg=NONE
 
 "Syntax hilight groups
 
-hi Comment        guifg=#646959           gui=NONE
+hi Comment        guifg=#646959           gui=italic
 hi Constant       guifg=#7587a6           gui=NONE
 hi Exception      guifg=#cf6a4c           gui=NONE          
 hi String         guifg=#8f9d6a           gui=NONE
@@ -100,7 +100,7 @@ hi cssCommonAttr  guifg=#cf6a4c guibg=NONE gui=NONE
 hi cssBraces  guifg=NONE guibg=NONE gui=NONE
 "diff
 
-hi DiffAdd guifg=#d2ebbe guibg=#437019 gui=NONE
-hi DiffDelete guifg=#40000a guibg=#700009 gui=NONE
-hi DiffChange guifg=NONE guibg=#243a5f gui=NONE
-hi DiffText guifg=#000000 guibg=#8fbfdc gui=NONE
+hi DiffAdd        guifg=#8f9d6a          guibg=NONE
+hi DiffChange     guifg=#cda869          guibg=NONE
+hi DiffText       guifg=#b6b6b6          guibg=NONE
+hi DiffDelete     guifg=#cf6a4c          guibg=NONE
