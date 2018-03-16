@@ -124,7 +124,8 @@ else
       put_template_var 708 $color_background # internal border (rxvt)
     fi
   fi
-  put_template_custom 12 ";7" # cursor (reverse video)
+  #put_template_custom 12 ";7" # cursor (reverse video)
+  put_template_custom 12 ";#ff66ff" # cursor (reverse video)
 fi
 
 # clean up
