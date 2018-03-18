@@ -1,3 +1,13 @@
+" ====================
+" Config:
+" ====================
+let use_dark_theme=0
+let use_theme_of_the_day=0
+let use_base16_theme=1
+
+" ====================
+" Settings:
+" ====================
 set nobackup
 set number
 set numberwidth=3
@@ -46,7 +56,6 @@ nnoremap ?? :noh<CR>
 " ====================
 " Colours:
 " ====================
-
 "" Force 256 colour mode for xfce4-terminal
 "if $TERM == 'xterm'
 "    set t_Co=256
@@ -137,35 +146,46 @@ let g:gruvbox_contrast_light='hard'
 let g:seoul256_background=237
 let g:seoul256_light_background=256
 
-color default
-"color zellner
+let base16colorspace=256
+"let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
-set background=dark
-"set background=light
-
-"color wombat256mod
-"color dracula
-"color zenburn
-"color darkblue256
-"color jellybeans
-"color gruvbox
-"color lucius
-"color iceberg
-
-"" Fall back to supported theme if in tty or cygwin.
+" Set the colorscheme
 if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
+    " Fall back to supported theme if in tty or cygwin.
     color default
     set background=dark
+else
+    " Set a colourful 256 / gui theme.
+    if use_base16_theme
+        color base16-eighties
+    elseif use_dark_theme
+        color default
+        set background=dark
+
+        "color wombat256mod
+        "color dracula
+        "color zenburn
+        "color jellybeans
+        "color gruvbox
+        "color twilight256
+    else
+        color default
+        set background=light
+
+        "color gruvbox
+        "color lucius
+    endif
 endif
 
 " ====================
 " Random colourscheme:
 " ====================
-
 " Scheme choices:
 let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 " Light
-let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
+let g:schemes_light_all = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
+let g:schemes_light_more = [ 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'seoul256-light', 'Tomorrow' ]
+let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 " Dark
 let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
@@ -192,23 +212,28 @@ endfunction
 " Toggle background setting
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Random light/dark
-map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+"map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+"map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+" Reset to default theme
+map <F7> :colorscheme default<CR>
+" Apply base16 theme
+map <F11> :colorscheme base16-eighties<CR>
 " Daily light/dark
-map <F9> :call RandomiseThemeByDay(g:schemes_light)<CR>
-map <F10> :call RandomiseThemeByDay(g:schemes_dark)<CR>
+map <F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
+map <F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
-" Choose a random theme on startup, if supported.
-if has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 )
-    "autocmd VimEnter * call RandomiseThemeByDay(g:schemes) | call SetCustomDiff()
-    "autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
-    "autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
+" Choose a random theme on startup, if requested and supported.
+if use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+    if use_dark_theme
+        autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
+    else
+        autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
+    endif
 endif
 
 " ====================
 " Mappings:
 " ====================
-
 " Disable middle mouse
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
@@ -252,9 +277,19 @@ nmap <Leader>x :wq<CR>
 
 nmap <Leader>s :Vex<CR>
 nmap <Leader>v :vnew<CR>
-nmap <Leader>d :diffthis<CR><C-w>w:diffthis<CR><C-w>w
-nmap <Leader>D :diffoff<CR><C-w>w:diffoff<CR><C-w>w
 nmap <Leader>e :Ex<CR>
+
+nmap <Leader>da :windo diffthis<CR><C-W>w
+nmap <Leader>dh :diffthis<CR><C-W>h:diffthis<CR><C-W>l
+nmap <Leader>dl :diffthis<CR><C-W>l:diffthis<CR><C-W>h
+nmap <Leader>dj :diffthis<CR><C-W>j:diffthis<CR><C-W>k
+nmap <Leader>dk :diffthis<CR><C-W>k:diffthis<CR><C-W>j
+nmap <Leader>dd :diffthis<CR><C-W>w:diffthis<CR><C-W>W
+nmap <Leader>dt :diffthis<CR>
+nmap <Leader>do :diffoff<CR>
+nmap <Leader>ds :windo diffoff<CR><C-W>w
+nmap <Leader>dr :windo diffoff<CR>:windo diffthis<CR><C-W>w
+nmap <Leader>D :diffoff<CR><C-W>w:diffoff<CR><C-w>W
 
 nmap <Leader>o o<ESC>o
 nmap <Leader>O O<ESC>O
@@ -303,6 +338,8 @@ nmap N Nzz
 " Insert time.
 nmap <F2> "=strftime("%H:%M:%S")<CR>p
 imap <F2> <C-R>=strftime("%H:%M:%S")<CR>
+nmap <Leader><F2> "=strftime("%H:%M")<CR>p
+imap <Leader><F2> <C-R>=strftime("%H:%M")<CR>
 " Insert datetime.
 nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
