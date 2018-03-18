@@ -1,17 +1,15 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
-# Extract just the cursor/bg/fg stuff to change on the fly.
+# Restore colours 16-21 to pre-base16 values.
+# (Make a base16 theme into a regular terminal theme).
 
-# Allow calling with parameters from shell.
-if [ -z "$1" ]
-    then
-        color_cursor="FF66FF"
-    else
-        color_cursor="$1"
-fi
-
-color_background="28/2A/36"
-color_foreground="F8/F8/F2"
+# Standard xterm-256 colours.
+color16="00/00/00"
+color17="00/00/5f"
+color18="00/00/87"
+color19="00/00/af"
+color20="00/00/d7"
+color21="00/00/ff"
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -34,32 +32,21 @@ else
   put_template_custom() { printf '\033]%s%s\033\\' $@; }
 fi
 
-# foreground / background / cursor color
-if [ -n "$ITERM_SESSION_ID" ]; then
-#  # iTerm2 proprietary escape codes
-#  put_template_custom Pg e9e9f4 # foreground
-#  put_template_custom Ph 282936 # background
-#  put_template_custom Pi e9e9f4 # bold color
-#  put_template_custom Pj 4d4f68 # selection color
-#  put_template_custom Pk e9e9f4 # selected text color
-  put_template_custom Pl e9e9f4 # cursor
-  put_template_custom Pm 282936 # cursor text
-else
-#  put_template_var 10 $color_foreground
-#  if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
-#    put_template_var 11 $color_background
-#    if [ "${TERM%%-*}" = "rxvt" ]; then
-#      put_template_var 708 $color_background # internal border (rxvt)
-#    fi
-#  fi
-  #put_template_custom 12 ";7" # cursor (reverse video)
-  put_template_custom 12 ";#$color_cursor" # cursor (reverse video)
-fi
+# 256 color space
+put_template 16 $color16
+put_template 17 $color17
+put_template 18 $color18
+put_template 19 $color19
+put_template 20 $color20
+put_template 21 $color21
 
 # clean up
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset color_foreground
-unset color_background
-unset color_cursor
+unset color16
+unset color17
+unset color18
+unset color19
+unset color20
+unset color21
