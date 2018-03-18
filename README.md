@@ -120,6 +120,7 @@ affect commits this side of the branch point. Target always left unaffected.
     - 9x18
     - 10x20
     - 12x24
+    - `-*-courier-medium-r-normal-*-14-*`
     - `-adobe-*-medium-r-*-14-*-m-*`
     - `-adobe-courier-medium-r-normal-*-14-*-*-*-*-*-*-*`
     - `lucidasanstypewriter-12`
