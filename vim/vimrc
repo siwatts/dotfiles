@@ -120,9 +120,11 @@ function! SetCustomDiff()
     else
         " Jellybeans:
         hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=none    cterm=none
-        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=none    cterm=none
+        "hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=none    cterm=none
+        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=232      ctermbg=52  gui=none    cterm=none
         hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=none    cterm=none
-        hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
+        "hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
+        hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=232  gui=reverse cterm=reverse
     endif
 endfunction
 
@@ -146,7 +148,9 @@ let g:gruvbox_contrast_light='hard'
 let g:seoul256_background=237
 let g:seoul256_light_background=256
 
+" If using a base16 theme that also reassigns colours 16-21.
 let base16colorspace=256
+" base16_shell_path will apply the terminal shell script on vim colorchange
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
 " Set the colorscheme

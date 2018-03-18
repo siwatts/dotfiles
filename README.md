@@ -126,6 +126,12 @@ affect commits this side of the branch point. Target always left unaffected.
     - `lucidasanstypewriter-12`
     - `lucidasanstypewriter-14`
 
+## Xfce4-terminal
+
+- Themes location `~/.local/share/xfce4/terminal/colorschemes/`
+
+- Config location `~/.config/xfce4/terminal/terminalrc`
+
 ## Cygwin
 
 To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local

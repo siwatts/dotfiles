@@ -36,6 +36,29 @@ git_prompt () {
     fi
 }
 
+# If URxvt then call script to set custom colours.
+case "$TERM" in
+    rxvt*color)
+        ## TODO: Check user directory readable.
+        ## Base16:
+        #~/Documents/repos/dotfiles/base16/sh/base16-gruvbox-dark-pale.sh
+        ~/Documents/repos/dotfiles/base16/custom_sh/base16-dracula-magenta-alt.sh
+
+        ## Restore non-base16 colours:
+        #~/Documents/repos/dotfiles/terminal/scripts/set_non_base16_colors.sh
+
+        ## Non-base16:
+        #~/Documents/repos/dotfiles/terminal/scripts/dracula-magenta.sh
+        #~/Documents/repos/dotfiles/terminal/scripts/lucius-white.sh
+        #~/Documents/repos/dotfiles/terminal/scripts/gruvbox-urxvt256.sh
+
+        ## Override cursor/fg/bg:
+        #~/Documents/repos/dotfiles/terminal/scripts/set_cursor.sh "#ff66ff"
+        #~/Documents/repos/dotfiles/terminal/scripts/set_foreground.sh "00/ff/00"
+        #~/Documents/repos/dotfiles/terminal/scripts/set_background.sh "15/15/15"
+        ;;
+esac
+
 # 30m Black
 # 31m Red
 # 32m Green
