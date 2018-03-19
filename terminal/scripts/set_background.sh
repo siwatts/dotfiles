@@ -5,9 +5,9 @@
 # Allow calling with parameters from shell.
 if [ -z "$1" ]
     then
-        echo 'Defaulting to "00/00/00"'
-        color_background="00/00/00"
-        color00="00/00/00"
+        echo 'Defaulting to "28/2A/36"'
+        color_background="28/2A/36"
+        color00="28/2A/36"
     else
         color_background="$1"
         color00="$1"
