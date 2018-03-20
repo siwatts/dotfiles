@@ -1,9 +1,13 @@
 " ====================
 " Config:
 " ====================
-let use_dark_theme=0
+let g:use_custom_theme=0
+let use_dark_theme=1
+let use_base16_theme=0
 let use_theme_of_the_day=0
-let use_base16_theme=1
+
+let g:dark_theme='dracula'
+let g:light_theme='gruvbox'
 
 " ====================
 " Settings:
@@ -153,6 +157,16 @@ let base16colorspace=256
 " base16_shell_path will apply the terminal shell script on vim colorchange
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
+function! SetCustomScheme(use_dark)
+    if a:use_dark
+        set background=dark
+        execute 'colorscheme ' . g:dark_theme
+    else
+        set background=light
+        execute 'colorscheme ' . g:light_theme
+    endif
+endfunction
+
 " Set the colorscheme
 if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
     " Fall back to supported theme if in tty or cygwin.
@@ -162,22 +176,13 @@ else
     " Set a colourful 256 / gui theme.
     if use_base16_theme
         color base16-eighties
-    elseif use_dark_theme
-        color default
-        set background=dark
-
-        "color wombat256mod
-        "color dracula
-        "color zenburn
-        "color jellybeans
-        "color gruvbox
-        "color twilight256
+    elseif use_custom_theme
+        call SetCustomScheme(use_dark_theme)
     else
         color default
-        set background=light
-
-        "color gruvbox
-        "color lucius
+        if use_dark_theme
+            set background=dark
+        endif
     endif
 endif
 
@@ -213,6 +218,7 @@ function! RandomiseThemeByNumber(num, schemes)
     echom 'Utilising colourscheme: "' . scheme . '"'
 endfunction
 
+" Colour mappings:
 " Toggle background setting
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Random light/dark
@@ -222,9 +228,12 @@ map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 map <F7> :colorscheme default<CR>
 " Apply base16 theme
 map <F11> :colorscheme base16-eighties<CR>
+" Regular light/dark
+map <F9> :call SetCustomScheme(0)<CR>
+map <F10> :call SetCustomScheme(1)<CR>
 " Daily light/dark
-map <F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
-map <F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
+map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
 if use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
