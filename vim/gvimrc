@@ -1,8 +1,6 @@
 " Disable mouse
 set mouse=c
 
-syntax on
-
 " Set font for MS Windows
 "set guifont=Consolas:h11
 " Or for Linux

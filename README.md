@@ -132,6 +132,12 @@ affect commits this side of the branch point. Target always left unaffected.
 
 - Config location `~/.config/xfce4/terminal/terminalrc`
 
+## Mintty
+
+- Themes location `~/.mintty/themes/`
+
+- Config location `~/.minttyrc`
+
 ## Cygwin
 
 To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local

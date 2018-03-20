@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Extract just the background stuff to change on the fly.
-# Leave colour 0 (black)
+# Leave colour 0 (black).
 
 # Allow calling with parameters from shell.
 if [ -z "$1" ]
@@ -50,5 +50,4 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset color00
 unset color_background

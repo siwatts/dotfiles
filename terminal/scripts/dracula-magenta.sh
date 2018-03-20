@@ -1,16 +1,14 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Dracula Theme (http://github.com/dracula)
-# Swap red for orange taken from dracula.vim
 
-# Restore non-base16 terminal colors from official Dracula Xresources palette
-# https://github.com/dracula/xresources
-# Dracula Xresources palette
+# Dracula Theme (http://github.com/dracula)
+# Swap red for magenta, magenta for orange taken from dracula.vim
+# Swap bright black for comment colour (https://github.com/dracula/dracula-theme)
 color_foreground="F8/F8/F2"
 color_background="28/2A/36"
 color00="00/00/00"
-color08="4D/4D/4D"
+color08="62/72/A4"
 color01="FF/79/C6"
 color09="FF/92/D0"
 color02="50/FA/7B"
