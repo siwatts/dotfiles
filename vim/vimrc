@@ -180,8 +180,12 @@ else
         call SetCustomScheme(use_dark_theme)
     else
         color default
-        if use_dark_theme && !has("gui_running")
-            set background=dark
+        if use_dark_theme
+            if has("gui_running")
+                color darkblue
+            else
+                set background=dark
+            endif
         endif
     endif
 endif

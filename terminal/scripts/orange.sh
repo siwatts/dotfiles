@@ -1,30 +1,26 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Dracula Theme (http://github.com/dracula)
 
-# Dracula Xresources palette (https://github.com/dracula/xresources)
-# Swap red for magenta, magenta for orange.
-# Swap bright black for comment colour (https://github.com/dracula/dracula-theme)
-# Lighter background 30% (https://www.w3schools.com/colors/colors_picker.asp).
-color_foreground="F8/F8/F2"
-color_background="41/44/58"
-color00="00/00/00"
-color08="62/72/A4"
-color01="FF/79/C6"
-color09="FF/92/D0"
-color02="50/FA/7B"
-color10="5A/F7/8E"
-color03="F1/FA/8C"
-color11="F4/F9/9D"
-color04="BD/93/F9"
-color12="CA/A9/FA"
-color05="FF/B8/6C"
-color13="FF/B8/6C"
-color06="8B/E9/FD"
-color14="9A/ED/FE"
-color07="BF/BF/BF"
-color15="E6/E6/E6"
+# Orange only.
+color_foreground="ff/81/00"
+color_background="1a/0f/00"
+color00="33/1a/00"
+color08="66/33/00"
+color01="d8/39/00"
+color09="d8/39/00"
+color02="ff/af/00"
+color10="ff/af/00"
+color03="ff/a6/4d"
+color11="ff/a6/4d"
+color04="ff/87/5f"
+color12="ff/87/5f"
+color05="b3/59/00"
+color13="b3/59/00"
+color06="ff/a6/4d"
+color14="ff/a6/4d"
+color07="ff/e2/c5"
+color15="ff/e8/d1"
 
 # Restore colors 16-21 to pre-base16 values.
 color16="00/00/00"
@@ -33,31 +29,6 @@ color18="00/00/87"
 color19="00/00/af"
 color20="00/00/d7"
 color21="00/00/ff"
-
-#color00="28/29/36" # Base 00 - Black
-#color01="ea/51/b2" # Base 08 - Red
-#color02="eb/ff/87" # Base 0B - Green
-#color03="00/f7/69" # Base 0A - Yellow
-#color04="62/d6/e8" # Base 0D - Blue
-#color05="b4/5b/cf" # Base 0E - Magenta
-#color06="a1/ef/e4" # Base 0C - Cyan
-#color07="e9/e9/f4" # Base 05 - White
-#color08="62/64/83" # Base 03 - Bright Black
-#color09=$color01 # Base 08 - Bright Red
-#color10=$color02 # Base 0B - Bright Green
-#color11=$color03 # Base 0A - Bright Yellow
-#color12=$color04 # Base 0D - Bright Blue
-#color13=$color05 # Base 0E - Bright Magenta
-#color14=$color06 # Base 0C - Bright Cyan
-#color15="f7/f7/fb" # Base 07 - Bright White
-#color16="b4/5b/cf" # Base 09
-#color17="00/f7/69" # Base 0F
-#color18="3a/3c/4e" # Base 01
-#color19="4d/4f/68" # Base 02
-#color20="62/d6/e8" # Base 04
-#color21="f1/f2/f8" # Base 06
-#color_foreground="e9/e9/f4" # Base 05
-#color_background="28/29/36" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -156,3 +127,4 @@ unset color20
 unset color21
 unset color_foreground
 unset color_background
+
