@@ -5,13 +5,13 @@
 
 # Dracula Xresources palette
 color_foreground="F8/F8/F2"
-color_background="28/2A/36"
+color_background="41/44/58"
 # Black
-color00="28/2A/36"
-color08="62/72/A4"
+color00="41/44/58"
+color08="87/87/af"
 # Red
-color01="FF/B8/6C"
-color09="FF/B8/6C"
+color01="FF/79/C6"
+color09="FF/92/D0"
 # Green
 color02="50/FA/7B"
 color10="5A/F7/8E"
@@ -22,16 +22,16 @@ color11="F4/F9/9D"
 color04="BD/93/F9"
 color12="CA/A9/FA"
 # Magenta
-color05="FF/79/C6"
-color13="FF/92/D0"
+color05="FF/B8/6C"
+color13="FF/B8/6C"
 # Cyan
 color06="8B/E9/FD"
 color14="9A/ED/FE"
 # White
-color07="BF/BF/BF"
-color15="E6/E6/E6"
+color07="F8/F8/F2"
+color15="BF/BF/BF"
 
-color16="FF/55/55" # Base 09
+color16="FF/6E/67" # Base 09
 color17="50/FA/7B" # Base 0F
 #color18="4D/4D/4D" # Base 01
 #color18="35/38/47" # Base 01

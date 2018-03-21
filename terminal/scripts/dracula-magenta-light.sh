@@ -1,45 +1,63 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Dracula theme from Dracula Xresources https://github.com/dracula/xresources
+# Dracula Theme (http://github.com/dracula)
 
-# Dracula Xresources palette
+# Dracula Xresources palette (https://github.com/dracula/xresources)
+# Swap red for magenta, magenta for orange.
+# Swap bright black for comment colour (https://github.com/dracula/dracula-theme)
+# Lighter background 30% (https://www.w3schools.com/colors/colors_picker.asp).
 color_foreground="F8/F8/F2"
-color_background="28/2A/36"
-# Black
-color00="28/2A/36"
+color_background="41/44/58"
+color00="00/00/00"
 color08="62/72/A4"
-# Red
-color01="FF/B8/6C"
-color09="FF/B8/6C"
-# Green
+color01="FF/79/C6"
+color09="FF/92/D0"
 color02="50/FA/7B"
 color10="5A/F7/8E"
-# Yellow
 color03="F1/FA/8C"
 color11="F4/F9/9D"
-# Blue
 color04="BD/93/F9"
 color12="CA/A9/FA"
-# Magenta
-color05="FF/79/C6"
-color13="FF/92/D0"
-# Cyan
+color05="FF/B8/6C"
+color13="FF/B8/6C"
 color06="8B/E9/FD"
 color14="9A/ED/FE"
-# White
 color07="BF/BF/BF"
 color15="E6/E6/E6"
 
-color16="FF/55/55" # Base 09
-color17="50/FA/7B" # Base 0F
-#color18="4D/4D/4D" # Base 01
-#color18="35/38/47" # Base 01
-color18="31/34/42" # Base 01
-#color18="2f/32/40" # Base 01
-color19="44/47/5A" # Base 02
-color20="e9/e9/f4" # Base 04
-color21="FF/FF/FF" # Base 06
+# Restore colors 16-21 to pre-base16 values.
+color16="00/00/00"
+color17="00/00/5f"
+color18="00/00/87"
+color19="00/00/af"
+color20="00/00/d7"
+color21="00/00/ff"
+
+#color00="28/29/36" # Base 00 - Black
+#color01="ea/51/b2" # Base 08 - Red
+#color02="eb/ff/87" # Base 0B - Green
+#color03="00/f7/69" # Base 0A - Yellow
+#color04="62/d6/e8" # Base 0D - Blue
+#color05="b4/5b/cf" # Base 0E - Magenta
+#color06="a1/ef/e4" # Base 0C - Cyan
+#color07="e9/e9/f4" # Base 05 - White
+#color08="62/64/83" # Base 03 - Bright Black
+#color09=$color01 # Base 08 - Bright Red
+#color10=$color02 # Base 0B - Bright Green
+#color11=$color03 # Base 0A - Bright Yellow
+#color12=$color04 # Base 0D - Bright Blue
+#color13=$color05 # Base 0E - Bright Magenta
+#color14=$color06 # Base 0C - Bright Cyan
+#color15="f7/f7/fb" # Base 07 - Bright White
+#color16="b4/5b/cf" # Base 09
+#color17="00/f7/69" # Base 0F
+#color18="3a/3c/4e" # Base 01
+#color19="4d/4f/68" # Base 02
+#color20="62/d6/e8" # Base 04
+#color21="f1/f2/f8" # Base 06
+#color_foreground="e9/e9/f4" # Base 05
+#color_background="28/29/36" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -107,7 +125,7 @@ else
     fi
   fi
   #put_template_custom 12 ";7" # cursor (reverse video)
-  put_template_custom 12 ";#ff66ff" # cursor (reverse video)
+  #put_template_custom 12 ";#ff66ff" # cursor (reverse video)
 fi
 
 # clean up
