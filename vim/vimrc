@@ -196,7 +196,7 @@ let g:schemes_light_all = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-ac
 let g:schemes_light_more = [ 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'seoul256-light', 'Tomorrow' ]
 let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 " Dark
-let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'spacegray', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 

@@ -1,12 +1,13 @@
 [core]
     editor = vim
+    autocrlf = input
 [diff]
     tool = vimdiff
 [merge]
     tool = vimdiff
     conflictstyle = diff3
 [mergetool]
-    prompt = false
+    prompt = true
 [push]
     default = simple
     ## Simple was introduced in a later version of git.
