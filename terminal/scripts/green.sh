@@ -3,7 +3,7 @@
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Shell script generated from file green.Xresources
 
-color_foreground="00/cc/00"
+color_foreground="00/dd/00"
 color_background="00/15/00"
 color00="00/00/00"
 color08="00/5f/00"

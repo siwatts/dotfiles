@@ -41,14 +41,42 @@ case "$TERM" in
     rxvt*color)
         BASE_LOCATION="/CHANGE_ME/dotfiles"
 
-        # Override theme.
-        THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula.sh"
+        ## Override theme.
+        THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula-magenta.sh"
         if [[ -x "$THEME_LOCATION" ]]
         then
             eval "$THEME_LOCATION"
         else
-            echo "~/.bashrc : Theme not found: '$THEME_LOCATION'"
+            echo "~/.bashrc : Theme not found: '$THEME_LOCATION'."
         fi
+
+        ### Override cursor/bg/fg.
+        #CURSOR_LOCATION="$BASE_LOCATION/terminal/scripts/set_cursor.sh"
+        #BG_LOCATION="$BASE_LOCATION/terminal/scripts/set_background.sh"
+        #FG_LOCATION="$BASE_LOCATION/terminal/scripts/set_foreground.sh"
+        ### Cursor:
+        #if [[ -x "$CURSOR_LOCATION" ]]
+        #then
+        #    eval "$CURSOR_LOCATION"' "#ff66ff"'
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$CURSOR_LOCATION'."
+        #fi
+        ### Background:
+        #if [[ -x "$BG_LOCATION" ]]
+        #then
+        #    eval "$BG_LOCATION 28/2A/36"
+        #    #eval "$BG_LOCATION 41/44/58"
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$BG_LOCATION'."
+        #fi
+        ### Foreground:
+        #if [[ -x "$FG_LOCATION" ]]
+        #then
+        #    eval "$FG_LOCATION ff/ff/00"
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$FG_LOCATION'."
+        #fi
+
         ;;
 esac
 
