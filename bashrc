@@ -39,16 +39,16 @@ git_prompt () {
 # If URxvt then call script to set custom colours.
 case "$TERM" in
     rxvt*color)
-        BASE_LOCATION="/CHANGE_ME/dotfiles"
+        #BASE_LOCATION="/CHANGE_ME/dotfiles"
 
-        ## Override theme.
-        THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula-magenta.sh"
-        if [[ -x "$THEME_LOCATION" ]]
-        then
-            eval "$THEME_LOCATION"
-        else
-            echo "~/.bashrc : Theme not found: '$THEME_LOCATION'."
-        fi
+        ### Override theme.
+        #THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula-magenta.sh"
+        #if [[ -x "$THEME_LOCATION" ]]
+        #then
+        #    eval "$THEME_LOCATION"
+        #else
+        #    echo "~/.bashrc : Theme not found: '$THEME_LOCATION'."
+        #fi
 
         ### Override cursor/bg/fg.
         #CURSOR_LOCATION="$BASE_LOCATION/terminal/scripts/set_cursor.sh"
@@ -115,7 +115,7 @@ fi
 # PS1 prompt:
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
-    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\$ '
+    #export PS1='\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\$ '
 
     ## Win-bash style
     export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '

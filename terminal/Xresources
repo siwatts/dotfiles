@@ -48,11 +48,13 @@ xterm*metaSendsEscape: true
 
 !! Fonts.
 !! -------------
-!! Eg. urxvt256c -fn "9x15" -letsp -1
+!! Eg. urxvt256c -fn "7x14" -letsp +1
 !URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*font: xft:Monospace:size=10
 !URxvt*font: xft:Terminus:size=10
-URxvt*font: 9x15
+!URxvt*font: xft:Terminus:size=12
+URxvt*font: 7x14
+URxvt*letterSpace: +1
 !! -------------
 !! X11 core fonts.
 !! 6x13  | Tiny
@@ -69,10 +71,10 @@ URxvt*font: 9x15
 !! Disable bold font.
 !URxvt*boldFont: 9x15
 
-! Stop bold fonts using the brighter 8-15 colours.
+! Stop bold fonts using the brighter 8-15 colours with 'false'.
 ! (Good for themes which re-use the bright colours for additional colours, 
 ! base16 with non-256 or solarized etc.)
-URxvt*intensityStyles: false
+URxvt*intensityStyles: true
 
 ! Load config etc.
 URxvt*loginshell: false

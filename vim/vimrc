@@ -1,7 +1,7 @@
 " ====================
 " Config:
 " ====================
-let g:use_custom_theme=0
+let use_custom_theme=0
 let use_dark_theme=1
 let use_base16_theme=0
 let use_theme_of_the_day=0
@@ -167,25 +167,29 @@ function! SetCustomScheme(use_dark)
     endif
 endfunction
 
-" Set the colorscheme
-if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
-    " Fall back to supported theme if in tty or cygwin.
+" Set the colourscheme.
+if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
+    " Fall back to supported dark theme if in tty or cygwin.
     color default
     set background=dark
 else
-    " Set a colourful 256 / gui theme.
-    if use_base16_theme
-        color base16-eighties
-    elseif use_custom_theme
-        call SetCustomScheme(use_dark_theme)
+    " Set a colourful 256 / gui theme if possible.
+    if use_custom_theme && ( has("gui_running") || &t_Co == 256 )
+        if use_base16_theme
+            color base16-eighties
+        else
+            call SetCustomScheme(use_dark_theme)
+        endif
     else
-        color default
         if use_dark_theme
             if has("gui_running")
                 color darkblue
             else
+                color default
                 set background=dark
             endif
+        else
+            color default
         endif
     endif
 endif
@@ -229,7 +233,11 @@ map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 "map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 "map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Reset to default theme
-map <F7> :colorscheme default<CR>
+if use_dark_theme
+    map <F7> :colorscheme default<CR>:set background=dark<CR>
+else
+    map <F7> :colorscheme default<CR>
+endif
 " Apply base16 theme
 map <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
@@ -240,7 +248,7 @@ map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_li
 map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
-if use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+if use_custom_theme && use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
     if use_dark_theme
         autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
     else
