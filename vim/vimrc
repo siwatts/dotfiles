@@ -5,6 +5,7 @@ let use_custom_theme=0
 let use_dark_theme=1
 let use_base16_theme=0
 let use_theme_of_the_day=0
+let use_random_theme=0
 
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
@@ -117,16 +118,16 @@ syntax on
 function! SetCustomDiff()
     if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
         " Restore default diff.
-        hi DiffAdd      ctermfg=none    ctermbg=1   cterm=none  term=bold
+        hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
         hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
-        hi DiffChange   ctermfg=none    ctermbg=5   cterm=none  term=bold
-        hi DiffText     ctermfg=none    ctermbg=1   cterm=bold  term=reverse
+        hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
+        hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
     else
         " Jellybeans:
-        hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=none    cterm=none
-        "hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=none    cterm=none
-        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=232      ctermbg=52  gui=none    cterm=none
-        hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=none    cterm=none
+        hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+        "hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=232      ctermbg=52  gui=NONE    cterm=NONE
+        hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=NONE    cterm=NONE
         "hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
         hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=232  gui=reverse cterm=reverse
     endif
@@ -207,6 +208,7 @@ let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'spacegray', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark_good = [ 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -229,26 +231,34 @@ endfunction
 " Colour mappings:
 " Toggle background setting
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" Random light/dark
-"map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-"map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Reset to default theme
 if use_dark_theme
     map <F7> :colorscheme default<CR>:set background=dark<CR>
+    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
 else
     map <F7> :colorscheme default<CR>
+    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
 endif
 " Apply base16 theme
 map <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
 map <F9> :call SetCustomScheme(0)<CR>
 map <F10> :call SetCustomScheme(1)<CR>
+" Random light/dark
+map <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Daily light/dark
 map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
 map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
-if use_custom_theme && use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+if use_custom_theme && use_random_theme && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+    if use_dark_theme
+        autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark_good) | call SetCustomDiff()
+    else
+        autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
+    endif
+elseif use_custom_theme && use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
     if use_dark_theme
         autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
     else
@@ -377,3 +387,4 @@ imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A
+

@@ -5,7 +5,7 @@ set mouse=c
 "set guifont=Consolas:h11
 " Or for Linux
 set guifont=Monospace\ 11
-"set guifont=Terminus\ 10
+"set guifont=Terminus\ 12
 
 " Window size
 "set lines=40 columns=100

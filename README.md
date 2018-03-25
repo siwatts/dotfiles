@@ -280,6 +280,14 @@ Lots of vim colorschemes come without useful diff highlighting for some reason.
 DiffChange is the lines that have been modified, DiffText is the actual
 differing content within those lines.
 
+Default 16 colour terminal diff:
+```
+hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
+hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
+hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
+hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
+```
+
 jellybeans:
 ```
 call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
@@ -288,9 +296,9 @@ call s:X("DiffChange","","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 ```
 ```
-hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
-hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
-hi DiffChange                   guibg=#2B5B77                   ctermbg=24
+hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+hi DiffChange   guifg=NONE      guibg=#2B5B77   ctermfg=NONE    ctermbg=24  gui=NONE    cterm=NONE
 hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
 ```
 
@@ -302,17 +310,17 @@ call s:X("DiffChange","FFFFFF","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 ```
 ```
-hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
-hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
-hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24
+hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=NONE    cterm=NONE
 hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
 ```
 
 wombat256mod:
 ```
-hi DiffAdd                  ctermbg=17                              guibg=#2a0d6a
-hi DiffDelete   ctermfg=234 ctermbg=60  cterm=none  guifg=#242424   guibg=#3e3969   gui=none
-hi DiffText                 ctermbg=53  cterm=none                  guibg=#73186e   gui=none
-hi DiffChange               ctermbg=237                             guibg=#382a37
+hi DiffAdd      ctermfg=NONE ctermbg=17  cterm=NONE  guifg=NONE      guibg=#2a0d6a   gui=NONE
+hi DiffDelete   ctermfg=234  ctermbg=60  cterm=NONE  guifg=#242424   guibg=#3e3969   gui=NONE
+hi DiffText     ctermfg=NONE ctermbg=53  cterm=NONE  guifg=NONE      guibg=#73186e   gui=NONE
+hi DiffChange   ctermfg=NONE ctermbg=237 cterm=NONE  guifg=NONE      guibg=#382a37   gui=NONE
 ```
 
