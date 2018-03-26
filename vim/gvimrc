@@ -1,11 +1,16 @@
 " Disable mouse
 set mouse=c
 
-" Set font for MS Windows
-"set guifont=Consolas:h11
-" Or for Linux
-set guifont=Monospace\ 11
-"set guifont=Terminus\ 12
+if has("win32")
+    " Set font for MS Windows
+    set guifont=Consolas:h11
+    "set guifont=Courier:h12
+    "set guifont=Courier10\ BT:h11
+elseif has("unix")
+    " Or for Linux
+    set guifont=Monospace\ 11
+    "set guifont=Terminus\ 12
+endif
 
 " Window size
 "set lines=40 columns=100

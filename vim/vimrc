@@ -216,8 +216,11 @@ function! RandomiseTheme(schemes)
 endfunction
 
 function! RandomiseThemeByDay(schemes)
-    let day = str2nr(system("date +\%j"))
-    "let day = str2nr(strftime('%d'))
+    if has("win32")
+        let day = str2nr(strftime('%d'))
+    elseif has ("unix")
+        let day = str2nr(system("date +\%j"))
+    endif
     call RandomiseThemeByNumber(day, a:schemes)
 endfunction
 
