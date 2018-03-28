@@ -9,6 +9,7 @@ let use_random_theme=0
 
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
+let g:gui_theme='seoul256'
 
 " ====================
 " Settings:
@@ -150,6 +151,10 @@ let g:nofrils_heavylinenumbers=1
 let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
 
+"let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_contrast_dark='hard'
+
 let g:seoul256_background=237
 let g:seoul256_light_background=256
 
@@ -159,12 +164,16 @@ let base16colorspace=256
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
 function! SetCustomScheme(use_dark)
-    if a:use_dark
-        set background=dark
-        execute 'colorscheme ' . g:dark_theme
+    if has("gui_running")
+        execute 'colorscheme ' . g:gui_theme
     else
-        set background=light
-        execute 'colorscheme ' . g:light_theme
+        if a:use_dark
+            set background=dark
+            execute 'colorscheme ' . g:dark_theme
+        else
+            set background=light
+            execute 'colorscheme ' . g:light_theme
+        endif
     endif
 endfunction
 
@@ -199,16 +208,11 @@ endif
 " Random colourscheme:
 " ====================
 " Scheme choices:
-let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 " Light
-let g:schemes_light_all = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
-let g:schemes_light_more = [ 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'seoul256-light', 'Tomorrow' ]
 let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 " Dark
 let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'spacegray', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark_good = [ 'desert256', 'dracula', 'gruvbox', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight256', 'wombat256mod', 'zenburn' ]
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -249,7 +253,7 @@ map <F9> :call SetCustomScheme(0)<CR>
 map <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 map <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark_all)<CR>
 " Daily light/dark
 map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
 map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
@@ -257,7 +261,7 @@ map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_da
 " Choose a random theme on startup, if requested and supported.
 if use_custom_theme && use_random_theme && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
     if use_dark_theme
-        autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark_good) | call SetCustomDiff()
+        autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff()
     else
         autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
     endif
@@ -381,6 +385,8 @@ imap <Leader><F2> <C-R>=strftime("%H:%M")<CR>
 " Insert datetime.
 nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+" On a new line.
+nmap <Leader><F3> o-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
 " With seconds.
 nmap <F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
 imap <F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
