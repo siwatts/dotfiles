@@ -34,6 +34,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Netrw.
+" Open splits to be 75% of window size.
+let g:netrw_winsize=75
+
 "" Show invisible characters
 "set list
 "set listchars=tab:›\ ,space:⋅,trail:¬,extends:»,precedes:«
@@ -396,4 +400,14 @@ imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A
+
+" From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+" Revert with: ":delcommand DiffOrig".
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
 
