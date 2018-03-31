@@ -243,6 +243,21 @@ Section "Device"
 EndSection
 ```
 
+Fix X11 screentearing on Intel integrated graphics: `sudo vim /etc/X11/xorg.conf`
+```
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "intel"
+    Option "AccelMethod" "sna"
+    Option "TearFree" "true"
+EndSection
+```
+
+Fedora: Keep xfce4-panel behind full screen applications:
+- `sudo dnf install -y wmctrl`
+- `wmctrl -l | grep "xfce4-panel$"
+- `wmctrl -i -r <hexadecimal ID> -b add,below`
+
 ## Vim colors
 
 Twilight256.vim
