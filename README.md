@@ -268,6 +268,8 @@ Twilight256.vim
 - Constant from wombat256mod.vim or twilight.vim (both ctermfg=173):
     - `call <SID>X("Constant", "e5786d", "", "")`
     - `call <SID>X("Constant", "d08356", "", "")`
+- Uncomment `FoldColumn` and `Folded` for gui.
+- Remove bold in gui by adding `none` to `Statement` and `Type`.
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
