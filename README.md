@@ -285,8 +285,9 @@ Desert256.vim
 Dracula.vim
 - Add Special group highlighting:
     - `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
-- Clearer terminal comment colour:
+- Clearer terminal comment & line number colour:
     - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
+    - `hi LineNr ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=#282a36 gui=NONE`
 
 Gruvbox.vim
 - Add additional `white` light contrast setting:

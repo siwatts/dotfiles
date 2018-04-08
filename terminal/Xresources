@@ -24,6 +24,9 @@ xterm*savelines: 10000
 xterm*rightScrollBar: false
 xterm*ScrollBar: false
 
+! Toolbar.
+xterm*toolBar: false
+
 ! Scroll to bottom when new lines.
 xterm*scrollTtyOutput: false
 
