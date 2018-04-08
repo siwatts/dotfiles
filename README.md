@@ -258,6 +258,13 @@ Fedora: Keep xfce4-panel behind full screen applications:
 - `wmctrl -l | grep "xfce4-panel$"
 - `wmctrl -i -r <hexadecimal ID> -b add,below`
 
+Change xfce appearance theme with bash:
+- `xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker-solid"`
+- Set xfce theme depending on time of day using crontab and shell scripts in
+  `misc/set_theme`
+    - Copy `.sh` scripts to `~/bin`
+    - Append `crontab.txt` contents using `crontab -e`
+
 ## Vim colors
 
 Twilight256.vim
