@@ -120,11 +120,16 @@ affect commits this side of the branch point. Target always left unaffected.
     - 9x18
     - 10x20
     - 12x24
+    - `-*-fixed-medium-r-normal-*-15-*`
     - `-*-courier-medium-r-normal-*-14-*`
     - `-adobe-*-medium-r-*-14-*-m-*`
     - `-adobe-courier-medium-r-normal-*-14-*-*-*-*-*-*-*`
-    - `lucidasanstypewriter-12`
-    - `lucidasanstypewriter-14`
+    - `-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*`
+    - `-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-14-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-15-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-16-*-*-*-*-*-*-*`
+    - `-*-lucidatypewriter-medium-r-normal-*-14-*-*-*-*-*-*-*`
 
 ## Xfce4-terminal
 
