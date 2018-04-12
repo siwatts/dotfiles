@@ -2,6 +2,7 @@
 
 !! -- Fonts --
 !xterm*faceName: DejaVu Sans Mono
+!xterm*faceName: Liberation Mono
 !xterm*faceName: Terminus
 !xterm*faceSize: 10
 !! -- X11 core fonts --
@@ -11,8 +12,17 @@
 !! 7x14  | Medium, condensed
 !! 9x15  | Large
 !! 10x20 | Huge
-!! -adobe-*-medium-r-*-14-*-m-* | Courier
+!! 12x24 | Huge serif
+!! -*-courier-medium-r-normal-*-14-* | Courier
+!! -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-* | Terminus
+!! -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-* | Terminus, condensed height
+!! -------------
 xterm*font: 9x15
+!xterm*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
+!xterm*boldFont: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
+!! -------------
+!! Disable bold font.
+!xterm*allowBoldFonts: false
 
 ! Load config etc.
 xterm*loginshell: false
@@ -56,6 +66,8 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:Monospace:size=10
 !URxvt*font: xft:Terminus:size=10
 !URxvt*font: xft:Terminus:size=12
+!URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+!URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 URxvt*font: 7x14
 URxvt*letterSpace: +1
 !! -------------
@@ -66,7 +78,10 @@ URxvt*letterSpace: +1
 !! 7x14  | Medium, condensed (-letsp +1, normal)
 !! 9x15  | Large (-letsp -1, condensed)
 !! 10x20 | Huge
-!! -adobe-*-medium-r-*-14-*-m-* | Courier
+!! 12x24 | Huge serif
+!! -*-courier-medium-r-normal-*-14-* | Courier
+!! -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-* | Terminus
+!! -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-* | Terminus, condensed height
 !! -------------
 !! Change letter spacing (-letsp).
 !URxvt*letterSpace: -1
@@ -102,6 +117,9 @@ URxvt*geometry: 115x34
 
 ! 256 color mode for vim etc. Can make program specific.
 !URxvt*termName: rxvt-unicode-256color
+
+! Icon
+!URxvt*iconFile: /location/of/pic.png
 
 ! Fade on focus lost.
 !URxvt*fading: 10

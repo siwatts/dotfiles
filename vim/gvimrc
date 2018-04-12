@@ -6,6 +6,7 @@ if has("win32")
     set guifont=Consolas:h11
     "set guifont=Courier:h12
     "set guifont=Courier10\ BT:h11
+    "set guifont=Terminus:h12
 elseif has("unix")
     " Or for Linux
     set guifont=Monospace\ 11
