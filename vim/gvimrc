@@ -10,7 +10,7 @@ if has("win32")
 elseif has("unix")
     " Or for Linux
     set guifont=Monospace\ 11
-    "set guifont=Liberation\ Mono\ 10
+    "set guifont=Liberation\ Mono\ 11
     "set guifont=Terminus\ 12
 endif
 

@@ -172,6 +172,10 @@ alias la='ls -A'
 alias l='ls -CF'
 cdl()
 {
+    cd "$@" && ls -l;
+}
+cdll()
+{
     cd "$@" && ls -al;
 }
 
