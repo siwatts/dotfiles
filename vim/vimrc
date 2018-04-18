@@ -9,7 +9,13 @@ let use_random_theme=0
 
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
+" Gui override (defaults to dark terminal if unset)
 let g:gui_theme='seoul256'
+
+" Use the dark terminal theme if not set.
+if !exists("g:gui_theme")
+    let g:gui_theme=g:dark_theme
+endif
 
 " ====================
 " Settings:

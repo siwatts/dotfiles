@@ -43,8 +43,8 @@ xterm*scrollTtyOutput: false
 ! Window size (large -> small).
 !xterm*vt100*geometry: 150x50
 !xterm*vt100*geometry: 130x40
-!xterm*vt100*geometry: 120x35
-xterm*vt100*geometry: 115x34
+!xterm*vt100*geometry: 120x34
+xterm*vt100*geometry: 115x30
 !xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
 
@@ -110,8 +110,8 @@ URxvt*scrollTtyOutput: false
 ! Window size (large -> small).
 !URxvt*geometry: 150x50
 !URxvt*geometry: 130x40
-!URxvt*geometry: 120x35
-URxvt*geometry: 115x34
+!URxvt*geometry: 120x34
+URxvt*geometry: 115x30
 !URxvt*geometry: 100x30
 !URxvt*geometry: 80x30
 

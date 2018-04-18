@@ -260,7 +260,7 @@ EndSection
 
 Fedora: Keep xfce4-panel behind full screen applications:
 - `sudo dnf install -y wmctrl`
-- `wmctrl -l | grep "xfce4-panel$"
+- `wmctrl -l | grep "xfce4-panel$"`
 - `wmctrl -i -r <hexadecimal ID> -b add,below`
 
 Change xfce appearance theme with bash:
