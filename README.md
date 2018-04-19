@@ -288,8 +288,9 @@ Desert256.vim
     - `call <SID>X("Normal", "cccccc", "303030", "")`
 
 Dracula.vim
-- Add Special group highlighting:
+- Add Special and Character group highlighting:
     - `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
+    - `hi Character ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
 - Clearer terminal comment & line number colour:
     - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
     - `hi LineNr ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=#282a36 gui=NONE`
@@ -303,6 +304,11 @@ Gruvbox.vim
 elseif g:gruvbox_contrast_light == 'white'
 let s:bg0  = s:gb.light0_white
 ```
+
+Zenburn.vim
+- Brighter string highlighting group:
+    - 'Identifier' group from Seoul256.vim.
+    - `hi String          guifg=#ffbfbd                              ctermfg=217`
 
 ### Useful Vimdiff highlighting
 

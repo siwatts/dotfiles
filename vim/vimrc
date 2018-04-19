@@ -154,6 +154,8 @@ let g:nofrils_heavylinenumbers=1
 
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_transparent=1
+let g:zenburn_old_Visual=1
+"let g:zenburn_alternate_Visual=1
 "let g:solarized_termcolors=256
 
 "let g:gruvbox_contrast_light='soft'
