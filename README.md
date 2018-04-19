@@ -120,17 +120,28 @@ affect commits this side of the branch point. Target always left unaffected.
     - 9x18
     - 10x20
     - 12x24
+    - `-*-fixed-medium-r-normal-*-15-*`
     - `-*-courier-medium-r-normal-*-14-*`
     - `-adobe-*-medium-r-*-14-*-m-*`
     - `-adobe-courier-medium-r-normal-*-14-*-*-*-*-*-*-*`
-    - `lucidasanstypewriter-12`
-    - `lucidasanstypewriter-14`
+    - `-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*`
+    - `-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-14-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-15-*-*-*-*-*-*-*`
+    - `-*-clean-medium-r-normal-*-16-*-*-*-*-*-*-*`
+    - `-*-lucidatypewriter-medium-r-normal-*-14-*-*-*-*-*-*-*`
 
 ## Xfce4-terminal
 
 - Themes location `~/.local/share/xfce4/terminal/colorschemes/`
 
 - Config location `~/.config/xfce4/terminal/terminalrc`
+
+## Mintty
+
+- Themes location `~/.mintty/themes/`
+
+- Config location `~/.minttyrc`
 
 ## Cygwin
 
@@ -237,6 +248,28 @@ Section "Device"
 EndSection
 ```
 
+Fix X11 screentearing on Intel integrated graphics: `sudo vim /etc/X11/xorg.conf`
+```
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "intel"
+    Option "AccelMethod" "sna"
+    Option "TearFree" "true"
+EndSection
+```
+
+Fedora: Keep xfce4-panel behind full screen applications:
+- `sudo dnf install -y wmctrl`
+- `wmctrl -l | grep "xfce4-panel$"`
+- `wmctrl -i -r <hexadecimal ID> -b add,below`
+
+Change xfce appearance theme with bash:
+- `xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker-solid"`
+- Set xfce theme depending on time of day using crontab and shell scripts in
+  `misc/set_theme`
+    - Copy `.sh` scripts to `~/bin`
+    - Append `crontab.txt` contents using `crontab -e`
+
 ## Vim colors
 
 Twilight256.vim
@@ -247,16 +280,20 @@ Twilight256.vim
 - Constant from wombat256mod.vim or twilight.vim (both ctermfg=173):
     - `call <SID>X("Constant", "e5786d", "", "")`
     - `call <SID>X("Constant", "d08356", "", "")`
+- Uncomment `FoldColumn` and `Folded` for gui.
+- Remove bold in gui by adding `none` to `Statement` and `Type`.
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
     - `call <SID>X("Normal", "cccccc", "303030", "")`
 
 Dracula.vim
-- Add Special group highlighting:
+- Add Special and Character group highlighting:
     - `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
-- Clearer terminal comment colour:
+    - `hi Character ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
+- Clearer terminal comment & line number colour:
     - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
+    - `hi LineNr ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=#282a36 gui=NONE`
 
 Gruvbox.vim
 - Add additional `white` light contrast setting:
@@ -268,11 +305,24 @@ elseif g:gruvbox_contrast_light == 'white'
 let s:bg0  = s:gb.light0_white
 ```
 
+Zenburn.vim
+- Brighter string highlighting group:
+    - 'Identifier' group from Seoul256.vim.
+    - `hi String          guifg=#ffbfbd                              ctermfg=217`
+
 ### Useful Vimdiff highlighting
 
 Lots of vim colorschemes come without useful diff highlighting for some reason.
 DiffChange is the lines that have been modified, DiffText is the actual
 differing content within those lines.
+
+Default 16 colour terminal diff:
+```
+hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
+hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
+hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
+hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
+```
 
 jellybeans:
 ```
@@ -282,9 +332,9 @@ call s:X("DiffChange","","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 ```
 ```
-hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
-hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
-hi DiffChange                   guibg=#2B5B77                   ctermbg=24
+hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+hi DiffChange   guifg=NONE      guibg=#2B5B77   ctermfg=NONE    ctermbg=24  gui=NONE    cterm=NONE
 hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
 ```
 
@@ -296,17 +346,17 @@ call s:X("DiffChange","FFFFFF","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 ```
 ```
-hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22
-hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52
-hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24
+hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=NONE    cterm=NONE
 hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
 ```
 
 wombat256mod:
 ```
-hi DiffAdd                  ctermbg=17                              guibg=#2a0d6a
-hi DiffDelete   ctermfg=234 ctermbg=60  cterm=none  guifg=#242424   guibg=#3e3969   gui=none
-hi DiffText                 ctermbg=53  cterm=none                  guibg=#73186e   gui=none
-hi DiffChange               ctermbg=237                             guibg=#382a37
+hi DiffAdd      ctermfg=NONE ctermbg=17  cterm=NONE  guifg=NONE      guibg=#2a0d6a   gui=NONE
+hi DiffDelete   ctermfg=234  ctermbg=60  cterm=NONE  guifg=#242424   guibg=#3e3969   gui=NONE
+hi DiffText     ctermfg=NONE ctermbg=53  cterm=NONE  guifg=NONE      guibg=#73186e   gui=NONE
+hi DiffChange   ctermfg=NONE ctermbg=237 cterm=NONE  guifg=NONE      guibg=#382a37   gui=NONE
 ```
 

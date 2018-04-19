@@ -23,7 +23,8 @@ let colors_name = "simple-green"
 
 
 " General colors
-hi Normal		ctermfg=46		ctermbg=234		cterm=none		guifg=#00ff00	guibg=#242424	gui=none
+"hi Normal		ctermfg=46		ctermbg=234		cterm=none		guifg=#00ff00	guibg=#242424	gui=none
+hi Normal		ctermfg=46		ctermbg=none	cterm=none		guifg=#00ff00	guibg=#001500	gui=none
 hi Cursor		ctermfg=234		ctermbg=228		cterm=none		guifg=#242424	guibg=#00ff00	gui=none
 "hi Visual		ctermfg=251		ctermbg=239		cterm=none		guifg=#c3c6ca	guibg=#554d4b	gui=none
 hi Visual		ctermfg=251		ctermbg=22		cterm=none		guifg=#c3c6ca	guibg=#005f00	gui=none

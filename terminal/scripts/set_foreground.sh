@@ -7,10 +7,8 @@ if [ -z "$1" ]
     then
         echo 'Defaulting to "F8/F8/F2"'
         color_foreground="F8/F8/F2"
-        color07="F8/F8/F2"
     else
         color_foreground="$1"
-        color07="$1"
 fi
 
 if [ -n "$TMUX" ]; then
@@ -34,9 +32,6 @@ else
   put_template_custom() { printf '\033]%s%s\033\\' $@; }
 fi
 
-# 16 color space
-put_template 7  $color07
-
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
@@ -49,5 +44,4 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset color07
 unset color_foreground

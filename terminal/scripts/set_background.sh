@@ -1,16 +1,15 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Extract just the background stuff to change on the fly.
+# Leave colour 0 (black).
 
 # Allow calling with parameters from shell.
 if [ -z "$1" ]
     then
-        echo 'Defaulting to "00/00/00"'
-        color_background="00/00/00"
-        color00="00/00/00"
+        echo 'Defaulting to "28/2A/36"'
+        color_background="28/2A/36"
     else
         color_background="$1"
-        color00="$1"
 fi
 
 if [ -n "$TMUX" ]; then
@@ -34,9 +33,6 @@ else
   put_template_custom() { printf '\033]%s%s\033\\' $@; }
 fi
 
-# 16 color space
-put_template 0  $color00
-
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
@@ -54,5 +50,4 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset color00
 unset color_background

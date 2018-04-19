@@ -1,0 +1,2 @@
+@reboot $HOME/bin/set_xfce_appearance.sh
+0 21 * * * $HOME/bin/set_night_xfce_appearance.sh

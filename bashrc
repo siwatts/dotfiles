@@ -39,23 +39,44 @@ git_prompt () {
 # If URxvt then call script to set custom colours.
 case "$TERM" in
     rxvt*color)
-        ## TODO: Check user directory readable.
-        ## Base16:
-        #~/Documents/repos/dotfiles/base16/sh/base16-gruvbox-dark-pale.sh
-        ~/Documents/repos/dotfiles/base16/custom_sh/base16-dracula-magenta-alt.sh
+        #BASE_LOCATION="/CHANGE_ME/dotfiles"
 
-        ## Restore non-base16 colours:
-        #~/Documents/repos/dotfiles/terminal/scripts/set_non_base16_colors.sh
+        ### Override theme.
+        #THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula-magenta.sh"
+        #if [[ -x "$THEME_LOCATION" ]]
+        #then
+        #    eval "$THEME_LOCATION"
+        #else
+        #    echo "~/.bashrc : Theme not found: '$THEME_LOCATION'."
+        #fi
 
-        ## Non-base16:
-        #~/Documents/repos/dotfiles/terminal/scripts/dracula-magenta.sh
-        #~/Documents/repos/dotfiles/terminal/scripts/lucius-white.sh
-        #~/Documents/repos/dotfiles/terminal/scripts/gruvbox-urxvt256.sh
+        ### Override cursor/bg/fg.
+        #CURSOR_LOCATION="$BASE_LOCATION/terminal/scripts/set_cursor.sh"
+        #BG_LOCATION="$BASE_LOCATION/terminal/scripts/set_background.sh"
+        #FG_LOCATION="$BASE_LOCATION/terminal/scripts/set_foreground.sh"
+        ### Cursor:
+        #if [[ -x "$CURSOR_LOCATION" ]]
+        #then
+        #    eval "$CURSOR_LOCATION"' "#ff66ff"'
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$CURSOR_LOCATION'."
+        #fi
+        ### Background:
+        #if [[ -x "$BG_LOCATION" ]]
+        #then
+        #    eval "$BG_LOCATION 28/2A/36"
+        #    #eval "$BG_LOCATION 41/44/58"
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$BG_LOCATION'."
+        #fi
+        ### Foreground:
+        #if [[ -x "$FG_LOCATION" ]]
+        #then
+        #    eval "$FG_LOCATION ff/ff/00"
+        #else
+        #    echo "~/.bashrc : Cursor script not found: '$FG_LOCATION'."
+        #fi
 
-        ## Override cursor/fg/bg:
-        #~/Documents/repos/dotfiles/terminal/scripts/set_cursor.sh "#ff66ff"
-        #~/Documents/repos/dotfiles/terminal/scripts/set_foreground.sh "00/ff/00"
-        #~/Documents/repos/dotfiles/terminal/scripts/set_background.sh "15/15/15"
         ;;
 esac
 
@@ -72,7 +93,7 @@ esac
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|cygwin) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -94,7 +115,7 @@ fi
 # PS1 prompt:
 if [ "$color_prompt" = yes ]; then
     ## Xubuntu style
-    #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\$ '
+    #export PS1='\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\$ '
 
     ## Win-bash style
     export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
@@ -149,4 +170,12 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+cdl()
+{
+    cd "$@" && ls -l;
+}
+cdll()
+{
+    cd "$@" && ls -al;
+}
 

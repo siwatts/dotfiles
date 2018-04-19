@@ -1,9 +1,21 @@
 " ====================
 " Config:
 " ====================
-let use_dark_theme=0
+let use_custom_theme=0
+let use_dark_theme=1
+let use_base16_theme=0
 let use_theme_of_the_day=0
-let use_base16_theme=1
+let use_random_theme=0
+
+let g:dark_theme='dracula'
+let g:light_theme='gruvbox'
+" Gui override (defaults to dark terminal if unset)
+let g:gui_theme='seoul256'
+
+" Use the dark terminal theme if not set.
+if !exists("g:gui_theme")
+    let g:gui_theme=g:dark_theme
+endif
 
 " ====================
 " Settings:
@@ -27,6 +39,10 @@ set splitbelow
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+" Netrw.
+" Open splits to be 75% of window size.
+let g:netrw_winsize=75
 
 "" Show invisible characters
 "set list
@@ -113,16 +129,16 @@ syntax on
 function! SetCustomDiff()
     if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
         " Restore default diff.
-        hi DiffAdd      ctermfg=none    ctermbg=1   cterm=none  term=bold
+        hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
         hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
-        hi DiffChange   ctermfg=none    ctermbg=5   cterm=none  term=bold
-        hi DiffText     ctermfg=none    ctermbg=1   cterm=bold  term=reverse
+        hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
+        hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
     else
         " Jellybeans:
-        hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=none    cterm=none
-        "hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=none    cterm=none
-        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=232      ctermbg=52  gui=none    cterm=none
-        hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=none    cterm=none
+        hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
+        "hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=16      ctermbg=52  gui=NONE    cterm=NONE
+        hi DiffDelete   guifg=#40000A   guibg=#700009   ctermfg=232      ctermbg=52  gui=NONE    cterm=NONE
+        hi DiffChange   guifg=#FFFFFF   guibg=#2B5B77   ctermfg=231     ctermbg=24  gui=NONE    cterm=NONE
         "hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=16  gui=reverse cterm=reverse
         hi DiffText     guifg=#8fbfdc   guibg=#000000   ctermfg=81      ctermbg=232  gui=reverse cterm=reverse
     endif
@@ -138,12 +154,18 @@ let g:nofrils_heavylinenumbers=1
 
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_transparent=1
+let g:zenburn_old_Visual=1
+"let g:zenburn_alternate_Visual=1
 "let g:solarized_termcolors=256
 
 "let g:gruvbox_contrast_light='soft'
 "let g:gruvbox_contrast_light='medium'
 let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
+
+"let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_contrast_dark='hard'
 
 let g:seoul256_background=237
 let g:seoul256_light_background=256
@@ -153,31 +175,44 @@ let base16colorspace=256
 " base16_shell_path will apply the terminal shell script on vim colorchange
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
-" Set the colorscheme
-if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
-    " Fall back to supported theme if in tty or cygwin.
+function! SetCustomScheme(use_dark)
+    if has("gui_running")
+        execute 'colorscheme ' . g:gui_theme
+    else
+        if a:use_dark
+            set background=dark
+            execute 'colorscheme ' . g:dark_theme
+        else
+            set background=light
+            execute 'colorscheme ' . g:light_theme
+        endif
+    endif
+endfunction
+
+" Set the colourscheme.
+if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
+    " Fall back to supported dark theme if in tty or cygwin.
     color default
     set background=dark
 else
-    " Set a colourful 256 / gui theme.
-    if use_base16_theme
-        color base16-eighties
-    elseif use_dark_theme
-        color default
-        set background=dark
-
-        "color wombat256mod
-        "color dracula
-        "color zenburn
-        "color jellybeans
-        "color gruvbox
-        "color twilight256
+    " Set a colourful 256 / gui theme if possible.
+    if use_custom_theme && ( has("gui_running") || &t_Co == 256 )
+        if use_base16_theme
+            color base16-eighties
+        else
+            call SetCustomScheme(use_dark_theme)
+        endif
     else
-        color default
-        set background=light
-
-        "color gruvbox
-        "color lucius
+        if use_dark_theme
+            if has("gui_running")
+                color darkblue
+            else
+                color default
+                set background=dark
+            endif
+        else
+            color default
+        endif
     endif
 endif
 
@@ -185,15 +220,11 @@ endif
 " Random colourscheme:
 " ====================
 " Scheme choices:
-let g:schemes = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 " Light
-let g:schemes_light_all = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'nofrils-light', 'nofrils-sepia', 'one', 'PaperColor', 'seoul256-light', 'Tomorrow' ]
-let g:schemes_light_more = [ 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'seoul256-light', 'Tomorrow' ]
 let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 " Dark
-let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark_more = [ 'apprentice', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'spacegray', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
+let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight256', 'wombat256mod', 'zenburn' ]
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -201,8 +232,11 @@ function! RandomiseTheme(schemes)
 endfunction
 
 function! RandomiseThemeByDay(schemes)
-    let day = str2nr(system("date +\%j"))
-    "let day = str2nr(strftime('%d'))
+    if has("win32")
+        let day = str2nr(strftime('%d'))
+    elseif has ("unix")
+        let day = str2nr(system("date +\%j"))
+    endif
     call RandomiseThemeByNumber(day, a:schemes)
 endfunction
 
@@ -213,21 +247,37 @@ function! RandomiseThemeByNumber(num, schemes)
     echom 'Utilising colourscheme: "' . scheme . '"'
 endfunction
 
+" Colour mappings:
 " Toggle background setting
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" Random light/dark
-"map <F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-"map <F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Reset to default theme
-map <F7> :colorscheme default<CR>
+if use_dark_theme
+    map <F7> :colorscheme default<CR>:set background=dark<CR>
+    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
+else
+    map <F7> :colorscheme default<CR>
+    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
+endif
 " Apply base16 theme
 map <F11> :colorscheme base16-eighties<CR>
+" Regular light/dark
+map <F9> :call SetCustomScheme(0)<CR>
+map <F10> :call SetCustomScheme(1)<CR>
+" Random light/dark
+map <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark_all)<CR>
 " Daily light/dark
-map <F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
-map <F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
+map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
-if use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+if use_custom_theme && use_random_theme && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+    if use_dark_theme
+        autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff()
+    else
+        autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
+    endif
+elseif use_custom_theme && use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
     if use_dark_theme
         autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
     else
@@ -347,6 +397,8 @@ imap <Leader><F2> <C-R>=strftime("%H:%M")<CR>
 " Insert datetime.
 nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+" On a new line.
+nmap <Leader><F3> o-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
 " With seconds.
 nmap <F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
 imap <F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
@@ -356,3 +408,14 @@ imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A
+
+" From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+" Revert with: ":delcommand DiffOrig".
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+
