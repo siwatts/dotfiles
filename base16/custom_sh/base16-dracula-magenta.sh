@@ -31,7 +31,7 @@ color14="9A/ED/FE"
 color07="F8/F8/F2"
 color15="BF/BF/BF"
 
-color16="FF/55/55" # Base 09
+color16="FF/6E/67" # Base 09
 color17="50/FA/7B" # Base 0F
 #color18="4D/4D/4D" # Base 01
 #color18="35/38/47" # Base 01
