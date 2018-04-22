@@ -28,8 +28,8 @@ color13="FF/B8/6C"
 color06="8B/E9/FD"
 color14="9A/ED/FE"
 # White
-color07="BF/BF/BF"
-color15="E6/E6/E6"
+color07="F8/F8/F2"
+color15="BF/BF/BF"
 
 color16="8B/E9/FD" # Base 09
 color17="50/FA/7B" # Base 0F
