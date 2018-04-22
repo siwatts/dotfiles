@@ -33,10 +33,7 @@ color15="BF/BF/BF"
 
 color16="8B/E9/FD" # Base 09
 color17="50/FA/7B" # Base 0F
-#color18="4D/4D/4D" # Base 01
-#color18="35/38/47" # Base 01
 color18="31/34/42" # Base 01
-#color18="2f/32/40" # Base 01
 color19="44/47/5A" # Base 02
 color20="e9/e9/f4" # Base 04
 color21="FF/FF/FF" # Base 06
