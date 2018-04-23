@@ -149,7 +149,11 @@ autocmd ColorScheme * call SetCustomDiff()
 
 " Dracula:
 let g:dracula_italic=0
-let g:dracula_colorterm=0 " Transparent terminal bg.
+if has("gui_running")
+    let g:dracula_colorterm=1
+else
+    let g:dracula_colorterm=0 " Transparent terminal bg.
+endif
 
 "" Nofrils:
 let g:nofrils_strbackgrounds=1

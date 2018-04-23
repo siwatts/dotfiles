@@ -27,6 +27,3 @@ set lines=45 columns=130
 "set guioptions-=r  "remove right-hand scroll bar
 "set guioptions-=L  "remove left-hand scroll bar
 
-" Dracula:
-let g:dracula_colorterm=1
-
