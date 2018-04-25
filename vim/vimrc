@@ -3,6 +3,7 @@
 " ====================
 let use_custom_theme=0
 let use_dark_theme=1
+let use_dark_gui_theme=1
 let use_base16_theme=0
 let use_theme_of_the_day=0
 let use_random_theme=0
@@ -209,7 +210,7 @@ if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
     set background=dark
 else
     " Set a colourful 256 / gui theme if possible.
-    if use_custom_theme && ( has("gui_running") || &t_Co == 256 )
+    if exists("use_custom_theme") && use_custom_theme && ( has("gui_running") || &t_Co == 256 )
         if use_base16_theme
             color base16-eighties
         elseif has("gui_running") && exists("use_dark_gui_theme")
@@ -218,15 +219,19 @@ else
             call SetCustomScheme(use_dark_theme)
         endif
     else
-        if use_dark_theme
-            if has("gui_running")
+        if has("gui_running")
+            if exists("use_dark_gui_theme") && use_dark_gui_theme
                 color darkblue
             else
                 color default
-                set background=dark
             endif
         else
             color default
+            if exists("use_dark_theme") && use_dark_theme
+                set background=dark
+            else
+                set background=light
+            endif
         endif
     endif
 endif
@@ -327,17 +332,19 @@ map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_li
 map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
-if use_custom_theme && use_random_theme && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
-    if use_dark_theme
-        autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff()
-    else
-        autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
-    endif
-elseif use_custom_theme && use_theme_of_the_day && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
-    if use_dark_theme
-        autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
-    else
-        autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
+if exists("use_custom_theme") && use_custom_theme && (has("gui_running") || ( $TERM != 'linux' && $TERM != 'cygwin' && &t_Co == 256 ))
+    if exists("use_random_theme") && use_random_theme
+        if exists("use_dark_theme") && use_dark_theme
+            autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff()
+        else
+            autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
+        endif
+    elseif exists("use_theme_of_the_day") && use_theme_of_the_day
+        if exists("use_dark_theme") && use_dark_theme
+            autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
+        else
+            autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
+        endif
     endif
 endif
 
