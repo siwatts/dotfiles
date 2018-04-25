@@ -20,14 +20,16 @@ endif
 " ====================
 " Settings:
 " ====================
-set nobackup
-set number
-set numberwidth=3
-set printoptions=number:y
-set hlsearch
-set ruler
-set showcmd
+set nobackup                " Stop vim leaving backup ~ files everywhere.
+set number                  " Enable linenumbers.
+set numberwidth=3           " Enable linenumbers.
+set printoptions=number:y   " Enable linenumbers when printing.
+set hlsearch                " Enable search highlighting.
+set ruler                   " Show some line/column information at bottom right.
+set showcmd                 " Show current partially input command at bottom of screen.
+set showmatch               " Briefly jump to matching bracket.
 
+" Force utf8 encoding:
 "set encoding=utf8
 "set fileencoding=utf8
 
@@ -39,6 +41,7 @@ set splitbelow
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"set smarttab
 
 " Netrw.
 " Open splits to be 75% of window size.
@@ -227,8 +230,10 @@ endif
 if has("gui_running")
     " Disable mouse
     set mouse=c
+    " Or enable mouse.
+    "set mouse=a
 
-    " Disable all blinking:
+    " Disable all cursor blinking:
     set guicursor+=a:blinkon0
 
     if has("win32")
@@ -238,7 +243,7 @@ if has("gui_running")
         "set guifont=Courier10\ BT:h11
         "set guifont=Terminus:h12
     elseif has("unix")
-        " Or for Linux
+        " Or for Linux / Cygwin
         set guifont=Monospace\ 11
         "set guifont=Liberation\ Mono\ 11
         "set guifont=Terminus\ 12
@@ -365,9 +370,6 @@ map <Leader>Y "+y$
 map <Leader>p "+p
 map <Leader>P "+P
 
-nmap <C-Enter> "+p
-imap <C-Enter> <C-R>+
-
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>Q :qa<CR>
@@ -408,7 +410,10 @@ nmap <Leader>T O// TODO:
 nmap <Leader>i i <ESC>r
 nmap <Leader>a a <ESC>r
 
+" Behaviour of y to match D, C, S etc.
+" Ie. Y yanks to end of line instead of yanking the entire line like yy.
 nnoremap Y y$
+
 " Preserve indentation in VsVim
 "nnoremap S ^C
 
@@ -416,9 +421,13 @@ nmap // I// <Esc>$
 vmap // :v/^\s*$/norm 0i//<CR>
 nmap <Leader>// ^dw
 
-"vmap y ygv<Esc>
+" Press ENTER with a visual selection to copy it to clipboard.
 vmap <CR> "+y
 vmap <Leader>y "+y
+
+" Ctrl+ENTER to paste from system clipboard.
+nmap <C-Enter> "+p
+imap <C-Enter> <C-R>+
 
 nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
