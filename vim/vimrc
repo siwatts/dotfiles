@@ -185,6 +185,11 @@ let base16colorspace=256
 
 function! SetCustomScheme(use_dark)
     if has("gui_running")
+        if a:use_dark
+            set background=dark
+        else
+            set background=light
+        endif
         execute 'colorscheme ' . g:gui_theme
     else
         if a:use_dark
@@ -207,6 +212,8 @@ else
     if use_custom_theme && ( has("gui_running") || &t_Co == 256 )
         if use_base16_theme
             color base16-eighties
+        elseif has("gui_running") && exists("use_dark_gui_theme")
+            call SetCustomScheme(use_dark_gui_theme)
         else
             call SetCustomScheme(use_dark_theme)
         endif
