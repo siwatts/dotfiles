@@ -49,9 +49,6 @@ let g:netrw_winsize=75
 "set listchars=tab:›\ ,space:⋅,trail:¬,extends:»,precedes:«
 ""eol:¬,
 
-" Disable all blinking:
-set guicursor+=a:blinkon0
-
 " Indent settings. Detect filetype, or use auto & smart indent together.
 set autoindent
 filetype plugin indent on
@@ -222,6 +219,45 @@ else
             color default
         endif
     endif
+endif
+
+" ====================
+" Gvim:
+" ====================
+if has("gui_running")
+    " Disable mouse
+    set mouse=c
+
+    " Disable all blinking:
+    set guicursor+=a:blinkon0
+
+    if has("win32")
+        " Set font for MS Windows
+        set guifont=Consolas:h11
+        "set guifont=Courier:h12
+        "set guifont=Courier10\ BT:h11
+        "set guifont=Terminus:h12
+    elseif has("unix")
+        " Or for Linux
+        set guifont=Monospace\ 11
+        "set guifont=Liberation\ Mono\ 11
+        "set guifont=Terminus\ 12
+    endif
+
+    " Window size
+    "set lines=40 columns=100
+    set lines=45 columns=130
+    "set lines=48 columns=150
+
+    "" Maximise window for MS Windows
+    "if has("win32")
+    "    au GUIEnter * simalt ~x
+    "endif
+
+    "set guioptions-=m  "remove menu bar
+    "set guioptions-=T  "remove toolbar
+    "set guioptions-=r  "remove right-hand scroll bar
+    "set guioptions-=L  "remove left-hand scroll bar
 endif
 
 " ====================
