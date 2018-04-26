@@ -28,7 +28,7 @@ set printoptions=number:y   " Enable linenumbers when printing.
 set hlsearch                " Enable search highlighting.
 set ruler                   " Show some line/column information at bottom right.
 set showcmd                 " Show current partially input command at bottom of screen.
-set showmatch               " Briefly jump to matching bracket.
+"set showmatch               " Briefly jump to matching bracket.
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -150,11 +150,7 @@ autocmd ColorScheme * call SetCustomDiff()
 
 " Dracula:
 let g:dracula_italic=0
-if has("gui_running")
-    let g:dracula_colorterm=1
-else
-    let g:dracula_colorterm=0 " Transparent terminal bg.
-endif
+let g:dracula_colorterm=0 " Transparent terminal bg.
 
 "" Nofrils:
 let g:nofrils_strbackgrounds=1
