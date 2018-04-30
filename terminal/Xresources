@@ -88,6 +88,9 @@ URxvt*letterSpace: +1
 !! -------------
 !! Disable bold font.
 !URxvt*boldFont: 9x15
+!! Disable italic font.
+!URxvt*italicFont: 9x15
+!URxvt*boldItalicFont: 9x15
 
 ! Stop bold fonts using the brighter 8-15 colours with 'false'.
 ! (Good for themes which re-use the bright colours for additional colours, 
