@@ -292,8 +292,11 @@ Dracula.vim
     - `hi Special ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
     - `hi Character ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
 - Clearer terminal comment & line number colour:
-    - `hi Comment ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=NONE gui=NONE`
-    - `hi LineNr ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6272a4 guibg=#282a36 gui=NONE`
+    - `let s:comment   = ['#6272A4', 103]`, (#8787af).
+- Visual selection colour that works on dark or lighter background:
+    - `let s:selection = ['#44475A', 53]`, purple (#5f005f).
+    - `let s:selection = ['#44475A', 19]` Base16 selection, is also blue for
+      non-base16 (#0000af).
 
 Gruvbox.vim
 - Add additional `white` light contrast setting:
