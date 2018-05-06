@@ -258,7 +258,10 @@ Section "Device"
 EndSection
 ```
 
-Fedora: Keep xfce4-panel behind full screen applications:
+### XFCE
+
+Keep `xfce4-panel` behind full screen applications.
+Do this automatically using [panel_to_desktop.sh](bin/panel_to_desktop.sh):
 - `sudo dnf install -y wmctrl`
 - `wmctrl -l | grep "xfce4-panel$"`
 - `wmctrl -i -r <hexadecimal ID> -b add,below`
@@ -266,9 +269,13 @@ Fedora: Keep xfce4-panel behind full screen applications:
 Change xfce appearance theme with bash:
 - `xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker-solid"`
 - Set xfce theme depending on time of day using crontab and shell scripts in
-  `misc/set_theme`
+  [misc/set_theme](misc/set_theme):
     - Copy `.sh` scripts to `~/bin`
     - Append `crontab.txt` contents using `crontab -e`
+
+- Display volume percentage in panel:
+    - `xfce4-genmon-plugin`
+    - [print_vol.sh](bin/print_vol.sh).
 
 ## Vim colors
 
