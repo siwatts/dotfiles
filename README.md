@@ -213,6 +213,35 @@ windo diffthis
     - `ls -al | vim -`
     - `logfile.txt | grep 'phrase' -C5 | vim -`
 
+### Window splits
+
+By default when a new split is opened or closed, vim resizes all splits to have
+equal dimensions. To stop this and set a more tmux like behaviour (split only
+current window dimensions and on close give space back to upper/left window)
+turn 'equalalways' ('ea') off:
+- `set equalalways!`
+
+Alternatively, restrict it with `eadirection`. Default is `both`.
+- `ver` will only equalise heights of windows. Ie. set the widths of splits as
+  desired then horizontally split them and the heights of the splits will be
+  equalised.
+- `hor` for constant heights, equalising widths of splits.
+
+Manipulating windows:
+- `C-w [N]_`, set height of window to N (default maximum).
+- `C-w [N]|`, set width of window to N (default maximum).
+- `C-w [N]-`, `+`, change height of window (default 1).
+- `C-w [N]<`, `>`, change width of window (default 1).
+- `C-w =`, equalise all windows, all directions.
+- `C-w H`, `J`, `K`, `L`, move current window to that screen edge and split all
+  windows in that direction. (ie. `H` make this window the leftmost split in a
+  set of vertical splits).
+- `C-w r`, `C-r`, rotate window splits. Only works within single column/row. `R`
+  to reverse direction.
+- `C-w x`, `C-x`, exchange current window with next. Only works within single
+  column/row.
+- `C-w T`, move current window to another tab.
+
 ## Tmux
 
 - Attach a new tmux session to the same windows as an existing session
@@ -293,6 +322,7 @@ Twilight256.vim
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
     - `call <SID>X("Normal", "cccccc", "303030", "")`
+    - `call <SID>X("Normal", "ffffff", "3a3a3a", "")`
 
 Dracula.vim
 - Add Special and Character group highlighting:
@@ -300,6 +330,8 @@ Dracula.vim
     - `hi Character ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=NONE`
 - Clearer terminal comment & line number colour:
     - `let s:comment   = ['#6272A4', 103]`, (#8787af).
+- "Subtle" grouping that works on lighter background (original comment color):
+    - `let s:subtle    = ['#424450', 61]`
 - Visual selection colour that works on dark or lighter background:
     - `let s:selection = ['#44475A', 53]`, purple (#5f005f).
     - `let s:selection = ['#44475A', 19]` Base16 selection, is also blue for

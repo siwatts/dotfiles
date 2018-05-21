@@ -7,6 +7,7 @@ let use_dark_gui_theme=1
 let use_base16_theme=0
 let use_theme_of_the_day=0
 let use_random_theme=0
+let use_transparent_bg=0
 
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
@@ -33,6 +34,10 @@ set hlsearch                " Enable search highlighting.
 set ruler                   " Show some line/column information at bottom right.
 set showcmd                 " Show current partially input command at bottom of screen.
 "set showmatch               " Briefly jump to matching bracket.
+set ignorecase              " Make searches not case sensitive when searching with / or ?.
+set smartcase               " Except if they include one or more uppercase.
+set equalalways!            " Don't equalise vertical and horizontal splits, instead
+" split/unsplit current window. Behaves more like tmux.
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -151,6 +156,10 @@ endfunction
 
 " Apply custom diff whenever a colorscheme is applied.
 autocmd ColorScheme * call SetCustomDiff()
+" Make bg transparent whenever colorscheme applied.
+if exists("use_transparent_bg") && use_transparent_bg
+    autocmd ColorScheme * hi Normal ctermbg=NONE
+endif
 
 " Dracula:
 let g:dracula_italic=0
@@ -169,11 +178,11 @@ let g:zenburn_old_Visual=1
 
 "let g:gruvbox_contrast_light='soft'
 "let g:gruvbox_contrast_light='medium'
-let g:gruvbox_contrast_light='hard'
+"let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
 
 "let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_contrast_dark='medium'
 "let g:gruvbox_contrast_dark='hard'
 
 let g:seoul256_background=237
@@ -257,8 +266,9 @@ if has("gui_running")
         "set guifont=Terminus:h12
     elseif has("unix")
         " Or for Linux / Cygwin
-        set guifont=Monospace\ 11
-        "set guifont=Liberation\ Mono\ 11
+        set guifont=Monospace\ 10
+        "set guifont=DejaVu\ Sans\ Mono\ 10
+        "set guifont=Liberation\ Mono\ 10
         "set guifont=Terminus\ 12
     endif
 
@@ -282,11 +292,22 @@ endif
 " Random colourscheme:
 " ====================
 " Scheme choices:
-" Light
-let g:schemes_light = [ 'gruvbox', 'lucius', 'nofrils-acme', 'seoul256-light' ]
 " Dark
 let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
-let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight256', 'wombat256mod', 'zenburn' ]
+
+if has("gui_running")
+    " ==================== Light ====================
+    "let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'one', 'PaperColor', 'pyte', 'seoul256-light', 'solarized', 'Tomorrow', 'vimhut', 'visualstudio' ]
+    let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light', 'solarized' ]
+    " ==================== Dark ====================
+    "let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
+    let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
+else
+    " ==================== Light ====================
+    let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
+    " ==================== Dark ====================
+    let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight256', 'wombat256mod', 'zenburn' ]
+endif
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
@@ -327,7 +348,7 @@ map <F9> :call SetCustomScheme(0)<CR>
 map <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 map <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark_all)<CR>
+map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Daily light/dark
 map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
 map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
@@ -341,7 +362,7 @@ if exists("use_custom_theme") && use_custom_theme && (has("gui_running") || ( $T
             autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff()
         endif
     elseif exists("use_theme_of_the_day") && use_theme_of_the_day
-        if exists("use_dark_theme") && use_dark_theme
+        if ( has("gui_running") && exists("use_dark_gui_theme") && use_dark_gui_theme ) || ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
             autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff()
         else
             autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff()
@@ -425,6 +446,8 @@ nmap <Leader>T O// TODO:
 nmap <Leader>i i <ESC>r
 nmap <Leader>a a <ESC>r
 
+nmap <Leader>m :tabe $MYVIMRC<CR>
+
 " Behaviour of y to match D, C, S etc.
 " Ie. Y yanks to end of line instead of yanking the entire line like yy.
 nnoremap Y y$
@@ -466,7 +489,7 @@ imap <Leader><F2> <C-R>=strftime("%H:%M")<CR>
 nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
 " On a new line.
-nmap <Leader><F3> o-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
+nmap <Leader><F3> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
 " With seconds.
 nmap <F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
 imap <F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
