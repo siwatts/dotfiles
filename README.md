@@ -338,13 +338,16 @@ Dracula.vim
       non-base16 (#0000af).
 
 Gruvbox.vim
-- Add additional `white` light contrast setting:
+- Add additional `white` and `solarized` light contrast settings:
     - `let s:gb.light0_white = ['#eeeeee', 255]     " Almost white`
     - `let s:gb.light0_white = ['#ffffff', 231]     " White`
-- Apply it:
+    - `let s:gb.light0_solarized = ['#fdf6e3', 230] " Solarized hex`
+- Apply them:
 ```
 elseif g:gruvbox_contrast_light == 'white'
-let s:bg0  = s:gb.light0_white
+  let s:bg0  = s:gb.light0_white
+elseif g:gruvbox_contrast_light == 'solarized'
+  let s:bg0  = s:gb.light0_solarized
 ```
 
 Zenburn.vim
