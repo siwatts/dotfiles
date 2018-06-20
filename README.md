@@ -137,6 +137,12 @@ affect commits this side of the branch point. Target always left unaffected.
 
 - Config location `~/.config/xfce4/terminal/terminalrc`
 
+- `xfce4-terminal --drop-down`, quake style dropdown terminal
+
+- New tab: `Ctrl+T`
+
+- Next/prev tab: `Ctrl+PgDn/PgUp`
+
 ## Mintty
 
 - Themes location `~/.mintty/themes/`
