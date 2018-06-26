@@ -55,7 +55,7 @@ set expandtab
 
 " Netrw.
 " Open splits to be 75% of window size.
-let g:netrw_winsize=75
+"let g:netrw_winsize=75
 
 "" Show invisible characters
 "set list
@@ -160,6 +160,18 @@ autocmd ColorScheme * call SetCustomDiff()
 if exists("use_transparent_bg") && use_transparent_bg
     autocmd ColorScheme * hi Normal ctermbg=NONE
 endif
+
+"" PaperColor:
+let g:PaperColor_Theme_Options = {
+\    'theme': {
+\        'default.light': {
+\            'override': {
+\                'color00': ['#ffffff', '231'],
+\                'cursor_fg': ['#ffffff', '231']
+\            }
+\        }
+\    }
+\}
 
 " Dracula:
 let g:dracula_italic=0
