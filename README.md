@@ -312,6 +312,11 @@ Change xfce appearance theme with bash:
     - `xfce4-genmon-plugin`
     - [print_vol.sh](bin/print_vol.sh).
 
+- Change volume with keyboard. `Keyboard`, `Application Shortcuts`:
+    - `pactl set-sink-volume 0 +5%`
+    - `pactl set-sink-volume 0 -5%`
+    - `pactl set-sink-mute 0 toggle`
+
 ## Vim colors
 
 Twilight256.vim
