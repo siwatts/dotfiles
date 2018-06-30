@@ -15,42 +15,42 @@ echo "#!/bin/sh
 "
 
 echo -n 'color_foreground="'
-sed -n -e 's/^\s*[^!]*foreground:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*foreground[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color_background="'
-sed -n -e 's/^\s*[^!]*background:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*background[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 
 echo -n 'color00="'
-sed -n -e 's/^\s*[^!]*color0:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color0[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color08="'
-sed -n -e 's/^\s*[^!]*color8:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color8[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color01="'
-sed -n -e 's/^\s*[^!]*color1:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color1[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color09="'
-sed -n -e 's/^\s*[^!]*color9:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color9[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color02="'
-sed -n -e 's/^\s*[^!]*color2:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color2[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color10="'
-sed -n -e 's/^\s*[^!]*color10:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color10[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color03="'
-sed -n -e 's/^\s*[^!]*color3:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color3[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color11="'
-sed -n -e 's/^\s*[^!]*color11:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color11[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color04="'
-sed -n -e 's/^\s*[^!]*color4:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color4[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color12="'
-sed -n -e 's/^\s*[^!]*color12:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color12[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color05="'
-sed -n -e 's/^\s*[^!]*color5:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color5[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color13="'
-sed -n -e 's/^\s*[^!]*color13:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color13[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color06="'
-sed -n -e 's/^\s*[^!]*color6:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color6[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color14="'
-sed -n -e 's/^\s*[^!]*color14:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color14[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color07="'
-sed -n -e 's/^\s*[^!]*color7:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color7[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 echo -n 'color15="'
-sed -n -e 's/^\s*[^!]*color15:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
+sed -n -e 's/^\s*[^!]*color15[^0-9]*:.*#\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)\([a-zA-Z0-9][a-zA-Z0-9]\)/\1\/\2\/\3"/p' "$1"
 
 echo ''
 
