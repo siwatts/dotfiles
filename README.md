@@ -253,6 +253,18 @@ Manipulating windows:
 - Attach a new tmux session to the same windows as an existing session
     - `tmux new-session -t 'original session name or number' [-s 'name']`
 
+## Fedora
+
+Adding a DNF / copr repository:
+- `dnf config-manager --add-repo <repository_url>`
+    - where `<repository_url>` is the path to a `.repo` file.
+
+DNF configuration files live in `/etc/yum.repos.d/`
+    - List all enabled: `dnf repolist`
+    - Disable: `dnf config-manager --set-disabled <repoid>`
+    - Disable copr: `dnf copr disable <name/project>`
+    - Can manually set `enabled=0` in `.repo` file
+
 ## Misc. Linux
 
 Grep for all matches recursively.
