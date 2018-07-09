@@ -336,6 +336,8 @@ Twilight256.vim
     - `call <SID>X("Normal", "e8e8d3", "212121", "")`
 - Function group to lilac like GUI twilight.vim (ctermfg=139):
     - `call <SID>X("Function", "a999ac", "", "")`
+- More legible comment colour (ctermfg=245 / #8a8a8a):
+    - `call <SID>X("Comment", "949494", "", "")`
 - Constant from wombat256mod.vim or twilight.vim (both ctermfg=173):
     - `call <SID>X("Constant", "e5786d", "", "")`
     - `call <SID>X("Constant", "d08356", "", "")`
