@@ -12,8 +12,8 @@ let use_transparent_bg=0
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
 " Gui overrides (default to terminal if unset)
-let g:dark_gui_theme='seoul256'
-let g:light_gui_theme='seoul256-light'
+"let g:dark_gui_theme='seoul256'
+"let g:light_gui_theme='seoul256-light'
 
 " Use the terminal themes if not set.
 if !exists("g:dark_gui_theme")
@@ -192,6 +192,7 @@ let g:zenburn_old_Visual=1
 "let g:gruvbox_contrast_light='medium'
 "let g:gruvbox_contrast_light='hard'
 "let g:gruvbox_contrast_light='white'
+"let g:gruvbox_contrast_light='solarized'
 
 "let g:gruvbox_contrast_dark='soft'
 "let g:gruvbox_contrast_dark='medium'
@@ -276,12 +277,14 @@ if has("gui_running")
         "set guifont=Courier:h12
         "set guifont=Courier10\ BT:h11
         "set guifont=Terminus:h12
+        "set guifont=Hack:h10
     elseif has("unix")
         " Or for Linux / Cygwin
         set guifont=Monospace\ 10
         "set guifont=DejaVu\ Sans\ Mono\ 10
         "set guifont=Liberation\ Mono\ 10
         "set guifont=Terminus\ 12
+        "set guifont=Hack\ 10
     endif
 
     " Window size
