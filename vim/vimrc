@@ -157,8 +157,8 @@ endfunction
 " Apply custom diff whenever a colorscheme is applied.
 autocmd ColorScheme * call SetCustomDiff()
 " Make bg transparent whenever colorscheme applied.
-if exists("use_transparent_bg") && use_transparent_bg
-    autocmd ColorScheme * hi Normal ctermbg=NONE
+if exists("use_transparent_bg") && use_transparent_bg && !has("gui_running")
+    autocmd ColorScheme * hi Normal guibg=NONE ctermbg=NONE
 endif
 
 "" PaperColor:
