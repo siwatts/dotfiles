@@ -305,6 +305,11 @@ Section "Device"
 EndSection
 ```
 
+Fix flashing backlight (Ubuntu 18.04 Thinkpad T420):
+- `sudo vim /etc/default/grub`
+- Line `GRUB_CMDLINE_LINUX_DEFAULT`, append ` acpi_backlight=native`. Eg.
+    - `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=native"`
+
 ### XFCE
 
 Keep `xfce4-panel` behind full screen applications.
