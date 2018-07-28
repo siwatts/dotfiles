@@ -3,6 +3,8 @@
 !! -- Fonts --
 xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Liberation Mono
+!xterm*faceName: Hack
+!xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
 xterm*faceSize: 10
 !! -- X11 core fonts --
@@ -64,6 +66,8 @@ xterm*metaSendsEscape: true
 !! Eg. urxvt256c -fn "7x14" -letsp +1
 !URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*font: xft:Monospace:size=10
+!URxvt*font: xft:Hack:size=10
+!URxvt*font: xft:Source Code Pro:size=10
 !URxvt*font: xft:Terminus:size=10
 !URxvt*font: xft:Terminus:size=12
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
