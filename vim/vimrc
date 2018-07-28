@@ -8,6 +8,7 @@ let use_base16_theme=0
 let use_theme_of_the_day=0
 let use_random_theme=0
 let use_transparent_bg=0
+let use_truecolor=1
 
 let g:dark_theme='dracula'
 let g:light_theme='gruvbox'
@@ -86,6 +87,11 @@ nnoremap ?? :noh<CR>
 "if $TERM == 'xterm'
 "    set t_Co=256
 "endif
+
+" Set truecolor mode for xterm & xfce4-terminal.
+if use_truecolor && $TERM == 'xterm-256color'
+    set termguicolors
+endif
 
 syntax on
 
