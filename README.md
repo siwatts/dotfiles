@@ -149,6 +149,10 @@ affect commits this side of the branch point. Target always left unaffected.
 
 - Config location `~/.minttyrc`
 
+## Redshift
+
+- Config location `~/.config/redshift.conf`
+
 ## Cygwin
 
 To connect to a running XWin Server with a separately invoked cygwin terminal, add to cygwin local
