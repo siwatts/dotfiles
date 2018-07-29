@@ -11,6 +11,7 @@ let use_transparent_bg=0
 let use_truecolor=1
 
 let g:dark_theme='dracula'
+let g:dark_theme_truecolor='twilight'
 let g:light_theme='gruvbox'
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='seoul256'
@@ -91,6 +92,9 @@ nnoremap ?? :noh<CR>
 " Set truecolor mode for xterm & xfce4-terminal.
 if use_truecolor && $TERM == 'xterm-256color'
     set termguicolors
+    if exists("g:dark_theme_truecolor")
+        let g:dark_theme=g:dark_theme_truecolor
+    endif
 endif
 
 syntax on
@@ -144,11 +148,16 @@ syntax on
 " Override colorscheme diff highlighting.
 function! SetCustomDiff()
     if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' || &t_Co < 256 )
-        " Restore default diff.
-        hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
-        hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
-        hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
-        hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
+        "" Restore default diff.
+        "hi DiffAdd      ctermfg=NONE    ctermbg=1   cterm=NONE  term=bold
+        "hi DiffDelete   ctermfg=4       ctermbg=6   cterm=bold  term=bold
+        "hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
+        "hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
+        " A better 16 color custom diff:
+        hi DiffAdd      ctermfg=7       ctermbg=1   cterm=bold  term=bold
+        hi DiffDelete   ctermfg=0       ctermbg=4   cterm=NONE  term=bold
+        hi DiffChange   ctermfg=7       ctermbg=5   cterm=bold  term=bold
+        hi DiffText     ctermfg=7       ctermbg=1   cterm=bold  term=reverse
     else
         " Jellybeans:
         hi DiffAdd      guifg=#D2EBBE   guibg=#437019   ctermfg=193     ctermbg=22  gui=NONE    cterm=NONE
