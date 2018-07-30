@@ -203,6 +203,9 @@ let g:zenburn_old_Visual=1
 "let g:zenburn_alternate_Visual=1
 "let g:solarized_termcolors=256
 
+let g:jellybeans_use_gui_italics = 0
+let g:gruvbox_italic = 0
+
 "let g:gruvbox_contrast_light='soft'
 "let g:gruvbox_contrast_light='medium'
 "let g:gruvbox_contrast_light='hard'
