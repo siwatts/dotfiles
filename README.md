@@ -314,6 +314,10 @@ Fix flashing backlight (Ubuntu 18.04 Thinkpad T420):
 - Line `GRUB_CMDLINE_LINUX_DEFAULT`, append ` acpi_backlight=native`. Eg.
     - `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=native"`
 
+Stop laptop suspend on lid close:
+- `sudo vim /etc/systemd/logind.conf`
+    - `HandleLidSwitch=ignore`
+
 ### XFCE
 
 Keep `xfce4-panel` behind full screen applications.
