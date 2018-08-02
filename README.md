@@ -359,8 +359,13 @@ Twilight256.vim
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
-    - `call <SID>X("Normal", "cccccc", "303030", "")`
     - `call <SID>X("Normal", "ffffff", "3a3a3a", "")`
+        - Results in bg #303030 (cterm 236). Closest match to gvim desert.vim (#ffffff, #333333).
+- NonText transparent to match altered background.
+    - `call <SID>X("NonText", "addbe7", "", "bold")`
+- Brighter PreProc / Title group (210).
+    - `call <SID>X("PreProc", "ff8787", "", "")`
+    - `call <SID>X("Title", "ff8787", "", "")`
 
 Dracula.vim
 - Add Special and Character group highlighting:
@@ -392,6 +397,11 @@ Zenburn.vim
 - Brighter string highlighting group:
     - 'Identifier' group from Seoul256.vim.
     - `hi String          guifg=#ffbfbd                              ctermfg=217`
+
+Hybrid.vim
+- Distinguishable light 256 comments:
+    - Red: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "160" }`
+    - Grey: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "102" }`
 
 ### Useful Vimdiff highlighting
 
