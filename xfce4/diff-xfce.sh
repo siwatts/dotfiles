@@ -4,7 +4,7 @@
 if [ -f "xfce4/terminal/terminalrc" ]; then
     # Called from dotfiles root directory.
     PREFIX="xfce4/"
-else if [ -f "terminal/terminalrc" ]; then
+elif [ -f "terminal/terminalrc" ]; then
     # Called from dotfiles xfce4/ directory.
     PREFIX=""
 else
