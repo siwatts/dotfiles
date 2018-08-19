@@ -131,18 +131,6 @@ affect commits this side of the branch point. Target always left unaffected.
     - `-*-clean-medium-r-normal-*-16-*-*-*-*-*-*-*`
     - `-*-lucidatypewriter-medium-r-normal-*-14-*-*-*-*-*-*-*`
 
-## Xfce4-terminal
-
-- Themes location `~/.local/share/xfce4/terminal/colorschemes/`
-
-- Config location `~/.config/xfce4/terminal/terminalrc`
-
-- `xfce4-terminal --drop-down`, quake style dropdown terminal
-
-- New tab: `Ctrl+T`
-
-- Next/prev tab: `Ctrl+PgDn/PgUp`
-
 ## Mintty
 
 - Themes location `~/.mintty/themes/`
@@ -318,29 +306,10 @@ Stop laptop suspend on lid close:
 - `sudo vim /etc/systemd/logind.conf`
     - `HandleLidSwitch=ignore`
 
-### XFCE
+### i3
 
-Keep `xfce4-panel` behind full screen applications.
-Do this automatically using [panel_to_desktop.sh](bin/panel_to_desktop.sh):
-- `sudo dnf install -y wmctrl`
-- `wmctrl -l | grep "xfce4-panel$"`
-- `wmctrl -i -r <hexadecimal ID> -b add,below`
-
-Change xfce appearance theme with bash:
-- `xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker-solid"`
-- Set xfce theme depending on time of day using crontab and shell scripts in
-  [misc/set_theme](misc/set_theme):
-    - Copy `.sh` scripts to `~/bin`
-    - Append `crontab.txt` contents using `crontab -e`
-
-- Display volume percentage in panel:
-    - `xfce4-genmon-plugin`
-    - [print_vol.sh](bin/print_vol.sh).
-
-- Change volume with keyboard. `Keyboard`, `Application Shortcuts`:
-    - `pactl set-sink-volume 0 +5%`
-    - `pactl set-sink-volume 0 -5%`
-    - `pactl set-sink-mute 0 toggle`
+- If no desktop environment and starting i3 manually, start X session with
+  `startx` and execute i3 by appending `exec i3` to `~/.xinitrc`.
 
 ## Vim colors
 
