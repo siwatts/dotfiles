@@ -47,6 +47,8 @@ plugin `xfce4-genmon-plugin`.
 
 ## Other
 
+Xfwm4 can be replaced with openbox [as detailed here](../openbox/README.md).
+
 Change xfce appearance theme with bash:
 - `xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Darker-solid"`
 - Set xfce theme depending on time of day using crontab and shell scripts in
@@ -63,5 +65,5 @@ Change xfce appearance theme with bash:
 
 - How to replace `xscreensaver` with `light-locker`.
 - Using compton, and a config file.
-- Using Openbox as a window manager, and config.
+- Changing settings via `xfconf-query`.
 
