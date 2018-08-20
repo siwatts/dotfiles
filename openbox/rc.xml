@@ -323,6 +323,12 @@
       <action name="Lower"/>
       <action name="Unfocus"/>
     </keybind>
+    <keybind key="W-KP_5">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+      </action>
+    </keybind>
     <keybind key="W-KP_8">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -457,6 +463,9 @@
     </keybind>
     <keybind key="A-F7">
       <action name="Move"/>
+    </keybind>
+    <keybind key="A-F6">
+      <action name="ToggleOmnipresent"/>
     </keybind>
   </keyboard>
   <mouse>
