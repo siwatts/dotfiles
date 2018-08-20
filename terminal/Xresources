@@ -1,7 +1,8 @@
 ! ============= Xterm =============
 
 !! -- Fonts --
-xterm*faceName: DejaVu Sans Mono
+xterm*faceName: Monospace
+!xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Liberation Mono
 !xterm*faceName: Hack
 !xterm*faceName: Source Code Pro
@@ -70,6 +71,9 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:Source Code Pro:size=10
 !URxvt*font: xft:Terminus:size=10
 !URxvt*font: xft:Terminus:size=12
+!URxvt*font: xft:Inconsolata:size=10
+!URxvt*font: xft:NotoMono:size=10
+!URxvt*font: xft:LiberationMono:size=10
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 !URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 URxvt*font: 9x15
