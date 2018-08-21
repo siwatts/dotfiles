@@ -257,6 +257,15 @@ DNF configuration files live in `/etc/yum.repos.d/`
     - Disable copr: `dnf copr disable <name/project>`
     - Can manually set `enabled=0` in `.repo` file
 
+Adding rpmfusion non-free repos:
+- `sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm`
+
+H264 media codecs:
+- `sudo dnf config-manager --set-enabled fedora-cisco-openh264`
+- `sudo dnf install gstreamer1-plugin-openh264 mozilla-openh264`
+- Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
+- `sudo dnf install compat-ffmpeg28`
+
 ## Misc. Linux
 
 Grep for all matches recursively.
