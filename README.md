@@ -266,6 +266,13 @@ H264 media codecs:
 - Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
 - `sudo dnf install compat-ffmpeg28`
 
+DVD playback:
+- Add all livna.org hosted additional packages, and install `libdvdcss`:
+    - `sudo rpm -ivh http://rpm.livna.org/livna-release.rpm`
+    - `sudo dnf install -y libdvdcss`
+- Alternatively install only the required library, eg:
+    - `sudo rpm -ivh http://rpm.livna.org/repo/40/x86_64/libdvdcss-1.4.1-1.fc27.remi.x86_64.rpm`
+
 ## Misc. Linux
 
 Grep for all matches recursively.
