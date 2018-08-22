@@ -40,6 +40,7 @@ set ignorecase              " Make searches not case sensitive when searching wi
 set smartcase               " Except if they include one or more uppercase.
 set equalalways!            " Don't equalise vertical and horizontal splits, instead
 " split/unsplit current window. Behaves more like tmux.
+set wildmenu                " Show possible completions on tab.
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -169,6 +170,27 @@ function! SetCustomDiff()
     endif
 endfunction
 
+" Apply default theme with fixes.
+function! ApplyEnhancedDefaultTheme(use_dark_theme)
+    " Force all colours to be from terminal colourscheme.
+    "set t_Co=16
+
+    " Apply default theme and tweak.
+    color default
+    if a:use_dark_theme
+        set background=dark
+
+        " Dark specific customisations
+        hi LineNr ctermfg=4
+        hi Search ctermfg=0 ctermbg=2 cterm=NONE
+        hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
+        hi PMenu ctermfg=7 ctermbg=8
+        hi PMenuSel ctermfg=0 ctermbg=7
+    else
+        set background=light
+    endif
+endfunction
+
 " Apply custom diff whenever a colorscheme is applied.
 autocmd ColorScheme * call SetCustomDiff()
 " Make bg transparent whenever colorscheme applied.
@@ -247,8 +269,7 @@ endfunction
 " Set the colourscheme.
 if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
     " Fall back to supported dark theme if in tty or cygwin.
-    color default
-    set background=dark
+    call ApplyEnhancedDefaultTheme(1)
 else
     " Set a colourful 256 / gui theme if possible.
     if exists("use_custom_theme") && use_custom_theme && ( has("gui_running") || &t_Co == 256 )
@@ -267,11 +288,10 @@ else
                 color default
             endif
         else
-            color default
-            if exists("use_dark_theme") && use_dark_theme
-                set background=dark
+            if exists("use_dark_theme")
+                call ApplyEnhancedDefaultTheme(use_dark_theme)
             else
-                set background=light
+                call ApplyEnhancedDefaultTheme(0)
             endif
         endif
     endif
