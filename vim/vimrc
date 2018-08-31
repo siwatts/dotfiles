@@ -186,6 +186,10 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
         hi PMenu ctermfg=7 ctermbg=8
         hi PMenuSel ctermfg=0 ctermbg=7
+        " Replace red/green/blue with their terminal equivalents:
+        hi PreProc ctermfg=12
+        hi Type ctermfg=10
+        hi Special ctermfg=9
     else
         set background=light
     endif
