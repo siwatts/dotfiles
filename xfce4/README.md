@@ -4,9 +4,9 @@
 
 `xfconf-query` can configure xfce on the fly.  A script that configures xfce
 using `xfconf-query` is provided and can be run from this directory with
-[set-xfce.sh](`./set-xfce.sh`). This sets some preferred settings and keyboard
+[./set-xfce.sh](set-xfce.sh). This sets some preferred settings and keyboard
 shortcuts etc. The script also copies over the xfce4-terminal
-[terminal/terminalrc](`terminalrc`) file if found.
+[terminalrc](terminal/terminalrc) file if found.
 
 Configure whiskermenu by running
 [configure-whiskermenu.sh](configure-whiskermenu.sh) while outside an xfce
