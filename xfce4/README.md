@@ -1,10 +1,44 @@
 # XFCE
 
+## Configuration
+
+`xfconf-query` can configure xfce on the fly.  A script that configures xfce
+using `xfconf-query` is provided and can be run from this directory with
+[set-xfce.sh](`./set-xfce.sh`). This sets some preferred settings and keyboard
+shortcuts etc. The script also copies over the xfce4-terminal
+[terminal/terminalrc](`terminalrc`) file if found.
+
+Configure whiskermenu by running
+[configure-whiskermenu.sh](configure-whiskermenu.sh) while outside an xfce
+session (eg. in another DE or tty).
+
+Using `xfconf-query`:
+- List channels
+    - `xfconf-query`
+- List properties under a parent
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands -l`
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom -l`
+- List properties with their values
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands -l -v`
+- List individual property value
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/Print`
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f`
+- Set individual property
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f -s firefox`
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f -s 'firefox --private-browsing'`
+- Create new property with type string/int/bool
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f -n -t string -s 'firefox --private-browsing'`
+    - This overwrites value if this property already exists
+
 ## Configuration Files
 
 The configuration files for xfce4 are located mainly in a couple of places:
 - `~/.config/xfce4/`.
 - `~/.local/share/xfce4/`.
+
+The script [set-xfce.sh](set-xfce.sh) configures xfce without the need to modify
+these files. Some files are provided in this repository for reference (from a
+Fedora 27 system 09/18).
 
 Files in this directory are relative to `~/.config/xfce4/`.
 
