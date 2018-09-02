@@ -17,12 +17,15 @@ if [ -f "terminal/terminalrc" ]; then
     else
         # None, so copy ours.
         cp terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+        echo "Imported xfce4-terminal settings. Close all running instances to take effect."
     fi
 else
     echo "Warning: Could not find dotfiles xfce4-terminal 'terminalrc' file."
     echo "Please run from dotfiles 'xfce4' directory to import this."
     echo "Continuing with xfce configuration..."
 fi
+
+echo "Configuring xfce with 'xfconf-query'..."
 
 # =======================================================
 # ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
@@ -142,6 +145,8 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Alt>'KP_9 -
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Alt>'Left -n -t string -s 'left_workspace_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Alt>'Right -n -t string -s 'right_workspace_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Alt>'Up -n -t string -s 'up_workspace_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Shift><Alt>'Left -n -t string -s 'move_window_left_workspace_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Shift><Alt>'Right -n -t string -s 'move_window_right_workspace_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Alt>'d -n -t string -s 'show_desktop_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Shift><Alt>'Left -n -t string -s 'move_window_left_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Primary><Shift><Alt>'Right -n -t string -s 'move_window_right_key'
@@ -155,6 +160,14 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/Left -n -t string -s '
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/Right -n -t string -s 'right_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/Escape -n -t string -s 'cancel_key'
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/override -n -t string -s 'true'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'Up -n -t string -s 'tile_up_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'Down -n -t string -s 'tile_down_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'Left -n -t string -s 'tile_left_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'Right -n -t string -s 'tile_right_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'KP_1 -n -t string -s 'tile_down_left_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'KP_3 -n -t string -s 'tile_down_right_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'KP_7 -n -t string -s 'tile_up_left_key'
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'KP_9 -n -t string -s 'tile_up_right_key'
 
 # ==========================================
 # ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
@@ -163,7 +176,6 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/override -n -t string 
 # ====================================
 # ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
 # ====================================
-xfconf-query -c xfwm4 -p /general/ -s 
 xfconf-query -c xfwm4 -p /general/button_layout -s 'O|HMC'
 xfconf-query -c xfwm4 -p /general/cycle_apps_only -s 'false'
 xfconf-query -c xfwm4 -p /general/cycle_draw_frame -s 'false'
@@ -191,4 +203,6 @@ xfconf-query -c xsettings -p /Net/CursorBlink -s 'false'
 #xfconf-query -c xsettings -p /Gtk/MonospaceFontName -s 'Terminus 12'
 #xfconf-query -c xsettings -p /Gtk/CursorThemeName -s 'DMZ-Black'
 xfconf-query -c xsettings -p /Gtk/DecorationLayout -s 'menu:minimize,maximize,close'
+
+echo "Configuration complete."
 

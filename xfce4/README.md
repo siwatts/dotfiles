@@ -99,5 +99,4 @@ Change xfce appearance theme with bash:
 
 - How to replace `xscreensaver` with `light-locker`.
 - Using compton, and a config file.
-- Changing settings via `xfconf-query`.
 
