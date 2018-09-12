@@ -1,16 +1,40 @@
 # XFCE
 
+## Steps
+
+1. Install and start xfce4 to generate default panel and other settings.
+1. Run [set-xfce.sh](set-xfce.sh) for simple configuration and xfce4-terminal.
+1. Terminate xfce4 session by logging out / rebooting.
+1. Log in to tty or alternate desktop environment.
+1. Run [configure-whiskermenu.sh](configure-whiskermenu.sh) to configure whiskermenu(s).
+1. Run [diff-keyboard-shortcuts.sh](diff-keyboard-shortcuts.sh) to set keyboard
+   shortcuts by manually importing into xml file.
+
+
+The script [set-xfce.sh](set-xfce.sh) configures xfce without the need to modify
+these files. Some files are provided in this repository for reference (from a
+Fedora 27 system 09/18).
+
+Alternatively, diff all configuration files instead of just the keyboard
+shortcuts with [diff-xfce.sh](diff-xfce.sh), though files may differ as snapshot
+of configuration files is provided as a reference from an older install (Fedora
+27 09/18).  [set-xfce.sh](set-xfce.sh) will set only those settings which
+normally differ from default.
+
 ## Configuration
 
 `xfconf-query` can configure xfce on the fly.  A script that configures xfce
 using `xfconf-query` is provided and can be run from this directory with
-[./set-xfce.sh](set-xfce.sh). This sets some preferred settings and keyboard
-shortcuts etc. The script also copies over the xfce4-terminal
-[terminalrc](terminal/terminalrc) file if found.
+[set-xfce.sh](set-xfce.sh). This does not set keyboard shortcuts. The script
+copies over the xfce4-terminal [terminalrc](terminal/terminalrc) file if found.
 
-Configure whiskermenu by running
-[configure-whiskermenu.sh](configure-whiskermenu.sh) while outside an xfce
-session (eg. in another DE or tty).
+[configure-whiskermenu.sh](configure-whiskermenu.sh) changes some common
+whiskermenu settings by altering these lines of the configuration file using
+`sed`.
+
+[diff-keyboard-shortcuts.sh](diff-keyboard-shortcuts.sh) diffs the keyboard
+shortcut xml file using `vim -d`. Or you can diff more configuration files using
+[diff-xfce.sh](diff-xfce.sh).
 
 Using `xfconf-query`:
 - List channels
@@ -29,6 +53,15 @@ Using `xfconf-query`:
 - Create new property with type string/int/bool
     - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f -n -t string -s 'firefox --private-browsing'`
     - This overwrites value if this property already exists
+- If property already exists it must first be removed with `reset` before being
+  replaced
+    - For keyboard shortcuts, both the `/commands/custom` and `/xfwm4/custom`
+      entries must be removed.
+    - `xfconf-query -r -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f`
+    - `xfconf-query --reset -c xfce4-keyboard-shortcuts -p /xfwm4/custom/'<Super>'f`
+    - `xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/'<Super>'f -n -t string -s 'firefox --private-browsing'`
+    - `-r`/`--reset`, and `-n`/`--create` are interchangable.
+    - This doesn't seem to work reliably for keyboard shortcuts.
 
 ## Configuration Files
 
@@ -44,7 +77,7 @@ Files in this directory are relative to `~/.config/xfce4/`.
 
 When changing these config files, an xfce session must not be running or the
 changes will be overwritten on logout. Try syncing these files in a tty while
-not logged in.
+not logged in if not using the script calling `xfconf-query`.
 
 ## Xfce4-terminal
 

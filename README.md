@@ -1,5 +1,28 @@
 # Dotfiles and Misc.
 
+A collection of dotfiles and configuration files / themes etc.
+
+Some helper scripts are also included which can diff local files against
+dotfiles using `vim -d`, or import settings or entire files themselves.
+
+## Quick Start
+
+- General [linux installation instructions and information](linux.md).
+- Guide to [configuring xfce with config files](xfce4/README.md).
+- Guide to [installing and configuring openbox window manager](openbox/README.md).
+- Guide to [installing and configuring i3 window manager](i3wm/README.md).
+- Diff all CLI workflow / environment dotfiles with [diff-all.sh](diff-all.sh).
+- Diff only CLI workflow / environment dotfiles relevant to working on a remote
+  server with [diff-server.sh](diff-server.sh).
+- Import some colourschemes:
+    - vim:
+        - `mkdir -p ~/.vim/colors && cp -a vim/colors/. ~/.vim/colors`
+        - `cp -a vim/custom_colors/. ~/.vim/colors`
+    - xfce4-terminal:
+        - `mkdir -p ~/.local/share/xfce4/terminal/colorschemes/ && cp -a terminal/xfce4-terminal/custom_colorschemes/. ~/.local/share/xfce4/terminal/colorschemes/`
+    - mintty:
+        - `mkdir -p ~/.mintty/themes/ && cp -a terminal/mintty/custom_themes/. ~/.mintty/themes/`
+
 ## Git
 
 ### Config
@@ -245,34 +268,6 @@ Manipulating windows:
 - Attach a new tmux session to the same windows as an existing session
     - `tmux new-session -t 'original session name or number' [-s 'name']`
 
-## Fedora
-
-Adding a DNF / copr repository:
-- `dnf config-manager --add-repo <repository_url>`
-    - where `<repository_url>` is the path to a `.repo` file.
-
-DNF configuration files live in `/etc/yum.repos.d/`
-    - List all enabled: `dnf repolist`
-    - Disable: `dnf config-manager --set-disabled <repoid>`
-    - Disable copr: `dnf copr disable <name/project>`
-    - Can manually set `enabled=0` in `.repo` file
-
-Adding rpmfusion non-free repos:
-- `sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm`
-
-H264 media codecs:
-- `sudo dnf config-manager --set-enabled fedora-cisco-openh264`
-- `sudo dnf install gstreamer1-plugin-openh264 mozilla-openh264`
-- Afterwards you need open Firefox, go to menu -> Add-ons -> Plugins and enable OpenH264 plugin.
-- `sudo dnf install compat-ffmpeg28`
-
-DVD playback:
-- Add all livna.org hosted additional packages, and install `libdvdcss`:
-    - `sudo rpm -ivh http://rpm.livna.org/livna-release.rpm`
-    - `sudo dnf install -y libdvdcss`
-- Alternatively install only the required library, eg:
-    - `sudo rpm -ivh http://rpm.livna.org/repo/40/x86_64/libdvdcss-1.4.1-1.fc27.remi.x86_64.rpm`
-
 ## Misc. Linux
 
 Grep for all matches recursively.
@@ -293,39 +288,6 @@ Rename files according to a pattern.
 Shebangs
 - `#!/bin/bash`
 - `#!/usr/bin/env python`
-
-Fix X11 screentearing on AMD Radeon: `sudo vim /usr/share/X11/xorg.conf.d/20-radeon.conf`
-```
-Section "Device"
-    Identifier "Radeon"
-    Driver "radeon"
-    Option "TearFree" "on"
-EndSection
-```
-
-Fix X11 screentearing on Intel integrated graphics: `sudo vim /etc/X11/xorg.conf`
-```
-Section "Device"
-    Identifier "Intel Graphics"
-    Driver "intel"
-    Option "AccelMethod" "sna"
-    Option "TearFree" "true"
-EndSection
-```
-
-Fix flashing backlight (Ubuntu 18.04 Thinkpad T420):
-- `sudo vim /etc/default/grub`
-- Line `GRUB_CMDLINE_LINUX_DEFAULT`, append ` acpi_backlight=native`. Eg.
-    - `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=native"`
-
-Stop laptop suspend on lid close:
-- `sudo vim /etc/systemd/logind.conf`
-    - `HandleLidSwitch=ignore`
-
-### i3
-
-- If no desktop environment and starting i3 manually, start X session with
-  `startx` and execute i3 by appending `exec i3` to `~/.xinitrc`.
 
 ## Vim colors
 

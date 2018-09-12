@@ -22,5 +22,5 @@
 [credential]
 	helper = cache --timeout=900
 #[user]
-    #email = 
-    #name = 
+    #email = ""
+    #name = ""
