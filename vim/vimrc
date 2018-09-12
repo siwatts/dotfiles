@@ -31,15 +31,14 @@ endif
 set nobackup                " Stop vim leaving backup ~ files everywhere.
 set number                  " Enable linenumbers.
 set numberwidth=3           " Enable linenumbers.
-set printoptions=number:y   " Enable linenumbers when printing.
+" Enable linenumbers when printing, and equal margins on all sides (default 10,5,5,5).
+set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
 set hlsearch                " Enable search highlighting.
 set ruler                   " Show some line/column information at bottom right.
 set showcmd                 " Show current partially input command at bottom of screen.
 "set showmatch               " Briefly jump to matching bracket.
 set ignorecase              " Make searches not case sensitive when searching with / or ?.
 set smartcase               " Except if they include one or more uppercase.
-set equalalways!            " Don't equalise vertical and horizontal splits, instead
-" split/unsplit current window. Behaves more like tmux.
 set wildmenu                " Show possible completions on tab.
 
 " Force utf8 encoding:
@@ -49,6 +48,9 @@ set wildmenu                " Show possible completions on tab.
 " Splits
 set splitright
 set splitbelow
+" Don't equalise vertical and horizontal splits, instead
+" split/unsplit current window. Behaves more like tmux.
+set equalalways!
 
 " Tab settings.
 set tabstop=4
@@ -139,6 +141,21 @@ syntax on
 let g:jellybeans_overrides = {
 \   'Statement': { '256ctermfg': '104' }
 \}
+" TermColours:
+"\   'LineNr': { '256ctermfg': '8' },
+"let g:jellybeans_overrides = {
+"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\   'Comment': { '256ctermfg': '8' },
+"\   'Normal': { '256ctermfg': '7' },
+"\   'Constant': { '256ctermfg': '1' },
+"\   'Identifier': { '256ctermfg': '5' },
+"\   'Statement': { '256ctermfg': '4' },
+"\   'PreProc': { '256ctermfg': '6' },
+"\   'Type': { '256ctermfg': '3' },
+"\   'Special': { '256ctermfg': '2' },
+"\   'Function': { '256ctermfg': '11' },
+"\   'String': { '256ctermfg': '10' },
+"\}
 
 "" Darkblue256:
 "\   'background': { 'guibg': '212121', '256ctermbg': '235' },
@@ -197,6 +214,9 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         set background=light
 
         " Light specific customisations
+        hi Error term=standout ctermfg=0 ctermbg=1
+        hi ErrorMsg term=standout ctermfg=0 ctermbg=1
+        hi Visual ctermfg=NONE ctermbg=222
         hi LineNr ctermfg=8
         hi Search ctermfg=0 ctermbg=2 cterm=NONE
         hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
