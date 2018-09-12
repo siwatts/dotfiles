@@ -143,8 +143,8 @@ let g:jellybeans_overrides = {
 \}
 " TermColours:
 "\   'LineNr': { '256ctermfg': '8' },
+"\   'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
 "let g:jellybeans_overrides = {
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 "\   'Comment': { '256ctermfg': '8' },
 "\   'Normal': { '256ctermfg': '7' },
 "\   'Constant': { '256ctermfg': '1' },
