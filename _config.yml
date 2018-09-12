@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+title: "My dotfiles"
+description: "A collection of config files, installation & how-to guides, and other miscellaneous stuff."
+show_downloads: true
