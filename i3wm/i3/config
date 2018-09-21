@@ -8,8 +8,10 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+# Super
 set $mod Mod4
+# Alt
+#set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -21,6 +23,7 @@ font pango:monospace 8
 #font pango:Noto Sans 10
 #font -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 #font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*
+#font pango:Terminus 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -43,7 +46,7 @@ for_window [Class="Gimp-2.8"] floating enable
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec xfce4-terminal
-#bindsym $mod+Return exec xterm
+#bindsym $mod+Return exec uxterm
 #bindsym $mod+Return exec urxvt256c
 
 # kill focused window
@@ -194,11 +197,11 @@ bar {
 
 # Start programs, exec / exec-always
 exec --no-startup-id i3-msg 'exec pulseaudio --start'
-exec --no-startup-id redshift
+#exec --no-startup-id redshift
 #exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/xfce-wall/*
 #exec_always --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/insert_folder_here
 # Background with while loop:
-exec --no-startup-id ~/bin/i3_set_background.sh
+#exec --no-startup-id ~/bin/i3_set_background.sh
 # To change wallpaper periodically, use script (while loop), cron, or systemd timer:
 # See https://wiki.archlinux.org/index.php/feh
 exec --no-startup-id nm-applet
@@ -210,7 +213,7 @@ bindsym $mod+semicolon exec i3lock -c 282A36
 bindsym $mod+apostrophe exec ~/bin/i3_lock.sh
 #bindsym $mod+semicolon exec i3lock -c "$(openssl rand -hex 3)"
 #bindsym $mod+semicolon exec i3lock -i /usr/share/backgrounds/lock1.png # Raven & Tae
-bindsym $mod+semicolon exec i3lock -i /usr/share/backgrounds/lock2.png # Double Tae
+#bindsym $mod+semicolon exec i3lock -i /usr/share/backgrounds/lock2.png # Double Tae
 #bindsym $mod+semicolon exec i3lock -i /usr/share/backgrounds/lock_trans.png -c 282a36 # Transparent & Tae
 
 # - Enable multi-media keys -
@@ -250,7 +253,7 @@ bindsym $mod+Shift+bracketright move workspace to output right
 # Make a custom launcher mode:
 mode "launcher" {
         # These bindings trigger as soon as you enter the launcher mode
-        bindsym f exec --no-startup-id firefox -private-window ; mode "default"
+        bindsym f exec --no-startup-id firefox --private-window ; mode "default"
         bindsym w exec --no-startup-id firefox ; mode "default"
         bindsym e exec --no-startup-id thunar ; mode "default"
         bindsym g exec --no-startup-id gvim ; mode "default"
@@ -283,11 +286,11 @@ bindsym $mod+Pause exec ~/bin/i3_shutdown.sh
 bindsym $mod+Shift+s exec ~/bin/i3_suspend.sh
 
 # Printscreen.
-bindsym --release Print exec "xfce4-screenshooter -f"
-bindsym --release Shift+Print exec "xfce4-screenshooter -r"
-bindsym --release Control+Shift+Print exec "xfce4-screenshooter -r -d 3"
-bindsym --release Mod1+Print exec "xfce4-screenshooter -w"
-bindsym --release Control+Print exec "xfce4-screenshooter"
+#bindsym --release Print exec "xfce4-screenshooter -f"
+#bindsym --release Shift+Print exec "xfce4-screenshooter -r"
+#bindsym --release Control+Shift+Print exec "xfce4-screenshooter -r -d 3"
+#bindsym --release Mod1+Print exec "xfce4-screenshooter -w"
+#bindsym --release Control+Print exec "xfce4-screenshooter"
 # TODO: Control+Shift+Print, and Mod1+Print don't work.
 
 # Volume up:

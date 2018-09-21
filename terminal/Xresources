@@ -174,22 +174,22 @@ XTerm*cursorColor2: #000000
 ! Dracula Xresources palette (https://github.com/dracula/xresources)
 ! Swap red for magenta, magenta for orange.
 ! Swap bright black for comment colour.
-XTerm*foreground: #F8F8F2
-XTerm*background: #282A36
-XTerm*color0:     #000000
-XTerm*color8:     #6272A4
-XTerm*color1:     #FF79C6
-XTerm*color9:     #FF92D0
-XTerm*color2:     #50FA7B
-XTerm*color10:    #5AF78E
-XTerm*color3:     #F1FA8C
-XTerm*color11:    #F4F99D
-XTerm*color4:     #BD93F9
-XTerm*color12:    #CAA9FA
-XTerm*color5:     #FFB86C
-XTerm*color13:    #FFB86C
-XTerm*color6:     #8BE9FD
-XTerm*color14:    #9AEDFE
-XTerm*color7:     #BFBFBF
-XTerm*color15:    #E6E6E6
+*foreground: #F8F8F2
+*background: #282A36
+*color0:     #000000
+*color8:     #6272A4
+*color1:     #FF79C6
+*color9:     #FF92D0
+*color2:     #50FA7B
+*color10:    #5AF78E
+*color3:     #F1FA8C
+*color11:    #F4F99D
+*color4:     #BD93F9
+*color12:    #CAA9FA
+*color5:     #FFB86C
+*color13:    #FFB86C
+*color6:     #8BE9FD
+*color14:    #9AEDFE
+*color7:     #BFBFBF
+*color15:    #E6E6E6
 
