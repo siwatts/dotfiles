@@ -36,6 +36,21 @@ Stop laptop suspend on lid close:
 - `sudo vim /etc/systemd/logind.conf`
     - `HandleLidSwitch=ignore`
 
+## SSH
+
+- `.ssh` directory should be `rwx` for owner only, ie. `mkdir ~/.ssh && chmod
+  700 ~/.ssh`.
+- Copy local public key `~/.ssh/id_rsa.pub` to target machine, append in its full
+  form to target `~/.ssh/authorized_keys` file.
+    - `scp ~/.ssh/id_rsa.pub destination:id_rsa.pub`, if keyless ssh using
+      password is allowed.
+    - `cat id_rsa.pub >> ~/.ssh/authorized_keys`
+- Disable password login to enforce key access only.
+    - `sudoedit /etc/ssh/sshd_config`
+    - `PasswordAuthentication no`
+    - `sudo systemctl restart sshd.service`
+    - `sudo service ssh restart`
+
 ## Fedora
 
 Adding a DNF / copr repository:

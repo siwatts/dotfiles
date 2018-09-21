@@ -2,6 +2,15 @@
 
 ## Installation
 
+## Quick Start
+
+- `mkdir -p ~/.config/i3 && mkdir -p ~/.config/i3status && mkdir -p ~/bin`
+- `cp i3wm/i3/config ~/.config/i3/config && cp i3wm/i3status/config
+  ~/.config/i3status/config && cp -a i3wm/bin/. ~/bin`
+- If no greeter or login manager:
+    - `echo 'exec i3' >> ~/.xinitrc`
+    - `startx`
+
 ## Configuration
 
 Subdirectories `i3/` and `i3status/` are located in `~/.config`. A good place to
