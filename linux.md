@@ -78,6 +78,18 @@ font-name = Noto Sans 10
 active-monitor = 0
 ```
 
+## Raspberry Pi
+
+Display settings:
+- No bios, settings in `/boot/config.txt`.
+- Defaults to 1360x768.
+- List current screen setting: `/opt/vc/bin/tvservice -s`.
+- List available screen settings:
+    - `/opt/vc/bin/tvservice -m CEA`, (hdmi_group 1).
+    - `/opt/vc/bin/tvservice -m DMT`, (hdmi_group 2).
+    - Can override default using `hdmi_group` and `hdmi_mode`.
+    - May need to disable overscan with `disable_overscan=1`.
+
 ## SSH
 
 - `.ssh` directory should be `rwx` for owner only, ie. `mkdir ~/.ssh && chmod
