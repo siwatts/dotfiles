@@ -5,8 +5,8 @@
 
 color_foreground="e8/e8/d3"
 color_background="15/15/15"
-color00="3b/3b/3b"
-color08="3b/3b/3b"
+color00="15/15/15"
+color08="88/88/88"
 color01="cf/6a/4c"
 color09="cf/6a/4c"
 color02="79/9d/6a"
@@ -19,7 +19,7 @@ color05="c6/b6/ee"
 color13="c6/b6/ee"
 color06="8f/bf/dc"
 color14="8f/bf/dc"
-color07="ad/ad/ad"
+color07="e8/e8/d3"
 color15="ad/ad/ad"
 
 # Restore colors 16-21 to pre-base16 values.

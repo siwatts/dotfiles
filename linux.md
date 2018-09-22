@@ -36,6 +36,48 @@ Stop laptop suspend on lid close:
 - `sudo vim /etc/systemd/logind.conf`
     - `HandleLidSwitch=ignore`
 
+## Display Managers
+
+- Start an X session directly with `startx`, this will execute whatever is in
+  `~/.xinitrc` (eg. `exec i3`).
+
+### LightDM
+
+- Start lightdm session with `sudo /etc/init.d/lightdm start`.
+- Enable `lightdm.service` in systemd if no assigned dm.
+    - `systemctl start <unit>`
+    - `systemctl stop <unit>`
+    - `systemctl status <unit>`
+    - `systemctl enable <unit>`, will be started on boot.
+    - `systemctl enable --now <unit>`, on boot and now.
+    - `systemctl disable <unit>`, don't start on boot.
+
+LightDM Settings:
+- `sudoedit /etc/lightdm/lightdm.conf`
+    - List possible greeters with `ls -l /usr/share/xgreeters/`
+    - List possible DEs with `ls -l /usr/share/xsessions/`
+    - Comment the autologin lines if you wish to disable auto-login (which is
+      enabled by default on raspbian).
+```yaml
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+greeter-hide-users=false
+autologin-user=<user>
+autologin-user-timeout=0
+```
+
+Lightdm GTK Greeter Settings:
+- `sudoedit /etc/lightdm/lightdm-gtk-greeter.conf`
+```yaml
+[greeter]
+background = /usr/share/backgrounds/taeyeon_i_AL8AtY4.jpg
+theme-name = Arc-Dark
+icon-theme-name = Fedora
+clock-format = %a %d/%m/%y, %H:%M:%S
+font-name = Noto Sans 10 
+active-monitor = 0
+```
+
 ## SSH
 
 - `.ssh` directory should be `rwx` for owner only, ie. `mkdir ~/.ssh && chmod

@@ -199,7 +199,7 @@ bar {
 exec --no-startup-id i3-msg 'exec pulseaudio --start'
 #exec --no-startup-id redshift
 #exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/xfce-wall/*
-#exec_always --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/insert_folder_here
+#exec_always --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/wallpapers
 # Background with while loop:
 #exec --no-startup-id ~/bin/i3_set_background.sh
 # To change wallpaper periodically, use script (while loop), cron, or systemd timer:
@@ -257,7 +257,7 @@ mode "launcher" {
         bindsym w exec --no-startup-id firefox ; mode "default"
         bindsym e exec --no-startup-id thunar ; mode "default"
         bindsym g exec --no-startup-id gvim ; mode "default"
-        #bindsym p exec --no-startup-id feh --randomize --bg-fill ~/Pictures/xfce-wall/* ; mode "default"
+        #bindsym p exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/* ; mode "default"
 
         # back to normal: Enter or Escape, or triggering shortcut
         bindsym Return mode "default"

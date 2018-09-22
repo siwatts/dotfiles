@@ -10,8 +10,8 @@ let use_random_theme=0
 let use_transparent_bg=0
 let use_truecolor=0
 
-let g:dark_theme='dracula'
-let g:dark_theme_truecolor='twilight'
+let g:dark_theme='jellybeans'
+"let g:dark_theme_truecolor='twilight'
 let g:light_theme='gruvbox'
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='seoul256'

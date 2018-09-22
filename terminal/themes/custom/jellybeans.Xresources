@@ -4,8 +4,8 @@
 *background:   #151515
 !*cursorColor:  #a7a7a7
 ! black
-*color0:       #3b3b3b
-*color8:       #3b3b3b
+*color0:       #151515
+*color8:       #888888
 ! red
 *color1:       #cf6a4c
 *color9:       #cf6a4c
@@ -25,6 +25,6 @@
 *color6:       #8fbfdc
 *color14:      #8fbfdc
 ! white
-*color7:       #adadad
+*color7:       #e8e8d3
 *color15:      #adadad
 
