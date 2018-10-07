@@ -535,10 +535,12 @@ nmap <Leader>T O// TODO:
 
 "nmap <Leader>s i <ESC>r
 "nmap <Leader>S a <ESC>r
-nmap <Leader>i i <ESC>r
-nmap <Leader>a a <ESC>r
+"nmap <Leader>i i <ESC>r
+"nmap <Leader>a a <ESC>r
 
 nmap <Leader>m :tabe $MYVIMRC<CR>
+nmap <Leader>i :set paste!<CR>
+nmap <Leader>n :set number!<CR>
 
 " Behaviour of y to match D, C, S etc.
 " Ie. Y yanks to end of line instead of yanking the entire line like yy.
