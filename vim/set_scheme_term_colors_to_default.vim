@@ -1,34 +1,34 @@
-%s/\<\(cterm.g\)=0\>/\1=16/ge
-%s/\<\(cterm.g\)=[Bb]lack\>/\1=16/ge
-%s/\<\(cterm.g\)=1\>/\1=88/ge
-%s/\<\(cterm.g\)=[Mm]aroon\>/\1=88/ge
-%s/\<\(cterm.g\)=2\>/\1=28/ge
-%s/\<\(cterm.g\)=[Gg]reen\>/\1=28/ge
-%s/\<\(cterm.g\)=3\>/\1=100/ge
-%s/\<\(cterm.g\)=[Oo]live\>/\1=100/ge
-%s/\<\(cterm.g\)=4\>/\1=18/ge
-%s/\<\(cterm.g\)=[Nn]avy\>/\1=18/ge
-%s/\<\(cterm.g\)=5\>/\1=90/ge
-%s/\<\(cterm.g\)=[Pp]urpe\>/\1=90/ge
-%s/\<\(cterm.g\)=6\>/\1=30/ge
-%s/\<\(cterm.g\)=[Tt]eal\>/\1=30/ge
-%s/\<\(cterm.g\)=7\>/\1=250/ge
-%s/\<\(cterm.g\)=[Ss]ilver\>/\1=250/ge
-%s/\<\(cterm.g\)=8\>/\1=244/ge
-%s/\<\(cterm.g\)=[Gg]rey\>/\1=244/ge
-%s/\<\(cterm.g\)=9\>/\1=196/ge
-%s/\<\(cterm.g\)=[Rr]ed\>/\1=196/ge
-%s/\<\(cterm.g\)=10\>/\1=46/ge
-%s/\<\(cterm.g\)=[Ll]ime\>/\1=46/ge
-%s/\<\(cterm.g\)=11\>/\1=226/ge
-%s/\<\(cterm.g\)=[Yy]ellow\>/\1=226/ge
-%s/\<\(cterm.g\)=12\>/\1=21/ge
-%s/\<\(cterm.g\)=[Bb]lue\>/\1=21/ge
-%s/\<\(cterm.g\)=13\>/\1=201/ge
-%s/\<\(cterm.g\)=[Ff]uchsia\>/\1=201/ge
-%s/\<\(cterm.g\)=14\>/\1=51/ge
-%s/\<\(cterm.g\)=[Aa]qua\>/\1=51/ge
-%s/\<\(cterm.g\)=15\>/\1=231/ge
-%s/\<\(cterm.g\)=[Ww]hite\>/\1=231/ge
-update
-quit
+set hidden
+bufdo %s/\<\(cterm.g\)=0\>/\1=16/ge
+bufdo %s/\<\(cterm.g\)=[Bb]lack\>/\1=16/ge
+bufdo %s/\<\(cterm.g\)=1\>/\1=88/ge
+bufdo %s/\<\(cterm.g\)=[Mm]aroon\>/\1=88/ge
+bufdo %s/\<\(cterm.g\)=2\>/\1=28/ge
+bufdo %s/\<\(cterm.g\)=[Gg]reen\>/\1=28/ge
+bufdo %s/\<\(cterm.g\)=3\>/\1=100/ge
+bufdo %s/\<\(cterm.g\)=[Oo]live\>/\1=100/ge
+bufdo %s/\<\(cterm.g\)=4\>/\1=18/ge
+bufdo %s/\<\(cterm.g\)=[Nn]avy\>/\1=18/ge
+bufdo %s/\<\(cterm.g\)=5\>/\1=90/ge
+bufdo %s/\<\(cterm.g\)=[Pp]urpe\>/\1=90/ge
+bufdo %s/\<\(cterm.g\)=6\>/\1=30/ge
+bufdo %s/\<\(cterm.g\)=[Tt]eal\>/\1=30/ge
+bufdo %s/\<\(cterm.g\)=7\>/\1=250/ge
+bufdo %s/\<\(cterm.g\)=[Ss]ilver\>/\1=250/ge
+bufdo %s/\<\(cterm.g\)=8\>/\1=244/ge
+bufdo %s/\<\(cterm.g\)=[Gg]rey\>/\1=244/ge
+bufdo %s/\<\(cterm.g\)=9\>/\1=196/ge
+bufdo %s/\<\(cterm.g\)=[Rr]ed\>/\1=196/ge
+bufdo %s/\<\(cterm.g\)=10\>/\1=46/ge
+bufdo %s/\<\(cterm.g\)=[Ll]ime\>/\1=46/ge
+bufdo %s/\<\(cterm.g\)=11\>/\1=226/ge
+bufdo %s/\<\(cterm.g\)=[Yy]ellow\>/\1=226/ge
+bufdo %s/\<\(cterm.g\)=12\>/\1=21/ge
+bufdo %s/\<\(cterm.g\)=[Bb]lue\>/\1=21/ge
+bufdo %s/\<\(cterm.g\)=13\>/\1=201/ge
+bufdo %s/\<\(cterm.g\)=[Ff]uchsia\>/\1=201/ge
+bufdo %s/\<\(cterm.g\)=14\>/\1=51/ge
+bufdo %s/\<\(cterm.g\)=[Aa]qua\>/\1=51/ge
+bufdo %s/\<\(cterm.g\)=15\>/\1=231/ge
+bufdo %s/\<\(cterm.g\)=[Ww]hite\>/\1=231/ge
+wqa

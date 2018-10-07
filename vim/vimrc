@@ -231,7 +231,7 @@ endfunction
 autocmd ColorScheme * call SetCustomDiff()
 " Make bg transparent whenever colorscheme applied.
 if exists("use_transparent_bg") && use_transparent_bg && !has("gui_running")
-    autocmd ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+    autocmd ColorScheme * hi Normal ctermbg=NONE | hi LineNr ctermbg=NONE
 endif
 
 "" PaperColor:
@@ -427,10 +427,10 @@ endfunction
 map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Reset to default theme
 if use_dark_theme
-    map <F7> :colorscheme default<CR>:set background=dark<CR>
+    map <F7> :call ApplyEnhancedDefaultTheme(1)<CR>
     map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
 else
-    map <F7> :colorscheme default<CR>
+    map <F7> :call ApplyEnhancedDefaultTheme(0)<CR>
     map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
 endif
 " Apply base16 theme

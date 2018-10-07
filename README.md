@@ -349,6 +349,12 @@ Hybrid.vim
 - Distinguishable light 256 comments:
     - Red: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "160" }`
     - Grey: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "102" }`
+    - Steel: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "103" }`
+    - Green: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "34" }`
+    - Blue: `let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light'      : "32" }`
+- StatusLineNC and LineNr work better with comment colour changes:
+    - `exe "hi! StatusLineNC"  .s:fg_window      .s:bg_background  .s:fmt_revr`
+    - `exe "hi! LineNr"        .s:fg_comment     .s:bg_none        .s:fmt_none`
 
 ### Useful Vimdiff highlighting
 
