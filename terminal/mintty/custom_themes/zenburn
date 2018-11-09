@@ -1,0 +1,41 @@
+# - SW - 18/10/2018 - zenburn.vim
+# Zenburn (Custom)
+BackgroundColour=63,63,63
+ForegroundColour=220,220,204
+CursorColour=255,102,255 
+Black=63,63,63
+
+# Grey, from theme
+BoldBlack=143,143,143
+## Comment green
+#BoldBlack=127,159,127
+
+Red=204,147,147
+BoldRed=220,163,163
+
+# Comment green
+Green=127,159,127
+## Bold green
+#Green=130,162,130
+BoldGreen=130,162,130
+
+Yellow=239,239,143
+BoldYellow=239,239,143
+
+## Statement
+#Blue=227,206,171
+# Preproc
+Blue=255,207,175
+
+## Conditional
+#BoldBlue=240,223,175
+# Statement
+BoldBlue=227,206,171
+
+Magenta=192,190,209
+BoldMagenta=192,190,209
+Cyan=140,208,211
+BoldCyan=140,208,211
+White=220,220,204
+BoldWhite=255,255,255
+

@@ -1,6 +1,6 @@
 ForegroundColour=60,56,54
 BackgroundColour=249,245,215
-#CursorColour=
+CursorColour=255,0,255
 Black=253,244,193
 Red=157,0,6
 Green=121,116,14

@@ -1,0 +1,20 @@
+# - SW - 21/02/18 - Colours from hybrid.vim
+ForegroundColour=0,0,0
+BackgroundColour=255,255,255
+CursorColour=255,0,255
+Black=238,238,238
+BoldBlack=146,131,116
+Red=95,0,0
+BoldRed=95,0,0
+Green=0,95,0
+BoldGreen=0,95,0
+Yellow=135,95,0
+BoldYellow=135,95,0
+Blue=0,0,95
+BoldBlue=0,0,95
+Magenta=95,0,95
+BoldMagenta=95,0,95
+Cyan=0,95,95
+BoldCyan=0,95,95
+White=60,56,54
+BoldWhite=124,111,100

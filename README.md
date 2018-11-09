@@ -160,6 +160,11 @@ affect commits this side of the branch point. Target always left unaffected.
 
 - Config location `~/.minttyrc`
 
+- Keyboard shortcuts
+    - Paste: `Shift+Insert`
+    - Copy: `Ctrl+Insert`
+    - Font size: `Ctrl+-`, `Ctrl++`
+
 ## Redshift
 
 - Config location `~/.config/redshift.conf`

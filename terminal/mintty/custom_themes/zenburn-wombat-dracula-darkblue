@@ -1,0 +1,31 @@
+BackgroundColour=63,63,63
+ForegroundColour=220,220,204
+CursorColour=255,102,255
+Black=63,63,63
+BoldBlack=127,159,127
+Red=255,160,160
+BoldRed=255,160,160
+Green=149,228,84
+BoldGreen=149,228,84
+
+# Zenburn
+#Yellow=255,207,175
+#BoldYellow=227,206,171
+
+# Dracula
+#Yellow=241,250,140
+#BoldYellow=241,250,140
+
+# Jellybeans
+#Yellow=255,185,100
+Yellow=250,208,122
+BoldYellow=250,208,122
+
+Blue=136,184,246
+BoldBlue=136,184,246
+Magenta=255,146,208
+BoldMagenta=255,146,208
+Cyan=139,233,253
+BoldCyan=139,233,253
+White=220,220,204
+BoldWhite=255,255,255
