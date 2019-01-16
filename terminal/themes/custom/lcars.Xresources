@@ -1,0 +1,29 @@
+!! - SW - 24/02/2018 -
+!! Lcars (colours from lcars.net)
+! Foreground lilac, green orange
+*foreground: #F8F8F2
+*background: #242424
+! black
+*color0:     #000000
+*color8:     #4D4D4D
+! red
+*color1: #CC6666
+*color9: #CC6666
+! green
+*color2: #FF9966
+*color10: #FF9966
+! yellow
+*color3: #FFCC99
+*color11: #FFCC99
+! blue
+*color4: #9999CC
+*color12: #9999CC
+! magenta
+*color5: #CC6699
+*color13: #CC6699
+! cyan
+*color6: #CC99CC
+*color14: #CC99CC
+! white
+*color7:     #E6E6E6
+*color15:    #BFBFBF

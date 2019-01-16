@@ -1,0 +1,22 @@
+# - SW - 21/02/2018 - jellybeans.vim
+# Jellybeans (#303030)
+BackgroundColour=48,48,48
+ForegroundColour=232,232,211
+CursorColour=255,102,255
+Black=48,48,48
+BoldBlack=136,136,136
+Red=207,106,76
+BoldRed=207,106,76
+Green=121,157,106
+BoldGreen=153,173,106
+Yellow=255,185,100
+BoldYellow=250,208,122
+Blue=129,151,191
+BoldBlue=129,151,191
+Magenta=198,182,238
+BoldMagenta=198,182,238
+Cyan=143,191,220
+BoldCyan=143,191,220
+White=232,232,211
+BoldWhite=173,173,173
+
