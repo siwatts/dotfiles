@@ -8,6 +8,7 @@ let use_base16_theme=0
 let use_theme_of_the_day=0
 let use_random_theme=0
 let use_transparent_bg=0
+let use_white_gui_bg=0
 let use_truecolor=0
 
 let g:dark_theme='jellybeans'
@@ -19,10 +20,18 @@ let g:light_theme='gruvbox'
 
 " Use the terminal themes if not set.
 if !exists("g:dark_gui_theme")
-    let g:dark_gui_theme=g:dark_theme
+    if exists("g:dark_theme_truecolor")
+        let g:dark_gui_theme=g:dark_theme_truecolor
+    else
+        let g:dark_gui_theme=g:dark_theme
+    endif
 endif
 if !exists("g:light_gui_theme")
-    let g:light_gui_theme=g:light_theme
+    if exists("g:light_theme_truecolor")
+        let g:light_gui_theme=g:light_theme_truecolor
+    else
+        let g:light_gui_theme=g:light_theme
+    endif
 endif
 
 " ====================
@@ -141,20 +150,47 @@ syntax on
 let g:jellybeans_overrides = {
 \   'Statement': { '256ctermfg': '104' }
 \}
-" TermColours:
-"\   'LineNr': { '256ctermfg': '8' },
-"\   'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+" AltTermColours:
+"\    'Normal': { '256ctermfg': '7' },
+"\    'SpecialKey': { '256ctermfg': '112', '256ctermbg':'16' }, " desert256
+"\    'Visual': { '256ctermbg': '18' }, " blue
+"\    'Visual': { '256ctermbg': '53' }, " purple
+"\    'Comment': { '256ctermfg': '103' }, " dracula 256 approx comment
+" BrightTermColours:
 "let g:jellybeans_overrides = {
-"\   'Comment': { '256ctermfg': '8' },
-"\   'Normal': { '256ctermfg': '7' },
-"\   'Constant': { '256ctermfg': '1' },
-"\   'Identifier': { '256ctermfg': '5' },
-"\   'Statement': { '256ctermfg': '4' },
-"\   'PreProc': { '256ctermfg': '6' },
-"\   'Type': { '256ctermfg': '3' },
-"\   'Special': { '256ctermfg': '2' },
-"\   'Function': { '256ctermfg': '11' },
-"\   'String': { '256ctermfg': '10' },
+"\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
+"\    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+"\    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\    'Comment': { '256ctermfg': '8' },
+"\    'Constant': { '256ctermfg': '9' },
+"\    'Identifier': { '256ctermfg': '13' },
+"\    'Statement': { '256ctermfg': '12' },
+"\    'PreProc': { '256ctermfg': '14' },
+"\    'Type': { '256ctermfg': '3' },
+"\    'Special': { '256ctermfg': '2' },
+"\    'Function': { '256ctermfg': '11' },
+"\    'String': { '256ctermfg': '10' },
+"\    'Structure': { '256ctermfg': '14' },
+"\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+"\    'Visual': { '256ctermbg': '52' },
+"\}
+" TermColours:
+"let g:jellybeans_overrides = {
+"\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
+"\    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+"\    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+"\    'Comment': { '256ctermfg': '8' },
+"\    'Constant': { '256ctermfg': '1' },
+"\    'Identifier': { '256ctermfg': '5' },
+"\    'Statement': { '256ctermfg': '4' },
+"\    'PreProc': { '256ctermfg': '6' },
+"\    'Type': { '256ctermfg': '3' },
+"\    'Special': { '256ctermfg': '2' },
+"\    'Function': { '256ctermfg': '11' },
+"\    'String': { '256ctermfg': '10' },
+"\    'Structure': { '256ctermfg': '6' },
+"\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+"\    'Visual': { '256ctermbg': '52' },
 "\}
 
 "" Darkblue256:
@@ -206,7 +242,8 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         set background=dark
 
         " Dark specific customisations
-        hi LineNr ctermfg=8
+        "hi LineNr ctermfg=8
+        hi LineNr ctermfg=4
         hi Search ctermfg=0 ctermbg=2 cterm=NONE
         hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
         hi PMenu ctermfg=7 ctermbg=8
@@ -237,6 +274,10 @@ autocmd ColorScheme * call SetCustomDiff(use_dark_theme)
 " Make bg transparent whenever colorscheme applied.
 if exists("use_transparent_bg") && use_transparent_bg && !has("gui_running")
     autocmd ColorScheme * hi Normal ctermbg=NONE | hi LineNr ctermbg=NONE
+endif
+
+if exists("use_white_gui_bg") && use_white_gui_bg && has("gui_running") && exists("use_dark_gui_theme") && !use_dark_gui_theme
+    autocmd ColorScheme * hi Normal guibg=#FFFFFF
 endif
 
 "" PaperColor:
@@ -357,6 +398,7 @@ if has("gui_running")
         "set guifont=Courier10\ BT:h11
         "set guifont=Terminus:h12
         "set guifont=Hack:h10
+        "set guifont=Anonymous_Pro:h11
     elseif has("unix")
         " Or for Linux / Cygwin
         set guifont=Monospace\ 10
@@ -596,18 +638,22 @@ nmap n nzz
 nmap N Nzz
 
 " Insert time.
-nmap <F2> "=strftime("%H:%M:%S")<CR>p
-imap <F2> <C-R>=strftime("%H:%M:%S")<CR>
-nmap <Leader><F2> "=strftime("%H:%M")<CR>p
-imap <Leader><F2> <C-R>=strftime("%H:%M")<CR>
+nmap <F2> "=strftime("%H:%M")<CR>p
+imap <F2> <C-R>=strftime("%H:%M")<CR>
+" With seconds.
+nmap <Leader><F2> "=strftime("%H:%M:%S")<CR>p
+imap <Leader><F2> <C-R>=strftime("%H:%M:%S")<CR>
 " Insert datetime.
 nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
 imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
-" On a new line.
-nmap <Leader><F3> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
 " With seconds.
-nmap <F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
-imap <F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
+nmap <Leader><F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
+imap <Leader><F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
+" On a new line.
+nmap <F4> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
+imap <F4> <ESC>0i-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<CR>
+" Start of day.
+nmap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 " Javascript format datetime.
 nmap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
 imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>

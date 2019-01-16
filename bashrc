@@ -25,13 +25,13 @@ git_prompt () {
         # Get the status:
         if [ -n "$(git status --porcelain)" ]; then
             # Working tree dirty
-            echo -e " (\001\033[0;31m\002$BRANCH\001\033[00m\002)" # Red
-            #echo -e " (\001\033[0;35m\002$BRANCH\001\033[00m\002)" # Magenta
+            echo -e " (\001\033[01;31m\002$BRANCH\001\033[00m\002)" # Red
+            #echo -e " (\001\033[01;35m\002$BRANCH\001\033[00m\002)" # Magenta
             #echo -e " ($BRANCH)*" # No colour
         else
             # Working tree clean
-            echo -e " (\001\033[0;32m\002$BRANCH\001\033[00m\002)" # Green
-            #echo -e " (\001\033[0;33m\002$BRANCH\001\033[00m\002)" # Yellow
+            echo -e " (\001\033[01;32m\002$BRANCH\001\033[00m\002)" # Green
+            #echo -e " (\001\033[01;33m\002$BRANCH\001\033[00m\002)" # Yellow
             #echo -e " ($BRANCH)" # No colour
         fi
     fi
@@ -119,7 +119,7 @@ if [ "$color_prompt" = yes ]; then
     #export PS1='\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\$ '
 
     ## Win-bash style
-    export PS1='\[\033[0;32m\]\u@\h \[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+    export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
     ## Actual win-bash
     #export PS1='\n\[\033[0;32m\]\u@\h \[\033[0;33m\]\w\[\033[00m\]$(git_prompt)\n\$ '
 
@@ -133,13 +133,13 @@ else
     #export PS1='\u@\h:\w\$ '
 
     ## Win-bash style
-    #export PS1='\u@\h \w\n\$ '
+    export PS1='\u@\h \w\n\$ '
 
     ## Fedora style
     #export PS1='[\u@\h \W]\$ '
 
     ## Xubuntu original
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -185,4 +185,6 @@ cdll()
 {
     cd "$@" && ls -al;
 }
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
