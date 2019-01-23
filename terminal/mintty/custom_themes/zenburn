@@ -22,15 +22,9 @@ BoldGreen=130,162,130
 Yellow=239,239,143
 BoldYellow=239,239,143
 
-## Statement
-#Blue=227,206,171
-# Preproc
-Blue=255,207,175
-
-## Conditional
-#BoldBlue=240,223,175
-# Statement
-BoldBlue=227,206,171
+# Jellybeans
+Blue=129,151,191
+BoldBlue=129,151,191
 
 Magenta=192,190,209
 BoldMagenta=192,190,209

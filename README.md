@@ -411,3 +411,13 @@ hi DiffText     ctermfg=NONE ctermbg=53  cterm=NONE  guifg=NONE      guibg=#7318
 hi DiffChange   ctermfg=NONE ctermbg=237 cterm=NONE  guifg=NONE      guibg=#382a37   gui=NONE
 ```
 
+## Pycharm
+
+- Import existing settings (including some imported colourschemes) under File,
+  Import Settings.
+- Import `.icls` colourschemes by making directory `~/.pycharm/config/colors/`
+  and placing here? Or import colourscheme within the File, Settings, Editor,
+  Color Scheme menu? (Test this)
+- Some colourschemes (`.jar` or `.jar.zip` usually) must be imported by going
+  File, Import Settings, instead of the Color Scheme import method.
+

@@ -1,25 +1,25 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Shell script generated from file ../../themes/custom/zenburn.Xresources
+# Shell script generated from file ../../themes/extra/twilight.Xresources
 
-color_foreground="dc/dc/cc"
-color_background="3f/3f/3f"
-color00="3f/3f/3f"
-color08="8f/8f/8f"
-color01="cc/93/93"
-color09="dc/a3/a3"
-color02="7f/9f/7f"
-color10="82/a2/82"
-color03="ef/ef/8f"
-color11="ef/ef/8f"
-color04="81/97/bf"
-color12="81/97/bf"
-color05="c0/be/d1"
-color13="c0/be/d1"
-color06="8c/d0/d3"
-color14="8c/d0/d3"
-color07="dc/dc/cc"
+color_foreground="e8/e8/d3"
+color_background="1e/1e/1e"
+color00="1e/1e/1e"
+color08="5f/5a/60"
+color01="cf/6a/4c"
+color09="cf/6a/4c"
+color02="8f/9d/6a"
+color10="8f/9d/6a"
+color03="f9/ee/98"
+color11="f9/ee/98"
+color04="75/87/a6"
+color12="75/87/a6"
+color05="9b/85/9d"
+color13="9b/85/9d"
+color06="af/c4/db"
+color14="af/c4/db"
+color07="e8/e8/d3"
 color15="ff/ff/ff"
 
 # Restore colors 16-21 to pre-base16 values.

@@ -3,29 +3,29 @@
 ! hard contrast: *background: #212121
 *foreground: #dcdccc
 ! Black + DarkGrey
-*color0:  #212121
-*color8:  #5b605e
+*color0:  #3f3f3f
+*color8:  #8f8f8f
 ! DarkRed + Red
-!*color1:  #cc9393
-*color1:  #dca3a3
+*color1:  #cc9393
+!*color1:  #dca3a3
 *color9:  #dca3a3
 ! DarkGreen + Green
-!*color2:  #7f9f7f
-*color2:  #82a282
+*color2:  #7f9f7f
+!*color2:  #82a282
 *color10: #82a282
 ! DarkYellow + Yellow
 *color3:  #efef8f
 *color11: #efef8f
-! DarkBlue + Blue
-*color4:  #8cd0d3
-*color12: #8cd0d3
+! DarkBlue + Blue, from Jellybeans.vim
+*color4:  #8197bf
+*color12: #8197bf
 ! DarkMagenta + Magenta
 *color5:  #c0bed1
 *color13: #c0bed1
 ! DarkCyan + Cyan
-*color6:  #f0dfaf
-*color14: #f0dfaf
+*color6:  #8cd0d3
+*color14: #8cd0d3
 ! LightGrey + White
-*color7:  #dfdfdf
-*color15: #dfe4cf
+*color7:  #dcdccc
+*color15: #ffffff
 
