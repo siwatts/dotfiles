@@ -128,8 +128,18 @@ Change xfce appearance theme with bash:
     - `pactl set-sink-volume 0 -5%`
     - `pactl set-sink-mute 0 toggle`
 
+Replace xscreensaver with light-locker:
+- `sudo dnf install light-locker` (or your package manager here).
+- `xfconf-query -c xfce4-session -p /general/LockCommand -s "dm-tool lock" --create -t string`
+- Can further configure in Power Manager, Security tab.
+- Requires a reboot to fully take effect. Should not be able to switch tty to
+  get back to active desktop after a reboot.
+- Lock command for `xflock4` is defined in `/usr/bin/xflock4`. The file reads
+  from the xfce setting set by `xfconf-query` above but you can also manually
+  set it here (append `light-locker-command --lock` or `dm-tool lock` to the
+  list of commands to try)
+
 ## Future
 
-- How to replace `xscreensaver` with `light-locker`.
 - Using compton, and a config file.
 
