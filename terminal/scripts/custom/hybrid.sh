@@ -4,8 +4,8 @@
 # Shell script generated from file ../../themes/custom/hybrid.Xresources
 
 color_foreground="00/00/00"
-color_background="e4/e4/e4"
-color00="ee/ee/ee"
+color_background="ff/ff/ff"
+color00="ff/ff/ff"
 color08="92/83/74"
 color01="5f/00/00"
 color09="5f/00/00"
@@ -19,8 +19,8 @@ color05="5f/00/5f"
 color13="5f/00/5f"
 color06="00/5f/5f"
 color14="00/5f/5f"
-color07="3c/38/36"
-color15="7c/6f/64"
+color07="00/00/00"
+color15="3c/38/36"
 
 # Restore colors 16-21 to pre-base16 values.
 color16="00/00/00"

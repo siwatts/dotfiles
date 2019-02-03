@@ -1,10 +1,10 @@
 ! - SW - 21/02/18 - Colours from hybrid.vim
 ! Hybrid light
-*background:  #e4e4e4
+*background:  #ffffff
 *foreground:  #000000
 !*cursorColor: #5f87af
 ! Black + DarkGrey
-*color0:  #eeeeee
+*color0:  #ffffff
 *color8:  #928374
 ! DarkRed + Red
 *color1:  #5f0000
@@ -25,6 +25,6 @@
 *color6:  #005f5f
 *color14: #005f5f
 ! LightGrey + White
-*color7:  #3c3836
-*color15: #7c6f64
+*color7:  #000000
+*color15: #3c3836
 
