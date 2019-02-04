@@ -188,3 +188,6 @@ cdll()
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Cygwin attach to running X11 server
+#export DISPLAY=:0
+
