@@ -308,6 +308,8 @@ Twilight256.vim
     - `call <SID>X("Constant", "d08356", "", "")`
 - Uncomment `FoldColumn` and `Folded` for gui.
 - Remove bold in gui by adding `none` to `Statement` and `Type`.
+- Nicer looking parentheses matching:
+    - `call <SID>X("MatchParen", "", "000000", "reverse")`
 
 Desert256.vim
 - Set background colour by changing hex value and letting 256 converter generate 256 equivalent.
