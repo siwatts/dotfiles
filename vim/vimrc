@@ -147,8 +147,13 @@ syntax on
 "\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
 "\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
 "\}
+"let g:jellybeans_overrides = {
+"\   'Statement': { '256ctermfg': '104' }
+"\}
+" BrighterBlues:
 let g:jellybeans_overrides = {
-\   'Statement': { '256ctermfg': '104' }
+\   'Statement': { '256ctermfg': '110' },
+\   'PreProc': { '256ctermfg': '152' }
 \}
 " AltTermColours:
 "\    'Normal': { '256ctermfg': '7' },
@@ -308,6 +313,7 @@ let g:zenburn_old_Visual=1
 "let g:solarized_termcolors=256
 
 let g:jellybeans_use_gui_italics = 0
+let g:twilight_term_use_gui_italics = 0
 let g:gruvbox_italic = 0
 
 "let g:gruvbox_contrast_light='soft'
