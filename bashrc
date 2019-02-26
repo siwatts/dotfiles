@@ -188,6 +188,14 @@ cdll()
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Hide stdout & stderr for some common programs when invoking through terminal.
+alias thunar='thunar &> /dev/null'
+alias nautilus='nautilus &> /dev/null'
+alias gvim='gvim &> /dev/null'
+alias code='code &> /dev/null'
+alias codeblocks='codeblocks &> /dev/null'
+alias geany='geany &> /dev/null'
+
 # Cygwin attach to running X11 server
 #export DISPLAY=:0
 

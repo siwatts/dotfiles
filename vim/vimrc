@@ -275,7 +275,7 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
 endfunction
 
 " Apply custom diff whenever a colorscheme is applied.
-autocmd ColorScheme * call SetCustomDiff(use_dark_theme)
+autocmd ColorScheme * call SetCustomDiff((has("gui_running") && use_dark_gui_theme) || (!has("gui_running") && use_dark_theme))
 " Make bg transparent whenever colorscheme applied.
 if exists("use_transparent_bg") && use_transparent_bg && !has("gui_running")
     autocmd ColorScheme * hi Normal ctermbg=NONE | hi LineNr ctermbg=NONE
@@ -374,6 +374,7 @@ else
                 color darkblue
             else
                 color default
+                set background=light
             endif
         else
             if exists("use_dark_theme")
@@ -451,7 +452,7 @@ else
     " ==================== Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
     " ==================== Dark ====================
-    let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight256', 'wombat256mod', 'zenburn' ]
+    let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 endif
 
 function! RandomiseTheme(schemes)
