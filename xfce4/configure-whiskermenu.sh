@@ -20,7 +20,8 @@ for FILE in ~/.config/xfce4/panel/whiskermenu-*.rc ; do
         sed -i 's/^category-icon-size=.*$/category-icon-size=2/' $FILE
         sed -i 's/^menu-width=.*$/menu-width=550/' $FILE
         #sed -i 's/^menu-height=.*$/menu-height=900/' $FILE
-        sed -i 's/^menu-height=.*$/menu-height=700/' $FILE
+        #sed -i 's/^menu-height=.*$/menu-height=700/' $FILE
+        sed -i 's/^menu-height=.*$/menu-height=500/' $FILE
         sed -i 's/^menu-opacity=.*$/menu-opacity=100/' $FILE
         #sed -i 's/^position-search-alternate=.*$/position-search-alternate=true/' $FILE
         #sed -i 's/^position-commands-alternate=.*$/position-commands-alternate=true/' $FILE
