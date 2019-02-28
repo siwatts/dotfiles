@@ -278,7 +278,7 @@ endfunction
 autocmd ColorScheme * call SetCustomDiff((has("gui_running") && use_dark_gui_theme) || (!has("gui_running") && use_dark_theme))
 " Make transparent to terminal bg/fg colours whenever colorscheme applied.
 if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-    autocmd ColorScheme * hi Normal ctermfg=NONE ctermbg=NONE | hi LineNr ctermbg=NONE
+    autocmd ColorScheme * hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
 endif
 
 if exists("use_white_gui_bg") && use_white_gui_bg && has("gui_running") && exists("use_dark_gui_theme") && !use_dark_gui_theme
@@ -504,13 +504,13 @@ if exists("use_custom_theme") && use_custom_theme && (has("gui_running") || ( $T
     if exists("use_random_theme") && use_random_theme
         if exists("use_dark_theme") && use_dark_theme
             if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-                autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE | hi LineNr ctermbg=NONE
+                autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
             else
                 autocmd VimEnter * set background=dark | call RandomiseTheme(g:schemes_dark) | call SetCustomDiff(use_dark_theme)
             endif
         else
             if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-                autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE | hi LineNr ctermbg=NONE
+                autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
             else
                 autocmd VimEnter * set background=light | call RandomiseTheme(g:schemes_light) | call SetCustomDiff(use_dark_theme)
             endif
@@ -518,13 +518,13 @@ if exists("use_custom_theme") && use_custom_theme && (has("gui_running") || ( $T
     elseif exists("use_theme_of_the_day") && use_theme_of_the_day
         if ( has("gui_running") && exists("use_dark_gui_theme") && use_dark_gui_theme ) || ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
             if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-                autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE | hi LineNr ctermbg=NONE
+                autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
             else
                 autocmd VimEnter * set background=dark | call RandomiseThemeByDay(g:schemes_dark) | call SetCustomDiff(use_dark_theme)
             endif
         else
             if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-                autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE | hi LineNr ctermbg=NONE
+                autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff(use_dark_theme) | hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
             else
                 autocmd VimEnter * set background=light | call RandomiseThemeByDay(g:schemes_light) | call SetCustomDiff(use_dark_theme)
             endif
