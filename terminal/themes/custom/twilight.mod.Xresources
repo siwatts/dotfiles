@@ -1,11 +1,12 @@
 ! https://terminal.sexy/
+! Modified with twilight.vim bg + yellow
 ! special
 *foreground:   #e8e8d3
-*background:   #1e1e1e
+*background:   #1a1a1a
 !*cursorColor:  #a7a7a7
 
 ! black
-*color0:       #1e1e1e
+*color0:       #1a1a1a
 *color8:       #5f5a60
 
 ! red
@@ -17,8 +18,8 @@
 *color10:      #8f9d6a
 
 ! yellow
-*color3:       #f9ee98
-*color11:      #f9ee98
+*color3:       #e3d796
+*color11:      #e3d796
 
 ! blue
 *color4:       #7587a6

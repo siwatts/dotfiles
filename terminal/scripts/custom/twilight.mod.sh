@@ -1,26 +1,26 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Shell script generated from file ../../themes/custom/twilight256.Xresources
+# Shell script generated from file ../../themes/extra/twilight.mod.Xresources
 
 color_foreground="e8/e8/d3"
-color_background="1c/1c/1c"
-color00="00/00/00"
-color08="8a/8a/8a"
+color_background="1a/1a/1a"
+color00="1a/1a/1a"
+color08="5f/5a/60"
 color01="cf/6a/4c"
 color09="cf/6a/4c"
 color02="8f/9d/6a"
 color10="8f/9d/6a"
-color03="f9/ee/98"
-color11="f9/ee/98"
+color03="e3/d7/96"
+color11="e3/d7/96"
 color04="75/87/a6"
 color12="75/87/a6"
-color05="a9/99/ac"
-color13="a9/99/ac"
+color05="9b/85/9d"
+color13="9b/85/9d"
 color06="af/c4/db"
 color14="af/c4/db"
-color07="cc/cc/cc"
-color15="82/82/82"
+color07="e8/e8/d3"
+color15="ff/ff/ff"
 
 # Restore colors 16-21 to pre-base16 values.
 color16="00/00/00"
