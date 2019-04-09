@@ -30,7 +30,10 @@ echo "Configuring xfce with 'xfconf-query'..."
 # =======================================================
 xfconf-query -c keyboards -p /Default/Numlock -s true
 
-echo "Unable to set keyboard shortcuts. Set these by running './diff-xfce.sh' outside of an xfce session."
+echo "Unable to set keyboard shortcuts or whisker menu settings. Set these by"
+echo "running './diff-keyboard-shortcuts.sh' and 'configure-whiskermenu.sh' outside"
+echo "of an xfce session."
+echo "Ie. reboot and run in a tty before login."
 ## =======================================================
 ## ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 ## =======================================================
