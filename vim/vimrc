@@ -11,6 +11,12 @@ let use_terminal_bg_fg=0
 let use_white_gui_bg=0
 let use_truecolor=0
 
+"" JELLYBEANS:
+let jb_twilight_colors=0
+let jb_dracula_colors=0
+let jb_terminal_colors=0
+let jb_universal_colors=1
+
 let g:dark_theme='jellybeans'
 "let g:dark_theme_truecolor='twilight'
 let g:light_theme='gruvbox'
@@ -93,6 +99,12 @@ let hlstate=0
 nnoremap <F12> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR>
 nnoremap ?? :noh<CR>
 
+" Mintty change cursor style for insert
+"let &t_ti.="\e[1 q"
+"let &t_SI.="\e[5 q"
+"let &t_EI.="\e[1 q"
+"let &t_te.="\e[0 q"
+
 " ====================
 " Colours:
 " ====================
@@ -147,38 +159,103 @@ syntax on
 "\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
 "\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
 "\}
-"let g:jellybeans_overrides = {
-"\   'Statement': { '256ctermfg': '104' }
-"\}
-" BrighterBlues:
-let g:jellybeans_overrides = {
-\   'Statement': { '256ctermfg': '110' },
-\   'PreProc': { '256ctermfg': '152' }
-\}
 " AltTermColours:
 "\    'Normal': { '256ctermfg': '7' },
 "\    'SpecialKey': { '256ctermfg': '112', '256ctermbg':'16' }, " desert256
 "\    'Visual': { '256ctermbg': '18' }, " blue
 "\    'Visual': { '256ctermbg': '53' }, " purple
 "\    'Comment': { '256ctermfg': '103' }, " dracula 256 approx comment
-" BrightTermColours:
-"let g:jellybeans_overrides = {
-"\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
-"\    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
-"\    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\    'Comment': { '256ctermfg': '8' },
-"\    'Constant': { '256ctermfg': '9' },
-"\    'Identifier': { '256ctermfg': '13' },
-"\    'Statement': { '256ctermfg': '12' },
-"\    'PreProc': { '256ctermfg': '14' },
-"\    'Type': { '256ctermfg': '3' },
-"\    'Special': { '256ctermfg': '2' },
-"\    'Function': { '256ctermfg': '11' },
-"\    'String': { '256ctermfg': '10' },
-"\    'Structure': { '256ctermfg': '14' },
-"\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
-"\    'Visual': { '256ctermbg': '52' },
-"\}
+if jb_twilight_colors
+    " Twilight:
+    let g:jellybeans_overrides = {
+    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Constant': { '256ctermfg': '1' },
+    \    'Identifier': { '256ctermfg': '4' },
+    \    'Statement': { '256ctermfg': '3' },
+    \    'StorageClass': { '256ctermfg': '3' },
+    \    'Operator': { '256ctermfg': '3' },
+    \    'Structure': { '256ctermfg': '3' },
+    \    'PreProc': { '256ctermfg': '4' },
+    \    'Type': { '256ctermfg': '11' },
+    \    'Special': { '256ctermfg': '10' },
+    \    'Function': { '256ctermfg': '5' },
+    \    'String': { '256ctermfg': '2' },
+    \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+    \    'Visual': { '256ctermbg': '52' },
+    \}
+elseif jb_dracula_colors
+    "\    'Comment': { '256ctermfg': '103' },
+    "\    'LineNr': { '256ctermfg': '103', '256ctermbg': 'none' },
+    "\    'Visual': { '256ctermbg': '88' },
+    "\    'Statement': { '256ctermfg': '13' },
+    " DraculaInspired:
+    let g:jellybeans_overrides = {
+    \    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Comment': { '256ctermfg': '8' },
+    \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
+    \    'Constant': { '256ctermfg': '4' },
+    \    'Identifier': { '256ctermfg': '7' },
+    \    'Statement': { '256ctermfg': '5' },
+    \    'PreProc': { '256ctermfg': '6' },
+    \    'Type': { '256ctermfg': '3' },
+    \    'Directory': { '256ctermfg': '3' },
+    \    'StorageClass': { '256ctermfg': '3' },
+    \    'Special': { '256ctermfg': '215' },
+    \    'Function': { '256ctermfg': '2' },
+    \    'String': { '256ctermfg': '3' },
+    \    'Structure': { '256ctermfg': '6' },
+    \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+    \    'Visual': { '256ctermbg': '52' },
+    \}
+elseif jb_terminal_colors
+    " BrightTermColours:
+    let g:jellybeans_overrides = {
+    \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
+    \    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Comment': { '256ctermfg': '8' },
+    \    'Constant': { '256ctermfg': '9' },
+    \    'Identifier': { '256ctermfg': '13' },
+    \    'Statement': { '256ctermfg': '12' },
+    \    'PreProc': { '256ctermfg': '14' },
+    \    'Type': { '256ctermfg': '3' },
+    \    'Special': { '256ctermfg': '2' },
+    \    'Function': { '256ctermfg': '11' },
+    \    'String': { '256ctermfg': '10' },
+    \    'Structure': { '256ctermfg': '14' },
+    \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+    \    'Visual': { '256ctermbg': '52' },
+    \}
+elseif jb_universal_colors
+    " UniversalTermColours:
+    let g:jellybeans_overrides = {
+    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Constant': { '256ctermfg': '9' },
+    \    'Identifier': { '256ctermfg': '13' },
+    \    'Statement': { '256ctermfg': '12' },
+    \    'PreProc': { '256ctermfg': '14' },
+    \    'Type': { '256ctermfg': '3' },
+    \    'StorageClass': { '256ctermfg': '3' },
+    \    'Special': { '256ctermfg': '2' },
+    \    'Function': { '256ctermfg': '11' },
+    \    'String': { '256ctermfg': '10' },
+    \    'Structure': { '256ctermfg': '14' },
+    \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
+    \    'Visual': { '256ctermbg': '52' },
+    \}
+else
+    "let g:jellybeans_overrides = {
+    "\   'Statement': { '256ctermfg': '104' }
+    "\}
+    " BrighterBlues:
+    let g:jellybeans_overrides = {
+    \   'Statement': { '256ctermfg': '110' },
+    \   'PreProc': { '256ctermfg': '152' }
+    \}
+endif
 " TermColours:
 "let g:jellybeans_overrides = {
 "\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
@@ -247,8 +324,7 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         set background=dark
 
         " Dark specific customisations
-        "hi LineNr ctermfg=8
-        hi LineNr ctermfg=4
+        hi LineNr ctermfg=12
         hi Search ctermfg=0 ctermbg=2 cterm=NONE
         hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
         hi PMenu ctermfg=7 ctermbg=8
@@ -278,7 +354,7 @@ endfunction
 autocmd ColorScheme * call SetCustomDiff((has("gui_running") && use_dark_gui_theme) || (!has("gui_running") && use_dark_theme))
 " Make transparent to terminal bg/fg colours whenever colorscheme applied.
 if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
-    autocmd ColorScheme * hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE | hi LineNr ctermbg=NONE guibg=NONE | hi NonText ctermbg=NONE guibg=NONE
 endif
 
 if exists("use_white_gui_bg") && use_white_gui_bg && has("gui_running") && exists("use_dark_gui_theme") && !use_dark_gui_theme
