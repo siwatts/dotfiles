@@ -10,13 +10,14 @@ color08="64/68/6c"
 color01="d0/83/56"
 color09="d0/83/56"
 color02="a2/a9/6f"
-color10="a2/a9/6f"
+# Special
+color10="c2/c9/8f"
 # Statement
 color03="ce/b6/7f"
-color11="ce/b6/7f"
+#color11="ce/b6/7f"
 # Type
 #color03="e3/d7/96"
-#color11="e3/d7/96"
+color11="e3/d7/96"
 color04="8a/95/97"
 color12="8a/95/97"
 color05="a9/99/ac"

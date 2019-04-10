@@ -14,15 +14,15 @@
 
 ! green
 *color2:       #a2a96f
-*color10:      #a2a96f
+*color10:      #c2c98f
 
 ! yellow
 *color3:       #ceb67f
-*color11:      #ceb67f
+*color11:      #e3d796
 
 ! blue
-*color4:       #7587a6
-*color12:      #7587a6
+*color4:       #8a9597
+*color12:      #8a9597
 
 ! magenta
 *color5:       #a999ac
