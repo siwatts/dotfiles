@@ -152,6 +152,48 @@ xterm*|rxvt*)
     ;;
 esac
 
+# If in a tty, change the default colours:
+if [ "$TERM" = "linux" ]; then
+    ## Dracula
+    ##echo -en "\e]P0282A36" #black
+    #echo -en "\e]P0000000" #black
+    #echo -en "\e]P86272A4" #darkgrey
+    #echo -en "\e]P1FF5555" #darkred
+    #echo -en "\e]P9FF6E67" #red
+    #echo -en "\e]P250FA7B" #darkgreen
+    #echo -en "\e]PA5AF78E" #green
+    #echo -en "\e]P3F1FA8C" #brown
+    #echo -en "\e]PBF4F99D" #yellow
+    #echo -en "\e]P4BD93F9" #darkblue
+    #echo -en "\e]PCCAA9FA" #blue
+    #echo -en "\e]P5FF79C6" #darkmagenta
+    #echo -en "\e]PDFF92D0" #magenta
+    #echo -en "\e]P68BE9FD" #darkcyan
+    #echo -en "\e]PE9AEDFE" #cyan
+    #echo -en "\e]P7F8F8F2" #lightgrey
+    #echo -en "\e]PFBFBFBF" #white
+    #clear #for background artifacting
+    # Jellybeans
+    #echo -en "\e]P0151515" #black
+    echo -en "\e]P0000000" #black
+    echo -en "\e]P8888888" #darkgrey
+    echo -en "\e]P1cf6a4c" #darkred
+    echo -en "\e]P9cf6a4c" #red
+    echo -en "\e]P2799d6a" #darkgreen
+    echo -en "\e]PA99ad6a" #green
+    echo -en "\e]P3ffb964" #brown
+    echo -en "\e]PBfad07a" #yellow
+    echo -en "\e]P48197bf" #darkblue
+    echo -en "\e]PC8197bf" #blue
+    echo -en "\e]P5c6b6ee" #darkmagenta
+    echo -en "\e]PDc6b6ee" #magenta
+    echo -en "\e]P68fbfdc" #darkcyan
+    echo -en "\e]PE8fbfdc" #cyan
+    echo -en "\e]P7e8e8d3" #lightgrey
+    echo -en "\e]PFadadad" #white
+    clear #for background artifacting
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
