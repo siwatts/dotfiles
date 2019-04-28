@@ -170,24 +170,22 @@ XTerm*cursorColor: #ff66ff
 XTerm*cursorColor2: #000000
 
 ! Apply a default colourscheme:
-! Dracula Magenta Theme (https://github.com/dracula/dracula-theme)
-! Dracula Xresources palette (https://github.com/dracula/xresources)
-! Swap red for magenta, magenta for orange.
-! Swap bright black for comment colour.
+! https://github.com/dracula/xresources
+! Dracula Xresources palette
 *foreground: #F8F8F2
 *background: #282A36
 *color0:     #000000
 *color8:     #6272A4
-*color1:     #FF79C6
-*color9:     #FF92D0
+*color1:     #FF5555
+*color9:     #FF6E67
 *color2:     #50FA7B
 *color10:    #5AF78E
 *color3:     #F1FA8C
 *color11:    #F4F99D
 *color4:     #BD93F9
 *color12:    #CAA9FA
-*color5:     #FFB86C
-*color13:    #FFB86C
+*color5:     #FF79C6
+*color13:    #FF92D0
 *color6:     #8BE9FD
 *color14:    #9AEDFE
 *color7:     #F8F8F2

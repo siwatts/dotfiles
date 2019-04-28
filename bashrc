@@ -171,28 +171,54 @@ if [ "$TERM" = "linux" ]; then
     #echo -en "\e]P68BE9FD" #darkcyan
     #echo -en "\e]PE9AEDFE" #cyan
     #echo -en "\e]P7F8F8F2" #lightgrey
-    #echo -en "\e]PFBFBFBF" #white
+    #echo -en "\e]PFFFFFFF" #white
     #clear #for background artifacting
-    # Jellybeans
-    #echo -en "\e]P0151515" #black
+    ## Jellybeans
+    ##echo -en "\e]P0151515" #black
+    #echo -en "\e]P0000000" #black
+    #echo -en "\e]P8888888" #darkgrey
+    #echo -en "\e]P1cf6a4c" #darkred
+    #echo -en "\e]P9cf6a4c" #red
+    #echo -en "\e]P2799d6a" #darkgreen
+    #echo -en "\e]PA99ad6a" #green
+    #echo -en "\e]P3ffb964" #brown
+    #echo -en "\e]PBfad07a" #yellow
+    #echo -en "\e]P48197bf" #darkblue
+    #echo -en "\e]PC8197bf" #blue
+    #echo -en "\e]P5c6b6ee" #darkmagenta
+    #echo -en "\e]PDc6b6ee" #magenta
+    #echo -en "\e]P68fbfdc" #darkcyan
+    #echo -en "\e]PE8fbfdc" #cyan
+    #echo -en "\e]P7e8e8d3" #lightgrey
+    #echo -en "\e]PFffffff" #white
+    #clear #for background artifacting
+    # Tango
     echo -en "\e]P0000000" #black
-    echo -en "\e]P8888888" #darkgrey
-    echo -en "\e]P1cf6a4c" #darkred
-    echo -en "\e]P9cf6a4c" #red
-    echo -en "\e]P2799d6a" #darkgreen
-    echo -en "\e]PA99ad6a" #green
-    echo -en "\e]P3ffb964" #brown
-    echo -en "\e]PBfad07a" #yellow
-    echo -en "\e]P48197bf" #darkblue
-    echo -en "\e]PC8197bf" #blue
-    echo -en "\e]P5c6b6ee" #darkmagenta
-    echo -en "\e]PDc6b6ee" #magenta
-    echo -en "\e]P68fbfdc" #darkcyan
-    echo -en "\e]PE8fbfdc" #cyan
-    echo -en "\e]P7e8e8d3" #lightgrey
-    echo -en "\e]PFadadad" #white
+    echo -en "\e]P8555753" #darkgrey
+    echo -en "\e]P1cc0000" #darkred
+    echo -en "\e]P9ef2929" #red
+    echo -en "\e]P24e9a06" #darkgreen
+    echo -en "\e]PA8ae234" #green
+    echo -en "\e]P3c4a000" #brown
+    echo -en "\e]PBfce94f" #yellow
+    echo -en "\e]P43465a4" #darkblue
+    echo -en "\e]PC739fcf" #blue
+    echo -en "\e]P575507b" #darkmagenta
+    echo -en "\e]PDad7fa8" #magenta
+    echo -en "\e]P606989a" #darkcyan
+    echo -en "\e]PE34e2e2" #cyan
+    echo -en "\e]P7d3d7cf" #lightgrey
+    echo -en "\e]PFeeeeec" #white
     clear #for background artifacting
 fi
+## Alternatively, use whatever is in ~/.Xresources
+#if [ "$TERM" = "linux" ]; then
+#    _SEDCMD='s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p'
+#    for i in $(sed -n "$_SEDCMD" $HOME/.Xresources | awk '$1 < 16 {printf "\\e]P%X%s", $1, $2}'); do
+#        echo -en "$i"
+#    done
+#    clear
+#fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

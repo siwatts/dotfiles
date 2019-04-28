@@ -293,10 +293,10 @@ function! SetCustomDiff(use_dark_theme)
         "hi DiffChange   ctermfg=NONE    ctermbg=5   cterm=NONE  term=bold
         "hi DiffText     ctermfg=NONE    ctermbg=1   cterm=bold  term=reverse
         " A better 16 color custom diff:
-        hi DiffAdd      ctermfg=7       ctermbg=1   cterm=bold  term=bold
-        hi DiffDelete   ctermfg=0       ctermbg=4   cterm=NONE  term=bold
-        hi DiffChange   ctermfg=7       ctermbg=5   cterm=bold  term=bold
-        hi DiffText     ctermfg=7       ctermbg=1   cterm=bold  term=reverse
+        hi DiffAdd      ctermfg=7       ctermbg=1   cterm=NONE  term=bold
+        hi DiffDelete   ctermfg=0       ctermbg=5   cterm=NONE  term=bold
+        hi DiffChange   ctermfg=7       ctermbg=4   cterm=NONE  term=bold
+        hi DiffText     ctermfg=7       ctermbg=1   cterm=NONE  term=reverse
     elseif !a:use_dark_theme
         hi DiffAdd      guifg=NONE      guibg=#D7FFAF   ctermfg=NONE    ctermbg=193  gui=NONE     cterm=NONE
         hi DiffDelete   guifg=#000000   guibg=#FFD7FF   ctermfg=16      ctermbg=225  gui=NONE     cterm=NONE
@@ -330,7 +330,7 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         hi PMenuSel ctermfg=0 ctermbg=7
         " Replace red/green/blue with their terminal equivalents:
         if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
-            # Seems like tty needs to set brights using bold attribute.
+            " Seems like tty needs to set brights using bold attribute.
             hi LineNr ctermfg=4 cterm=bold
             hi PreProc ctermfg=4 cterm=bold
             hi Type ctermfg=2 cterm=bold
