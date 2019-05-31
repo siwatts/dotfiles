@@ -36,6 +36,24 @@ Stop laptop suspend on lid close:
 - `sudo vim /etc/systemd/logind.conf`
     - `HandleLidSwitch=ignore`
 
+## Creating bootable USB drive
+
+Write `.iso` to usb drive using `dd` raw byte copy command. **This will wipe
+whatever output destination you choose so be careful.** Instructions presented
+here for reference only.
+
+```
+# Identify usb drive.
+sudo -i fdisk -l
+
+# Unmount drive. Eg. if /dev/sdb
+umount /dev/sdb
+
+# Navigate to loc. of .iso.
+# Copy to drive
+sudo dd bs=4M if=xubuntu-18.04.2-desktop-amd64.iso of=/dev/sdb
+```
+
 ## Display Managers
 
 - Start an X session directly with `startx`, this will execute whatever is in
