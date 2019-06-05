@@ -787,8 +787,11 @@ imap <F4> <ESC>0i-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-
 " Start of day.
 nmap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 " Javascript format datetime.
-nmap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
+"nmap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
 imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
+
+" Save and execute currently open buffer:
+nmap <F5> :w<CR>:!./%<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A

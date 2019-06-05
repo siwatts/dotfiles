@@ -1,0 +1,8 @@
+imap jk <Esc>
+imap kj <Esc>
+nnoremap Y y$
+nmap n nzz
+nmap N Nzz
+
+set timeoutlen=250
+

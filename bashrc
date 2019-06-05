@@ -240,6 +240,7 @@ alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.txt"
+alias view="vim -MR"
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -253,6 +254,8 @@ cdll()
 {
     cd "$@" && ls -al;
 }
+
+alias gitlog='git log --all --graph --pretty --decorate'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
