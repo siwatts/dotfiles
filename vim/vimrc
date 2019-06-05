@@ -168,7 +168,7 @@ syntax on
 if jb_twilight_colors
     " Twilight:
     let g:jellybeans_overrides = {
-    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none', 'ctermfg': 'none', '256ctermfg': 'none' },
     \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'Constant': { '256ctermfg': '1' },
     \    'Identifier': { '256ctermfg': '4' },
@@ -178,6 +178,7 @@ if jb_twilight_colors
     \    'Structure': { '256ctermfg': '3' },
     \    'PreProc': { '256ctermfg': '4' },
     \    'Type': { '256ctermfg': '11' },
+    \    'Directory': { '256ctermfg': '3' },
     \    'Special': { '256ctermfg': '10' },
     \    'Function': { '256ctermfg': '5' },
     \    'String': { '256ctermfg': '2' },
@@ -191,7 +192,7 @@ elseif jb_dracula_colors
     "\    'Statement': { '256ctermfg': '13' },
     " DraculaInspired:
     let g:jellybeans_overrides = {
-    \    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none', 'ctermfg': 'none', '256ctermfg': 'none' },
     \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'Comment': { '256ctermfg': '8' },
     \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
@@ -207,13 +208,13 @@ elseif jb_dracula_colors
     \    'String': { '256ctermfg': '3' },
     \    'Structure': { '256ctermfg': '6' },
     \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
-    \    'Visual': { '256ctermbg': '52' },
+    \    'Visual': { '256ctermbg': '60', '256ctermfg': '231' },
     \}
 elseif jb_terminal_colors
     " BrightTermColours:
     let g:jellybeans_overrides = {
     \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
-    \    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'Comment': { '256ctermfg': '8' },
     \    'Constant': { '256ctermfg': '9' },
@@ -221,6 +222,7 @@ elseif jb_terminal_colors
     \    'Statement': { '256ctermfg': '12' },
     \    'PreProc': { '256ctermfg': '14' },
     \    'Type': { '256ctermfg': '3' },
+    \    'StorageClass': { '256ctermfg': '3' },
     \    'Special': { '256ctermfg': '2' },
     \    'Function': { '256ctermfg': '11' },
     \    'String': { '256ctermfg': '10' },
@@ -231,7 +233,7 @@ elseif jb_terminal_colors
 elseif jb_universal_colors
     " UniversalTermColours:
     let g:jellybeans_overrides = {
-    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
     \    'Constant': { '256ctermfg': '9' },
     \    'Identifier': { '256ctermfg': '13' },
