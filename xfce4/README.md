@@ -112,6 +112,27 @@ plugin `xfce4-genmon-plugin`.
   font etc.)
     - [panelclock.sh](../bin/panelclock.sh).
 
+## Super to WhiskerMenu
+
+You can use the left and right super keys to open the whisker menu, while still
+keeping the Super+Other shortcuts active (which won't happen if it is just
+mapped in the Xfce4 keyboard shortcuts).
+
+These instructions assume that currently `Super+A` is used to open the
+whiskermenu (as would have been mapped using the xfce configuration files in
+this repository). Replace this with whichever shortcut is set.
+
+- Install xcape
+    - eg. `sudo apt install -y xcape` on Ubuntu.
+- Make an `Application Autostart` command under `Session and Startup`:
+    - `Super to WhiskerMenu xcape`
+    - `Map left and right super keys to open whisker menu using xcape`
+    - `xcape -e 'Super_L=Super_L|A;Super_R=Super_R|A'`
+
+For some reason it didn't like `Super_L` and `Super_R` both being mapped to
+`Super_L|A`, but in xfce both `Super_L+A` and `Super_R+A` are mapped so they can
+have one each.
+
 ## Other
 
 Xfwm4 can be replaced with openbox [as detailed here](../openbox/README.md).

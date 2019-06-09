@@ -184,6 +184,21 @@ set CHERE_INVOKING=1 & %ConEmuDrive%\cygwin64\bin\bash.exe --login -i
 -new_console:C:"%ConEmuDrive%\cygwin64\Cygwin.ico"
 ```
 
+## Fonts
+
+- `.ttf`, `.otf` into font location, then rebuild font cache.
+- Local user installation:
+    - `~/.fonts`
+    - `fc-cache`
+- System wide installation:
+    - `/usr/share/fonts/opentype`
+    - `/usr/share/fonts/truetype`
+    - `sudo fc-cache`
+- Fonts can be placed anywhere in these folders, typically make a top level
+  directory for the font name.
+- For `Source Code Pro`, opentype only does nothing, adding truetype works.
+    - Just truetype alone may be enough?
+
 ## Vim
 
 ### Scripting vim
