@@ -51,14 +51,19 @@ set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
 set hlsearch                " Enable search highlighting.
 set ruler                   " Show some line/column information at bottom right.
 set showcmd                 " Show current partially input command at bottom of screen.
-"set showmatch               " Briefly jump to matching bracket.
+set noshowmatch             " (SET TO OFF) Briefly jump to matching bracket.
 set ignorecase              " Make searches not case sensitive when searching with / or ?.
 set smartcase               " Except if they include one or more uppercase.
 set wildmenu                " Show possible completions on tab.
+set wildmode=longest:full   " Complete longest portion of compl. common to all, full compl. displ. in wildmenu
 
 " Force utf8 encoding:
 "set encoding=utf8
 "set fileencoding=utf8
+
+" Slow connections:
+"set lazyredraw
+"set nottyfast
 
 " Splits
 set splitright
@@ -78,8 +83,12 @@ set expandtab
 "let g:netrw_winsize=75
 
 "" Show invisible characters
-"set list
+set list
 "set listchars=tab:›\ ,space:⋅,trail:¬,extends:»,precedes:«
+"set listchars=tab:🡢\ ,trail:▕,extends:»,precedes:«
+set listchars=tab:»\ ,trail:▕,extends:»,precedes:«
+"set listchars=tab:▓▒,trail:█,extends:»,precedes:«
+"set listchars=tab:▒░,trail:▒,extends:»,precedes:«
 ""eol:¬,
 
 " Indent settings. Detect filetype, or use auto & smart indent together.
@@ -350,7 +359,7 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         hi Error term=standout ctermfg=0 ctermbg=1
         hi ErrorMsg term=standout ctermfg=0 ctermbg=1
         hi Visual ctermfg=NONE ctermbg=222
-        hi LineNr ctermfg=8
+        hi LineNr ctermfg=3
         hi Search ctermfg=0 ctermbg=2 cterm=NONE
         hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
         hi PMenu ctermfg=0 ctermbg=14
@@ -737,6 +746,9 @@ nmap <Leader>m :tabe $MYVIMRC<CR>
 nmap <Leader>i :set paste!<CR>
 nmap <Leader>n :set number!<CR>
 
+nnoremap <Leader>M :set modifiable!<CR>
+nnoremap <Leader>R :set readonly!<CR>
+
 " Behaviour of y to match D, C, S etc.
 " Ie. Y yanks to end of line instead of yanking the entire line like yy.
 nnoremap Y y$
@@ -791,7 +803,10 @@ nmap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 " Save and execute currently open buffer:
-nmap <F5> :w<CR>:!./%<CR>
+"nmap <F5> :w<CR>:!./%<CR>
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.out<CR>
+autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -Wall && ./a.out<CR>
+autocmd FileType python,bash nnoremap <buffer> <F5> :w<CR>:!./%<CR>
 
 vmap <Leader>i :norm I
 vmap <Leader>a :norm A
