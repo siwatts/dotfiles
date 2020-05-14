@@ -207,12 +207,14 @@ set CHERE_INVOKING=1 & %ConEmuDrive%\cygwin64\bin\bash.exe --login -i
     - Convert files to unix style line endings: `sed -i 's/\r//g' *.py`
 
 - Execute ex commands on multiple buffers at once:
-    - `:argdo`
-    - `:bufdo`
-    - `:tabdo`
+    - `:bufdo %s/one/two/ge|write`
+    - `:tabdo %s/one/two/ge`
     - `:windo`
+    - `:argdo`
 
-- Pass in ex commands with `-c`.
+- Pass in ex commands with `-c`, or `+`.
+    - `vim file.txt +200`, go to line 200
+    - `vim file.txt +sort`
     - Vim remains open and interactive if file not closed by end of script.
     - `vim -c "g/^\s*$/d" file.txt`
     - `vim -O *list.txt -c "windo sort"`
@@ -250,9 +252,53 @@ windo diffthis
 
 ### Other vim
 
-- Open vim on stdin contents with `-`
+- Open vim on stdin contents with `-` (add `-R` to use as readonly pager and not
+  be prompted to save)
     - `ls -al | vim -`
     - `logfile.txt | grep 'phrase' -C5 | vim -`
+    - `diff -r dir1/ dir2/ | vim -R -`
+- `:g/match/d`
+- `:g/match/s$dir/file$dir/newfilename$ge`
+- `:g/match/norm 0f=lC 0;`
+- `:g/match/m$`
+- `:%sort n`
+    - Sort lines numerically
+- `:%sort u`
+    - Keep unique lines only
+- `:%s/foo/bar/ge`
+    - `e` to not error when no match found, good for `:tabdo` `:bufdo` macros
+      and `-s` scripting etc.
+- `gq` + motion (or on visual selection)
+    - Format paragraph according to text rules (eg. textwidth)
+- `=` + motion (or on visual selection)
+    - Format text according to programming language rules (eg. indentation)
+- Folds:
+    - Enable folding by language
+        - `set foldmethod=syntax`
+    - `zr`, open folds one level
+    - `zR`, open all folds
+    - `zm`, make folds one level
+    - `zM`, make all folds
+    - `:%foldc`, make/close folds one level from outside (e.g. all methods)
+    - `zc`, close fold at cursor
+    - `zo`, open fold at cursor
+    - `za`, toggle fold at cursor
+- Navigating
+    - `^w T`, send buffer to new tab
+- Autocompletion
+    - `^n`, `^p`, next, previous match
+    - `^x^f`, filepath completion
+- Tags
+    - Make ctags recursively at root of C/C++ project
+        - `ctags -R .`, makes a `tags` file.
+    - Follow tag
+        - `Ctrl+]`
+        - `Ctrl+w Ctrl+]`, open in split window
+        - `Ctrl+w }`, in preview split
+        - `Ctrl+t`, jump back
+- External command into doc
+    - `:r! pwd`, execute command `pwd` and insert below current line
+    - `'<,'>! pwd`, replace selected lines with external command output
 
 ### Window splits
 
@@ -288,13 +334,43 @@ Manipulating windows:
 - Attach a new tmux session to the same windows as an existing session
     - `tmux new-session -t 'original session name or number' [-s 'name']`
 
+## Screen
+
+- `screen -r`, reattach to running session
+- Prefix: `^a`
+- Hack to get colours in a pane: `export TERM=xterm-256color`
+
+Inside session, prefix followed by:
+- `d`: Detatch
+- `c`: Create new windwo
+- `0-9`: Change to window:
+- `n`: Next
+- `k`: Kill
+- `A`: Change window title
+- `?`: Command options
+
 ## Misc. Linux
 
+Linux command expansion
+- `mv dir1/filename-{old,new}` executes `mv dir1/filename-old dir1/filename-new`
+- `echo dir1/file{11,12,13}` executes `echo dir1/file11 dir1/file12 dir1/file13`
+
+Use less as a better tail
+- `less -RX +F mylogfile.txt`
+    - `^c` to interrupt follow
+    - `F` to reapply follow
+- `command &> file & less -RX +F file`
+
 Grep for all matches recursively.
+- `grep -irn "search string"
 - `grep -irn "search string" directory/ --include="*.c"`
 
 Pipe color to less.
 - `grep --color=always "foo" file.c | less -R`
+
+Diff recursively on directories, with colours (by piping into vim).
+- `diff -r dir1/ dir2/ | vim -R -`
+    - If vim doesn't auto-detect the diff output: `:set syntax=diff`
 
 Find all files matching pattern recursively.
 - `find directory/ -name "*.c"`
@@ -302,12 +378,92 @@ Find all files matching pattern recursively.
 - `find directory/ -name "*.c" -not -name "keepme*" -type f`
 - `find directory/ -name "*.c" -not -name "keepme*" -type f -delete`
 
+Use find to execute arbitrary commands.
+- `find . -name "*.c" -exec echo {} \;`
+    - executes `echo one.c; echo two.c; echo three.c`
+- `find . -name "*.c" -exec echo {} +`
+    - executes `echo one.c two.c three.c`
+
 Rename files according to a pattern.
 - ``for f in *.txt; do mv "$f" "`echo $f | sed s/txt/csv/`"; done``
+
+Tar and zip
+- `tar czf mytar.tar.gz dir1/ dir2/ file1 ...`
+- `tar xzf mytar.tar.gz`
+- `tar xzf mytar.tar.gz -C outputdir/`
+- `zip -r name.zip *.png`
+- `unzip name.zip`
+- `unzip name.zip -d outputdir/`
+
+Filespace
+- `du -sh`, used
+- `du -h --max-depth=1`
+- `df -h`, free
+
+### Bash Scripts
 
 Shebangs
 - `#!/bin/bash`
 - `#!/usr/bin/env python`
+
+Redirecting output
+- `cmd &> /dev/null`, throw away stdout and stderr (`> /dev/null 2>&1`)
+- `cmd > file`, stdout to file, overwrites (`1>`)
+- `cmd 2> file`, stderr
+- `cmd 1> output 2> error`
+- `cmd >> file`, append to existing file
+
+Colours in bash scripts
+- `tput setaf 1`, red
+- `tput setaf 1; tput bold`, bold / bright red
+- `tput sgr0`, clear
+
+Get location of bash script
+- `cd "$(dirname "$(readlink -f "$0")")"`
+- `cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"`, even if softlinked
+  (location of original source linked file)
+
+Does a file exist
+```bash
+if [ ! -f "$fname" ]; then
+    touch "$fname"
+fi
+```
+
+Input argument parsing
+```bash
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "ERROR: Please give two arguments {arg1} {arg2}"
+    exit 1
+fi
+```
+
+Interactive input
+```bash
+read -p 'Please enter myvar: ' MYVAR
+if [[ -z "$MYVAR" ]]; then
+    # Also catches whitespace
+    echo "Error: Cannot be blank."
+    exit 1
+fi
+```
+
+User prompt y/[N]?
+```bash
+read -r -p 'Ask user a question? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "Doing the thing..."
+        THING='yes'
+        ;;
+    *)
+        ;;
+esac
+```
+
+Get the datetime
+- `"$(date)"`, generic
+- `"$(date '+%d/%m/%Y %H:%M:%S')"`, arbitrary formatting
 
 ## Vim colors
 

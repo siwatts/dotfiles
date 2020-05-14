@@ -45,13 +45,14 @@ here for reference only.
 ```
 # Identify usb drive.
 sudo -i fdisk -l
+lsblk
 
-# Unmount drive. Eg. if /dev/sdb
-umount /dev/sdb
+# Unmount any mounted partition of drive. Eg. if /dev/sdb
+umount /dev/sdbX
 
 # Navigate to loc. of .iso.
 # Copy to drive
-sudo dd bs=4M if=xubuntu-18.04.2-desktop-amd64.iso of=/dev/sdb
+sudo dd bs=4M if=xubuntu-18.04.2-desktop-amd64.iso of=/dev/sdb status=progress && sync
 ```
 
 ## Display Managers
@@ -225,4 +226,12 @@ Some of the dnf packages used in Fedora 27 install:
 - `obconf`
 - `python3-tools`
 - `fuse-exfat (fat file system utils)`
+
+## OpenSUSE Tumbleweed
+
+### Zypper Packages
+
+#### Themes
+
+
 
