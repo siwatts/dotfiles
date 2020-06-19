@@ -433,6 +433,10 @@ let g:gruvbox_italic = 0
 let g:seoul256_background=237
 let g:seoul256_light_background=256
 
+" Molokai:
+let g:molokai_original=1
+let g:rehash256=1
+
 " If using a base16 theme that also reassigns colours 16-21.
 let base16colorspace=256
 " base16_shell_path will apply the terminal shell script on vim colorchange
@@ -536,6 +540,8 @@ if has("gui_running")
     "set guioptions-=T  "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
     "set guioptions-=L  "remove left-hand scroll bar
+    "set guioptions+=d  "Dark gtk+ gui theme
+    "set guioptions-=e  "Remove GUI tabs, for terminal style
 endif
 
 " ====================
@@ -687,6 +693,10 @@ nmap <Down> zL
 nmap <Left> zh
 nmap <Right> zl
 nmap <Space> <C-F>
+imap <Up> <C-o>zt
+imap <Down> <C-o>zb
+imap <Left> <C-o>zz
+imap <Right> <C-o>
 
 "nmap <Space> <Nop>
 "let mapleader=" "
@@ -771,8 +781,8 @@ nmap <C-Enter> "+p
 imap <C-Enter> <C-R>+
 
 nmap <CR> o<Esc>
-nmap <S-Enter> O<Esc>
-imap <S-Enter> <C-O>O
+"nmap <S-Enter> O<Esc>
+"imap <S-Enter> <C-O>O
 
 " Mash jk to return to normal mode.
 "imap jj <Esc>
@@ -821,5 +831,31 @@ vmap <Leader>a :norm A
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
           \ | wincmd p | diffthis
+endif
+
+" Neovim:
+if has("nvim")
+    " Terminal ESC return to NORMAL mode
+    tnoremap <Esc> <C-\><C-n>
+
+    " Truecolour terminal colours
+    " (256 mode uses the terminal ANSI 16)
+    " Dracula Xresources terminal theme
+    let g:terminal_color_0='#000000'
+    let g:terminal_color_1='#FF5555'
+    let g:terminal_color_2='#50FA7B'
+    let g:terminal_color_3='#F1FA8C'
+    let g:terminal_color_4='#BD93F9'
+    let g:terminal_color_5='#FF79C6'
+    let g:terminal_color_6='#8BE9FD'
+    let g:terminal_color_7='#BFBFBF'
+    let g:terminal_color_8='#4D4D4D'
+    let g:terminal_color_9='#FF6E67'
+    let g:terminal_color_10='#5AF78E'
+    let g:terminal_color_11='#F4F99D'
+    let g:terminal_color_12='#CAA9FA'
+    let g:terminal_color_13='#FF92D0'
+    let g:terminal_color_14='#9AEDFE'
+    let g:terminal_color_15='#E6E6E6'
 endif
 
