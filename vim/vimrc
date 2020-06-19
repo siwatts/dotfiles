@@ -56,6 +56,7 @@ set ignorecase              " Make searches not case sensitive when searching wi
 set smartcase               " Except if they include one or more uppercase.
 set wildmenu                " Show possible completions on tab.
 set wildmode=longest:full   " Complete longest portion of compl. common to all, full compl. displ. in wildmenu
+set incsearch               " Show search matches as you type them
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -87,6 +88,7 @@ set list
 "set listchars=tab:›\ ,space:⋅,trail:¬,extends:»,precedes:«
 "set listchars=tab:🡢\ ,trail:▕,extends:»,precedes:«
 set listchars=tab:»\ ,trail:▕,extends:»,precedes:«
+"set listchars=tab:»\ ,trail:▕,extends:»,precedes:«,space:⋅
 "set listchars=tab:▓▒,trail:█,extends:»,precedes:«
 "set listchars=tab:▒░,trail:▒,extends:»,precedes:«
 ""eol:¬,

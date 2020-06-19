@@ -34,6 +34,8 @@ if s:is_dark
         hi Type ctermfg=10 cterm=NONE
         hi Special ctermfg=9 cterm=NONE
     endif
+    " GUI stuff
+    hi Normal guifg=#f0f0f0 guibg=#212121
 else
     " Light specific customisations
     hi Error term=standout ctermfg=0 ctermbg=1

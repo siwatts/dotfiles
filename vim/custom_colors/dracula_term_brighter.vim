@@ -23,7 +23,7 @@ if v:version > 580
   endif
 endif
 
-let g:colors_name = 'dracula_term'
+let g:colors_name = 'dracula_term_brighter'
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
@@ -43,14 +43,14 @@ let g:dracula#palette.bg        = ['#282A36', 236]
 let g:dracula#palette.bgdark    = ['#21222C', 235]
 let g:dracula#palette.bgdarker  = ['#191A21', 234]
 
-let g:dracula#palette.comment   = ['#6272A4',   8]
+let g:dracula#palette.comment   = ['#6272A4', 103]
 let g:dracula#palette.selection = ['#44475A', 239]
 let g:dracula#palette.subtle    = ['#424450', 238]
 
 let g:dracula#palette.cyan      = ['#8BE9FD',   6]
 let g:dracula#palette.green     = ['#50FA7B',   2]
 let g:dracula#palette.orange    = ['#FFB86C', 215]
-let g:dracula#palette.pink      = ['#FF79C6',   5]
+let g:dracula#palette.pink      = ['#FF79C6',  13]
 let g:dracula#palette.purple    = ['#BD93F9',   4]
 let g:dracula#palette.red       = ['#FF5555',   1]
 let g:dracula#palette.yellow    = ['#F1FA8C',   3]
@@ -79,8 +79,8 @@ let g:dracula#palette.color_15 = '#FFFFFF'
 
 " Helper function that takes a variadic list of filetypes as args and returns
 " whether or not the execution of the ftplugin should be aborted.
-func! dracula_term#should_abort(...)
-    if ! exists('g:colors_name') || g:colors_name !=# 'dracula_term'
+func! dracula_term_brighter#should_abort(...)
+    if ! exists('g:colors_name') || g:colors_name !=# 'dracula_term_brighter'
         return 1
     elseif a:0 > 0 && (! exists('b:current_syntax') || index(a:000, b:current_syntax) == -1)
         return 1
