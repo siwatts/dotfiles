@@ -260,14 +260,52 @@ elseif jb_universal_colors
     \    'Visual': { '256ctermbg': '52' },
     \}
 else
+    " Normal:
+    let g:jellybeans_overrides = {
+    \   'SpecialKey': { '256ctermbg': '233' },
+    \   'Search': { '256ctermbg': '16' },
+    \   'Statement': { '256ctermfg': '104' },
+    \   'Constant': { '256ctermfg': '203' },
+    \}
+    " MiddleGround:
     "let g:jellybeans_overrides = {
-    "\   'Statement': { '256ctermfg': '104' }
+    "\   'background': { '256ctermbg': '234' },
+    "\   'SpecialKey': { '256ctermbg': '234' },
+    "\   'Search': { '256ctermbg': '16' },
+    "\   'Visual': { '256ctermbg': '52' },
+    "\   'Statement': { '256ctermfg': '104' },
+    "\   'Constant': { '256ctermfg': '203' },
     "\}
     " BrighterBlues:
-    let g:jellybeans_overrides = {
-    \   'Statement': { '256ctermfg': '110' },
-    \   'PreProc': { '256ctermfg': '152' }
-    \}
+    " Even brighter blues
+    "let g:jellybeans_overrides = {
+    "\   'Statement': { '256ctermfg': '110' },
+    "\   'PreProc': { '256ctermfg': '152' },
+    "\   'Constant': { '256ctermfg': '203' },
+    "\}
+    " BrighterWombatLike:
+    "let g:jellybeans_overrides = {
+    "\   'background': { '256ctermbg': '234' },
+    "\   'SpecialKey': { '256ctermbg': '234' },
+    "\   'Search': { '256ctermbg': '16' },
+    "\   'Statement': { '256ctermfg': '104' },
+    "\   'Constant': { '256ctermfg': '209' },
+    "\   'Visual': { '256ctermbg': '52' },
+    "\   'Statement': { '256ctermbg': '111' },
+    "\   'PreProc': { '256ctermbg': '117' },
+    "\   'String': { '256ctermbg': '113' },
+    "\}
+    " Brighter:
+    "let g:jellybeans_overrides = {
+    "\   'Normal': { '256ctermfg': '253', '256ctermbg': '235' },
+    "\   'NonText': { '256ctermfg': '240', '256ctermbg': '235' },
+    "\   'LineNr': { '256ctermfg': '243', '256ctermbg': '235' },
+    "\   'SpecialKey': { '256ctermfg': '240', '256ctermbg': '235' },
+    "\   'Search': { '256ctermbg': '16' },
+    "\   'Comment': { '256ctermfg': '245' },
+    "\   'Statement': { '256ctermfg': '104' },
+    "\   'Constant': { '256ctermfg': '210' }▕
+    "\}
 endif
 " TermColours:
 "let g:jellybeans_overrides = {
