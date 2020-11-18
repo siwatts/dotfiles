@@ -578,11 +578,11 @@ if has("gui_running")
     "    au GUIEnter * simalt ~x
     "endif
 
-    "set guioptions-=m  "remove menu bar
-    "set guioptions-=T  "remove toolbar
-    "set guioptions-=r  "remove right-hand scroll bar
-    "set guioptions-=L  "remove left-hand scroll bar
-    "set guioptions+=d  "Dark gtk+ gui theme
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+    set guioptions+=d  "Dark gtk+ gui theme
     "set guioptions-=e  "Remove GUI tabs, for terminal style
 endif
 

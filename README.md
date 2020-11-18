@@ -250,7 +250,17 @@ windo diffthis
 - Call as above on every subdirectory in current directory, one by one:
     - `for D in */; do vim -O $D*list* -S script.vim; done`
 
-### Other vim
+### Vim Diff
+
+- `vim -d`, `vimdiff`, Enter vimdiff mode
+- `:diffthis`, Enable diff mode for one buffer
+- `:diffoff`, Disable diff mode for one buffer
+- `]c`, Jump to next change
+- `[c`, Jump to previous change
+- `do`, Diff obtain (take change from other buffer for change under cursor)
+- `dp`, Diff put (put this change onto other buffer for change under cursor)
+
+### Other Vim
 
 - Open vim on stdin contents with `-` (add `-R` to use as readonly pager and not
   be prompted to save)
@@ -342,6 +352,7 @@ windo diffthis
           without leaving INSERT mode
             - Other `^w` commands also work, eg. leave open terminal under code
               and move up to code buffer with `^w k`
+- `:cq`, quit with error code
 
 ### Window splits
 
@@ -371,6 +382,7 @@ Manipulating windows:
 - `C-w x`, `C-x`, exchange current window with next. Only works within single
   column/row.
 - `C-w T`, move current window to another tab.
+- `C-w o`, show `:only` the current window, closing all others
 
 ## Tmux
 
