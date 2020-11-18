@@ -299,6 +299,49 @@ windo diffthis
 - External command into doc
     - `:r! pwd`, execute command `pwd` and insert below current line
     - `'<,'>! pwd`, replace selected lines with external command output
+- Go to file under cursor
+    - `gf`, open in the same window ("goto file")
+    - `^w f`, open in a new window
+    - `^w gf`, open in a new tab
+- Jumplist:
+    - `^o`, jump back in jumplist (movement commands)
+    - `^i`, jump forward in jumplist
+    - `g;`, jump back in changelist
+    - `g,`, jump forward in changelist
+- VimGrep, grep from within vim
+    - `:vimgrep`, `:vim "searchterm" src/**`, search for 'searchterm' in `src/` directory
+      recursively
+    - *Opens quickfix list of results*
+- Make, make from within vim
+    - `:make`, or from bash `$ vim +make`
+    - *Opens quickfix list of warnings/errors*
+- Quickfix list navigation
+    - `:copen`, Open quickfix list
+    - `:cclose`, Open quickfix list
+    - `:cn`, `]q`, Go to next result
+    - `:cp`, `[q`, Go to previous result
+    - `:.cc`, Go to quickfix result under cursor
+- Buffer navigation
+    - `:bn`, `]b`, Go to next buffer
+    - `:bp`, `[b`, Go to previous buffer
+    - `:bd`, Delete buffer (close file)
+    - `:ls`, List all buffers
+- Integrated terminal
+    - `!echo Hello`, one off command
+    - `:sh`, Open new shell session, vim to background, vim resumes on shell
+      close
+    - `:term`, Integrated terminal (certain neovim + vim versions)
+        - In Neovim: Replaces current buffer with a terminal buffer in normal
+          mode
+        - In Vim: Opens split below current buffer with a terminal buffer in
+          insert mode
+        - `^\ ^n`, Neovim & Vim: Default command to return to normal mode
+          (mapped to ESC by my `.vimrc`).
+        - `^w N`, Vim: Return to normal mode
+        - `^w :`, Vim: Open ex command bar, while in INSERT mode in terminal
+          without leaving INSERT mode
+            - Other `^w` commands also work, eg. leave open terminal under code
+              and move up to code buffer with `^w k`
 
 ### Window splits
 
@@ -355,6 +398,12 @@ Linux command expansion
 - `mv dir1/filename-{old,new}` executes `mv dir1/filename-old dir1/filename-new`
 - `echo dir1/file{11,12,13}` executes `echo dir1/file11 dir1/file12 dir1/file13`
 
+Edit current bash command in default editor
+- `^x ^e`, open for editing
+    - **WARNING**: Will execute all commands instantly on save-close
+    - **WARNING**: On close without saving *will run original command as it
+      looked before editor was opened for editing, and not cancel*.
+
 Use less as a better tail
 - `less -RX +F mylogfile.txt`
     - `^c` to interrupt follow
@@ -362,7 +411,7 @@ Use less as a better tail
 - `command &> file & less -RX +F file`
 
 Grep for all matches recursively.
-- `grep -irn "search string"
+- `grep -irn "search string"`
 - `grep -irn "search string" directory/ --include="*.c"`
 
 Pipe color to less.
@@ -394,11 +443,20 @@ Tar and zip
 - `zip -r name.zip *.png`
 - `unzip name.zip`
 - `unzip name.zip -d outputdir/`
+- Vim can open compressed tarballs and zip files to explore them and open files
+  inside them readonly
 
 Filespace
 - `du -sh`, used
 - `du -h --max-depth=1`
 - `df -h`, free
+
+Rsync
+- `rsync -avP sourcedir/ targetdir/ --dry-run`, Copy recursively the *contents*,
+  archive mode (preserve perms. etc.), of `sourcedir/` into `targetdir/`.
+  Verbose. Partial/progress indicator
+- `rsync -avP sourcedir targetdir/ --dry-run`, As above, but the entire
+  directory and contents
 
 ### Bash Scripts
 
@@ -593,4 +651,26 @@ hi DiffChange   ctermfg=NONE ctermbg=237 cterm=NONE  guifg=NONE      guibg=#382a
   Color Scheme menu? (Test this)
 - Some colourschemes (`.jar` or `.jar.zip` usually) must be imported by going
   File, Import Settings, instead of the Color Scheme import method.
+
+## SSH
+
+Use `hostname` from ssh config file, or replace with `IP:port`
+
+Browse ssh files/directories through vim session (directories require trailing
+slash):
+
+- `:e scp://[user@]hostname/`
+- `:e scp://[user@]hostname/.vimrc`
+- `:e scp://[user@]hostname/Documents/`
+- `:e scp://[user@]hostname//home/user/Documents/`
+
+Browse directory over ssh using thunar:
+
+- `sftp://[user@]hostname/`
+
+Browse ssh files/directories through emacs
+
+- `:e /ssh:[user@]host:filename`
+- `:e /ssh:[user@]host:Documents`
+- `:e /ssh:[user@]host:/home/user/Documents`
 
