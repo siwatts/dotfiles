@@ -1,5 +1,5 @@
 [Configuration]
-DropdownHeight=90
+FontUseSystem=TRUE
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -25,7 +25,6 @@ MiscRewrapOnResize=TRUE
 MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 DropdownAnimationTime=50
-FontName=Monospace 11
 BackgroundDarkness=0.900000
 MiscNewTabAdjacent=FALSE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE

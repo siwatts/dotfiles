@@ -133,6 +133,27 @@ For some reason it didn't like `Super_L` and `Super_R` both being mapped to
 `Super_L|A`, but in xfce both `Super_L+A` and `Super_R+A` are mapped so they can
 have one each.
 
+## Move to next monitor
+
+You can enable a keyboard shortcut to move a window to the next monitor, using a
+script developed for this purpose.
+
+Requirements:
+
+- `wmctrl`
+- `xdotool`
+- `xwininfo`
+
+Put the file [move-to-next-monitor](../bin/move-to-next-monitor) into the
+current user `$PATH` (e.g. `~/bin`) and make sure it is executable.
+
+Make a keyboard shortcut to the command `move-to-next-monitor` in Keyboard
+settings.
+
+TODO: It doesn't seem to work properly with two monitors of vastly different
+resolution. Try a python alternative?
+https://github.com/calandoa/movescreen
+
 ## Other
 
 Xfwm4 can be replaced with openbox [as detailed here](../openbox/README.md).

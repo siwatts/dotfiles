@@ -1,4 +1,6 @@
 # .bashrc
+# Originally taken from Xubuntu default user .bashrc
+# Modified by SW : https://github.com/siwatts/dotfiles
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -37,50 +39,6 @@ git_prompt () {
     fi
 }
 
-# If URxvt then call script to set custom colours.
-case "$TERM" in
-    rxvt*color)
-        #BASE_LOCATION="/CHANGE_ME/dotfiles"
-
-        ### Override theme.
-        #THEME_LOCATION="$BASE_LOCATION/terminal/scripts/dracula-magenta.sh"
-        #if [[ -x "$THEME_LOCATION" ]]
-        #then
-        #    eval "$THEME_LOCATION"
-        #else
-        #    echo "~/.bashrc : Theme not found: '$THEME_LOCATION'."
-        #fi
-
-        ### Override cursor/bg/fg.
-        #CURSOR_LOCATION="$BASE_LOCATION/terminal/scripts/set_cursor.sh"
-        #BG_LOCATION="$BASE_LOCATION/terminal/scripts/set_background.sh"
-        #FG_LOCATION="$BASE_LOCATION/terminal/scripts/set_foreground.sh"
-        ### Cursor:
-        #if [[ -x "$CURSOR_LOCATION" ]]
-        #then
-        #    eval "$CURSOR_LOCATION"' "#ff66ff"'
-        #else
-        #    echo "~/.bashrc : Cursor script not found: '$CURSOR_LOCATION'."
-        #fi
-        ### Background:
-        #if [[ -x "$BG_LOCATION" ]]
-        #then
-        #    eval "$BG_LOCATION 28/2A/36"
-        #    #eval "$BG_LOCATION 41/44/58"
-        #else
-        #    echo "~/.bashrc : Cursor script not found: '$BG_LOCATION'."
-        #fi
-        ### Foreground:
-        #if [[ -x "$FG_LOCATION" ]]
-        #then
-        #    eval "$FG_LOCATION ff/ff/00"
-        #else
-        #    echo "~/.bashrc : Cursor script not found: '$FG_LOCATION'."
-        #fi
-
-        ;;
-esac
-
 # 30m Black
 # 31m Red
 # 32m Green
@@ -115,18 +73,36 @@ fi
 
 # PS1 prompt:
 if [ "$color_prompt" = yes ]; then
-    ## Xubuntu style
+
+    # Choose prompt based on whether this is local or remote session
+    if [ -n "${SSH_CONNECTION}" ]; then
+        # Connected to remote via ssh, cyan & yellow
+        export PS1='\[\033[01;36m\]\u@\h \[\033[01;33m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+        # Can share the above across multiple hosts using
+        # if [ "$HOSTNAME" = fullhostname ]; then
+    elif [[ "${DISPLAY%%:0*}" != "" ]]; then
+        # Connected to remote but not via ssh, yellow & cyan
+        export PS1='\[\033[01;33m\]\u@\h(?) \[\033[01;36m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+    else
+        # Local machine, green & blue
+        export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+    fi
+
+    # Alternative styles:
+
+    ## Xubuntu style, green & blue
     #export PS1='\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]$(git_prompt)\$ '
 
-    ## Win-bash style
-    export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
-    ## Actual win-bash
+    ## Win-bash style, green & blue
+    #export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+
+    ## Actual win-bash, green & yellow
     #export PS1='\n\[\033[0;32m\]\u@\h \[\033[0;33m\]\w\[\033[00m\]$(git_prompt)\n\$ '
 
-    ## Fedora style
+    ## Fedora style, green & blue
     #export PS1='[\[\033[0;32m\]\u@\h \[\033[0;34m\]\W\[\033[00m\]$(git_prompt)]\$ '
 
-    ## Xubuntu original
+    ## Xubuntu original, green & blue
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     ## Xubuntu style
@@ -258,14 +234,6 @@ cdll()
 alias gitlog='git log --all --graph --pretty --decorate'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-# Hide stdout & stderr for some common programs when invoking through terminal.
-alias thunar='thunar &> /dev/null'
-alias nautilus='nautilus &> /dev/null'
-alias gvim='gvim &> /dev/null'
-alias code='code &> /dev/null'
-alias codeblocks='codeblocks &> /dev/null'
-alias geany='geany &> /dev/null'
 
 # Cygwin attach to running X11 server
 #export DISPLAY=:0

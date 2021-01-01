@@ -53,6 +53,7 @@ Push only current branch.
 - `git config --global push.default simple`
 
 Set username for repository.
+- *Obsolete, use ssh to avoid typing user+password*
 - Open `repo/.git/config`
 - Add username to repo url
     - `url = https://username@repository-url.com`
@@ -65,6 +66,20 @@ Line endings.
     Always convert to LF when adding to index.
 - `git config --global core.autocrlf false`
     - Do nothing. CRLF are added as CRLF etc.
+
+### GitHub SSH
+
+SSH access:
+
+- Add ssh public key to GitHub under user settings
+- Can then use ssh auth. on this device, instead of https
+- Test: `ssh -T git@github.com` -> `Hi <user>! You've successfully authenticated, but GitHub does not provide shell access.`
+
+Change existing remote 'origin' from https to ssh:
+
+- `git remote -v`, see current remotes
+- `git remote set-url origin git@github.com:user/repository.git`
+    - Where repo was of form `https://github.com/user/repository`
 
 ### Rebasing
 
@@ -117,6 +132,22 @@ affect commits this side of the branch point. Target always left unaffected.
 - `@{x}`: Previous git `reflog` locations.
     - `HEAD@{0}`, current.
     - `HEAD@{1}`, previous.
+
+### Other Commands
+
+- `git diff`, `git difftool`, diff of working tree from HEAD
+- `git diff --cached`, diff of staged from unstaged (see what will be committed
+  with `git commit`)
+- Delete a branch
+    - `git branch -d`, local
+    - `git branch -D`, local **force delete** (lose commits left without any
+      branch pointer)
+    - `git push origin --delete branchname`, remote
+- `git log --all --graph --pretty --decorate`, git log with some added detail
+- `git status -uno`, git status without showing untracked files
+- `git merge --no-ff branchname`, merge in branchname making an explicit merge
+  commit and not fast-forward commit
+- `gitk --all`, simple gui of git log, `--all` for all branches not just current
 
 ## XTerm / URxvt
 
@@ -266,7 +297,7 @@ windo diffthis
   be prompted to save)
     - `ls -al | vim -`
     - `logfile.txt | grep 'phrase' -C5 | vim -`
-    - `diff -r dir1/ dir2/ | vim -R -`
+    - `diff -r dir1/ dir2/ | vim -R -`, `:set syntax=diff`
 - `:g/match/d`
 - `:g/match/s$dir/file$dir/newfilename$ge`
 - `:g/match/norm 0f=lC 0;`
@@ -337,7 +368,7 @@ windo diffthis
     - `:bd`, Delete buffer (close file)
     - `:ls`, List all buffers
 - Integrated terminal
-    - `!echo Hello`, one off command
+    - `:!echo Hello`, one off command
     - `:sh`, Open new shell session, vim to background, vim resumes on shell
       close
     - `:term`, Integrated terminal (certain neovim + vim versions)
@@ -469,6 +500,11 @@ Rsync
   Verbose. Partial/progress indicator
 - `rsync -avP sourcedir targetdir/ --dry-run`, As above, but the entire
   directory and contents
+- `--delete`, delete any file at destination not present at source
+    - Useful for creating and updating an exact mirror of one dir. at another
+      location
+- `--exclude`, don't send matches, e.g. specific files or patterns like
+  '*.tar.gz'
 
 ### Bash Scripts
 
@@ -529,6 +565,23 @@ case "$response" in
     *)
         ;;
 esac
+
+read -r -p 'PRESS ENTER TO CONTINUE...' response
+```
+
+Capture return code of a previous command
+```bash
+successfulcommand
+retVal=$?
+if [ $retVal -eq 0 ]; then
+    echo "SUCCESS"
+fi
+
+unsuccessfulcommand
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "FAIL"
+fi
 ```
 
 Get the datetime
@@ -665,6 +718,51 @@ hi DiffChange   ctermfg=NONE ctermbg=237 cterm=NONE  guifg=NONE      guibg=#382a
   File, Import Settings, instead of the Color Scheme import method.
 
 ## SSH
+
+### SSH Config
+
+An ssh config file allows for defining hosts and making easier connections with
+`scp` and any ssh capable program.
+
+`~/.ssh/config`:
+
+```yaml
+Host hostname
+    HostName 255.255.255.255
+    User username
+    Port 22
+```
+
+The above config file allows `ssh username@255.255.255.255` to be replaced with
+`ssh hostname`, as well as enabling commands like `scp file hostname:/dir/file`
+
+### SSH Setup
+
+Do this as the desired user on local system, or `chown` to them if making as
+root
+
+```bash
+cd /home/user
+mkdir .ssh
+chmod 700 .ssh
+touch .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+# If made as root, chown to user
+chown -R user:group .ssh
+# Copy remote user public key
+cat [...]/other-user/.ssh/id_rsa.pub >> .ssh/authorized_keys
+```
+
+Generate private/public key pair
+
+```bash
+ssh-keygen
+ssh-copy-id -i .ssh/id_rsa # Test this, docs say to give the private key path even though public is sent
+```
+
+**TODO:** How to disable password login and test
+
+### Text Editors over SSH
 
 Use `hostname` from ssh config file, or replace with `IP:port`
 

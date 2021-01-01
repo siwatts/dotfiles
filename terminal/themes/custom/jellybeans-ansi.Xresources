@@ -1,0 +1,39 @@
+! - SW - 03/06/2020 - nanotech jellybeans.vim
+! Jellybeans (from nanotech ansi-term-colors.txt)
+!*foreground:   #e8e8d3
+!*background:   #151515
+*foreground:   #adadad
+*background:   #3b3b3b
+Black    rgb(59,59,59)     
+! black
+*color0:       #3b3b3b
+*color8:       #3b3b3b
+Red      rgb(207,106,76)   
+! red
+*color1:       #cf6a4c
+*color9:       #cf6a4c
+Green    rgb(153,173,106)  
+! green
+*color2:       #99ad6a
+*color10:      #99ad6a
+Yellow   rgb(216,173,76)   
+! yellow
+*color3:       #d8ad4c
+*color11:      #d8ad4c
+Blue     rgb(89,123,197)   
+! blue
+*color4:       #597bc5
+*color12:      #597bc5
+Magenta  rgb(160,55,176)   
+! magenta
+*color5:       #a037b0
+*color13:      #a037b0
+Cyan     rgb(113,185,248)  
+! cyan
+*color6:       #71b9f8
+*color14:      #71b9f8
+White    rgb(173,173,173)  
+! white
+*color7:       #adadad
+*color15:      #adadad
+
