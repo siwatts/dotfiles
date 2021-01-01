@@ -8,6 +8,7 @@ xterm*faceName: Monospace
 !xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
 xterm*faceSize: 10
+!xterm*faceSize: 13
 !! -- X11 core fonts --
 !! 6x13  | Tiny
 !! 7x13  | Small, condensed
@@ -172,22 +173,22 @@ XTerm*cursorColor2: #000000
 ! Apply a default colourscheme:
 ! https://github.com/dracula/xresources
 ! Dracula Xresources palette
-*foreground: #F8F8F2
-*background: #282A36
-*color0:     #000000
-*color8:     #6272A4
-*color1:     #FF5555
-*color9:     #FF6E67
-*color2:     #50FA7B
-*color10:    #5AF78E
-*color3:     #F1FA8C
-*color11:    #F4F99D
-*color4:     #BD93F9
-*color12:    #CAA9FA
-*color5:     #FF79C6
-*color13:    #FF92D0
-*color6:     #8BE9FD
-*color14:    #9AEDFE
-*color7:     #F8F8F2
-*color15:    #BFBFBF
+XTerm*foreground: #F8F8F2
+XTerm*background: #282A36
+XTerm*color0:     #000000
+XTerm*color8:     #6272A4
+XTerm*color1:     #FF5555
+XTerm*color9:     #FF6E67
+XTerm*color2:     #50FA7B
+XTerm*color10:    #5AF78E
+XTerm*color3:     #F1FA8C
+XTerm*color11:    #F4F99D
+XTerm*color4:     #BD93F9
+XTerm*color12:    #CAA9FA
+XTerm*color5:     #FF79C6
+XTerm*color13:    #FF92D0
+XTerm*color6:     #8BE9FD
+XTerm*color14:    #9AEDFE
+XTerm*color7:     #F8F8F2
+XTerm*color15:    #BFBFBF
 

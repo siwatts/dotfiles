@@ -265,11 +265,11 @@ elseif jb_universal_colors
     \}
 else
     " Normal:
+    "\   'Statement': { '256ctermfg': '104' },
+    "\   'Constant': { '256ctermfg': '203' },
     let g:jellybeans_overrides = {
     \   'SpecialKey': { '256ctermbg': '233' },
     \   'Search': { '256ctermbg': '16' },
-    \   'Statement': { '256ctermfg': '104' },
-    \   'Constant': { '256ctermfg': '203' },
     \}
     " MiddleGround:
     "let g:jellybeans_overrides = {
@@ -309,6 +309,28 @@ else
     "\   'Comment': { '256ctermfg': '245' },
     "\   'Statement': { '256ctermfg': '104' },
     "\   'Constant': { '256ctermfg': '210' }▕
+    "\}
+    " Darkblue256:
+    "\   'Constant': { '256ctermfg': '217' }, " darkblue256.vim Constant
+    "let g:jellybeans_overrides = {
+    "\   'Normal': { '256ctermfg': '255', '256ctermbg': '16' },
+    "\   'NonText': { '256ctermfg': '240', '256ctermbg': '16' },
+    "\   'LineNr': { '256ctermbg': '16' },
+    "\   'SpecialKey': { '256ctermbg': '233' },
+    "\   'Search': { '256ctermbg': '16' },
+    "\   'Visual': { '256ctermbg': '52' },
+    "\   'Constant': { '256ctermfg': '209' },
+    "\   'String': { '256ctermfg': '83' },
+    "\   'Identifier': { '256ctermfg': '213' },
+    "\   'Function': { '256ctermfg': '227' },
+    "\   'Statement': { '256ctermfg': '111' },
+    "\   'Operator': { '256ctermfg': '51' },
+    "\   'PreProc': { '256ctermfg': '51' },
+    "\   'Type': { '256ctermfg': '227' },
+    "\   'StorageClass': { '256ctermfg': '214' },
+    "\   'Structure': { '256ctermfg': '51' },
+    "\   'Special': { '256ctermfg': '83' },
+    "\   'Delimiter': { '256ctermfg': '107' },
     "\}
 endif
 " TermColours:
@@ -563,6 +585,7 @@ if has("gui_running")
         "set guifont=Liberation\ Mono\ 10
         "set guifont=Terminus\ 12
         "set guifont=Hack\ 10
+        "set guifont=Hack\ 13
         "set guifont=Source\ Code\ Pro\ 10
         "set guifont=Noto\ Mono\ 10
         "set guifont=Inconsolata\ 10

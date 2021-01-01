@@ -1,0 +1,92 @@
+{
+    "window.zoomLevel": 1,
+    "editor.fontFamily": "'Hack', 'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 13,
+    "editor.cursorBlinking": "solid",
+    "editor.tokenColorCustomizations": {
+        "strings": "#99ad6a",
+        "comments": "#888888",
+        "functions": "#e8e8d3",
+        "keywords": "#8197bf",
+        "numbers": "#cf6a4c",
+        //"types": "#ffb964",
+        //"types": "#fad07a",
+        "types": "#e8e8d3",
+        "variables": "#8fbfdc",
+        "semanticHighlighting": true,
+        "textMateRules": [
+            {
+                "scope": "variable",
+                "settings": {
+                    "foreground": "#e8e8d3"
+                }
+            },
+            {
+                "scope": "storage.type",
+                "settings": {
+                    "foreground": "#ffb964"
+                }
+            },
+            {
+                "scope": "storage.type.namespace",
+                "settings": {
+                    "foreground": "#8fbfdc"
+                }
+            },
+            {
+                "scope": "entity.name.scope-resolution",
+                "settings": {
+                    "foreground": "#e8e8d3"
+                }
+            },
+            {
+                "scope": "entity.name.namespace",
+                "settings": {
+                    "foreground": "#e8e8d3"
+                }
+            },
+            {
+                "scope": "keyword.control.directive",
+                "settings": {
+                    "foreground": "#8fbfdc"
+                }
+            },
+            {
+                "scope": "entity.name.function.preprocessor",
+                "settings": {
+                    "foreground": "#8fbfdc"
+                }
+            }            ,
+            {
+                "scope": "keyword.other.using",
+                "settings": {
+                    "foreground": "#8197bf"
+                }
+            },
+            {
+                "scope": "constant.character.escape",
+                "settings": {
+                    "foreground": "#799d6a"
+                }
+            },
+            {
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#cf6a4c"
+                }
+            },
+            {
+                "scope": "storage.modifier.pointer",
+                "settings": {
+                    "foreground": "#c6b6ee"
+                }
+            }
+        ]
+    },
+    "workbench.colorCustomizations": {
+
+        "editor.background": "#151515",
+        "editor.foreground": "#e8e8d3",
+        "editor.selectionBackground": "#404040"
+    }
+}

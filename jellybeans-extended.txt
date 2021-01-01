@@ -1,0 +1,35 @@
+- SW - 19/11/20 - Jellybeans Extended
+- A terminal theme and the corresponding vim jellybeans override groups
+- Any other groups missing? Structural things like folds, menus, etc?
+
+Black           #151515
+Bright Black    #556633
+Red             #cf6a4c
+Bright Red      #c59f6f
+Green           #799d6a
+Bright Green    #99ad6a
+Yellow          #ffb964
+Bright Yellow   #fad07a
+Blue            #668799
+Bright Blue     #8197bf
+Magenta         #
+Bright Magenta  #c6b6ee
+Cyan            #
+Bright Cyan     #8fbfdc
+White           #e8e8d3
+Bright White    #
+
+SpecialKey      238 exact
+Nontext         241
+Comment         102
+Constant        1
+Special         2
+String          10
+Identifier      13
+Statement       12
+PreProc         14
+StorageClass    9
+Type            3
+Function        11
+Delimiter       4
+StringDelimiter 8
