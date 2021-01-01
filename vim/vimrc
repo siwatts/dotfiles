@@ -273,6 +273,7 @@ elseif jb_universal_colors
     \}
 else
     " Normal:
+    "\   'Visual': { '256ctermbg': '52' },
     "\   'Statement': { '256ctermfg': '104' },
     "\   'Constant': { '256ctermfg': '203' },
     let g:jellybeans_overrides = {
@@ -361,13 +362,23 @@ endif
 "\}
 
 "" Darkblue256:
+"" GreyBg:
 "\   'background': { 'guibg': '212121', '256ctermbg': '235' },
+"\   'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
 "\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4', 'guibg': '212121', '256ctermbg': '235' },
-"let g:darkblue256_overrides = {
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
-"\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
-"\}
+"" BlankBg:
+"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+"\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
+"" BlueBgBetterFg:
+"\   'background': { '256ctermbg': '17' },
+"\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', '256ctermbg': '17' },
+let g:darkblue256_overrides = {
+\   'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
+\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
+\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
+\   'Visual': { 'guifg': 'ffffff', '256ctermfg': '231' },
+\}
 
 " Override colorscheme diff highlighting.
 function! SetCustomDiff(use_dark_theme)

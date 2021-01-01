@@ -116,6 +116,9 @@ else
 
     ## Xubuntu original
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+
+    ## Tumbleweed style
+    #export PS1='\u@\h:\w> '
 fi
 unset color_prompt force_color_prompt
 
