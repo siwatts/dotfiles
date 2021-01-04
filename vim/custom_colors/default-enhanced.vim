@@ -48,5 +48,7 @@ else
     hi PMenuSel ctermfg=0 ctermbg=7
     " Replace yellow with terminal equivalent:
     hi Statement ctermfg=3
+    " GUI stuff
+    hi Normal guifg=#151515 guibg=#ffffff
 endif
 
