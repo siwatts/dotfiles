@@ -18,8 +18,8 @@ let jb_terminal_colors=0
 let jb_universal_colors=0
 
 let g:dark_theme='jellybeans'
-"let g:dark_theme_truecolor='twilight'
-let g:light_theme='gruvbox'
+"let g:dark_theme_truecolor='jellybeans'
+let g:light_theme='lucius'
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='seoul256'
 "let g:light_gui_theme='seoul256-light'
@@ -427,12 +427,12 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         " Replace red/green/blue with their terminal equivalents:
         if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
             " Seems like tty needs to set brights using bold attribute.
-            hi LineNr ctermfg=4 cterm=bold
+            hi LineNr ctermfg=3 cterm=bold
             hi PreProc ctermfg=4 cterm=bold
             hi Type ctermfg=2 cterm=bold
             hi Special ctermfg=1 cterm=bold
         else
-            hi LineNr ctermfg=12 cterm=NONE
+            hi LineNr ctermfg=11 cterm=NONE
             hi PreProc ctermfg=12 cterm=NONE
             hi Type ctermfg=10 cterm=NONE
             hi Special ctermfg=9 cterm=NONE
@@ -611,8 +611,8 @@ if has("gui_running")
     endif
 
     " Window size
-    set lines=40 columns=115
-    "set lines=45 columns=130
+    "set lines=40 columns=115
+    set lines=45 columns=130
     "set lines=48 columns=150
 
     "" Maximise window for MS Windows
@@ -624,8 +624,8 @@ if has("gui_running")
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions-=L  "remove left-hand scroll bar
-    set guioptions+=d  "Dark gtk+ gui theme
-    "set guioptions-=e  "Remove GUI tabs, for terminal style
+    "set guioptions+=d  "Dark gtk+ gui theme
+    set guioptions-=e  "Remove GUI tabs, for terminal style
 endif
 
 " ====================
@@ -672,26 +672,26 @@ endfunction
 
 " Colour mappings:
 " Toggle background setting
-map <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+noremap <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Reset to default theme
 if use_dark_theme
-    map <F7> :call ApplyEnhancedDefaultTheme(1)<CR>
-    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
+    noremap <F7> :call ApplyEnhancedDefaultTheme(1)<CR>
+    noremap <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
 else
-    map <F7> :call ApplyEnhancedDefaultTheme(0)<CR>
-    map <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
+    noremap <F7> :call ApplyEnhancedDefaultTheme(0)<CR>
+    noremap <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
 endif
 " Apply base16 theme
-map <F11> :colorscheme base16-eighties<CR>
+noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
-map <F9> :call SetCustomScheme(0)<CR>
-map <F10> :call SetCustomScheme(1)<CR>
+noremap <F9> :call SetCustomScheme(0)<CR>
+noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
-map <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-map <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+noremap <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+noremap <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 " Daily light/dark
-map <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
-map <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+noremap <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
+noremap <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 
 " Choose a random theme on startup, if requested and supported.
 if exists("use_custom_theme")
@@ -762,85 +762,85 @@ endif
 " Mappings:
 " ====================
 " Disable middle mouse
-map <MiddleMouse> <Nop>
-imap <MiddleMouse> <Nop>
-map <2-MiddleMouse> <Nop>
-imap <2-MiddleMouse> <Nop>
-map <3-MiddleMouse> <Nop>
-imap <3-MiddleMouse> <Nop>
-map <4-MiddleMouse> <Nop>
-imap <4-MiddleMouse> <Nop>
+noremap <MiddleMouse> <Nop>
+inoremap <MiddleMouse> <Nop>
+noremap <2-MiddleMouse> <Nop>
+inoremap <2-MiddleMouse> <Nop>
+noremap <3-MiddleMouse> <Nop>
+inoremap <3-MiddleMouse> <Nop>
+noremap <4-MiddleMouse> <Nop>
+inoremap <4-MiddleMouse> <Nop>
 
 " Scrolling
-nmap <Up> zH
-nmap <Down> zL
-nmap <Left> zh
-nmap <Right> zl
-nmap <Space> <C-F>
-imap <Up> <C-o>zt
-imap <Down> <C-o>zb
-imap <Left> <C-o>zz
-imap <Right> <C-o>
+nnoremap <Up> zH
+nnoremap <Down> zL
+nnoremap <Left> zh
+nnoremap <Right> zl
+nnoremap <Space> <C-F>
+inoremap <Up> <C-o>zt
+inoremap <Down> <C-o>zb
+inoremap <Left> <C-o>zz
+inoremap <Right> <C-o>
 
-"nmap <Space> <Nop>
+"nnoremap <Space> <Nop>
 "let mapleader=" "
-map \\ <Leader>
-map <Leader>y "+y
-map <Leader>Y "+y$
-"map <Leader>d "+d
-"map <Leader>D "+D
-"map <Leader>x "+x
-"map <Leader>X "+X
-"map <Leader>c "+c
-"map <Leader>C "+C
-"map <Leader>s "+s
-"map <Leader>S "+S
-map <Leader>p "+p
-map <Leader>P "+P
+noremap \\ <Leader>
+noremap <Leader>y "+y
+noremap <Leader>Y "+y$
+"noremap <Leader>d "+d
+"noremap <Leader>D "+D
+"noremap <Leader>x "+x
+"noremap <Leader>X "+X
+"noremap <Leader>c "+c
+"noremap <Leader>C "+C
+"noremap <Leader>s "+s
+"noremap <Leader>S "+S
+noremap <Leader>p "+p
+noremap <Leader>P "+P
 
-nmap <Leader>w :w<CR>
-nmap <Leader>q :q<CR>
-nmap <Leader>Q :qa<CR>
-nmap <Leader>x :wq<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader>x :wq<CR>
 
-nmap <Leader>s :Vex<CR>
-nmap <Leader>v :vnew<CR>
-nmap <Leader>e :Ex<CR>
+nnoremap <Leader>s :Vex<CR>
+nnoremap <Leader>v :vnew<CR>
+nnoremap <Leader>e :Ex<CR>
 
-nmap <Leader>da :windo diffthis<CR><C-W>w
-nmap <Leader>dh :diffthis<CR><C-W>h:diffthis<CR><C-W>l
-nmap <Leader>dl :diffthis<CR><C-W>l:diffthis<CR><C-W>h
-nmap <Leader>dj :diffthis<CR><C-W>j:diffthis<CR><C-W>k
-nmap <Leader>dk :diffthis<CR><C-W>k:diffthis<CR><C-W>j
-nmap <Leader>dd :diffthis<CR><C-W>w:diffthis<CR><C-W>W
-nmap <Leader>dt :diffthis<CR>
-nmap <Leader>do :diffoff<CR>
-nmap <Leader>ds :windo diffoff<CR><C-W>w
-nmap <Leader>dr :windo diffoff<CR>:windo diffthis<CR><C-W>w
-nmap <Leader>D :diffoff<CR><C-W>w:diffoff<CR><C-w>W
+nnoremap <Leader>da :windo diffthis<CR><C-W>w
+nnoremap <Leader>dh :diffthis<CR><C-W>h:diffthis<CR><C-W>l
+nnoremap <Leader>dl :diffthis<CR><C-W>l:diffthis<CR><C-W>h
+nnoremap <Leader>dj :diffthis<CR><C-W>j:diffthis<CR><C-W>k
+nnoremap <Leader>dk :diffthis<CR><C-W>k:diffthis<CR><C-W>j
+nnoremap <Leader>dd :diffthis<CR><C-W>w:diffthis<CR><C-W>W
+nnoremap <Leader>dt :diffthis<CR>
+nnoremap <Leader>do :diffoff<CR>
+nnoremap <Leader>ds :windo diffoff<CR><C-W>w
+nnoremap <Leader>dr :windo diffoff<CR>:windo diffthis<CR><C-W>w
+nnoremap <Leader>D :diffoff<CR><C-W>w:diffoff<CR><C-w>W
 
-nmap <Leader>o o<ESC>o
-nmap <Leader>O O<ESC>O
-nmap <Leader><CR> o<ESC>o<ESC>O
+nnoremap <Leader>o o<ESC>o
+nnoremap <Leader>O O<ESC>O
+nnoremap <Leader><CR> o<ESC>o<ESC>O
 
-nmap <Leader>h 5h
-nmap <Leader>j 5j
-nmap <Leader>k 5k
-nmap <Leader>l 5l
+nnoremap <Leader>h 5h
+nnoremap <Leader>j 5j
+nnoremap <Leader>k 5k
+nnoremap <Leader>l 5l
 
-nmap <Leader>c o// 
-nmap <Leader>C O// 
-nmap <Leader>t o// TODO: 
-nmap <Leader>T O// TODO: 
+nnoremap <Leader>c o// 
+nnoremap <Leader>C O// 
+nnoremap <Leader>t o// TODO: 
+nnoremap <Leader>T O// TODO: 
 
-"nmap <Leader>s i <ESC>r
-"nmap <Leader>S a <ESC>r
-"nmap <Leader>i i <ESC>r
-"nmap <Leader>a a <ESC>r
+"nnoremap <Leader>s i <ESC>r
+"nnoremap <Leader>S a <ESC>r
+"nnoremap <Leader>i i <ESC>r
+"nnoremap <Leader>a a <ESC>r
 
-nmap <Leader>m :tabe $MYVIMRC<CR>
-nmap <Leader>i :set paste!<CR>
-nmap <Leader>n :set number!<CR>
+nnoremap <Leader>m :tabe $MYVIMRC<CR>
+nnoremap <Leader>i :set paste!<CR>
+nnoremap <Leader>n :set number!<CR>
 
 nnoremap <Leader>M :set modifiable!<CR>
 nnoremap <Leader>R :set readonly!<CR>
@@ -854,30 +854,30 @@ nnoremap Y y$
 " Preserve indentation in VsVim
 "nnoremap S ^C
 
-nmap // I// <Esc>$
-vmap // :v/^\s*$/norm 0i//<CR>
-nmap <Leader>// ^dw
+nnoremap // I// <Esc>$
+vnoremap // :v/^\s*$/norm 0i//<CR>
+nnoremap <Leader>// ^dw
 
 " Press ENTER with a visual selection to copy it to clipboard.
-vmap <CR> "+y
-vmap <Leader>y "+y
+vnoremap <CR> "+y
+vnoremap <Leader>y "+y
 
 " Ctrl+ENTER to paste from system clipboard.
-nmap <C-Enter> "+p
-imap <C-Enter> <C-R>+
+nnoremap <C-Enter> "+p
+inoremap <C-Enter> <C-R>+
 
-nmap <CR> o<Esc>
-"nmap <S-Enter> O<Esc>
-"imap <S-Enter> <C-O>O
+nnoremap <CR> o<Esc>
+"nnoremap <S-Enter> O<Esc>
+"inoremap <S-Enter> <C-O>O
 
 " Mash jk to return to normal mode.
-"imap jj <Esc>
-imap jk <Esc>
-imap kj <Esc>
-"imap kk <C-O>
+"inoremap jj <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
+"inoremap kk <C-O>
 
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " TPope's Unimpaired-like prev/next maps
 " Quickfix list:
@@ -901,38 +901,38 @@ nnoremap <Leader>bD :%bd<CR>
 nnoremap <Leader>bb :ls<CR>
 
 " Insert time.
-nmap <F2> "=strftime("%H:%M")<CR>p
-imap <F2> <C-R>=strftime("%H:%M")<CR>
+nnoremap <F2> "=strftime("%H:%M")<CR>p
+inoremap <F2> <C-R>=strftime("%H:%M")<CR>
 " With seconds.
-nmap <Leader><F2> "=strftime("%H:%M:%S")<CR>p
-imap <Leader><F2> <C-R>=strftime("%H:%M:%S")<CR>
+nnoremap <Leader><F2> "=strftime("%H:%M:%S")<CR>p
+inoremap <Leader><F2> <C-R>=strftime("%H:%M:%S")<CR>
 " Insert datetime.
-nmap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
-imap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+nnoremap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
+inoremap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
 " With seconds.
-nmap <Leader><F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
-imap <Leader><F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
+nnoremap <Leader><F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
+inoremap <Leader><F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
 " On a new line.
-nmap <F4> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
-imap <F4> <ESC>0i-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<CR>
+nnoremap <F4> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
+inoremap <F4> <ESC>0i-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<CR>
 " Start of day.
-nmap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
+nnoremap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 " Javascript format datetime.
-"nmap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
-imap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
+"nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
+inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 " Save and execute currently open buffer:
-"nmap <F5> :w<CR>:!./%<CR>
+"nnoremap <F5> :w<CR>:!./%<CR>
 autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.out<CR>
 autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -Wall && ./a.out<CR>
 autocmd FileType python,bash,sh nnoremap <buffer> <F5> :w<CR>:!./%<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work?rq=1
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 
-vmap <Leader>i :norm I
-vmap <Leader>a :norm A
+vnoremap <Leader>i :norm I
+vnoremap <Leader>a :norm A
 
 " From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
 " Convenient command to see the difference between the current buffer and the

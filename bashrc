@@ -214,12 +214,15 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-#alias dotfiles='cd ~/Documents/repos/dotfiles'
+alias dotfiles='cd ~/repos/dotfiles'
 alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.txt"
 alias view="vim -MR"
+
+# More aliases
+alias config-redshift="vim ~/.config/redshift.conf; killall redshift; sleep 6; redshift-gtk &"
 
 # some more ls aliases
 alias ll='ls -alF'
