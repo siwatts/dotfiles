@@ -1,0 +1,6 @@
+[Scheme]
+Name=PaperColor-Dark
+ColorForeground=#d0d0d0
+ColorBackground=#1c1c1c
+ColorCursor=x
+ColorPalette=#1c1c1c;#ff5faf;#5faf5f;#d7af5f;#5fafd7;#af87d7;#00afaf;#d0d0d0;#808080;#ff5faf;#afd700;#d7af00;#5fafd7;#af87d7;#00afaf;#ffffff

@@ -1,0 +1,6 @@
+[Scheme]
+Name=VSCode Dark
+ColorForeground=#d4d4d4
+ColorBackground=#1e1e1e
+ColorCursor=x
+ColorPalette=#1e1e1e;#ce9178;#6a9955;#dcdcaa;#569cd6;#c586c0;#9cdcfe;#d4d4d4;#5a5a5a;#ce9178;#6a9955;#b5cea8;#569cd6;#c586c0;#9cdcfe;#ffffff

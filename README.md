@@ -316,14 +316,20 @@ windo diffthis
 - Folds:
     - Enable folding by language
         - `set foldmethod=syntax`
-    - `zr`, open folds one level
-    - `zR`, open all folds
-    - `zm`, make folds one level
-    - `zM`, make all folds
-    - `:%foldc`, make/close folds one level from outside (e.g. all methods)
-    - `zc`, close fold at cursor
-    - `zo`, open fold at cursor
-    - `za`, toggle fold at cursor
+    - Or create them manually
+        - `set foldmethod=manual` (the default unless overridden using `.vimrc`?)
+        - `zf<motion>`, create new fold from here to motion destination
+        - `zd`, delete fold under cursor
+        - `zD`, recursively delete folds under cursor
+    - Opening and closing folds
+        - `zr`, open folds one level
+        - `zR`, open all folds
+        - `zm`, make folds one level
+        - `zM`, make all folds
+        - `:%foldc`, make/close folds one level from outside (e.g. all methods)
+        - `zc`, close fold at cursor
+        - `zo`, open fold at cursor
+        - `za`, toggle fold at cursor
 - Navigating
     - `^w T`, send buffer to new tab
 - Autocompletion
@@ -506,11 +512,28 @@ Rsync
 - `--exclude`, don't send matches, e.g. specific files or patterns like
   '*.tar.gz'
 
+### Python Scripts
+
+Quick and easy standalone python executables
+
+Shebang:
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+```
+
+Only execute when directly executed as a script or with `python -m`
+
+```python
+if __name__ == "__main__":
+    # execute only if run as a script
+    do_stuff()
+```
+
 ### Bash Scripts
 
-Shebangs
+Shebang:
 - `#!/bin/bash`
-- `#!/usr/bin/env python`
 
 Redirecting output
 - `cmd &> /dev/null`, throw away stdout and stderr (`> /dev/null 2>&1`)
