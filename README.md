@@ -421,6 +421,44 @@ Manipulating windows:
 - `C-w T`, move current window to another tab.
 - `C-w o`, show `:only` the current window, closing all others
 
+### Modelines
+
+You can embed vim settings into text files at the top or bottom, which can
+override certain settings for that buffer.
+
+There are some risks in doing this for untrusted files, so enable it if you want
+it in `.vimrc`. E.g. to read within 5 lines of the top or bottom of files:
+
+```
+set modeline
+set modelines=5
+```
+
+- You can prepend it with any `{text}` followed by whitespace, e.g. `#`
+  (bash/python), `//` (C/C++)
+- Follow with `vi:`/`vim:`/`ex:` as appropriate
+- Mainly used for `:set` commands
+
+Examples:
+- `# vim: tw=0`
+    - Equivalent to `:set textwidth=0` in that buffer
+- `# vim: tw=0 readonly` / `# vim: tw=0:readonly` / `# vim: set tw=0 readonly:`
+    - Combine multiple `:set` commands with a space or `:`
+    - Or include the word `set`, and modeline ends at the first `:` it
+      encounters
+    - This example executes `:set textwidth=0` and `:set readonly`
+
+If `set` is used, then modeline ends at first `:`. So trailing characters can be
+left after the modeline. E.g
+- YES
+    - `// vim: noai:ts=4:sw=4`
+    - `// vim: noai ts=4 sw=4`
+    - `/* vim: set noai ts=4 sw=4: */`
+- NO
+    - `// vim: noai:ts=4:sw=4 */`
+    - `/* vim: noai ts=4 sw=4: */`
+
+
 ## Tmux
 
 - Attach a new tmux session to the same windows as an existing session
@@ -516,7 +554,26 @@ Rsync
 
 Quick and easy standalone python executables
 
-Shebang:
+#### Shebang and Headers
+
+Python detects any file encoding declaration in the 1st or 2nd line matching the
+regex: `^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)`
+
+Ie.
+
+Neutral:
+```python
+#!/usr/bin/env python
+# coding=utf-8
+```
+
+Vim:
+```python
+#!/usr/bin/env python
+# vim: fileencoding=utf-8
+```
+
+Emacs:
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
