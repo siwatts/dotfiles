@@ -181,6 +181,9 @@ Replace xscreensaver with light-locker:
   set it here (append `light-locker-command --lock` or `dm-tool lock` to the
   list of commands to try)
 
+Lightlocker bug, migrating from Xubuntu 18.04 LTS to 20.04 LTS
+- `sudo apt remove light-locker`
+
 ## Future
 
 - Using compton, and a config file.

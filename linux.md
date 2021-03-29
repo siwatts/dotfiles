@@ -36,6 +36,16 @@ Stop laptop suspend on lid close:
 - `sudo vim /etc/systemd/logind.conf`
     - `HandleLidSwitch=ignore`
 
+Stop cursor blinking, everywhere
+- Xfce 4.10+: `xfconf-query -c xsettings -p /Net/CursorBlink -T`
+- GNOME 3: `gsettings set org.gnome.desktop.interface cursor-blink false`
+- MATE: `gsettings set org.mate.interface cursor-blink false`
+- Firefox: Should respect DE, but if doesn't start it to generate a profile
+  then:
+    - `about:config, New -> Integer, ui.caretBlinkTime 0`
+- More programs, other methods, and methods for older versions available at
+  [source webpage](https://jurta.org/en/prog/noblink)
+
 ## Creating bootable USB drive
 
 Write `.iso` to usb drive using `dd` raw byte copy command. **This will wipe
@@ -54,6 +64,32 @@ umount /dev/sdbX
 # Copy to drive
 sudo dd bs=4M if=xubuntu-18.04.2-desktop-amd64.iso of=/dev/sdb status=progress && sync
 ```
+
+## Reformat USB drive as data drive when done
+
+If `dd` or similar has been used to create an iso image, will need to
+repartition:
+
+As root:
+
+- `fdisk -l`, note USB drive letter `X` where drive is `/dev/sdX`
+- `umount /dev/sdX1`, ensure unmounted before beginning
+- `fdisk /dev/sdX`
+    - `d`, to delete partition
+    - `1`, for first partition
+    - Repeat for all partitions
+    - `n`, make new partition
+    - `p`, type: primary partition
+    - `1`, make it first partition
+    - Press _ENTER_ to accept default first and sectors (uses full drive space)
+    - `w`, write changes to drive
+- `umount /dev/sdX1`, unmount newly created first partition
+- `mkfs.vfat -F 32 /dev/sdX1`, make FAT32 filesystem
+
+Misc:
+- Can force `unmount` with `-f`, or `-l` (lazy umount)
+- To remove usb drive, better to use `eject` (as superuser), which does
+  everything in one operation
 
 ## Enable grub menu
 
