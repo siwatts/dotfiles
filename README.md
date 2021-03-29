@@ -601,6 +601,8 @@ Redirecting output
 - `cmd 2> file`, stderr
 - `cmd 1> output 2> error`
 - `cmd >> file`, append to existing file
+- `cmd |& cmd2`, pipe both stdout and stderr to the next command (instead of
+  just stdout)
 
 Colours in bash scripts
 - `tput setaf 1`, red
