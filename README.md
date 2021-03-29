@@ -463,6 +463,9 @@ left after the modeline. E.g
 
 - Attach a new tmux session to the same windows as an existing session
     - `tmux new-session -t 'original session name or number' [-s 'name']`
+- Bash alias to ssh and immediately attach to tmux session
+    - `alias sshtarget='ssh -Y target -t tmux a'`
+    - `alias sshtarget='ssh -Y target -t "tmux a || tmux"'`
 
 ## Screen
 
@@ -694,6 +697,9 @@ Desert256.vim
 - Brighter PreProc / Title group (210).
     - `call <SID>X("PreProc", "ff8787", "", "")`
     - `call <SID>X("Title", "ff8787", "", "")`
+- MatchParen highlighting adapted from jellybeans.
+    - `call s:X("MatchParen","ffffff","556779","bold")`
+    - `hi MatchParen    cterm="NONE ctermfg=magenta ctermbg=NONE`
 
 Dracula.vim
 - Add Special and Character group highlighting:

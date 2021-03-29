@@ -1,0 +1,14 @@
+[Scheme]
+Name=Xubuntu Light (Custom)
+ColorForeground=#1f3566
+ColorBackground=#f1f1f1
+ColorPalette=#ffffff;#aa0000;#44aa44;#aa5500;#0039aa;#aa22aa;#1a92aa;#000000;#aaaaaa;#ff8787;#4ce64c;#ded82c;#295fcc;#cc58cc;#4ccce6;#888888
+ColorSelection=#204a87
+ColorSelectionBackground=#c8d2e6
+ColorSelectionUseDefault=FALSE
+ColorCursor=#0f4999
+ColorBold=#000000
+ColorBoldUseDefault=FALSE
+ColorBoldIsBright=FALSE
+TabActivityColor=#0f4999
+

@@ -55,6 +55,18 @@ umount /dev/sdbX
 sudo dd bs=4M if=xubuntu-18.04.2-desktop-amd64.iso of=/dev/sdb status=progress && sync
 ```
 
+## Enable grub menu
+
+- `sudo vim /etc/default/grub`
+- Change `GRUB_TIMEOUT_STYLE` from `hidden` to `menu`, or comment line out
+  (`menu` is default option).
+- Change `GRUB_TIMEOUT` to desired value in seconds, or give no value.
+- Alternatively, older versions, comment line `GRUB_HIDDEN_TIMEOUT=0`
+- Save and close
+- `sudo update-grub`
+    - This can also detect other OS on other connected HDD and add to grub
+    - Might be Ubuntu specific
+
 ## Display Managers
 
 - Start an X session directly with `startx`, this will execute whatever is in

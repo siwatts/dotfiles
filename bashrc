@@ -38,6 +38,8 @@ git_prompt () {
         fi
     fi
 }
+# TODO: Can adapt a more comprehensive example of this from
+# https://github.com/denysdovhan/spaceship-prompt/blob/master/sections/git_status.zsh
 
 # 30m Black
 # 31m Red
@@ -219,7 +221,16 @@ alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.txt"
-alias view="vim -MR"
+alias ta='tmux a'
+alias view="vim -nMR"
+diffdir()
+{
+    diff -r "$@" | vim -nMR -c 'set syntax=diff' -
+}
+dirdiff()
+{
+    diff -r "$@" | vim -nMR -c 'set syntax=diff' -
+}
 
 # More aliases
 alias config-redshift="vim ~/.config/redshift.conf; killall redshift; sleep 6; redshift-gtk &"
