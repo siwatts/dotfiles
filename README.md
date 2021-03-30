@@ -540,6 +540,10 @@ Filespace
 - `du -sh`, used
 - `du -h --max-depth=1`
 - `df -h`, free
+- `lsblk`, show mounted drives
+
+Watch a linux command - Run it in a loop every N seconds:
+- `watch -n1 command`, clear screen and run `command` every 1 second
 
 Rsync
 - `rsync -avP sourcedir/ targetdir/ --dry-run`, Copy recursively the *contents*,

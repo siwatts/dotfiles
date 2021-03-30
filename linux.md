@@ -281,5 +281,17 @@ Some of the dnf packages used in Fedora 27 install:
 
 #### Themes
 
+## Stress Testing a System
 
+- `sensors` is a useful command to monitor system stats
+    - Get it by installing `lm_sensors` (or `lm-sensors` in apt)
+    - Run `sudo sensors-detect`, hit ENTER to answer default response to all q's
+      for safest approach
+    - Can now watch CPU temps with `watch -n1 sensors`
+- Program `stress` can put load on CPU or other systems
+    - Package name `stress`
+    - To put load on CPU and spin 8 `sqrt()` workers (for 8 cores/threads).
+      Verbose prints more info to screen. Stops after 30s.
+        - `sudo stress --cpu 8 -v --timeout 30s`
+    - Recommended to be run as root by [article](https://www.tecmint.com/linux-cpu-load-stress-test-with-stress-ng-tool/)
 
