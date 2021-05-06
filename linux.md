@@ -295,3 +295,68 @@ Some of the dnf packages used in Fedora 27 install:
         - `sudo stress --cpu 8 -v --timeout 30s`
     - Recommended to be run as root by [article](https://www.tecmint.com/linux-cpu-load-stress-test-with-stress-ng-tool/)
 
+## Fixing Mouse DPI - Wayland / systemd / libinput
+
+On a distro like Fedora using GNOME, wayland is used to handle input devices.
+These are abstracted under libinput, and not xinput / xset
+
+Microsoft Intellimouse Pro uses a 1600dpi sensor. libinput assumes 1000dpi when it does not know otherwise, or attempts to normalise all input devices over 1000dpi to behave as if 1000dpi. However, this mouse is far too sensitive by default, and when measured appeared to be
+treated as 1000dpi and not normalised.
+
+There are instructions on adding a new mouse to the systemd dpi database here
+- http://who-t.blogspot.com/2014/12/building-a-dpi-database-for-mice.html
+- Summarised below
+- Installation of some packages were required, found via `dnf provides`
+
+- `sudo libinput list-devices`
+```
+Device:           Microsoft Microsoft Pro Intellimouse Mouse
+Kernel:           /dev/input/event7
+```
+
+- For me, this mouse is `event7`
+- Current setting can be confirmed with `udevadm info /dev/input/event7 | grep MOUSE_DPI`
+- Initial fix gives: `E: MOUSE_DPI=1600@1000`
+
+Measured via:
+- `sudo mouse-dpi-tool /dev/input/event7`
+- Distance travelled corresponded to roughly 51mm
+
+To get pid, and vid:
+- `lsusb`
+- `Bus 001 Device 006: ID 045e:082a Microsoft Corp. Microsoft Pro Intellimouse`
+- Given by `mouse-dpi-tool` anyway, but good confirmation
+
+Re-measured after fix to 1600@1000
+- After DPI set to 1600dpi, re-performed this test moving the mouse by approx
+  50mm. Appears correct, as it corresponds to the entry:
+    - `50mm	    1.98in	    1600dpi`
+- `mouse-dpi-tool` suggested entry of:
+```
+mouse:usb:v045ep082a:name:Microsoft Microsoft Pro Intellimouse Mouse:
+ MOUSE_DPI=XXX@1055
+```
+Suggested polling rate auto-detected to an average of 1055Hz, although internet lists 1000Hz as polling rate for this mouse. Using 1000Hz
+
+Making recommended switch to local file : `/etc/udev/hwdb.d/71-mouse.hwdb`, and
+removing our earlier fix from `/usr/lib/udev/hwdb.d/70-mouse.hwdb`
+- Then regenerate hwdb and restart wayland (ie. logout or reboot)
+- `sudo udevadm hwdb --update`
+- `sudo udevadm trigger /dev/input/event7`
+
+### Summary
+
+- Create local file `/etc/udev/hwdb.d/71-mouse.hwdb`
+```
+# - SW - 06/06/21
+# Microsoft Intellimouse Pro
+mouse:usb:v045ep082a:name:Microsoft Microsoft Pro Intellimouse Mouse:
+ MOUSE_DPI=1600@1000
+
+```
+- `sudo udevadm hwdb --update`
+- `sudo udevadm trigger /dev/input/event7`
+- Restart wayland (logout / reboot)
+- Check mouse DPI with 
+- `udevadm info /dev/input/event7 | grep MOUSE_DPI`
+- May have to install packages, was required for initial measurement
