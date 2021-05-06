@@ -347,13 +347,14 @@ removing our earlier fix from `/usr/lib/udev/hwdb.d/70-mouse.hwdb`
 ### Summary
 
 - Create local file `/etc/udev/hwdb.d/71-mouse.hwdb`
+
 ```
 # - SW - 06/06/21
 # Microsoft Intellimouse Pro
 mouse:usb:v045ep082a:name:Microsoft Microsoft Pro Intellimouse Mouse:
  MOUSE_DPI=1600@1000
-
 ```
+
 - `sudo udevadm hwdb --update`
 - `sudo udevadm trigger /dev/input/event7`
 - Restart wayland (logout / reboot)
