@@ -1,0 +1,6 @@
+[Scheme]
+Name=Base16-Gruvbox light, Solarized BG
+ColorForeground=#504945
+ColorBackground=#fdf6e3
+ColorCursor=x
+ColorPalette=#fdf6e3;#9d0006;#79740e;#b57614;#076678;#8f3f71;#427b58;#504945;#928374;#9d0006;#79740e;#b57614;#076678;#8f3f71;#427b58;#282828
