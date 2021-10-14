@@ -11,6 +11,21 @@ let use_terminal_bg_fg=0
 let use_white_gui_bg=0
 let use_truecolor=0
 
+" LUCIUS:
+" 1 for transparent terminal bg
+let g:lucius_no_term_bg=0
+if exists("use_dark_theme") && use_dark_theme
+    " DARK
+    " low normal or high
+    let g:lucius_contrast='normal'
+    let g:lucius_contrast_bg='normal'
+else
+    " LIGHT
+    let g:lucius_contrast='normal'
+    let g:lucius_contrast_bg='normal'
+    "let g:lucius_contrast_bg='high'
+endif
+
 "" JELLYBEANS:
 let jb_twilight_colors=0
 let jb_dracula_colors=0
@@ -900,26 +915,30 @@ nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bD :%bd<CR>
 nnoremap <Leader>bb :ls<CR>
 
-" Insert time.
-nnoremap <F2> "=strftime("%H:%M")<CR>p
-inoremap <F2> <C-R>=strftime("%H:%M")<CR>
+" Datetimes, v2.0
+" Insert date
+nnoremap <F2><F2> "=strftime("%d/%m/%Y")<CR>p
+inoremap <F2><F2> <C-R>=strftime("%d/%m/%Y")<CR>
+" Date + Time
+nnoremap <F2><F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
+inoremap <F2><F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
+" Date + Seconds
+nnoremap <F2><F4> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
+inoremap <F2><F4> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
+" Insert just time
+nnoremap <F3><F3> "=strftime("%H:%M")<CR>p
+inoremap <F3><F3> <C-R>=strftime("%H:%M")<CR>
 " With seconds.
-nnoremap <Leader><F2> "=strftime("%H:%M:%S")<CR>p
-inoremap <Leader><F2> <C-R>=strftime("%H:%M:%S")<CR>
-" Insert datetime.
-nnoremap <F3> "=strftime("%d/%m/%Y %H:%M")<CR>p
-inoremap <F3> <C-R>=strftime("%d/%m/%Y %H:%M")<CR>
-" With seconds.
-nnoremap <Leader><F3> "=strftime("%d/%m/%Y %H:%M:%S")<CR>p
-inoremap <Leader><F3> <C-R>=strftime("%d/%m/%Y %H:%M:%S")<CR>
-" On a new line.
+nnoremap <F3><F4> "=strftime("%H:%M:%S")<CR>p
+inoremap <F3><F4> <C-R>=strftime("%H:%M:%S")<CR>
+
 nnoremap <F4> o<ESC>0C-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<ESC>
 inoremap <F4> <ESC>0i-----------------<CR><C-R>=strftime("%d/%m/%Y %H:%M")<CR>:<CR>-----------------<CR>
 " Start of day.
 nnoremap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 " Javascript format datetime.
 "nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>p
-inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
+"inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S.0000000Z")<CR>
 
 " Save and execute currently open buffer:
 "nnoremap <F5> :w<CR>:!./%<CR>
