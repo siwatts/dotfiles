@@ -200,6 +200,14 @@ DVD playback:
 - Alternatively install only the required library, eg:
     - `sudo rpm -ivh http://rpm.livna.org/repo/40/x86_64/libdvdcss-1.4.1-1.fc27.remi.x86_64.rpm`
 
+### Sound Bugs
+
+Fedora 35 uses pipewire
+- Tinny sound bug encountered sometimes after suspend
+- Can check on and restart pipewire to fix this
+- Stop any playing media
+- `systemctl --user restart pipewire`
+
 ### dnf packages
 
 Some of the dnf packages used in Fedora 27 install:
@@ -343,6 +351,11 @@ removing our earlier fix from `/usr/lib/udev/hwdb.d/70-mouse.hwdb`
 - Then regenerate hwdb and restart wayland (ie. logout or reboot)
 - `sudo udevadm hwdb --update`
 - `sudo udevadm trigger /dev/input/event7`
+
+12/05/2021 22:18
+- Added extra `*` to end of match string, to bring in line with comments and all
+  other mice.
+- Double check this works before submitting PR
 
 ### Summary
 

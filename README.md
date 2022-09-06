@@ -861,6 +861,7 @@ Use `hostname` from ssh config file, or replace with `IP:port`
 Browse ssh files/directories through vim session (directories require trailing
 slash):
 
+- `vim scp://[user@]hostname//home/user/Documents/file`
 - `:e scp://[user@]hostname/`
 - `:e scp://[user@]hostname/.vimrc`
 - `:e scp://[user@]hostname/Documents/`
