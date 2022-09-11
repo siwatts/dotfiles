@@ -677,6 +677,19 @@ Get the datetime
 - `"$(date)"`, generic
 - `"$(date '+%d/%m/%Y %H:%M:%S')"`, arbitrary formatting
 
+Simple colours:
+```bash
+tput setaf 1
+echo "This will be red"
+tput sgr0
+echo "This will be back to terminal default fg"
+tput setaf 1
+tput bold
+echo "This will be bold red"
+tput sgr0
+echo "This will be back to terminal default fg"
+```
+
 ## Vim colors
 
 Twilight256.vim
