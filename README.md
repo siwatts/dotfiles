@@ -11,6 +11,7 @@ dotfiles using `vim -d`, or import settings or entire files themselves.
 - Guide to [configuring xfce with config files](xfce4/README.md).
 - Guide to [installing and configuring openbox window manager](openbox/README.md).
 - Guide to [installing and configuring i3 window manager](i3wm/README.md).
+- Guide to [installing and configuring Doom Emacs](emacs/README.md).
 - Diff all CLI workflow / environment dotfiles with [diff-all.sh](diff-all.sh).
 - Diff only CLI workflow / environment dotfiles relevant to working on a remote
   server with [diff-server.sh](diff-server.sh).
@@ -613,6 +614,12 @@ Colours in bash scripts
 - `tput setaf 1; tput bold`, bold / bright red
 - `tput sgr0`, clear
 
+Colours in string literals, e.g. read prompt:
+```bash
+read -r -p $'\e[33mAsk user a question? (y/[N]): \e[0m' response
+```
+where `33m` = yellow, `36m` = magenta and so on.
+
 Get location of bash script
 - `cd "$(dirname "$(readlink -f "$0")")"`
 - `cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"`, even if softlinked
@@ -688,6 +695,28 @@ tput bold
 echo "This will be bold red"
 tput sgr0
 echo "This will be back to terminal default fg"
+```
+
+Ensure only one instance of a script can run at a time - mutex via `flock`
+```bash
+# https://unix.stackexchange.com/questions/48505/how-to-make-sure-only-one-instance-of-a-bash-script-runs
+[ "${FLOCKER}" != "`realpath '$0'`" ] && exec env FLOCKER="`realpath '$0'`" flock -en "$0" "$0" "$@" || :
+```
+
+Test script for demonstration. Handles interrupts. Lock automatically released
+at the end of script or if interrupted
+```bash
+# https://unix.stackexchange.com/questions/48505/how-to-make-sure-only-one-instance-of-a-bash-script-runs
+[ "${FLOCKER}" != "`realpath '$0'`" ] && exec env FLOCKER="`realpath '$0'`" flock -en "$0" "$0" "$@" || :
+
+echo "Start"
+for i in {1..5}
+do
+    sleep 1s
+    echo "."
+done
+
+echo "End"
 ```
 
 ## Vim colors
@@ -889,4 +918,49 @@ Browse ssh files/directories through emacs
 - `:e /ssh:[user@]host:filename`
 - `:e /ssh:[user@]host:Documents`
 - `:e /ssh:[user@]host:/home/user/Documents`
+
+### Disable SSH Password Login
+
+**Important. Best practice allows only private key auth**
+
+- Try password access
+    - `ssh user@host`
+- Create config file
+    - `sudo vim /etc/ssh/sshd_config.d/ssh-nopw.conf`
+    - Name should not matter, `/etc/ssh/sshd_config` sources `/etc/ssh/sshd_config.d/*.conf`
+    - Should be more resilient than manually editing `sshd_config`
+
+```
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+PermitRootLogin no
+PermitRootLogin prohibit-password
+```
+
+- Reload sshd service or reboot
+    - `sudo systemctl reload sshd`
+    - Verify that ssh no longer works without key
+    - `Permission denied (publickey,gssapi-keyex,gssapi-with-mic).`
+
+## Monitor Hardware Brightness
+
+## Securely Wipe Harddrive
+
+Using tool `shred`
+
+- Boot into a live USB linux environment on the PC to be wiped, or plug HDD into
+  existing computer (risky)
+- Fedora workstation USB has `shred` installed
+- `lsblk`, list block devices, identify drive(s) to be wiped
+    - Live USB will also be listed here, be careful
+- Ensure drive is unmounted
+    - `sudo umount /dev/sdX`
+- Erase contents of drive `X`
+    - `sudo shred -v -n1 -z /dev/sdX`
+        - `-v`, verbose
+        - `-n1`, 1 x pass of random data
+            - Default is 3, takes a long time
+        - `-z`, finish with pass of zeroes
+- Takes about 2.5h for 500G
 

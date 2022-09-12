@@ -374,3 +374,235 @@ mouse:usb:v045ep082a:name:Microsoft Microsoft Pro Intellimouse Mouse:
 - Check mouse DPI with 
 - `udevadm info /dev/input/event7 | grep MOUSE_DPI`
 - May have to install packages, was required for initial measurement
+
+## Fedora 35
+
+Workstation edition using gnome. Requires much less configuration than previous
+instructions
+
+### Install
+
+- Rename root filesystem from `fedora_localhost-live` using GUI `disks` util.
+    - Requires you be in a USB live boot session
+    - Cannot use the same session as installation, because disk mounted and
+      busy? Reboot into a 2nd USB live session after install
+- Set hostname
+    - `sudo hostnamectl set-hostname NEWHOSTNAME`
+    - `hostnamectl`, to confirm
+- Remove sudoers password
+    - `sudo visudo`
+        - `username ALL=(ALL) NOPASSWD: ALL`
+        - `%groupname ALL=(ALL) NOPASSWD: ALL`
+        - `%wheel ALL=(ALL) NOPASSWD: ALL`
+- `sudo dnf install -y gnome-tweaks gnome-extensions-app vim vim-X11 htop tmux git gimp`
+    - Need both vim and vim-X11. Otherwise you get GVim only without
+      `vim-enhanced` package
+- Previous wallpapers:
+    - `sudo dnf install -y f{27,28,29,30,32,34,35}-backgrounds-gnome`
+    - Specify range with `..`, e.g. get everything since Fedora 21: `{21..35}`
+    - `backgrounds-extras-gnome`, for other included stock wallpapers also
+
+### Make User Sudoer
+
+- For additional users, first user should already be admin
+- `sudo usermod -aG wheel username`
+
+### Joining Kerberos Realm
+
+Single sign on. Compatible with Microsoft Active Directory realms.
+
+- All functionality built in, no packages needed
+- Should name PC accordingly
+    - E.g. `pcname.domainname`
+        - So if domain is called `mydomain.local`, hostname is
+          `pcname.mydomain.local`
+- `realm discover`, list discoverable realms
+- `realm list`, list currently joined realms
+- `sudo realm join -v --user=admin NAME.LOCAL`
+    - Join the realm named `NAME.LOCAL`, with the user credentials of user
+      `admin`, `-v` verbose
+    - Note: This user is used to add the machine to the realm, it must have
+      permission to join new machines to the realm. It is not necessarily the
+      user account you will use to log into the machine after joining.
+- Allow these realm users to log in via this machine
+    - `sudo realm permit -g 'mygroupname'`
+        - Group `mygroupname`
+    - `sudo realm permit user`
+        - User `user`
+- Login to realm account at `gdm` by using username format specified by `realm
+  list`
+    - Probably `user@domain`, `user@domain.local` etc.
+- Persist user account at login screen by adding them in GNOME `Settings` ->
+  `Users` -> `Add User` -> `Enterprise Login`
+
+### Cockpit
+
+- `sudo dnf install -y cockpit cockpit-pcp`
+- `sudo systemctl enable cockpit.socket ; sudo systemctl start cockpit.socket`
+- Access console:
+    - `http://localhost:9090`, same machine
+    - `https://pcname.local:9090/`
+    - `http://ip-address-of-machine:9090/`
+
+### SSH access
+
+- `openssh-server` should already be installed, start it and enable it
+    - `sudo systemctl enable sshd.service ; sudo systemctl start sshd.service`
+- Send a key to machine
+    - `ssh-copy-id user@hostname`
+- [Disable password auth](README.md#disable-ssh-password-login)
+
+### Thunar
+
+- `sudo dnf install thunar tumbler`
+    - Thunar is quite light, brings very few deps in especially if already
+      switched to xfce4-terminal
+    - Tumbler package generates image thumbnails automatically when entering a
+      directory
+
+### GNOME Tweaks
+
+- Antialiasing: `Subpixel (for LCD screens)`
+- Minimise and Maximise buttons
+- Workspaces span displays
+- Can map Caps Lock to ESC, and other useful rebinds in `Keyboard & Mouse` ->
+  `Additional Layout Options`
+
+### GNOME Extensions
+
+- [GNOME Extensions](https://extensions.gnome.org/)
+- `AppIndicator and KStatusNotifierItem Support`
+    - Adds icon tray
+- `Sound Input & Output Device Chooser`
+- `Dash to Panel`
+    - Windows 10 style bottom panel
+
+### Automatic Updates
+
+#### Install
+
+- `sudo dnf install -y dnf-automatic`
+- By editing and enabling the systemd timer `dnf-automatic-install.timer`
+  instead of `dnf-automatic.timer` the default config at
+  `/etc/dnf/automatic.conf` is overridden to act as though `apply_updates` is
+  set to `yes`. Modify this config if updates not applied.
+- By default this package runs updates every morning at 06:00
+- SystemD timers will run later if a period is missed (ie. booted after 06:00)
+
+#### Changing SystemD Timer Interval
+
+- `sudo systemctl edit dnf-automatic-install.timer`
+- Insert override contents between comments:
+
+```yml
+[Timer]
+OnCalendar=
+OnCalendar=Sat *-*-* 06:00
+```
+
+- Only lines you want to override from the default settings are included in this
+  `override.conf` file. In our case the addition of `Sat` to `OnCalendar`, to
+  apply on Saturdays at 06:00 instead of daily at 06:00
+    - Need to first clear the variable to empty, or the override file had no effect
+    - See [stack overflow](https://unix.stackexchange.com/questions/398540/how-to-override-systemd-unit-file-settings)
+    - If this has no effect, can manually copy the default file
+      `/usr/lib/systemd/system/dnf-automatic-install.timer` to
+      `/etc/systemd/system/dnf-automatic-install.timer` and then modify contents
+
+#### Enable and Verify
+
+- `sudo systemctl enable dnf-automatic-install.timer ; sudo systemctl start dnf-automatic-install.timer`
+- You can verify that the timer is active and scheduled for the correct time with
+    - `sudo systemctl list-timers`, unit `dnf-automatic-install.timer`, or
+    - `sudo systemctl status dnf-automatic-install.timer`
+- If not `sudo systemctl daemon-reload` to reload
+
+#### Logs
+
+- `sudo journalctl -u dnf-automatic-install.service`
+- `sudo systemctl status dnf-automatic-install.timer`
+
+### Automatic Reboot
+
+Good idea to reboot the system after updates, especially with new kernel versions frequently released. Can create a simple systemd timer to reboot weekly (Sundays 02:00) after dnf automatic runs on Saturdays
+
+- Become root `sudo -i`
+- `cd /etc/systemd/system`
+- `vim schedule-reboot.timer`
+    - `:set paste`
+```yml
+[Unit]
+Description=Reboot Scheduling.
+
+[Timer]
+OnCalendar=Sun *-*-* 02:00
+Unit=reboot.target
+
+[Install]
+WantedBy=timers.target
+```
+- `systemctl enable schedule-reboot.timer ; systemctl start schedule-reboot.timer`
+    - Enable and start the new reboot timer
+- `systemctl status schedule-reboot.timer ; systemctl list-timers`
+    - Check it was correctly scheduled for Sunday 02:00, and that dnf automatic is set for Saturday
+
+### Keyboard Shortcuts
+
+- `Launchers`:
+    - `Home folder` -> `Super+E`
+        - File explorer - nautilus
+        - Like Windows `Win+E` to launch File Explorer
+        - **If not using nautilus, make a Custom Shortcut
+    - `Launch web browser` -> `Super+W`
+        Opens default browser
+- `Navigation`:
+    - `Switch windows` -> `Alt+Tab`
+        - This fixes the default alt-tab behaviour to instead switch between all open windows as is common in Windows. By default alt-tab is actually Switch applications and groups all windows of an application together.
+    - `Switch applications` -> `Super+Tab`
+        - Sets `Super+Tab` to be what `Alt+Tab` used to be
+- `Windows`:
+    - `Hide window` -> `Alt+F9`
+        - Match XFCE4 and some other Linux DEs
+        - Minimises window, other shortcuts are already default: `Alt+F4` is close, `Alt+F7` is move, `Alt+F8` is resize, `Alt+F10` is maximise, `Alt+F11` is fullscreen
+- `Custom Shortcuts`:
+    - Firefox, private browsing mode:
+        - Name: `Firefox Private Browsing`
+        - Command: `firefox --private-window`
+        - Shortcut: `Super+F`
+    - Terminal
+        - Name: `Terminal`
+        - Command: `gnome-terminal` / `xfce4-terminal`
+        - Shortcut: `Super+T` / `Ctrl+Alt+T`
+    - GVim
+        - Name: `GVim`
+        - Command: `gvim`
+        - Shortcut: `Super+G`
+    - Thunar
+        - Name: `Thunar`
+        - Command: `thunar`
+        - Shortcut: `Super+E`
+    - Run Command
+        - Have `Super+R` mapped to same run launcher as `Alt+F2`
+        - `gsettings set org.gnome.desktop.wm.keybindings panel-run-dialog "['<Alt>F2', '<Super>r']"`
+
+### Other Settings
+
+Can use `gsettings` to set some things on the CLI that cannot be set any other
+way
+
+- Screen timeout greater than 15 minutes
+    - `gsettings set org.gnome.desktop.session idle-delay 1800`
+        - Delay in seconds
+        - I.e. 1800 seconds = 30 minutes
+        - 0 = never
+    - `gsettings set org.gnome.desktop.screensaver lock-delay 0`
+        - Timeout to lock screen after blanking
+        - 0 = instant
+
+### TigerVNC
+
+For remote working - like RDP for Linux
+
+- `sudo dnf install tigervnc-server`
+    - Includes also dependency `tigervnc-selinux`
+

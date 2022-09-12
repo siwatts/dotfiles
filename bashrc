@@ -76,6 +76,13 @@ fi
 # PS1 prompt:
 if [ "$color_prompt" = yes ]; then
 
+    ## # https://www.xfree86.org/current/ctlseqs.html
+    ## # Get colour by hashing hostname
+    ## HOST="${HOSTNAME%%.*}"
+    ## SUM="$(echo $HOST | md5sum -)"
+    ## COLOUR="${SUM:0:6}"
+    ## export PS1='\033[1;38;2;'"$((16#${COLOUR:0:2}));$((16#${COLOUR:2:2}));$((16#${COLOUR:4:2}))m"'\u@\h \[\033[01;34m\]\w\033[m\n\$ '
+
     # Choose prompt based on whether this is local or remote session
     if [ -n "${SSH_CONNECTION}" ]; then
         # Connected to remote via ssh, cyan & yellow
@@ -216,11 +223,11 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-alias dotfiles='cd ~/repos/dotfiles'
+#alias dotfiles='cd ~/repos/dotfiles'
 alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
-alias todo="$EDITOR ~/Documents/TODO.txt"
+alias todo="$EDITOR ~/Documents/TODO.org"
 alias ta='tmux a'
 alias view="vim -nMR"
 diffdir()
@@ -233,7 +240,7 @@ dirdiff()
 }
 
 # More aliases
-alias config-redshift="vim ~/.config/redshift.conf; killall redshift; sleep 6; redshift-gtk &"
+#alias config-redshift="vim ~/.config/redshift.conf; killall redshift; sleep 6; redshift-gtk &"
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -248,8 +255,43 @@ cdll()
     cd "$@" && ls -al;
 }
 
+count1min()
+{
+    echo '60 second timer...'
+    echo -ne '[                                                            ]\r'
+    echo -ne '['
+
+    for i in {1..60}; do
+        sleep 1s
+        echo -n '='
+    done
+    echo
+}
+
 alias gitlog='git log --all --graph --pretty --decorate'
 #alias gitstatus='git status -uno'
+
+# Fedora Updates
+alias upgrade='echo "Working..."; sudo dnf upgrade -y'
+alias upgrade-reboot='echo "Working..."; sudo dnf upgrade -y && sudo shutdown -r 1'
+alias offline-upgrade-download-and-apply='echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min; sudo dnf offline-upgrade reboot'
+alias offline-upgrade-download='echo "Working..."; sudo dnf offline-upgrade download -y'
+alias offline-upgrade-apply='echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min; sudo dnf offline-upgrade reboot'
+alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
+
+# Generic Helpful Aliases
+alias findhere='find . -type f -name '
+
+# SSH aliases
+# - For Host 'name' as defined in '~/.ssh/config'
+# - '-Y' for X11 forwarding
+# - '-t' to allocate pseudo-tty (allowing following command to run)
+# - 'tmux a || tmux', attach to running tmux session, else create one
+# alias sshname="ssh -Y name -t 'tmux a || tmux'"
+
+# FreeRDP
+#alias rdp-pcname='echo "Alt+Ctrl+Enter to toggle fullscreen"; sleep 2s; xfreerdp /kbd:0x00000809 /u:username /v:pcname /w:1920 /h:1080 /f'
+#alias rdp-pcname-sound='echo "Alt+Ctrl+Enter to toggle fullscreen"; sleep 2s; xfreerdp /kbd:0x00000809 /u:username /v:pcname /w:1920 /h:1080 /f /audio:quality:high /mic:quality:high'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
@@ -261,3 +303,15 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 PS1=$(echo "$PS1" | sed 's/(base) //')
 # OR can get rid of this PS1 modification entirely: conda config --set changeps1 False
 
+#neofetch
+#neofetch --block_width 4
+#neofetch --block_width 6 --block_height 2
+
+# Bash History
+# Both these default to 1000
+HISTSIZE=1000
+HISTFILESIZE=2000
+# Append to, don't overwrite ~/.bash_history
+shopt -s histappend
+# Or overwrite it: shopt -u histappend
+# Check it: shopt histappend

@@ -21,12 +21,15 @@ xterm*faceSize: 10
 !! -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-* | Terminus
 !! -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-* | Terminus, condensed height
 !! -------------
-xterm*font: 9x15
+xterm*font: 7x14
 !xterm*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 !xterm*boldFont: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 !! -------------
 !! Disable bold font.
 !xterm*allowBoldFonts: false
+!! -------------
+!! Disable truetype fonts with renderFont false (ie. start with X11 font)
+!xterm*vt100.renderFont: false
 
 ! Load config etc.
 xterm*loginshell: false
