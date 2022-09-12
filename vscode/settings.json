@@ -1,0 +1,311 @@
+{
+    "git.ignoreLegacyWarning": true,
+    "editor.minimap.enabled": false,
+    //"editor.fontFamily": "'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Source Code Pro', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 13, // 1080p monitor (equivalent to 10 terminal)
+    //"editor.fontSize": 15, // 1440p monitor (equivalent to 11 terminal)
+    "terminal.integrated.fontSize": 13,
+    "editor.cursorBlinking": "solid",
+    "editor.wordWrap": "on",
+    // == Vim stuff ==
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+        {
+            "before": ["<Space>"],
+            "after": ["<C-f>"]
+        },
+        {
+            "before": ["?", "?"],
+            "commands": [":nohl",]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<CR>"],
+            "after": ["\"", "+", "y"]
+        }
+    ],
+    // == Brighter Comment Colours ==
+    "editor.tokenColorCustomizations": {
+        //"comments": "#6A9955", // Dark+ from codedark.vim
+        //"comments": "#888888", // Jellybeans.vim
+        "[Dracula*]": {
+            //"comments": "#8787af", // Brighter Dracula 256 comment colour
+            "comments": "#a0a0c0", // Even brighter
+        },
+        "[Community Material*]": {
+            "comments": "#8787af", // Brighter Dracula 256 comment colour
+        },
+        "[Nord]": {
+            "comments": "#808090",
+        },
+        "[Monokai Classic]": {
+            "comments":{
+                //"foreground": "#898470", // Monokai (VS Code built-in)
+                "foreground": "#a09580",
+                "fontStyle": "", // Clear the italics
+            }
+        },
+        "[Monokai Pro*]": {
+            // a09080, 908070 also good
+            "comments":{
+                "foreground": "#a09590",
+                "fontStyle": "", // Clear the italics
+            }
+        },
+        "[In Bed by 7pm]": {
+            "comments":{
+                "foreground": "#a0a0b0",
+                //"foreground": "#9090b0",
+                //"fontStyle": "", // Clear the italics
+            }
+        },
+        "[Quiet Light*]": {
+            // Default comment is #AAAAAA
+            // Default Light+ comment is #008000
+            "comments":{
+                "foreground": "#909090", // Grey
+                //"foreground": "#80a080", // Greenish grey
+                //"foreground": "#4040a0", // Blue
+                "fontStyle": "", // Clear the italics
+            }
+        },
+        "[GitHub Light Default]": {
+            // Default comment is #909090
+            //"comments": "#709070",
+            //"comments": "#008000",
+            //"comments": "#007000",
+            // Default string is #0A3069
+            //"strings": "#0A3080",
+            //"strings": "#154080",
+            //"strings": "#22863a", // GitHub Plus
+            //"strings": "#008000",
+            //"strings": "#102080", // 001080 = Light+ variable dark blue
+            //"types": "#af5f00", // Lucius.vim (constant)
+        },
+        "[Gruvbox Light Soft]": {
+            // Default comment is #909090
+            //"comments": "#709070",
+            "comments": "#008000",
+            //"comments": "#007000",
+        },
+        // Didn't work for brighter zenburn but applies to equally named better theme
+        "[Zenburn]": {
+            "functions": "#efef8f",
+        },
+    },
+    "workbench.colorCustomizations": {
+        "[GitHub*]": {
+            //"editorCursor.foreground": "#600060",
+            //"terminalCursor.foreground": "#000000",
+            "editorCursor.background": "#ffffff",
+            "terminalCursor.background": "#ffffff",
+        },
+        "[Gruvbox Light Soft]": {
+            "editor.background": "#ffffff",
+            //"editor.foreground": "#e8e8d3",
+            //"editor.selectionBackground": "#404040"
+        },
+        "[Quiet Light]": {
+            // == LuciusLightCustom xfce4-terminal colours ==
+            //"terminal.background":"#eeeeee"
+            "terminal.foreground":"#444444",
+            //"terminalCursor.background":"#A89984",
+            //"terminalCursor.foreground":"#A89984",
+            "terminal.ansiBlack": "#eeeeee",
+            "terminal.ansiRed": "#af0000",
+            "terminal.ansiGreen": "#008700",
+            "terminal.ansiYellow": "#af5f00",
+            "terminal.ansiBlue": "#005faf",
+            "terminal.ansiMagenta": "#870087",
+            "terminal.ansiCyan": "#008787",
+            "terminal.ansiWhite": "#000000",
+            "terminal.ansiBrightBlack": "#707070",
+            "terminal.ansiBrightRed": "#af0000",
+            "terminal.ansiBrightGreen": "#008700",
+            "terminal.ansiBrightYellow": "#af5f00",
+            "terminal.ansiBrightBlue": "#005faf",
+            "terminal.ansiBrightMagenta": "#870087",
+            "terminal.ansiBrightCyan": "#008787",
+            "terminal.ansiBrightWhite": "#303030",
+        },
+    },
+    // // == BELOW JELLYBEANS ==
+    // "editor.semanticTokenColorCustomizations": {
+    //     "enabled": true,
+    //     "rules": {
+    //         "newOperator": "#8197bf",
+    //         "enumMember": "#e8e8d3",
+    //         //"macro": "#cf6a4c", // Gets NULL which we want constant red like vim, but also clobbers all other macro definitions
+    //         //"macro": "#d08356", // Twilight.vim constant, alternative to above
+    //         //"parameter": "#8fbfdc"
+    //     }
+    // },
+    // "editor.tokenColorCustomizations": {
+    //     "strings": "#99ad6a",
+    //     "comments": "#888888",
+    //     //"functions": "#e8e8d3",
+    //     "functions": "#fad07a",
+    //     "keywords": "#8197bf",
+    //     "numbers": "#cf6a4c",
+    //     "types": "#ffb964",
+    //     //"types": "#e8e8d3",
+    //     "variables": "#c6b6ee",
+    //     "semanticHighlighting": true,
+    //     "textMateRules": [
+    //         {
+    //             "scope": "variable",
+    //             "settings": {
+    //                 "foreground": "#e8e8d3"
+    //                 //"foreground": "#c6b6ee"
+    //             }
+    //         },
+    //         {
+    //             "scope": "variable.language.this.cpp",
+    //             "settings": {
+    //                 "foreground": "#8197bf"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type.built-in.primitive.cpp",
+    //             "settings": {
+    //                 "foreground": "#ffb964"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type.primitive.cpp",
+    //             "settings": {
+    //                 "foreground": "#ffb964"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type.namespace",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type.modifier.access.control", // public.cpp, private, and protected
+    //             "settings": {
+    //                 "foreground": "#8197bf"
+    //             }
+    //         },
+    //         {
+    //             "scope": "entity.name.scope-resolution",
+    //             "settings": {
+    //                 "foreground": "#e8e8d3"
+    //             }
+    //         },
+    //         {
+    //             "scope": "entity.name.namespace",
+    //             "settings": {
+    //                 "foreground": "#e8e8d3"
+    //             }
+    //         },
+    //         {
+    //             "scope": "keyword.control.directive",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         },
+    //         {
+    //             "scope": "entity.name.function.preprocessor",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         }            ,
+    //         {
+    //             "scope": "keyword.other.using",
+    //             "settings": {
+    //                 "foreground": "#8197bf"
+    //             }
+    //         },
+    //         {
+    //             "scope": "constant.character.escape",
+    //             "settings": {
+    //                 "foreground": "#799d6a"
+    //             }
+    //         },
+    //         {
+    //             "scope": "constant.language",
+    //             "settings": {
+    //                 "foreground": "#cf6a4c"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier",
+    //             "settings": {
+    //                 "foreground": "#ffb964"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier.pointer",
+    //             "settings": {
+    //                 "foreground": "#c6b6ee"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier.specifier.const.cpp",
+    //             "settings": {
+    //                 "foreground": "#c59f6f"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier.inline.cpp",
+    //             "settings": {
+    //                 "foreground": "#c59f6f"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier.reference.cpp",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.modifier.pointer.cpp",
+    //             "settings": {
+    //                 "foreground": "#8fbfdc"
+    //             }
+    //         },
+    //         {
+    //             "scope": "keyword.operator.new.cpp",
+    //             "settings": {
+    //                 "foreground": "#8197bf"
+    //             }
+    //         },
+    //         {
+    //             "scope": "keyword.operator.delete.cpp",
+    //             "settings": {
+    //                 "foreground": "#8197bf"
+    //             }
+    //         },
+    //         {
+    //             "scope": "constant.language.NULL.cpp", // Overridden by semantic "macro"
+    //             "settings": {
+    //                 "foreground": "#cf6a4c"
+    //             }
+    //         },
+    //     ]
+    // },
+    // "workbench.colorCustomizations": {
+
+    //     "editor.background": "#151515",
+    //     "editor.foreground": "#e8e8d3",
+    //     "editor.selectionBackground": "#404040"
+    // },
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Dracula",
+}
+
