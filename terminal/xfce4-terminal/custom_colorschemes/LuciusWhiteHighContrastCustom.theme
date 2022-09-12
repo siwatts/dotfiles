@@ -1,0 +1,9 @@
+[Scheme]
+Name=LuciusWhite HighContrast (Custom)
+ColorBackground=#ffffff
+ColorForeground=#000000
+ColorCursor=#ff00ff
+ColorPalette=#ffffff;#af0000;#008700;#af5f00;#005faf;#870087;#008787;#000000;#707070;#af0000;#008700;#af5f00;#005faf;#870087;#008787;#303030;
+ColorSelection=#444444
+ColorSelectionBackground=#afd7ff
+ColorSelectionUseDefault=FALSE
