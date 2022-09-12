@@ -249,9 +249,15 @@ cdll()
 }
 
 alias gitlog='git log --all --graph --pretty --decorate'
+#alias gitstatus='git status -uno'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Cygwin attach to running X11 server
 #export DISPLAY=:0
+
+# Remove miniconda "(base) " from the beginning of the bash prompt
+# We only want to see other more interesting envs
+PS1=$(echo "$PS1" | sed 's/(base) //')
+# OR can get rid of this PS1 modification entirely: conda config --set changeps1 False
 

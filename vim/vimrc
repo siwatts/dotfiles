@@ -7,7 +7,17 @@ let use_dark_gui_theme=1
 let use_base16_theme=0
 let use_theme_of_the_day=0
 let use_random_theme=0
-let use_terminal_bg_fg=0
+if use_dark_theme
+    " Dark
+    let use_terminal_bg_fg=0
+    let use_white_term_bg=0 " TODO: Consolidate into one variable that sets both
+    let use_term_bg=0
+else
+    " Light
+    let use_terminal_bg_fg=0
+    let use_white_term_bg=0 " TODO: Consolidate into one variable that sets both
+    let use_term_bg=0
+endif
 let use_white_gui_bg=0
 let use_truecolor=0
 
@@ -22,8 +32,7 @@ if exists("use_dark_theme") && use_dark_theme
 else
     " LIGHT
     let g:lucius_contrast='normal'
-    let g:lucius_contrast_bg='normal'
-    "let g:lucius_contrast_bg='high'
+    let g:lucius_contrast_bg='high'
 endif
 
 "" JELLYBEANS:
@@ -72,6 +81,12 @@ set smartcase               " Except if they include one or more uppercase.
 set wildmenu                " Show possible completions on tab.
 set wildmode=longest:full   " Complete longest portion of compl. common to all, full compl. displ. in wildmenu
 set incsearch               " Show search matches as you type them
+"set foldcolumn=2            " Add an extra column width x left of linenrs to show fold locations
+"set foldmethod=syntax       " Enable folds by language syntax, all buffers
+"set scrolloff=2             " Always keep N lines visible top/bottom of screen past cursor
+set nocursorline            " Highlight line the cursor is currently on
+set nocursorcolumn          " Highlight column the cursor is currently on
+set norelativenumber        " Relative line numbers
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -148,8 +163,24 @@ nnoremap ?? :noh<CR>
 "    set t_Co=256
 "endif
 
+"" Truecolour vim inside certain tmux versions
+"" Vim requires some extra hacks over neovim, disable this if it causes
+"" problems:
+"if use_truecolor && !has('nvim')
+"    " You might have to force true color when using regular vim inside tmux as the
+"    " colorscheme can appear to be grayscale with "termguicolors" option enabled.
+"    if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+"      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"    endif
+"endif
+
 " Set truecolor mode for xterm & xfce4-terminal.
-if use_truecolor && $TERM == 'xterm-256color'
+" May need to add the conditions below, but if tmux set up properly then TERM
+" should be screen-256color now
+" && $TERM == 'xterm-256color', defunct since we now use screen-256color
+" && has('nvim'), enable for neovim only if our vim hack above doesn't work
+if use_truecolor
     " If you have vim >=8.0 or Neovim >= 0.1.5
     if (has("termguicolors"))
         set termguicolors
@@ -473,12 +504,25 @@ endfunction
 autocmd ColorScheme * call SetCustomDiff((has("gui_running") && use_dark_gui_theme)
             \ || (!has("gui_running") && use_dark_theme))
 " Make transparent to terminal bg/fg colours whenever colorscheme applied.
+                "\ hi LineNr ctermbg=NONE guibg=NONE |
 if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
     autocmd ColorScheme * hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE |
                 \ hi NonText ctermbg=NONE guibg=NONE |
-                \ hi LineNr ctermbg=NONE guibg=NONE
+                \ hi SpecialKey ctermbg=NONE guibg=NONE
 endif
 
+if exists("use_white_term_bg")
+            \ && use_white_term_bg
+            \ && !has("gui_running")
+            \ && exists("use_dark_theme")
+            \ && !use_dark_theme
+    autocmd ColorScheme * hi Normal ctermbg=231 guibg=#ffffff
+endif
+if exists("use_term_bg")
+            \ && use_term_bg
+            \ && !has("gui_running")
+    autocmd ColorScheme * hi Normal ctermbg=NONE
+endif
 if exists("use_white_gui_bg")
             \ && use_white_gui_bg
             \ && has("gui_running")
@@ -486,6 +530,65 @@ if exists("use_white_gui_bg")
             \ && !use_dark_gui_theme
     autocmd ColorScheme * hi Normal guibg=#FFFFFF
 endif
+
+" Always make comments ctermfg 108 (zenburn.vim green comments)
+"autocmd ColorScheme lucius hi Comment ctermfg=108
+"autocmd ColorScheme lucius hi Comment ctermfg=108 || hi constant ctermfg=217 || hi string ctermfg=187
+"autocmd ColorScheme jellybeans hi Comment ctermfg=65
+
+" Take some aspects of default-enhanced and apply them to ron, but only
+" subtle usability things. Keep the 'character' of ron
+" TODO: Not term < 256 col safe?
+" Can still use `:color default | set bg=dark` to get true defaults (ie. ron)
+            "\ hi Visual ctermfg=NONE ctermbg=52 cterm=NONE |
+            "\ hi String ctermfg=217 |
+autocmd ColorScheme ron hi Search ctermfg=0 ctermbg=2 cterm=NONE |
+            \ hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE |
+            \ hi PMenu ctermfg=7 ctermbg=8 |
+            \ hi PMenuSel ctermfg=0 ctermbg=7 |
+            \ hi Todo ctermfg=231 ctermbg=20 |
+            \ hi Error ctermfg=231 ctermbg=1 |
+            \ hi ErrorMsg ctermfg=231 ctermbg=1 |
+            \ hi Visual ctermfg=NONE ctermbg=24 cterm=NONE |
+            \ hi MatchParen ctermfg=231 ctermbg=60 |
+            \ hi Constant ctermfg=219
+
+" Twilight:
+" Jellybeans Normal hi Normal guifg=#e8e8d3 |
+" Brighter Comment, 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
+" Ideas from Jellybeans overrides: 959288
+autocmd ColorScheme twilight hi Comment guifg=#958f7f
+
+"" Dracula:
+"" Use brighter magenta from term
+"" Use brighter Comment
+"" TODO: Loads of linked DraculaPink not covered by this...
+"autocmd ColorScheme dracula hi Statement guifg=#FF92D0 |
+"            \ hi PreProc guifg=#FF92D0 |
+"            \ hi Comment guifg=#8787af
+
+" Nord:
+"" Use brighter Comment
+" #707090
+" #708090
+" #808090
+autocmd ColorScheme nord hi Comment guifg=#808090
+
+" Desert:
+autocmd ColorScheme desert hi Identifier cterm=NONE
+
+" Material:
+" Original comment, guifg=#5D818E
+autocmd ColorScheme vim-material hi Comment cterm=NONE guifg=#6D91A0 |
+            \ hi Search guifg=#000000 guibg=#50FA7B cterm=NONE
+
+" NightOwl:
+autocmd ColorScheme night-owl hi Comment cterm=NONE
+
+" NonText (whitespace etc.) fixes:
+autocmd ColorScheme desert,default-enhanced hi NonText guibg=NONE ctermfg=60 guifg=#5f5f87
+autocmd ColorScheme wombat256mod hi NonText guibg=NONE ctermfg=241 guifg=#857b6f gui=NONE
+autocmd ColorScheme twilight hi NonText guibg=NONE gui=bold
 
 "" PaperColor:
 let g:PaperColor_Theme_Options = {
@@ -501,7 +604,7 @@ let g:PaperColor_Theme_Options = {
 
 " Dracula:
 let g:dracula_italic=0
-let g:dracula_colorterm=0 " Transparent terminal bg.
+let g:dracula_colorterm=1 " 0 = Transparent terminal bg.
 
 "" Nofrils:
 let g:nofrils_strbackgrounds=1
@@ -512,6 +615,9 @@ let g:nofrils_heavylinenumbers=1
 "let g:zenburn_transparent=1
 let g:zenburn_old_Visual=1
 "let g:zenburn_alternate_Visual=1
+"let g:zenburn_alternate_Error = 1
+"let g:zenburn_alternate_Include = 1
+
 "let g:solarized_termcolors=256
 
 let g:jellybeans_use_gui_italics = 0
@@ -534,11 +640,18 @@ let g:seoul256_light_background=256
 " Molokai:
 let g:molokai_original=1
 let g:rehash256=1
+" Default comment is #75715E
+" VS Code - #898470
+" Code (mine) - #a09580, (a09080, 908070 also good)
+autocmd ColorScheme molokai hi Comment guifg=#a09080
 
 " If using a base16 theme that also reassigns colours 16-21.
 let base16colorspace=256
 " base16_shell_path will apply the terminal shell script on vim colorchange
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
+
+" Fix the default built-in darkblue.vim theme foreground text
+autocmd ColorScheme darkblue hi Normal guifg=#f0f0f0 ctermfg=255
 
 function! SetCustomScheme(use_dark)
     if has("gui_running")
@@ -645,6 +758,7 @@ endif
 
 " ====================
 " Random colourscheme:
+" colarray
 " ====================
 " Scheme choices:
 " Dark
@@ -699,14 +813,14 @@ endif
 " Apply base16 theme
 noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
-noremap <F9> :call SetCustomScheme(0)<CR>
+noremap <F9> :call SetCustomScheme(use_dark_theme)<CR>
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
-noremap <Leader><F7> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
-noremap <Leader><F8> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 " Daily light/dark
-noremap <Leader><F9> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
-noremap <Leader><F10> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+noremap <Leader><F9> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+noremap <Leader><F10> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
 
 " Choose a random theme on startup, if requested and supported.
 if exists("use_custom_theme")
@@ -720,7 +834,8 @@ if exists("use_custom_theme")
                             \ call RandomiseTheme(g:schemes_dark) |
                             \ call SetCustomDiff(use_dark_theme) |
                             \ hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE |
-                            \ hi LineNr ctermbg=NONE guibg=NONE
+                            \ hi SpecialKey ctermbg=NONE guibg=NONE
+                            "\ hi LineNr ctermbg=NONE guibg=NONE |
             else
                 autocmd VimEnter * set background=dark |
                             \ call RandomiseTheme(g:schemes_dark) |
@@ -731,8 +846,13 @@ if exists("use_custom_theme")
                 autocmd VimEnter * set background=light |
                             \ call RandomiseTheme(g:schemes_light) |
                             \ call SetCustomDiff(use_dark_theme) |
-                            \ hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE |
-                            \ hi LineNr ctermbg=NONE guibg=NONE
+                            \ hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
+                            "\ hi LineNr ctermbg=NONE guibg=NONE
+            elseif exists("use_white_term_bg") && use_white_term_bg
+                autocmd VimEnter * set background=light |
+                            \ call RandomiseTheme(g:schemes_light) |
+                            \ call SetCustomDiff(use_dark_theme) |
+                            \ hi Normal ctermbg=231 guibg=#ffffff
             else
                 autocmd VimEnter * set background=light |
                             \ call RandomiseTheme(g:schemes_light) |
@@ -751,7 +871,8 @@ if exists("use_custom_theme")
                             \ call RandomiseThemeByDay(g:schemes_dark) |
                             \ call SetCustomDiff(use_dark_theme) |
                             \ hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE |
-                            \ hi LineNr ctermbg=NONE guibg=NONE
+                            \ hi SpecialKey ctermbg=NONE guibg=NONE
+                            "\ hi LineNr ctermbg=NONE guibg=NONE |
             else
                 autocmd VimEnter * set background=dark |
                             \ call RandomiseThemeByDay(g:schemes_dark) |
@@ -760,10 +881,15 @@ if exists("use_custom_theme")
         else
             if exists("use_terminal_bg_fg") && use_terminal_bg_fg && !has("gui_running")
                 autocmd VimEnter * set background=light |
-                            \ call RandomiseThemeByDay(g:schemes_light)
-                            \ call SetCustomDiff(use_dark_theme)
+                            \ call RandomiseThemeByDay(g:schemes_light) |
+                            \ call SetCustomDiff(use_dark_theme) |
                             \ hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
-                            \ hi LineNr ctermbg=NONE guibg=NONE
+                            "\ hi LineNr ctermbg=NONE guibg=NONE
+            elseif exists("use_white_term_bg") && use_white_term_bg
+                autocmd VimEnter * set background=light |
+                            \ call RandomiseThemeByDay(g:schemes_light) |
+                            \ call SetCustomDiff(use_dark_theme) |
+                            \ hi Normal ctermbg=231 guibg=#ffffff
             else
                 autocmd VimEnter * set background=light |
                             \ call RandomiseThemeByDay(g:schemes_light) |
@@ -796,6 +922,17 @@ inoremap <Up> <C-o>zt
 inoremap <Down> <C-o>zb
 inoremap <Left> <C-o>zz
 inoremap <Right> <C-o>
+
+" Toggle folds with Tab (like Doom Emacs)
+" By default, tab just imitates <C-I>
+" TODO: Disabled, because this actually overrules the Forward jump
+"nnoremap <Tab> za
+" Enable folding by syntax and the sidebar
+nnoremap <Leader>ff :setlocal foldmethod=syntax foldcolumn=2 \| normal zR<CR>
+nnoremap <Leader>fm :setlocal foldmethod=manual foldcolumn=2 \| normal zR<CR>
+" TODO: HOW TO STOP FOLDING (this just hides them, like zi)
+nnoremap <Leader>fs :set nofoldenable \| set foldcolumn=0<CR>
+"| normal zR
 
 "nnoremap <Space> <Nop>
 "let mapleader=" "
@@ -843,8 +980,8 @@ nnoremap <Leader>j 5j
 nnoremap <Leader>k 5k
 nnoremap <Leader>l 5l
 
-nnoremap <Leader>c o// 
-nnoremap <Leader>C O// 
+"nnoremap <Leader>c o// 
+"nnoremap <Leader>C O// 
 nnoremap <Leader>t o// TODO: 
 nnoremap <Leader>T O// TODO: 
 
@@ -855,12 +992,18 @@ nnoremap <Leader>T O// TODO:
 
 nnoremap <Leader>m :tabe $MYVIMRC<CR>
 nnoremap <Leader>i :set paste!<CR>
-nnoremap <Leader>n :set number!<CR>
+nnoremap <Leader>n :set number! \| set list!<CR>
+nnoremap <Leader>u yypVr-
+nnoremap <Leader>U yypVr=
 
 nnoremap <Leader>M :set modifiable!<CR>
 nnoremap <Leader>R :set readonly!<CR>
 
-nnoremap <Leader>g :vimgrep "" **<Left><Left><Left><Left>
+nnoremap <Leader>g :vimgrep ""g **<Left><Left><Left><Left><Left>
+cnoremap <Leader>g vimgrep ""g **<Left><Left><Left><Left><Left>
+" Never include .exe files in vimgrep results, also affects filepath
+" completion stuff
+set wildignore+=*.exe
 
 " Behaviour of y to match D, C, S etc.
 " Ie. Y yanks to end of line instead of yanking the entire line like yy.
@@ -886,13 +1029,13 @@ nnoremap <CR> o<Esc>
 "inoremap <S-Enter> <C-O>O
 
 " Mash jk to return to normal mode.
-"inoremap jj <Esc>
-inoremap jk <Esc>
-inoremap kj <Esc>
-"inoremap kk <C-O>
+""inoremap jj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+""inoremap kk <C-O>
 
-nnoremap n nzz
-nnoremap N Nzz
+"nnoremap n nzz
+"nnoremap N Nzz
 
 " TPope's Unimpaired-like prev/next maps
 " Quickfix list:
@@ -946,12 +1089,26 @@ autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.ou
 autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -Wall && ./a.out<CR>
 autocmd FileType python,bash,sh nnoremap <buffer> <F5> :w<CR>:!./%<CR>
 
+" Convenient brace insertion map for C/C++
+" TODO: Or remap the single brace, to match IDE behaviour, and add <Leader>{ to insert a single {
+autocmd FileType c,cpp inoremap <buffer> {{ {<CR>}<Esc>O
+autocmd FileType c,cpp inoremap <buffer> {<CR> {<CR>}<Esc>O
+
+" Code folding for known languages
+"autocmd FileType c,cpp,python,bash,sh setlocal foldmethod=syntax | setlocal foldcolumn=2 | normal zR
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work?rq=1
 cnoremap w!! w !sudo tee > /dev/null %
 
+" Associate Earth Explorer file types as XML
+autocmd BufRead,BufNewFile *.eef,*.EEF,*.hdr,*.HDR set filetype=xml
+
 vnoremap <Leader>i :norm I
 vnoremap <Leader>a :norm A
+
+cmap <Leader>cc while 1\|sleep 10\|call NextColor(1)\|endwhile<CR>
+
 
 " From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
 " Convenient command to see the difference between the current buffer and the
