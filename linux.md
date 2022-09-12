@@ -398,9 +398,19 @@ instructions
     - Need both vim and vim-X11. Otherwise you get GVim only without
       `vim-enhanced` package
 - Previous wallpapers:
+    - Works back as far as Fedora 21, before the dnf package name format changes
+      to codenames
     - `sudo dnf install -y f{27,28,29,30,32,34,35}-backgrounds-gnome`
     - Specify range with `..`, e.g. get everything since Fedora 21: `{21..35}`
     - `backgrounds-extras-gnome`, for other included stock wallpapers also
+
+Can exclude the `extras` packages if not caring about supplemental wallpapers
+
+```bash
+sudo dnf install f{27,28,29,30,31,32,33,34,35}-backgrounds{,-extras}-gnome
+# The good defaults:
+sudo dnf install f{27,28,29,32,34,35}-backgrounds-gnome
+```
 
 ### Make User Sudoer
 
