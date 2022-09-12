@@ -16,7 +16,7 @@
     "security.workspace.trust.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
     "editor.insertSpaces": true,
-    "editor.renderWhitespace": "selection",
+    "editor.renderWhitespace": "selection", // "all" for everything
     "editor.stickyScroll.enabled": true,
     // Earth Explorer filetypes
     "files.associations": {
