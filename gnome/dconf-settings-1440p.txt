@@ -1,0 +1,5 @@
+
+[org/gnome/desktop/interface]
+cursor-size=32
+text-scaling-factor=1.2
+

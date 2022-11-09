@@ -1,0 +1,95 @@
+
+[org/gnome/TextEditor]
+indent-style='space'
+restore-session=false
+show-grid=false
+show-line-numbers=true
+show-right-margin=false
+style-scheme='classic'
+style-variant='follow'
+tab-width=uint32 4
+use-system-font=true
+
+[org/gnome/clocks]
+world-clocks=[{'location': <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>}, {'location': <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>}, {'location': <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>}]
+
+[org/gnome/desktop/input-sources]
+mru-sources=[('xkb', 'gb'), ('xkb', 'gb+extd')]
+sources=[('xkb', 'gb'), ('xkb', 'gb+extd')]
+xkb-options=['caps:escape', 'shift:both_capslock', 'terminate:ctrl_alt_bksp']
+
+[org/gnome/desktop/interface]
+clock-show-date=true
+clock-show-weekday=true
+color-scheme='default'
+cursor-blink=false
+enable-animations=false
+font-antialiasing='rgba'
+font-hinting='full'
+show-battery-percentage=true
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/touchpad]
+natural-scroll=false
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/search-providers]
+disabled=['org.gnome.Contacts.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'firefox.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Calendar.desktop']
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/wm/keybindings]
+minimize=['<Alt>F9']
+switch-applications=['<Super>Tab']
+switch-applications-backward=['<Shift><Super>Tab']
+switch-to-workspace-1=['<Control>F1']
+switch-to-workspace-2=['<Control>F2']
+switch-to-workspace-3=['<Control>F3']
+switch-to-workspace-4=['<Control>F4']
+switch-to-workspace-right=['<Super>Page_Down']
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+toggle-fullscreen=['<Alt>F11']
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+
+[org/gnome/mutter]
+workspaces-only-on-primary=false
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+home=['<Super>e']
+www=['<Super>w']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>t'
+command='xfce4-terminal'
+name='Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Control><Alt>t'
+command='gnome-terminal'
+name='Gnome Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>f'
+command='firefox --private-window'
+name='Firefox Private Browsing'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Super>g'
+command='gvim'
+name='GVim'
+
+[org/gnome/shell/world-clocks]
+locations=[<(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>]
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+bold-is-bright=true
+cursor-blink-mode='off'
+default-size-columns=115
+default-size-rows=30
