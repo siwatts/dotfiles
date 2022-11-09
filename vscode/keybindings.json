@@ -1,8 +1,25 @@
 // Place your key bindings in this file to override the defaults
 [
+  // If you remap capslock to ESC at OS level (in Gnome Tweaks at least), for some reason vscode intercepts it
+  // Explicitly pass it through to vim extension here to re-enable
   {
     "key": "capslock",
     "command": "extension.vim_escape",
     "when": "editorTextFocus && vim.active && !inDebugRepl"
-  }
+  },
+  // Duplicate the default ctrl+space trigger behaviour for intellisense, but with vim keybind Ctrl+N/P instead.
+  // We need to add " && !suggestWidgetVisible" to the default ctrl+space keybinding command to retain the vim
+  // like behaviour that scrolls to next/previous entry after the suggest widget is made visible
+  // Default keybind command from: https://code.visualstudio.com/docs/editor/intellisense
+  // Ctrl+P in vscode opens a file opening dialog, so maybe don't override this one
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  //{
+  //  "key": "ctrl+p",
+  //  "command": "editor.action.triggerSuggest",
+  //  "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly && !suggestWidgetVisible"
+  //},
 ]

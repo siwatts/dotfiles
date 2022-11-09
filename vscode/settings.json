@@ -1,13 +1,29 @@
 {
     "git.ignoreLegacyWarning": true,
-    // Linux fonts
-    "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 13, // 1080p monitor (equivalent to 10 terminal)
-    //"editor.fontSize": 15, // 1440p monitor (equivalent to 11 terminal)
-    "editor.fontWeight": "500", // 400 = normal, 500 = medium
-    "terminal.integrated.fontSize": 13,
-    "debug.console.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "debug.console.fontSize": 13,
+    // // == Linux fonts ==
+    // "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    // "editor.fontSize": 13, // 1080p monitor (equivalent to 10 terminal)
+    // //"editor.fontSize": 15, // 1440p monitor (equivalent to 11 terminal)
+    // //"editor.fontWeight": "400", // 400 = normal, 500 = medium
+    // "editor.fontWeight": "normal",
+    // "terminal.integrated.fontSize": 13,
+    // "debug.console.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    // "debug.console.fontSize": 13,
+    // // == Windows Fonts ==
+    // "editor.fontFamily": "'Cascadia Mono', 'Consolas', 'Courier New', 'Lucida Console', monospace",
+    // "editor.fontSize": 14,
+    // "editor.fontWeight": "350", // on Linux... 400 = normal, 500 = medium
+    // // On Windows seems like "normal" is thick, (400 ish), 350 is a bit thinner, 325 v. thin
+    // "terminal.integrated.fontSize": 14,
+    // "terminal.integrated.fontFamily": "'Cascadia Mono', 'Consolas', 'Courier New', 'Lucida Console', monospace",
+    // "terminal.integrated.fontWeight": "300",
+    // //"debug.console.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    // "debug.console.fontFamily": "'Cascadia Mono', 'Consolas', 'Courier New', 'Lucida Console', monospace",
+    // "debug.console.fontSize": 14,
+    // == Consolidated Fonts ==
+    "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Cascadia Mono', 'Consolas', 'Courier New', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Cascadia Mono', 'Consolas', 'Courier New', 'monospace', monospace",
+    "debug.console.fontFamily": "'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', 'Cascadia Mono', 'Consolas', 'Courier New', 'monospace', monospace",
     "editor.cursorBlinking": "solid",
     "editor.wordWrap": "on",
     "editor.bracketPairColorization.enabled": true, // Rainbow bracket matching colours
@@ -18,6 +34,7 @@
     "editor.insertSpaces": true,
     "editor.renderWhitespace": "selection", // "all" for everything
     "editor.stickyScroll.enabled": true,
+    "workbench.settings.editor": "json",
     // Earth Explorer filetypes
     "files.associations": {
         "*.EEF": "xml",
@@ -28,9 +45,9 @@
     "editor.suggestOnTriggerCharacters": false,
     "editor.parameterHints.enabled": false,
     "editor.quickSuggestions": {
-        "other": "off",
-        "comments": "off",
-        "strings": "off"
+        "other": false,
+        "comments": false,
+        "strings": false
     },
     //"editor.quickSuggestionsDelay": 1000,
     "editor.acceptSuggestionOnEnter": "off",
@@ -292,6 +309,12 @@
         },
     },
     "git.confirmSync": false,
+    "settingsSync.ignoredSettings": [
+        "editor.fontSize",
+        "editor.fontWeight",
+        "terminal.integrated.fontSize",
+        "terminal.integrated.fontWeight",
+        "debug.console.fontSize",
+    ],
     "workbench.colorTheme": "Jellybeans+",
 }
-
