@@ -10,6 +10,9 @@ style-variant='follow'
 tab-width=uint32 4
 use-system-font=true
 
+[org/gnome/Weather]
+locations=[<(uint32 2, <('Plymouth', 'EGHD', true, [(0.87993683703157188, -0.0718493933581974)], [(0.87958291916585252, -0.072232388409255041)])>)>]
+
 [org/gnome/clocks]
 world-clocks=[{'location': <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>}, {'location': <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>}, {'location': <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>}]
 
@@ -20,6 +23,7 @@ xkb-options=['caps:escape', 'shift:both_capslock', 'terminate:ctrl_alt_bksp']
 
 [org/gnome/desktop/interface]
 clock-show-date=true
+clock-show-seconds=false
 clock-show-weekday=true
 color-scheme='default'
 cursor-blink=false
@@ -37,18 +41,19 @@ tap-to-click=true
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/search-providers]
-disabled=['org.gnome.Contacts.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'firefox.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Calendar.desktop']
-sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+disabled=['firefox.desktop', 'org.gnome.Contacts.desktop' , 'org.gnome.Boxes.desktop' , 'org.gnome.Characters.desktop' , 'org.gnome.Photos.desktop' , 'org.gnome.Software.desktop']
+sort-order=['org.gnome.Settings.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Weather.desktop']
 
 [org/gnome/desktop/wm/keybindings]
-minimize=['<Alt>F9']
+minimize=['<Alt>F9', '<Super>h']
+panel-run-dialog=['<Alt>F2', '<Super>r']
+show-desktop=['<Super>d']
 switch-applications=['<Super>Tab']
 switch-applications-backward=['<Shift><Super>Tab']
 switch-to-workspace-1=['<Control>F1']
 switch-to-workspace-2=['<Control>F2']
 switch-to-workspace-3=['<Control>F3']
 switch-to-workspace-4=['<Control>F4']
-switch-to-workspace-right=['<Super>Page_Down']
 switch-windows=['<Alt>Tab']
 switch-windows-backward=['<Shift><Alt>Tab']
 toggle-fullscreen=['<Alt>F11']
@@ -93,3 +98,5 @@ bold-is-bright=true
 cursor-blink-mode='off'
 default-size-columns=115
 default-size-rows=30
+scrollbar-policy='never'
+use-system-font=true

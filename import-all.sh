@@ -107,9 +107,7 @@ echo "xfce4-terminal config..."
 mkdir -p ~/.config/xfce4/terminal
 cp -a xfce4/terminal/terminalrc ~/.config/xfce4/terminal
 echo "xfce4-terminal colours..."
-mkdir -p ~/.local/share/xfce4/terminal/colorschemes
-ln -s `pwd`/terminal/xfce4-terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
-ln -s `pwd`/terminal/xfce4-terminal/custom_colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
+terminal/sync-xfce4-terminal-themes.sh
 
 # Tmux.conf
 echo "tmux.conf..."
@@ -119,15 +117,11 @@ cp -a tmux.conf ~/.tmux.conf
 read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
-        echo "Loading settings via dconf..."
-        cat gnome/dconf-settings.txt | dconf load /
-        echo "Done"
+        gnome/load-dconf-settings.sh gnome/dconf-settings.txt
         read -r -p 'Enable 1.2x scaling for 1440p displays? (y/[N]): ' response2
         case "$response2" in
             [yY][eE][sS]|[yY])
-                echo "Loading more settings via dconf..."
-                gnome/dconf-settings-1440p.txtdconf load /
-                echo "Done"
+                gnome/load-dconf-settings.sh gnome/dconf-settings-1440p.txt
                 ;;
             *)
                 ;;
