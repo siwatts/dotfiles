@@ -142,7 +142,7 @@ set tags=./tags;
 set tw=0
 "set tw=100
 " Default textwidth for markdown and text files.
-au BufRead,BufNewFile *.txt,*.md setlocal textwidth=80
+"au BufRead,BufNewFile *.txt,*.md setlocal textwidth=80
 
 " Disable highlighting until a search. Toggle with F12, or quick hide with ??.
 let hlstate=0
@@ -651,7 +651,12 @@ let base16colorspace=256
 "let g:base16_shell_path='~/repos/dotfiles/base16/sh'
 
 " Fix the default built-in darkblue.vim theme foreground text
-autocmd ColorScheme darkblue hi Normal guifg=#f0f0f0 ctermfg=255
+" Default darkblue.vim is c0c0c0
+" 255 = eeeeee
+" 254 = e4e4e4
+" 253 = dadada
+" 252 = d0d0d0
+autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254
 
 function! SetCustomScheme(use_dark)
     if has("gui_running")
@@ -752,7 +757,7 @@ if has("gui_running")
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions-=L  "remove left-hand scroll bar
-    "set guioptions+=d  "Dark gtk+ gui theme
+    set guioptions+=d  "Dark gtk+ gui theme
     set guioptions-=e  "Remove GUI tabs, for terminal style
 endif
 

@@ -70,6 +70,9 @@ ln -s vim/colors/* ~/.vim/colors
 ln -s vim/custom_colors/* ~/.vim/colors
 cp -a vim/syntax ~/.vim
 sed -i 's/^let use_custom_theme=0/let use_custom_theme=1/g' ~/.vimrc
+sed -i 's/^let use_truecolor=0/let use_truecolor=1/g' ~/.vimrc
+sed -i 's/"set guifont=Source/set guifont=Source/g' ~/.vimrc
+sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 
 # Xfce4-terminal
 echo "xfce4-terminal config..."
@@ -119,6 +122,11 @@ if [ -f "~/.bashrc.bak" ]; then
             ;;
     esac
 echo
+
+if [ ! -d "~/.ssh" ]; then
+    echo "Generating SSH key..."
+    ssh-keygen -t ed25519 -a 100
+fi
 
 echo
 echo "Program complete"
