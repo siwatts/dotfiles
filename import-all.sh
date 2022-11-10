@@ -4,6 +4,9 @@ if [ ! -f "vim/vimrc" ]; then
     exit 1
 fi
 
+echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
+echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
+echo
 echo "This script imports files from dotfiles to a clean install of a local system for the first time"
 echo "If already present files are appended with '.bak' for later comparison"
 echo "We assume you are setting up a DE like GNOME and want to import everything"
@@ -15,6 +18,22 @@ case "$response" in
         ;;
     *)
         exit 1
+        ;;
+esac
+
+read -r -p 'Set hostname of new system? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        read -p 'Enter desired hostname: ' NEWHOSTNAME
+        if [[ -z "$NEWHOSTNAME" ]]; then
+            # Also catches whitespace
+            echo "Error: Cannot be blank."
+            exit 1
+        else
+            sudo hostnamectl set-hostname "$NEWHOSTNAME"
+        fi
+        ;;
+    *)
         ;;
 esac
 
@@ -31,11 +50,20 @@ echo "    - gimp"
 echo "    - remmina"
 echo "    - htop"
 echo "    - mediawriter"
-read -r -p 'Install these now via dnf? (y/[N]): ' response
+echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before doing this if this is a clean install, as dnf can error otherwise"
+read -r -p 'DNF upgrade all packages and reboot now? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot
+        ;;
+    *)
+        ;;
+esac
+read -r -p 'Install recommended packages now via dnf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
         echo "Working..."
-        sudo dnf install git tmux xfce4-terminal vim-enhanced vim-X11 neovim-qt gnome-extensions-app gnome-tweaks gimp remmina htop mediawriter
+        sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 neovim-qt gnome-extensions-app gnome-tweaks gimp remmina htop mediawriter
         ;;
     *)
         ;;
@@ -66,8 +94,8 @@ cp -a vim/vimrc ~/.vimrc
 # Vim colours
 echo "Vim files..."
 mkdir -p ~/.vim/colors
-ln -s vim/colors/* ~/.vim/colors
-ln -s vim/custom_colors/* ~/.vim/colors
+cp -a vim/colors/. ~/.vim/colors
+cp -a vim/custom_colors/. ~/.vim/colors
 cp -a vim/syntax ~/.vim
 sed -i 's/^let use_custom_theme=0/let use_custom_theme=1/g' ~/.vimrc
 sed -i 's/^let use_truecolor=0/let use_truecolor=1/g' ~/.vimrc
@@ -76,11 +104,12 @@ sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 
 # Xfce4-terminal
 echo "xfce4-terminal config..."
-cp -a xfce4/terminal/terminalrc ~/.config/xfce4/terminal/
+mkdir -p ~/.config/xfce4/terminal
+cp -a xfce4/terminal/terminalrc ~/.config/xfce4/terminal
 echo "xfce4-terminal colours..."
 mkdir -p ~/.local/share/xfce4/terminal/colorschemes
-ln -s terminal/xfce4-terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
-ln -s terminal/xfce4-terminal/custom_colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
+ln -s `pwd`/terminal/xfce4-terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
+ln -s `pwd`/terminal/xfce4-terminal/custom_colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
 
 # Tmux.conf
 echo "tmux.conf..."
@@ -91,13 +120,13 @@ read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
         echo "Loading settings via dconf..."
-        dconf load -f gnome/dconf-settings.txt
+        cat gnome/dconf-settings.txt | dconf load /
         echo "Done"
         read -r -p 'Enable 1.2x scaling for 1440p displays? (y/[N]): ' response2
         case "$response2" in
             [yY][eE][sS]|[yY])
                 echo "Loading more settings via dconf..."
-                dconf load -f gnome/dconf-settings-1440p.txt
+                gnome/dconf-settings-1440p.txtdconf load /
                 echo "Done"
                 ;;
             *)
@@ -121,6 +150,7 @@ if [ -f "~/.bashrc.bak" ]; then
         *)
             ;;
     esac
+fi
 echo
 
 if [ ! -d "~/.ssh" ]; then

@@ -21,6 +21,7 @@ dotfiles using `vim -d`, or import settings or entire files themselves.
         - `cp -a vim/custom_colors/. ~/.vim/colors`
     - xfce4-terminal:
         - `mkdir -p ~/.local/share/xfce4/terminal/colorschemes/ && cp -a terminal/xfce4-terminal/custom_colorschemes/. ~/.local/share/xfce4/terminal/colorschemes/`
+        - `mkdir -p ~/.config/xfce4/terminal/ && cp -a xfce4/terminal/terminalrc ~/.config/xfce4/terminal/`
     - mintty:
         - `mkdir -p ~/.mintty/themes/ && cp -a terminal/mintty/custom_themes/. ~/.mintty/themes/`
 
