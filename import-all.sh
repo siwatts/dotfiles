@@ -4,9 +4,6 @@ if [ ! -f "vim/vimrc" ]; then
     exit 1
 fi
 
-echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
-echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
-echo
 echo "This script imports files from dotfiles to a clean install of a local system for the first time"
 echo "If already present files are appended with '.bak' for later comparison"
 echo "We assume you are setting up a DE like GNOME and want to import everything"
@@ -20,6 +17,20 @@ case "$response" in
         exit 1
         ;;
 esac
+
+echo
+echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
+echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
+echo
+read -r -p "Run 'sudo visudo' now? (y/[N]): " response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        sudo visudo
+        ;;
+    *)
+        ;;
+esac
+
 
 read -r -p 'Set hostname of new system? (y/[N]): ' response
 case "$response" in
