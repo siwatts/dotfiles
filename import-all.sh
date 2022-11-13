@@ -22,10 +22,10 @@ echo
 echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
 echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
 echo
-read -r -p "Run 'sudo visudo' now? (y/[N]): " response
+read -r -p "Run 'sudo visudo' with 'vi' now? (y/[N]): " response
 case "$response" in
     [yY][eE][sS]|[yY])
-        sudo visudo
+        sudo EDITOR=vi visudo
         ;;
     *)
         ;;
@@ -69,7 +69,7 @@ case "$response" in
         read -r -p 'Use more risky fallback live dnf upgrade in current login session? (recommended for VMs)? (y/[N]): ' response
         case "$response" in
             [yY][eE][sS]|[yY])
-                echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1
+                echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1 && exit 0 || exit 1
                 ;;
             *)
                 echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot
@@ -133,6 +133,11 @@ terminal/sync-xfce4-terminal-themes.sh
 echo "tmux.conf..."
 cp -a tmux.conf ~/.tmux.conf
 
+# Neovim
+echo "Neovim init.vim and ginit.vim"
+mkdir -p ~/.config/nvim
+cp -a vim/{,g}init.vim ~/.config/nvim
+
 # GNOME
 read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
@@ -142,6 +147,16 @@ case "$response" in
         case "$response2" in
             [yY][eE][sS]|[yY])
                 gnome/load-dconf-settings.sh gnome/dconf-settings-1440p.txt
+                # Update neovim-qt fonts while we're here
+                sed -i 's/h10/h13/g' ~/.config/nvim/ginit.vim
+                ;;
+            *)
+                ;;
+        esac
+        read -r -p 'Optimise for VM / RDP? (No idle lockscreen or animations etc.)? (y/[N]): ' response2
+        case "$response2" in
+            [yY][eE][sS]|[yY])
+                gnome/load-dconf-settings.sh gnome/dconf-settings-vm-or-remote.txt
                 ;;
             *)
                 ;;

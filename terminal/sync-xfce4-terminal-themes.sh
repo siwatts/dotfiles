@@ -36,7 +36,7 @@ if [ -d ~/.local/share/xfce4/terminal/colorschemes ]; then
         esac
     fi
 else
-    mkdir -p $THEMESDIR
+    mkdir -p ~/.local/share/xfce4/terminal/colorschemes
 fi
 
 echo "Creating softlinks to '$THEMESDIR'..."
