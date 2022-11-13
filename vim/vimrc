@@ -713,7 +713,7 @@ endif
 " ====================
 " Gvim:
 " ====================
-if has("gui_running")
+if has("gui_running") && !has("nvim")
     " Disable mouse
     set mouse=c
     " Or enable mouse.

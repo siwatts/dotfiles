@@ -228,7 +228,7 @@ alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.org"
-alias ta='tmux a'
+alias ta='tmux a || tmux'
 alias view="vim -nMR"
 diffdir()
 {
