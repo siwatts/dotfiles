@@ -142,7 +142,11 @@ cp -a vim/{,g}init.vim ~/.config/nvim
 read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
+        # Idempotent settings, can be re-run later
         gnome/load-dconf-settings.sh gnome/dconf-settings.txt
+        # Additional settings for first run on clean install only (e.g. favourite pinned apps, don't want to remove extras added later)
+        gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun.txt
+        # User's choice x2
         read -r -p 'Enable 1.2x scaling for 1440p displays? (y/[N]): ' response2
         case "$response2" in
             [yY][eE][sS]|[yY])
