@@ -3,14 +3,17 @@
 THEMESDIR="~/.local/share/xfce4/terminal/colorschemes"
 SOURCE1=
 SOURCE2=
+SOURCEDEFAULT=
 if [ -d "terminal" ]; then
     # Repo root
     SOURCE1="terminal/xfce4-terminal/colorschemes"
     SOURCE2="terminal/xfce4-terminal/custom_colorschemes"
+    SOURCEDEFAULT="terminal/xfce4-terminal/default_colorschemes"
 elif [ -d "xfce4-terminal" ]; then
     # Terminal subdir
     SOURCE1="xfce4-terminal/colorschemes"
     SOURCE2="xfce4-terminal/custom_colorschemes"
+    SOURCEDEFAULT="xfce4-terminal/default_colorschemes"
 else
     echo "ERROR: Don't see any themes to source"
     exit 1
@@ -42,6 +45,7 @@ fi
 echo "Creating softlinks to '$THEMESDIR'..."
 ln -s `pwd`/"$SOURCE1"/*.theme ~/.local/share/xfce4/terminal/colorschemes
 ln -s `pwd`/"$SOURCE2"/*.theme ~/.local/share/xfce4/terminal/colorschemes
+ln -s `pwd`/"$SOURCEDEFAULT"/xubuntu-*.theme ~/.local/share/xfce4/terminal/colorschemes
 echo "Done"
 
 exit 0
