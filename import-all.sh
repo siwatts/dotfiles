@@ -1,4 +1,11 @@
 #!/bin/bash
+# - SW - 20/11/2022 19:26 -
+# Import or softlink all contents of dotfiles relevant to a GNOME desktop, interactively, for a clean install / user account
+
+# cd to location of script, even if soft-linked
+pushd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
+# Are we in the right place
 if [ ! -f "vim/vimrc" ]; then
     echo "ERROR: Run from root of dotfiles repo"
     exit 1
@@ -30,7 +37,6 @@ case "$response" in
     *)
         ;;
 esac
-
 
 read -r -p 'Set hostname of new system? (y/[N]): ' response
 case "$response" in
@@ -137,6 +143,10 @@ cp -a tmux.conf ~/.tmux.conf
 echo "Neovim init.vim and ginit.vim"
 mkdir -p ~/.config/nvim
 cp -a vim/{,g}init.vim ~/.config/nvim
+
+# Home bin
+echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
+gnome/softlink-gnome-bin.sh
 
 # GNOME
 read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
