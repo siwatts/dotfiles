@@ -71,7 +71,7 @@ toggle-fullscreen=['<Alt>F11']
 button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/mutter]
-workspaces-only-on-primary=false
+workspaces-only-on-primary=true
 
 [org/gnome/shell/world-clocks]
 locations=[<(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>, <(uint32 2, <('Austin', 'KAUM', true, [(0.76212711252195475, -1.6219926457022995)], [(0.7621264667501314, -1.6227135364965433)])>)>, <(uint32 2, <('London', 'EGWU', false, [(0.89971722940307675, -0.007272211034407213)], [(0.89971722940307675, -0.007272211034407213)])>)>, <(uint32 2, <('Paris', 'LFPB', true, [(0.85462956287765413, 0.042760566673861078)], [(0.8528842336256599, 0.040724343395436846)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>]
