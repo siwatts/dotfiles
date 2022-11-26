@@ -274,6 +274,7 @@ alias gitlog='git log --all --graph --pretty --decorate'
 # Fedora Updates
 alias upgrade='echo "Working..."; sudo dnf upgrade -y'
 alias upgrade-reboot='echo "Working..."; sudo dnf upgrade -y && sudo shutdown -r 1'
+alias upgrade-shutdown='echo "Working..."; sudo dnf upgrade -y && sudo shutdown 1'
 alias offline-upgrade-download-and-apply='echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min; sudo dnf offline-upgrade reboot'
 alias offline-upgrade-download='echo "Working..."; sudo dnf offline-upgrade download -y'
 alias offline-upgrade-apply='echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min; sudo dnf offline-upgrade reboot'
