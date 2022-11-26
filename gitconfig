@@ -20,7 +20,7 @@
     ui = true
     pager = true
 [credential]
-	helper = cache --timeout=900
-#[user]
-    #email = ""
-    #name = ""
+    helper = cache --timeout=900
+[user]
+    email = "siwatts15@outlook.com"
+    name = "Simon Watts"

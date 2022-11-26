@@ -139,6 +139,10 @@ terminal/sync-xfce4-terminal-themes.sh
 echo "tmux.conf..."
 cp -a tmux.conf ~/.tmux.conf
 
+# Git config
+echo "gitconfig..."
+cp -a gitconfig ~/.gitconfig
+
 # Neovim
 echo "Neovim init.vim and ginit.vim"
 mkdir -p ~/.config/nvim
@@ -200,6 +204,112 @@ if [ ! -d "~/.ssh" ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -a 100
 fi
+
+echo
+echo "===== OPTIONAL ================================================================="
+echo "Some extra things you might want to do now"
+echo "- Change user account avatar"
+echo "- Add SSH public key to GitHub:"
+echo "--------------------------------------------------------------------------------"
+cat ~/.ssh/*.pub
+echo "--------------------------------------------------------------------------------"
+read -r -p '- Install default Fedora wallpapers since F25 and extras since F36? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        # This can actually be done since f21 for gnome and extras-gnome, but not all are good
+        echo "Installing default wallpapers f25 to f$(rpm -E %fedora)-backgrounds-gnome..."
+        eval sudo dnf install -y f{25..$(rpm -E %fedora)}-backgrounds-gnome
+        echo "Installing extra wallpapers f36 to f$(rpm -E %fedora)-backgrounds-extras-gnome..."
+        eval sudo dnf install -y f{36..$(rpm -E %fedora)}-backgrounds-extras-gnome
+        ;;
+    *)
+        ;;
+esac
+read -r -p '- Enable flathub (SYSTEMWIDE) source for flatpak? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        echo "Done"
+        echo "You can now browse and install flatpaks at https://flathub.org/home"
+        ;;
+    *)
+        ;;
+esac
+read -r -p '- Enable flathub (USER) source for flatpak for this user only? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        echo "Done"
+        echo "You can now install flatpaks for this user only with command 'flatpak install --user'"
+        echo "E.g."
+        echo "    - Slack"
+        echo "    - MS Teams"
+        read -r -p '- Install the above for this user only? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                flatpak install --user flathub com.slack.Slack com.github.IsmaelMartinez.teams_for_linux
+                echo "Done"
+                ;;
+            *)
+                ;;
+        esac
+        ;;
+    *)
+        ;;
+esac
+echo "- Install some recommended flatpaks globally:"
+echo "    - Bitwarden"
+echo "    - Chrome"
+echo "    - Discord"
+echo "    - ColorPicker"
+echo "    - Transmission"
+echo "    - Dialect"
+read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        sudo flatpak install flathub com.bitwarden.desktop com.google.Chrome com.discordapp.Discord nl.hjdskes.gcolor3 com.transmissionbt.Transmission app.drey.Dialect
+        ;;
+    *)
+        ;;
+esac
+echo "- Sign into Firefox account"
+echo "- Install GNOME Extensions from https://extensions.gnome.org/"
+echo "    - E.g. https://extensions.gnome.org/extension/615/appindicator-support/"
+echo "- Enable RPM Fusion and Multimedia codecs:"
+echo "    - https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/"
+echo "    - https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/"
+echo "    - Install mpv player"
+echo "Warning, make sure dnf packages up to date. Commands correct as of Fedora 37 26/11/2022 22:05"
+read -r -p '- Carry out the above steps as retrieved on 26/11/2022 22:03? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "RPM Fusion..."
+        sudo dnf install -y \
+            https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+        sudo dnf install -y \
+            https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+        echo "RPM Fusion Appstream data..."
+        sudo dnf group update -y core
+        echo "Multimedia libraries..."
+        echo "1/3"
+        sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+        echo "2/3"
+        sudo dnf install -y lame\* --exclude=lame-devel
+        echo "3/3"
+        sudo dnf group upgrade -y --with-optional Multimedia
+        echo "mpv..."
+        sudo dnf install -y mpv
+        echo "Done"
+        ;;
+    *)
+        ;;
+esac
+echo "- Install VS Code"
+echo "- Set up SSH config file and known hosts, distribute public key (bitwarden?)"
+echo "- Delete and re-clone dotfiles repo via SSH key auth for future commits:"
+echo "    cd ../ && rm -rf dotfiles/ && git clone git@github.com:siwatts/dotfiles.git"
+echo "- Run included './diff-all.sh' script to catch any remaining files"
+echo "- Monitor brightness scripts './monitor-controls/README.md'
 
 echo
 echo "Program complete"
