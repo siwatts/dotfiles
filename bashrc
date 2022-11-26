@@ -86,15 +86,15 @@ if [ "$color_prompt" = yes ]; then
     # Choose prompt based on whether this is local or remote session
     if [ -n "${SSH_CONNECTION}" ]; then
         # Connected to remote via ssh, cyan & yellow
-        export PS1='\[\033[01;36m\]\u@\h \[\033[01;33m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+        export PS1='\[\033[01;36m\]\u@\h \[\033[01;33m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
         # Can share the above across multiple hosts using
         # if [ "$HOSTNAME" = fullhostname ]; then
     elif [[ "${DISPLAY%%:0*}" != "" ]]; then
         # Connected to remote but not via ssh, yellow & cyan
-        export PS1='\[\033[01;33m\]\u@\h(?) \[\033[01;36m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+        export PS1='\[\033[01;33m\]\u@\h(?) \[\033[01;36m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
     else
         # Local machine, green & blue
-        export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]$(git_prompt)\n\$ '
+        export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
     fi
 
     # Alternative styles:
