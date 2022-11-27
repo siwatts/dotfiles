@@ -1010,7 +1010,7 @@ cnoremap <Leader>g vimgrep ""g **<Left><Left><Left><Left><Left>
 " completion stuff
 set wildignore+=*.exe
 
-cnoremap ssh e scp://[user@]hostname//home/user/Documents/
+cnoremap <Leader>ssh e scp://[user@]hostname//home/user/Documents/
 
 " Behaviour of y to match D, C, S etc.
 " Ie. Y yanks to end of line instead of yanking the entire line like yy.

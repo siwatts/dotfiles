@@ -98,22 +98,22 @@ esac
 echo "Importing files..."
 
 echo "Bashrc..."
-if [ -f "~/.bashrc" ]; then
-    if [ -f "~/.bashrc.bak" ]; then
+if [ -f ~/.bashrc ]; then
+    if [ -f ~/.bashrc.bak ]; then
         echo "ERROR: '~/.bashrc.bak' already exists"
         exit 1
     fi
-    mv "~/.bashrc ~/.bashrc.bak"
+    mv ~/.bashrc ~/.bashrc.bak
 fi
 cp -a bashrc ~/.bashrc
 
 echo "Vimrc..."
-if [ -f "~/.vimrc" ]; then
-    if [ -f "~/.vimrc.bak" ]; then
+if [ -f ~/.vimrc ]; then
+    if [ -f ~/.vimrc.bak ]; then
         echo "ERROR: '~/.vimrc.bak' already exists"
         exit 1
     fi
-    mv "~/.vimrc ~/.vimrc.bak"
+    mv ~/.vimrc ~/.vimrc.bak
 fi
 cp -a vim/vimrc ~/.vimrc
 
@@ -187,7 +187,7 @@ esac
 echo
 echo "Import complete"
 
-if [ -f "~/.bashrc.bak" ]; then
+if [ -f ~/.bashrc.bak ]; then
     echo
     read -r -p 'Compare imported .bashrc to pre-existing .bashrc.bak? (y/[N]): ' response
     case "$response" in
@@ -200,7 +200,7 @@ if [ -f "~/.bashrc.bak" ]; then
 fi
 echo
 
-if [ ! -d "~/.ssh" ]; then
+if [ ! -d ~/.ssh ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -a 100
 fi
@@ -309,7 +309,7 @@ echo "- Set up SSH config file and known hosts, distribute public key (bitwarden
 echo "- Delete and re-clone dotfiles repo via SSH key auth for future commits:"
 echo "    cd ../ && rm -rf dotfiles/ && git clone git@github.com:siwatts/dotfiles.git"
 echo "- Run included './diff-all.sh' script to catch any remaining files"
-echo "- Monitor brightness scripts './monitor-controls/README.md'
+echo "- Monitor brightness scripts './monitor-controls/README.md'"
 
 echo
 echo "Program complete"
