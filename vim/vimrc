@@ -643,7 +643,11 @@ let g:rehash256=1
 " Default comment is #75715E
 " VS Code - #898470
 " Code (mine) - #a09580, (a09080, 908070 also good)
-autocmd ColorScheme molokai hi Comment guifg=#a09080
+" = Search and IncSearch direct from Dracula =
+" hi Search cterm=reverse ctermfg=84 ctermbg=NONE gui=reverse guifg=#50FA7B guibg=NONE
+" hi IncSearch ctermfg=236 ctermbg=215 guifg=#282A36 guibg=#FFB86C cterm=NONE gui=NONE
+" We have inverted Search and IncSearch
+autocmd ColorScheme molokai hi Comment guifg=#a09080 | hi IncSearch cterm=reverse ctermfg=84 ctermbg=NONE gui=reverse guifg=#50FA7B guibg=NONE
 
 " If using a base16 theme that also reassigns colours 16-21.
 let base16colorspace=256
@@ -928,6 +932,10 @@ inoremap <Down> <C-o>zb
 inoremap <Left> <C-o>zz
 inoremap <Right> <C-o>
 
+" And scroll (centre content) when examining diffs
+nnoremap ]c ]czz
+nnoremap [c [czz
+
 " Toggle folds with Tab (like Doom Emacs)
 " By default, tab just imitates <C-I>
 " TODO: Disabled, because this actually overrules the Forward jump
@@ -1057,6 +1065,8 @@ nnoremap [b :bp<CR>
 nnoremap <Leader>co :copen<CR><C-W>L
 nnoremap <Leader>cl :cclose<CR>
 nnoremap <Leader>cc :.cc<CR>
+nnoremap <Leader>cn :cn<CR>zz
+nnoremap <Leader>cp :cp<CR>zz
 
 " Other buffer shortcuts:
 nnoremap <Leader>bn :bn<CR>
