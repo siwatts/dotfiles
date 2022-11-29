@@ -27,5 +27,7 @@ echo "Softlinking scripts to '~/bin'..."
 ln -s "$CURRENT_DIR/bin/sync-gnome-settings.sh" "$PATH_TO_BIN/sync-gnome-settings"
 ln -s "$CURRENT_DIR/bin/scale-display-1440p.sh" "$PATH_TO_BIN/laptop-dock"
 ln -s "$CURRENT_DIR/bin/scale-display-normal.sh" "$PATH_TO_BIN/laptop-undock"
+ln -s "$CURRENT_DIR/bin/work-local.sh" "$PATH_TO_BIN/work-local"
+ln -s "$CURRENT_DIR/bin/work-remote.sh" "$PATH_TO_BIN/work-remote"
 echo "Done"
 
