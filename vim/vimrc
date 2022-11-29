@@ -24,7 +24,7 @@ let use_truecolor=0
 " LUCIUS:
 " 1 for transparent terminal bg
 let g:lucius_no_term_bg=0
-if exists("use_dark_theme") && use_dark_theme
+if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme ) || ( exists("use_dark_gui_theme") && use_dark_gui_theme )
     " DARK
     " low normal or high
     let g:lucius_contrast='normal'
@@ -83,7 +83,7 @@ set wildmode=longest:full   " Complete longest portion of compl. common to all, 
 set incsearch               " Show search matches as you type them
 "set foldcolumn=2            " Add an extra column width x left of linenrs to show fold locations
 "set foldmethod=syntax       " Enable folds by language syntax, all buffers
-"set scrolloff=2             " Always keep N lines visible top/bottom of screen past cursor
+set scrolloff=0             " Always keep N lines visible top/bottom of screen past cursor
 set nocursorline            " Highlight line the cursor is currently on
 set nocursorcolumn          " Highlight column the cursor is currently on
 set norelativenumber        " Relative line numbers

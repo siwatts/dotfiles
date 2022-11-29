@@ -30,7 +30,7 @@ ln -s /usr/local/bin/monitor-* $HOME/bin/
         - `$HOME/bin/monitor-daytime.sh`
         - `Super`+`0`
     - Monitor Current (spawns `xfce4-terminal` and briefly shows the current brightness)
-        - `xfce4-terminal -e 'bash -c "$HOME/bin/monitor-current.sh; sleep 2s"'`
+        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-current.sh; sleep 2s"'`
         - `Super`+`KP/` (Numpad `/`)
 
 # Limitations
