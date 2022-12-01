@@ -305,12 +305,13 @@ case "$response" in
         echo "Done"
         echo "You can now install flatpaks for this user only with command 'flatpak install --user'"
         echo "E.g."
-        echo "    - Slack"
-        echo "    - MS Teams"
+        echo "--"
+        cat flatpak/work-core.txt
+        echo "--"
         read -r -p '- Install the above for this user only? (y/[N]): ' response
         case "$response" in
             [yY][eE][sS]|[yY])
-                flatpak install --user flathub com.slack.Slack com.github.IsmaelMartinez.teams_for_linux
+                flatpak/flatpak-install.sh --user flatpak/work-core.txt -y
                 echo "Done"
                 ;;
             *)
@@ -320,35 +321,44 @@ case "$response" in
     *)
         ;;
 esac
-echo "- Install some recommended flatpaks globally:"
-echo "    - Bitwarden"
-echo "    - Chrome"
-echo "    - Discord"
-echo "    - ColorPicker"
-echo "    - Transmission"
-echo "    - Dialect"
+echo "- Install core flatpaks globally:"
+echo "--"
+cat flatpak/core.txt
+echo "--"
 read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
-        flatpak install flathub com.bitwarden.desktop com.google.Chrome com.discordapp.Discord nl.hjdskes.gcolor3 com.transmissionbt.Transmission app.drey.Dialect
+        flatpak/flatpak-install.sh flatpak/core.txt -y
         ;;
     *)
         ;;
 esac
 if [[ "$silverblue" == "yes" ]]; then
-    echo "- Install some extra flatpaks for Silverblue globally:"
-    echo "    - Neovim"
-    echo "    - GIMP"
-    echo "    - Remmina"
+    echo "- Install extra flatpaks for Silverblue globally:"
+    echo "--"
+    cat flatpak/silverblue-core.txt
+    echo "--"
     read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
-            flatpak install flathub io.neovim.nvim org.gimp.GIMP org.remmina.Remmina
+            flatpak/flatpak-install.sh flatpak/silverblue-core.txt -y
             ;;
         *)
             ;;
     esac
 fi
+echo "- Install extra flatpaks globally:"
+echo "--"
+cat flatpak/extras.txt
+echo "--"
+read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        flatpak/flatpak-install.sh flatpak/extras.txt -y
+        ;;
+    *)
+        ;;
+esac
 echo "- Sign into Firefox account"
 echo "- Install GNOME Extensions from https://extensions.gnome.org/"
 echo "    - E.g. https://extensions.gnome.org/extension/615/appindicator-support/"

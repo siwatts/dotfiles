@@ -1,0 +1,11 @@
+flathub
+com.github.liferooter.textpieces
+com.rafaelmardojai.Blanket
+de.haeckerfelix.AudioSharing
+de.haeckerfelix.Shortwave
+org.gnome.Aisleriot
+org.gnome.Mines
+org.gnome.Solanum
+org.gnome.Sudoku
+org.gnome.design.Contrast
+org.onlyoffice.desktopeditors

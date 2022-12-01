@@ -1,0 +1,7 @@
+flathub
+com.bitwarden.desktop
+com.google.Chrome
+com.discordapp.Discord
+nl.hjdskes.gcolor3
+com.transmissionbt.Transmission
+app.drey.Dialect

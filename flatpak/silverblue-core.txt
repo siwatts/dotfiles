@@ -1,0 +1,4 @@
+flathub
+io.neovim.nvim
+org.gimp.GIMP
+org.remmina.Remmina
