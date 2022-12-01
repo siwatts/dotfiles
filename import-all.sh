@@ -54,46 +54,84 @@ case "$response" in
         ;;
 esac
 
-echo "Recommended Fedora packages:"
-echo "    - git"
-echo "    - tmux"
-echo "    - xfce4-terminal"
-echo "    - vim-enhanced"
-echo "    - vim-X11"
-echo "    - neovim-qt"
-echo "    - gnome-extensions-app"
-echo "    - gnome-tweaks"
-echo "    - gimp"
-echo "    - remmina"
-echo "    - htop"
-echo "    - mediawriter"
-echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before doing this if this is a clean install, as dnf can error otherwise"
-read -r -p 'DNF upgrade all packages and reboot now? (y/[N]): ' response
-case "$response" in
+read -r -p "Is this a Silverblue install? (y/[N]): " silverblue
+case "$silverblue" in
     [yY][eE][sS]|[yY])
-        echo "Using DNF offline-upgrade plugin can be more safe on a physical machine, but is not pre-installed on some systems like the KDE spin and can cause issues in some VMs"
-        read -r -p 'Use more risky fallback live dnf upgrade in current login session? (recommended for VMs)? (y/[N]): ' response
-        case "$response" in
-            [yY][eE][sS]|[yY])
-                echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1 && exit 0 || exit 1
-                ;;
-            *)
-                echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot
-                ;;
-        esac
+        silverblue=yes
         ;;
     *)
+        silverblue=no
         ;;
 esac
-read -r -p 'Install recommended packages now via dnf? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        echo "Working..."
-        sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 neovim-qt gnome-extensions-app gnome-tweaks gimp remmina htop mediawriter
-        ;;
-    *)
-        ;;
-esac
+if [[ "$silverblue" == "yes" ]]; then
+    echo "Recommended Fedora Silverblue layered packages:"
+    echo "    - git"
+    echo "    - tmux"
+    echo "    - vim-enhanced"
+    echo "    - vim-X11"
+    echo "    - gnome-extensions-app"
+    echo "    - gnome-tweaks"
+    echo "    - htop"
+    echo "Upgrade base system image before continuing? (Will reboot system)"
+    read -r -p "rpm-ostree upgrade and reboot? (y/[N]): " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && systemctl reboot || exit 1
+            ;;
+        *)
+            ;;
+    esac
+    read -r -p 'Install recommended packages now via rpm-ostree install? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "Working..."
+            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop
+            ;;
+        *)
+            ;;
+    esac
+else
+    echo "Recommended Fedora packages:"
+    echo "    - git"
+    echo "    - tmux"
+    echo "    - xfce4-terminal"
+    echo "    - vim-enhanced"
+    echo "    - vim-X11"
+    echo "    - neovim-qt"
+    echo "    - gnome-extensions-app"
+    echo "    - gnome-tweaks"
+    echo "    - gimp"
+    echo "    - remmina"
+    echo "    - htop"
+    echo "    - mediawriter"
+    echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before doing this if this is a clean install, as dnf can error otherwise"
+    read -r -p 'DNF upgrade all packages and reboot now? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "Using DNF offline-upgrade plugin can be more safe on a physical machine, but is not pre-installed on some systems like the KDE spin and can cause issues in some VMs"
+            read -r -p 'Use more risky fallback live dnf upgrade in current login session? (recommended for VMs)? (y/[N]): ' response
+            case "$response" in
+                [yY][eE][sS]|[yY])
+                    echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1 && exit 0 || exit 1
+                    ;;
+                *)
+                    echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot
+                    ;;
+            esac
+            ;;
+        *)
+            ;;
+    esac
+    read -r -p 'Install recommended packages now via dnf? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "Working..."
+            sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 neovim-qt gnome-extensions-app gnome-tweaks gimp remmina htop mediawriter
+            ;;
+        *)
+            ;;
+    esac
+fi
 
 echo "Importing files..."
 
@@ -159,7 +197,11 @@ case "$response" in
         # Idempotent settings, can be re-run later
         gnome/load-dconf-settings.sh gnome/dconf-settings.txt
         # Additional settings for first run on clean install only (e.g. favourite pinned apps, don't want to remove extras added later)
-        gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun.txt
+        if command -v xfce4-terminal &> /dev/null ; then
+            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun-xfce4terminal.txt
+        else
+            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun.txt
+        fi
         # User's choice x2
         read -r -p 'Enable 1.2x scaling for 1440p displays? (y/[N]): ' response2
         case "$response2" in
@@ -192,7 +234,12 @@ if [ -f ~/.bashrc.bak ]; then
     read -r -p 'Compare imported .bashrc to pre-existing .bashrc.bak? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
-            vim -d ~/.bashrc ~/.bashrc.bak
+            if command -v vim &> /dev/null ; then
+                vim -d ~/.bashrc ~/.bashrc.bak
+            else
+                # Fallback if vim not installed
+                diff ~/.bashrc ~/.bashrc.bak
+            fi
             ;;
         *)
             ;;
@@ -213,22 +260,24 @@ echo "- Add SSH public key to GitHub:"
 echo "--------------------------------------------------------------------------------"
 cat ~/.ssh/*.pub
 echo "--------------------------------------------------------------------------------"
-read -r -p '- Install default Fedora wallpapers since F25 and extras since F36? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        # This can actually be done since f21 for gnome and extras-gnome, but not all are good
-        echo "Installing default wallpapers f25 to f$(rpm -E %fedora)-backgrounds-gnome..."
-        eval sudo dnf install -y f{25..$(rpm -E %fedora)}-backgrounds-gnome
-        echo "Installing extra wallpapers f36 to f$(rpm -E %fedora)-backgrounds-extras-gnome..."
-        eval sudo dnf install -y f{36..$(rpm -E %fedora)}-backgrounds-extras-gnome
-        ;;
-    *)
-        ;;
-esac
+if [[ "$silverblue" == "no" ]]; then
+    read -r -p '- Install default Fedora wallpapers since F25 and extras since F36? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            # This can actually be done since f21 for gnome and extras-gnome, but not all are good
+            echo "Installing default wallpapers f25 to f$(rpm -E %fedora)-backgrounds-gnome..."
+            eval sudo dnf install -y f{25..$(rpm -E %fedora)}-backgrounds-gnome
+            echo "Installing extra wallpapers f36 to f$(rpm -E %fedora)-backgrounds-extras-gnome..."
+            eval sudo dnf install -y f{36..$(rpm -E %fedora)}-backgrounds-extras-gnome
+            ;;
+        *)
+            ;;
+    esac
+fi
 read -r -p '- Enable flathub (SYSTEMWIDE) source for flatpak? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
-        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
         echo "Done"
         echo "You can now browse and install flatpaks at https://flathub.org/home"
         ;;
@@ -267,43 +316,59 @@ echo "    - Dialect"
 read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
-        sudo flatpak install flathub com.bitwarden.desktop com.google.Chrome com.discordapp.Discord nl.hjdskes.gcolor3 com.transmissionbt.Transmission app.drey.Dialect
+        flatpak install flathub com.bitwarden.desktop com.google.Chrome com.discordapp.Discord nl.hjdskes.gcolor3 com.transmissionbt.Transmission app.drey.Dialect
         ;;
     *)
         ;;
 esac
+if [[ "$silverblue" == "yes" ]]; then
+    echo "- Install some extra flatpaks for Silverblue globally:"
+    echo "    - Neovim"
+    echo "    - GIMP"
+    echo "    - Remmina"
+    read -r -p '- Install the above flatpaks now for ALL users? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            flatpak install flathub io.neovim.nvim org.gimp.GIMP org.remmina.Remmina
+            ;;
+        *)
+            ;;
+    esac
+fi
 echo "- Sign into Firefox account"
 echo "- Install GNOME Extensions from https://extensions.gnome.org/"
 echo "    - E.g. https://extensions.gnome.org/extension/615/appindicator-support/"
-echo "- Enable RPM Fusion and Multimedia codecs:"
-echo "    - https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/"
-echo "    - https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/"
-echo "    - Install mpv player"
-echo "Warning, make sure dnf packages up to date. Commands correct as of Fedora 37 26/11/2022 22:05"
-read -r -p '- Carry out the above steps as retrieved on 26/11/2022 22:03? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        echo "RPM Fusion..."
-        sudo dnf install -y \
-            https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-        sudo dnf install -y \
-            https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-        echo "RPM Fusion Appstream data..."
-        sudo dnf group update -y core
-        echo "Multimedia libraries..."
-        echo "1/3"
-        sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-        echo "2/3"
-        sudo dnf install -y lame\* --exclude=lame-devel
-        echo "3/3"
-        sudo dnf group upgrade -y --with-optional Multimedia
-        echo "mpv..."
-        sudo dnf install -y mpv
-        echo "Done"
-        ;;
-    *)
-        ;;
-esac
+if [[ "$silverblue" == "no" ]]; then
+    echo "- Enable RPM Fusion and Multimedia codecs:"
+    echo "    - https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/"
+    echo "    - https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/"
+    echo "    - Install mpv player"
+    echo "Warning, make sure dnf packages up to date. Commands correct as of Fedora 37 26/11/2022 22:05"
+    read -r -p '- Carry out the above steps as retrieved on 26/11/2022 22:03? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "RPM Fusion..."
+            sudo dnf install -y \
+                https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+            sudo dnf install -y \
+                https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+            echo "RPM Fusion Appstream data..."
+            sudo dnf group update -y core
+            echo "Multimedia libraries..."
+            echo "1/3"
+            sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+            echo "2/3"
+            sudo dnf install -y lame\* --exclude=lame-devel
+            echo "3/3"
+            sudo dnf group upgrade -y --with-optional Multimedia
+            echo "mpv..."
+            sudo dnf install -y mpv
+            echo "Done"
+            ;;
+        *)
+            ;;
+    esac
+fi
 echo "- Install VS Code"
 echo "- Set up SSH config file and known hosts, distribute public key (bitwarden?)"
 echo "- Delete and re-clone dotfiles repo via SSH key auth for future commits:"
