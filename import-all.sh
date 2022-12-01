@@ -2,6 +2,20 @@
 # - SW - 20/11/2022 19:26 -
 # Import or softlink all contents of dotfiles relevant to a GNOME desktop, interactively, for a clean install / user account
 
+# Pretty helper
+onemintimer()
+{
+    echo '60 second timer...'
+    echo -ne '[                                                            ]\r'
+    echo -ne '['
+
+    for i in {1..60}; do
+        sleep 1s
+        echo -n '='
+    done
+    echo
+}
+
 # cd to location of script, even if soft-linked
 pushd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
@@ -76,16 +90,16 @@ if [[ "$silverblue" == "yes" ]]; then
     read -r -p "rpm-ostree upgrade and reboot? (y/[N]): " response
     case "$response" in
         [yY][eE][sS]|[yY])
-            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && systemctl reboot || exit 1
+            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot || exit 1
             ;;
         *)
             ;;
     esac
-    read -r -p 'Install recommended packages now via rpm-ostree install? (y/[N]): ' response
+    read -r -p 'Install recommended packages now via rpm-ostree install and reboot? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "Working..."
-            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop
+            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot || exit 1
             ;;
         *)
             ;;
@@ -112,10 +126,10 @@ else
             read -r -p 'Use more risky fallback live dnf upgrade in current login session? (recommended for VMs)? (y/[N]): ' response
             case "$response" in
                 [yY][eE][sS]|[yY])
-                    echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1 && exit 0 || exit 1
+                    echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
                     ;;
                 *)
-                    echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot
+                    echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && sudo dnf offline-upgrade reboot
                     ;;
             esac
             ;;
