@@ -90,7 +90,7 @@ if [[ "$silverblue" == "yes" ]]; then
     read -r -p "rpm-ostree upgrade and reboot? (y/[N]): " response
     case "$response" in
         [yY][eE][sS]|[yY])
-            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot || exit 1
+            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
             ;;
         *)
             ;;
@@ -99,7 +99,7 @@ if [[ "$silverblue" == "yes" ]]; then
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "Working..."
-            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot || exit 1
+            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
             ;;
         *)
             ;;
