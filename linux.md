@@ -617,3 +617,35 @@ For remote working - like RDP for Linux
 - `sudo dnf install tigervnc-server`
     - Includes also dependency `tigervnc-selinux`
 
+### Forcing Dark Theme for legacy GTK apps
+
+Dark theme for legacy GTK (i.e. gtk3 and older?) apps can be forced for all apps using GNOME Tweaks. But what if you want your system theme to remain globally light but force individual apps to dark?
+
+GTK 4 apps usually have a toggle in their preferences for this already
+
+Modified from https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis
+
+`GTK_THEME=Adwaita:dark xfce4-terminal`, directly in a terminal
+
+#### .desktop launcher
+
+Modify the `.desktop` launcher file used in the app menu and launchers
+
+These are located in `/usr/share/applications/`, but will be overwritten on updates
+
+Using `xfce4-terminal` as example
+
+- Copy it to `~/.local/share/applications/`
+- Modify line containing launch command `Exec=xfce4-terminal` to prepend with `env GTK_THEME=Adwaita:dark `
+    - I.e. `Exec=env GTK_THEME=Adwaita:dark xfce4-terminal`
+
+App should now launch with chosen theme when launched via shortcut (close all running instances first)
+
+#### Keyboard shortcuts
+
+Keyboard shortcuts usually launch the app directly, rather than going through the `.desktop` launcher
+
+Prepend the same string onto the desired launch command in the keyboard shortcut e.g.
+
+`xfce4-terminal` -> `env GTK_THEME=Adwaita:dark xfce4-terminal`
+

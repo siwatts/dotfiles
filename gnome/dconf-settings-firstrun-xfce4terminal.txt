@@ -14,7 +14,7 @@ www=['<Super>w']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>t'
-command='xfce4-terminal'
+command='env GTK_THEME=Adwaita:dark xfce4-terminal'
 name='Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]

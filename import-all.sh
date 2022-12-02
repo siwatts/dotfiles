@@ -184,8 +184,14 @@ sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 echo "xfce4-terminal config..."
 mkdir -p ~/.config/xfce4/terminal
 cp -a xfce4/terminal/terminalrc ~/.config/xfce4/terminal
-echo "xfce4-terminal colours..."
-terminal/sync-xfce4-terminal-themes.sh
+# No harm to bring in config file anyway, but check xfce4-terminal is installed
+# before softlinking all themes and making a custom launcher
+if command -v xfce4-terminal &> /dev/null ; then
+    echo "xfce4-terminal colours..."
+    terminal/sync-xfce4-terminal-themes.sh
+    echo "xfce4-terminal launcher..."
+    launchers/create-launcher.sh launchers/xfce4-terminal.desktop
+fi
 
 # Tmux.conf
 echo "tmux.conf..."
