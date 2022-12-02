@@ -180,6 +180,11 @@ sed -i 's/^let use_truecolor=0/let use_truecolor=1/g' ~/.vimrc
 sed -i 's/"set guifont=Source/set guifont=Source/g' ~/.vimrc
 sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 
+# Neovim
+echo "Neovim init.vim and ginit.vim"
+mkdir -p ~/.config/nvim
+cp -a vim/{,g}init.vim ~/.config/nvim
+
 # Xfce4-terminal
 echo "xfce4-terminal config..."
 mkdir -p ~/.config/xfce4/terminal
@@ -200,11 +205,6 @@ cp -a tmux.conf ~/.tmux.conf
 # Git config
 echo "gitconfig..."
 cp -a gitconfig ~/.gitconfig
-
-# Neovim
-echo "Neovim init.vim and ginit.vim"
-mkdir -p ~/.config/nvim
-cp -a vim/{,g}init.vim ~/.config/nvim
 
 # Home bin
 echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'

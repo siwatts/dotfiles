@@ -22,12 +22,12 @@ if [ ! -d "$PATH_TO_BIN" ]; then
     echo 'export PATH="$PATH:'"$PATH_TO_BIN"'"' >> "$BASHRC"
 fi
 
-# Soft-link
+# Soft-link, -f forces it, even if a file or softlink already exists there. -n no de-reference
 echo "Softlinking scripts to '~/bin'..."
-ln -s "$CURRENT_DIR/bin/sync-gnome-settings.sh" "$PATH_TO_BIN/sync-gnome-settings"
-ln -s "$CURRENT_DIR/bin/scale-display-1440p.sh" "$PATH_TO_BIN/laptop-dock"
-ln -s "$CURRENT_DIR/bin/scale-display-normal.sh" "$PATH_TO_BIN/laptop-undock"
-ln -s "$CURRENT_DIR/bin/work-local.sh" "$PATH_TO_BIN/work-local"
-ln -s "$CURRENT_DIR/bin/work-remote.sh" "$PATH_TO_BIN/work-remote"
+ln -sfn "$CURRENT_DIR/bin/sync-gnome-settings.sh" "$PATH_TO_BIN/sync-gnome-settings"
+ln -sfn "$CURRENT_DIR/bin/scale-display-1440p.sh" "$PATH_TO_BIN/laptop-dock"
+ln -sfn "$CURRENT_DIR/bin/scale-display-normal.sh" "$PATH_TO_BIN/laptop-undock"
+ln -sfn "$CURRENT_DIR/bin/work-local.sh" "$PATH_TO_BIN/work-local"
+ln -sfn "$CURRENT_DIR/bin/work-remote.sh" "$PATH_TO_BIN/work-remote"
 echo "Done"
 
