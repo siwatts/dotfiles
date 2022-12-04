@@ -649,3 +649,51 @@ Prepend the same string onto the desired launch command in the keyboard shortcut
 
 `xfce4-terminal` -> `env GTK_THEME=Adwaita:dark xfce4-terminal`
 
+### Neovim & TreeSitter Plugin
+
+Installed using "Plug"
+
+#### Plug
+
+- Install "plug" for neovim only:
+    - https://github.com/junegunn/vim-plug
+- As of 04/12/2022 00:41
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+- Add or use neovim plug line
+```
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+```
+
+- Reopen nvim
+- Install plugs from `init.vim`
+    - `:PlugInstall`, this should install TreeSitter
+
+#### TreeSitter
+
+- Install deps for adding TreeSitter parsers with `:TSInstall`
+    - Currently `gcc`, `g++`, `libstdc++`
+```
+sudo dnf install -y gcc-g++ gcc
+# Try static first, this was required and may be enough alone
+sudo dnf install libstdc++-static
+# If not this too, libstdc++ was already installed (f37) so tried devel headers first
+sudo dnf install libstdc++-devel
+```
+
+- Install desired TreeSitter parsers
+```
+:TSInstall c
+:TSInstall cpp
+:TSInstall python
+:TSInstall bash
+```
+
+- Enable highlighting in neovim `init.vim`
+```
+" At the bottom of your init.vim, keep all configs on one line
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+```
