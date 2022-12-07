@@ -183,7 +183,7 @@ sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 # Neovim
 echo "Neovim init.vim and ginit.vim"
 mkdir -p ~/.config/nvim
-cp -a vim/{,g}init.vim ~/.config/nvim
+ln -sf `pwd`/vim/{,g}init.vim ~/.config/nvim
 
 # Xfce4-terminal
 echo "xfce4-terminal config..."

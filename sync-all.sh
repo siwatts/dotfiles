@@ -51,6 +51,18 @@ else
     cp -a vim/syntax ~/.vim
 fi
 
+# Neovim
+echo "Neovim init.vim and ginit.vim check softlink"
+if [ -f ~/.config/nvim/init.vim ] && [ ! -L ~/.config/nvim/init.vim ]; then
+    mv ~/.config/nvim/init.vim{,.bak}
+fi
+if [ -f ~/.config/nvim/ginit.vim ] && [ ! -L ~/.config/nvim/ginit.vim ]; then
+    mv ~/.config/nvim/ginit.vim{,.bak}
+fi
+if [ ! -L ~/.config/nvim/init.vim ] || [ ! -L ~/.config/nvim/ginit.vim ]; then
+    ln -sf `pwd`/vim/{,g}init.vim ~/.config/nvim
+fi
+
 # Xfce4-terminal
 # Check xfce4-terminal is installed before softlinking all themes and making a custom launcher
 if command -v xfce4-terminal &> /dev/null ; then

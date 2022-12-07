@@ -541,6 +541,7 @@ Good idea to reboot the system after updates, especially with new kernel version
 - `cd /etc/systemd/system`
 - `vim schedule-reboot.timer`
     - `:set paste`
+
 ```yml
 [Unit]
 Description=Reboot Scheduling.
@@ -552,6 +553,7 @@ Unit=reboot.target
 [Install]
 WantedBy=timers.target
 ```
+
 - `systemctl enable schedule-reboot.timer ; systemctl start schedule-reboot.timer`
     - Enable and start the new reboot timer
 - `systemctl status schedule-reboot.timer ; systemctl list-timers`
