@@ -786,6 +786,11 @@ else
     " ==================== Dark ====================
     let g:schemes_dark = [ 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'triplejelly', 'twilight256', 'wombat256mod', 'xoria256', 'zenburn' ]
 endif
+if use_dark_theme
+    let g:schemes_random = g:schemes_dark
+else
+    let g:schemes_random = g:schemes_light
+endif
 
 function! RandomiseTheme(schemes)
     let seconds = str2nr(strftime('%S'))
