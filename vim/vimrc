@@ -779,7 +779,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor )
     let g:schemes_light = [ 'lucius', 'hybrid-light', 'default-enhanced', ]
     " ==================== Dark ====================
     "let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
-    let g:schemes_dark = [ 'jellybeans', 'molokai', 'default-enhanced', 'desert', 'darkblue256', 'twilight', 'lucius', 'wombat256mod', 'dracula', 'zenburn', 'nord', 'twilight256', 'hybrid', ]
+    let g:schemes_dark = [ 'jellybeans', 'molokai', 'default-enhanced', 'desert', 'darkblue', 'twilight', 'lucius', 'wombat256mod', 'dracula', 'zenburn', 'nord', 'twilight256', 'hybrid', ]
 else
     " ==================== Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
