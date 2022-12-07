@@ -773,7 +773,7 @@ endif
 " Dark
 let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256', 'dracula', 'gruvbox', 'hybrid', 'iceberg', 'jellybeans', 'lucius', 'molokai', 'nofrils-dark', 'one', 'PaperColor', 'seoul256', 'simple-green', 'simple-orange', 'simple', 'sorcerer', 'sourcerer', 'spacegray', 'Tomorrow-Night-Bright', 'Tomorrow-Night-Eighties', 'Tomorrow-Night', 'triplejelly', 'twilight256', 'twilight_v', 'wombat256mod', 'xoria256', 'zenburn' ]
 
-if has("gui_running")
+if has("gui_running") || ( exists("use_truecolor") && use_truecolor )
     " ==================== Light ====================
     "let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'one', 'PaperColor', 'pyte', 'seoul256-light', 'solarized', 'Tomorrow', 'vimhut', 'visualstudio' ]
     let g:schemes_light = [ 'lucius', 'hybrid-light', 'default-enhanced', ]
