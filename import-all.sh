@@ -172,9 +172,10 @@ cp -a vim/vimrc ~/.vimrc
 # Vim colours
 echo "Vim files..."
 mkdir -p ~/.vim/colors
-cp -a vim/colors/. ~/.vim/colors
+cp -a vim/colors ~/.vim
 cp -a vim/custom_colors/. ~/.vim/colors
 cp -a vim/syntax ~/.vim
+cp -a vim/plugin ~/.vim
 sed -i 's/^let use_custom_theme=0/let use_custom_theme=1/g' ~/.vimrc
 sed -i 's/^let use_truecolor=0/let use_truecolor=1/g' ~/.vimrc
 sed -i 's/"set guifont=Source/set guifont=Source/g' ~/.vimrc

@@ -46,9 +46,10 @@ echo "Vim files..."
 if [ ! -d ~/.vim ]; then
     echo "WARN: No '~/.vim' directory seen in home"
 else
-    cp -a vim/colors/. ~/.vim/colors
+    cp -a vim/colors ~/.vim
     cp -a vim/custom_colors/. ~/.vim/colors
     cp -a vim/syntax ~/.vim
+    cp -a vim/plugin ~/.vim
 fi
 
 # Neovim

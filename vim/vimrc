@@ -776,10 +776,10 @@ let g:schemes_dark_all = [ 'apprentice', 'blackboard', 'darkblue256', 'desert256
 if has("gui_running")
     " ==================== Light ====================
     "let g:schemes_light = [ 'github', 'gruvbox', 'hybrid', 'lucius', 'nofrils-acme', 'one', 'PaperColor', 'pyte', 'seoul256-light', 'solarized', 'Tomorrow', 'vimhut', 'visualstudio' ]
-    let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light', 'solarized' ]
+    let g:schemes_light = [ 'lucius', 'hybrid-light', 'default-enhanced', ]
     " ==================== Dark ====================
     "let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
-    let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
+    let g:schemes_dark = [ 'jellybeans', 'molokai', 'default-enhanced', 'desert', 'darkblue256', 'twilight', 'lucius', 'wombat256mod', 'dracula', 'zenburn', 'nord', 'twilight256', 'hybrid', ]
 else
     " ==================== Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
@@ -826,7 +826,7 @@ noremap <F9> :call SetCustomScheme(use_dark_theme)<CR>
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
-noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
+"noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 " Daily light/dark
 noremap <Leader><F9> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 noremap <Leader><F10> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
