@@ -4,7 +4,7 @@ restore-session=false
 show-grid=false
 show-line-numbers=true
 show-right-margin=false
-style-scheme='classic'
+style-scheme='Adwaita'
 style-variant='follow'
 tab-width=uint32 4
 use-system-font=true
@@ -66,6 +66,7 @@ toggle-fullscreen=['<Alt>F11']
 button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/mutter]
+attach-modal-dialogs=true
 workspaces-only-on-primary=true
 
 [org/gnome/shell/world-clocks]
