@@ -699,3 +699,14 @@ sudo dnf install libstdc++-devel
 " At the bottom of your init.vim, keep all configs on one line
 lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 ```
+
+### GTK 4 Font Rendering
+
+- If new GTK 4 font rendering appears blurry, can enable a more gtk 3 style rendering as of 4.6+ until bug is resolved
+- Make or add to file `~/.config/gtk-4.0/settings.ini`
+
+```
+[Settings]
+gtk-hint-font-metrics=1
+```
+
