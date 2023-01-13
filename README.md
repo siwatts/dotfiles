@@ -626,6 +626,20 @@ Get location of bash script
 - `cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"`, even if softlinked
   (location of original source linked file)
 
+Find out if script was sourced, or just executed
+- `(return 0 2>/dev/null) && sourced=1 || sourced=0`
+    - `if [ $sourced -eq 0 ]; then`, not sourced
+- `./myscript.sh`, not sourced
+- `source myscript.sh`, sourced
+- `. myscript.sh`, sourced (POSIX compliant syntax)
+- When a script is sourced
+    - It is run in the current shell and variables etc. will remain
+    - Any return such as `exit 0` will close the executing shell session, not just return from script
+- When a script is executed normally
+    - A sub-shell is spawned
+    - No lasting 'side-effects'
+    - `exit 0` etc. will exit from the script close the subshell only, original executing session remains
+
 Does a file exist
 ```bash
 if [ ! -f "$fname" ]; then

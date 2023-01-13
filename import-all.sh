@@ -181,6 +181,16 @@ sed -i 's/^let use_truecolor=0/let use_truecolor=1/g' ~/.vimrc
 sed -i 's/"set guifont=Source/set guifont=Source/g' ~/.vimrc
 sed -i 's/set guifont=Monospace/"set guifont=Monospace/g' ~/.vimrc
 
+# Gitk, dracula with modified fonts
+echo "Gitk config..."
+if [ ! -d ~/.config/git ]; then
+    mkdir -p ~/.config/git
+fi
+if [ -f ~/.config/git/gitk ]; then
+    mv ~/.config/git/gitk{,.bak}
+fi
+cp -a gitk ~/.config/git
+
 # Neovim
 echo "Neovim init.vim and ginit.vim"
 mkdir -p ~/.config/nvim

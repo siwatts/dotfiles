@@ -4,8 +4,6 @@ restore-session=false
 show-grid=false
 show-line-numbers=true
 show-right-margin=false
-style-scheme='Adwaita'
-style-variant='follow'
 tab-width=uint32 4
 use-system-font=true
 
