@@ -182,7 +182,9 @@ nnoremap ?? :noh<CR>
 " && has('nvim'), enable for neovim only if our vim hack above doesn't work
 if use_truecolor
     " If you have vim >=8.0 or Neovim >= 0.1.5
-    if (has("termguicolors"))
+    " Also check t_Co >= 256, as any terminal without 256 colour is unlikely
+    " to support it. This catches linux tty which otherwise became monochrome
+    if (has("termguicolors") && &t_Co >= 256)
         set termguicolors
     endif
     if exists("g:dark_theme_truecolor")
