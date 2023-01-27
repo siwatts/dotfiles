@@ -14,8 +14,7 @@ let colors_name = "default-enhanced"
 
 if s:is_dark
     " Dark specific customisations
-    hi Search ctermfg=0 ctermbg=2 cterm=NONE
-    hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE guifg=#000000 guibg=#FF92D0
+    hi Search ctermfg=0 ctermbg=2 cterm=NONE guibg=Orange
     hi PMenu ctermfg=7 ctermbg=8
     hi PMenuSel ctermfg=0 ctermbg=7
     " Clear GUI bolds
@@ -24,6 +23,10 @@ if s:is_dark
     " GUI / truecolor stuff
     hi PMenu guifg=#f0f0f0 guibg=#404080
     hi PmenuSel guifg=#f0f0f0 guibg=#2050d0
+    hi IncSearch ctermfg=0 ctermbg=2 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
+    "hi Todo guibg=Orange
+    " Visual from darkblue256.vim
+    hi Visual ctermfg=231 ctermbg=105 guifg=#ffffff guibg=#8080ff
     if !has('gui_running') && &t_Co < 256
         hi PreProc ctermfg=red
         hi SpecialKey ctermfg=blue
@@ -59,7 +62,9 @@ if s:is_dark
     hi Type ctermfg=green
     "hi Special ctermfg=red
     " GUI stuff
-    hi Normal guifg=#f0f0f0 guibg=#303030
+    "hi Normal guifg=#f0f0f0 guibg=#303030
+    "hi Normal guifg=#f0f0f0 guibg=#262626
+    hi Normal guifg=#f0f0f0 guibg=#262630
     " Diff syntax
     hi! link diffAdded Type
     "hi! link diffLine Identifier " or Comment
