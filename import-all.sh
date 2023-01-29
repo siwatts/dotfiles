@@ -278,7 +278,7 @@ if [ -f ~/.bashrc.bak ]; then
 fi
 echo
 
-if [ ! -d ~/.ssh ]; then
+if [ ! -f ~/.ssh/id_ed25519.pub ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -a 100
 fi
@@ -289,7 +289,7 @@ echo "Some extra things you might want to do now"
 echo "- Change user account avatar"
 echo "- Add SSH public key to GitHub:"
 echo "--------------------------------------------------------------------------------"
-cat ~/.ssh/*.pub
+cat ~/.ssh/id_ed25519.pub
 echo "--------------------------------------------------------------------------------"
 if [[ "$silverblue" == "no" ]]; then
     read -r -p '- Install default Fedora wallpapers since F25 and extras since F36? (y/[N]): ' response

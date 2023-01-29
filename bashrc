@@ -271,14 +271,32 @@ count1min()
 alias gitlog='git log --all --graph --pretty --decorate'
 #alias gitstatus='git status -uno'
 
-# Fedora Updates
-alias upgrade='echo "Working..."; sudo dnf upgrade -y'
-alias upgrade-reboot='echo "Working..."; sudo dnf upgrade -y && sudo shutdown -r 1'
-alias upgrade-shutdown='echo "Working..."; sudo dnf upgrade -y && sudo shutdown 1'
-alias offline-upgrade-download-and-apply='echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min || sleep 1m && sudo dnf offline-upgrade reboot'
-alias offline-upgrade-download='echo "Working..."; sudo dnf offline-upgrade download -y'
-alias offline-upgrade-apply='echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min || sleep 1m && sudo dnf offline-upgrade reboot'
-alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
+# System upgrade aliases
+alias reboot-message-wait='echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && count1min || sleep 1m'
+if command -v rpm-ostree &> /dev/null
+then
+    # Silverblue
+    alias upgrade='echo "Working..."; sudo rpm-ostree upgrade'
+    alias offline-upgrade-download='echo "Working..."; sudo rpm-ostree upgrade --download-only'
+    alias offline-upgrade-apply='sudo rpm-ostree upgrade && sudo shutdown -r 1'
+elif command -v dnf &> /dev/null
+then
+    # Fedora or similar
+    alias upgrade='echo "Working..."; sudo dnf upgrade -y'
+    alias offline-upgrade-download='echo "Working..."; sudo dnf offline-upgrade download -y'
+    alias offline-upgrade-apply='reboot-message-wait && sudo dnf offline-upgrade reboot'
+    alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
+elif command -v apt &> /dev/null
+then
+    # Ubuntu or similar
+    alias upgrade='echo "Working..."; sudo apt update && sudo apt upgrade -y'
+    alias offline-upgrade-download='echo "Offline upgrade not known for apt"'
+    alias offline-upgrade-apply='echo "Offline upgrade not known for apt"'
+fi
+# Common
+alias upgrade-reboot='upgrade && sudo shutdown -r 1'
+alias upgrade-shutdown='upgrade && sudo shutdown 1'
+alias offline-upgrade-download-and-apply='offline-upgrade-download && offline-upgrade-apply'
 
 # Generic Helpful Aliases
 alias findhere='find . -type f -name '
