@@ -70,8 +70,6 @@ endif
 set nobackup                " Stop vim leaving backup ~ files everywhere.
 set number                  " Enable linenumbers.
 set numberwidth=3           " Enable linenumbers.
-" Enable linenumbers when printing, and equal margins on all sides (default 10,5,5,5).
-set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
 set hlsearch                " Enable search highlighting.
 set ruler                   " Show some line/column information at bottom right.
 set showcmd                 " Show current partially input command at bottom of screen.
@@ -87,6 +85,16 @@ set scrolloff=0             " Always keep N lines visible top/bottom of screen p
 set nocursorline            " Highlight line the cursor is currently on
 set nocursorcolumn          " Highlight column the cursor is currently on
 set norelativenumber        " Relative line numbers
+" Printers:
+" Enable linenumbers when printing, and equal margins on all sides (default 10,5,5,5).
+set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
+" Set printer device name, so that `:hardcopy` will work (calls terminal `$ lpr` so debug this if not working)
+"set pdev=
+" The printername we want is that used by `$ lpr -P printername`
+" and available printers can be queried with `$ lpstat -p`
+" see current default with `$ lpstat -d`
+" set new default with `$ lpoptions -d printername`
+" It does not need to be default if we specify ourselves in vim with `:set pdev=`
 
 " Force utf8 encoding:
 "set encoding=utf8
@@ -759,12 +767,16 @@ if has("gui_running") && !has("nvim")
     "    au GUIEnter * simalt ~x
     "endif
 
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L  "remove left-hand scroll bar
-    set guioptions+=d  "Dark gtk+ gui theme
-    set guioptions-=e  "Remove GUI tabs, for terminal style
+    set guioptions-=m  " Remove menu bar
+    set guioptions-=T  " Remove toolbar
+    set guioptions-=r  " Remove right-hand scroll bar
+    set guioptions-=L  " Remove left-hand scroll bar
+    if exists("use_dark_gui_theme") && use_dark_gui_theme
+        set guioptions+=d  " Dark gtk+ gui theme
+    else
+        set guioptions-=d  " Light gtk+ gui theme
+    endif
+    set guioptions-=e  " Remove GUI tabs, for terminal style
 endif
 
 " ====================
@@ -1165,24 +1177,44 @@ if has("nvim")
         autocmd  TermOpen * :set nonumber norelativenumber
     augroup END
 
+    " Disable annoying mouse input
+    set mouse=
+
     " Truecolour terminal colours
     " (256 mode uses the terminal ANSI 16)
-    " Dracula Xresources terminal theme
-    let g:terminal_color_0='#000000'
-    let g:terminal_color_1='#FF5555'
-    let g:terminal_color_2='#50FA7B'
-    let g:terminal_color_3='#F1FA8C'
-    let g:terminal_color_4='#BD93F9'
-    let g:terminal_color_5='#FF79C6'
-    let g:terminal_color_6='#8BE9FD'
-    let g:terminal_color_7='#BFBFBF'
-    let g:terminal_color_8='#4D4D4D'
-    let g:terminal_color_9='#FF6E67'
-    let g:terminal_color_10='#5AF78E'
-    let g:terminal_color_11='#F4F99D'
-    let g:terminal_color_12='#CAA9FA'
-    let g:terminal_color_13='#FF92D0'
-    let g:terminal_color_14='#9AEDFE'
-    let g:terminal_color_15='#E6E6E6'
+    " " Dracula Xresources terminal theme
+    " let g:terminal_color_0='#000000'
+    " let g:terminal_color_1='#FF5555'
+    " let g:terminal_color_2='#50FA7B'
+    " let g:terminal_color_3='#F1FA8C'
+    " let g:terminal_color_4='#BD93F9'
+    " let g:terminal_color_5='#FF79C6'
+    " let g:terminal_color_6='#8BE9FD'
+    " let g:terminal_color_7='#BFBFBF'
+    " let g:terminal_color_8='#4D4D4D'
+    " let g:terminal_color_9='#FF6E67'
+    " let g:terminal_color_10='#5AF78E'
+    " let g:terminal_color_11='#F4F99D'
+    " let g:terminal_color_12='#CAA9FA'
+    " let g:terminal_color_13='#FF92D0'
+    " let g:terminal_color_14='#9AEDFE'
+    " let g:terminal_color_15='#E6E6E6'
+    " Jellybeans xfce4-terminal theme (since nvim-qt uses theme FG)
+    let g:terminal_color_0='#151515'
+    let g:terminal_color_1='#cf6a4c'
+    let g:terminal_color_2='#799d6a'
+    let g:terminal_color_3='#ffb964'
+    let g:terminal_color_4='#8197bf'
+    let g:terminal_color_5='#c6b6ee'
+    let g:terminal_color_6='#8fbfdc'
+    let g:terminal_color_7='#e8e8d3'
+    let g:terminal_color_8='#888888'
+    let g:terminal_color_9='#cf6a4c'
+    let g:terminal_color_10='#99ad6a'
+    let g:terminal_color_11='#fad07a'
+    let g:terminal_color_12='#8197bf'
+    let g:terminal_color_13='#c6b6ee'
+    let g:terminal_color_14='#8fbfdc'
+    let g:terminal_color_15='#adadad'
 endif
 

@@ -24,7 +24,7 @@ if [ -d ~/.local/share/xfce4/terminal/colorschemes ]; then
     if [ ! -z "$(ls -A ~/.local/share/xfce4/terminal/colorschemes)" ]; then
         # Not empty
         echo "================================================================================"
-        ls -al ~/.local/share/xfce4/terminal/colorschemes
+        ls -CF ~/.local/share/xfce4/terminal/colorschemes
         echo "================================================================================"
         echo "WARNING: Destination directory not empty. Current contents listed above. Any unsaved changes will be lost"
         read -r -p 'All listed files or softlinks will be removed. Continue? (y/[N]): ' response

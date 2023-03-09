@@ -229,7 +229,10 @@ alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.org"
 alias ta='tmux a || tmux'
-alias view="vim -nMR"
+# Retain classic view func.
+alias view="vim -R"
+# Enhanced version for large files, `-n` no swap file (can crash / be sigkilled safely), `-M` no modifiable
+alias view-safe="vim -nMR"
 diffdir()
 {
     diff -r "$@" | vim -nMR -c 'set syntax=diff' -
