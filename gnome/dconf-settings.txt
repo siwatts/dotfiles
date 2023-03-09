@@ -74,7 +74,11 @@ locations=[<(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.
 audible-bell=false
 bold-is-bright=true
 cursor-blink-mode='off'
-default-size-columns=115
-default-size-rows=30
+default-size-columns=125
+default-size-rows=40
 scrollbar-policy='never'
 use-system-font=true
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-temperature=uint32 4700
