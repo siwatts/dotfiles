@@ -7,3 +7,4 @@
 GuiFont Source\ Code\ Pro:h10
 "GuiFont Noto\ Mono:h10
 "GuiFont Inconsolata\ 10
+"GuiFont Hack:h10
