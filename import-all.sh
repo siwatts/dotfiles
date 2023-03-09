@@ -257,6 +257,15 @@ case "$response" in
         ;;
 esac
 
+read -r -p 'Install and set some custom fonts for Fedora? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        gnome/fonts-for-fedora.sh
+        ;;
+    *)
+        ;;
+esac
+
 echo
 echo "Import complete"
 
@@ -416,6 +425,7 @@ echo "- Delete and re-clone dotfiles repo via SSH key auth for future commits:"
 echo "    cd ../ && rm -rf dotfiles/ && git clone git@github.com:siwatts/dotfiles.git"
 echo "- Run included './diff-all.sh' script to catch any remaining files"
 echo "- Monitor brightness scripts './monitor-controls/README.md'"
+echo "- Install Microsoft Windows fonts"
 
 echo
 echo "Program complete"
