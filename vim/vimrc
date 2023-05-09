@@ -41,7 +41,7 @@ let jb_dracula_colors=0
 let jb_terminal_colors=0
 let jb_universal_colors=0
 
-let g:dark_theme='jellybeans'
+let g:dark_theme='molokai'
 "let g:dark_theme_truecolor='jellybeans'
 let g:light_theme='lucius'
 " Gui overrides (default to terminal if unset)
@@ -87,7 +87,9 @@ set nocursorcolumn          " Highlight column the cursor is currently on
 set norelativenumber        " Relative line numbers
 " Printers:
 " Enable linenumbers when printing, and equal margins on all sides (default 10,5,5,5).
-set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
+if !has("nvim")
+    set printoptions=number:y,left:5pc,right:5pc,top:5pc,bottom:5pc
+endif
 " Set printer device name, so that `:hardcopy` will work (calls terminal `$ lpr` so debug this if not working)
 "set pdev=
 " The printername we want is that used by `$ lpr -P printername`
@@ -793,7 +795,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor )
     let g:schemes_light = [ 'lucius', 'hybrid-light', 'default-enhanced', ]
     " ==================== Dark ====================
     "let g:schemes_dark = [ 'desert', 'darkblue256', 'dracula', 'gruvbox', 'iceberg', 'jellybeans', 'lucius', 'seoul256', 'twilight', 'wombat256mod', 'wombat', 'zenburn' ]
-    let g:schemes_dark = [ 'jellybeans', 'molokai', 'default-enhanced', 'desert', 'darkblue', 'twilight', 'lucius', 'wombat256mod', 'dracula', 'zenburn', 'nord', 'twilight256', 'hybrid', ]
+    let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
 else
     " ==================== Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
