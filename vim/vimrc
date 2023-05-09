@@ -565,6 +565,9 @@ autocmd ColorScheme ron hi Search ctermfg=0 ctermbg=2 cterm=NONE |
             \ hi MatchParen ctermfg=231 ctermbg=60 |
             \ hi Constant ctermfg=219
 
+" Default is a dim grey, 'Grey80'
+autocmd ColorScheme torte hi Normal guifg=#f8f8f8
+
 " Twilight:
 " Jellybeans Normal hi Normal guifg=#e8e8d3 |
 " Brighter Comment, 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
@@ -578,6 +581,7 @@ autocmd ColorScheme twilight hi Comment guifg=#958f7f
 "autocmd ColorScheme dracula hi Statement guifg=#FF92D0 |
 "            \ hi PreProc guifg=#FF92D0 |
 "            \ hi Comment guifg=#8787af
+autocmd ColorScheme dracula hi Comment guifg=#8787af
 
 " Nord:
 "" Use brighter Comment
@@ -587,7 +591,11 @@ autocmd ColorScheme twilight hi Comment guifg=#958f7f
 autocmd ColorScheme nord hi Comment guifg=#808090
 
 " Desert:
-autocmd ColorScheme desert hi Identifier cterm=NONE
+"autocmd ColorScheme desert hi Identifier cterm=NONE
+autocmd ColorScheme desert hi Pmenu      ctermfg=231 ctermbg=240 guifg=#ffffff guibg=#606060 |
+            \ hi PmenuSel   ctermfg=232 ctermbg=254 guifg=#101010 guibg=#eeeeee |
+            \ hi PmenuSbar  ctermbg=248 guibg=Grey |
+            \ hi PmenuThumb ctermbg=15 guibg=White
 
 " Material:
 " Original comment, guifg=#5D818E
@@ -672,7 +680,10 @@ let base16colorspace=256
 " 254 = e4e4e4
 " 253 = dadada
 " 252 = d0d0d0
-autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254
+"autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254
+autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255
+" Or transparent
+"autocmd ColorScheme darkblue hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE
 
 function! SetCustomScheme(use_dark)
     if has("gui_running")

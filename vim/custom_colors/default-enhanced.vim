@@ -72,6 +72,7 @@ if s:is_dark
     hi! link diffFile Identifier
 else
     " Light specific customisations
+    hi NonText guifg=#afafd7
     hi Error term=standout ctermfg=231 ctermbg=1
     hi ErrorMsg term=standout ctermfg=231 ctermbg=1
     " Yellow

@@ -230,9 +230,15 @@ alias vlcdvd="vlc dvd://"
 alias todo="$EDITOR ~/Documents/TODO.org"
 alias ta='tmux a || tmux'
 # Retain classic view func.
-alias view="vim -R"
-# Enhanced version for large files, `-n` no swap file (can crash / be sigkilled safely), `-M` no modifiable
-alias view-safe="vim -nMR"
+# Retain classic behaviour:
+alias view='vim -R'
+# Enhanced version for large files:
+#     -n = no swap file (vim can crash / be sigkilled safely)
+#     -M = no modifiable
+#     -R = Readonly buffer (cannot save)
+alias view-safe='vim -nMR'
+# Like `tail -f` but better
+alias less-follow='less -RX +F'
 diffdir()
 {
     diff -r "$@" | vim -nMR -c 'set syntax=diff' -
