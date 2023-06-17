@@ -768,6 +768,7 @@ if has("gui_running") && !has("nvim")
         "set guifont=Source\ Code\ Pro\ 10
         "set guifont=Noto\ Mono\ 10
         "set guifont=Inconsolata\ 10
+        "set guifont=IBM\ Plex\ Mono\ 10
     endif
 
     " Window size
