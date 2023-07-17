@@ -51,9 +51,11 @@ xterm*scrollTtyOutput: false
 !xterm*vt100*geometry: 150x50
 !xterm*vt100*geometry: 130x40
 !xterm*vt100*geometry: 120x34
-xterm*vt100*geometry: 115x30
+!xterm*vt100*geometry: 115x30
 !xterm*vt100*geometry: 100x30
 !xterm*vt100*geometry: 80x30
+
+xterm*vt100*geometry: 125x40
 
 ! 256 color mode for vim etc. Can make program specific.
 xterm*termName: xterm-256color
