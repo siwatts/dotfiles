@@ -979,3 +979,72 @@ Using tool `shred`
         - `-z`, finish with pass of zeroes
 - Takes about 2.5h for 500G
 
+## SystemD Timers
+
+Creating and using systemd timers can be done systemwide or per-user. It is a modern version of the `crontab`
+
+- A _service_ and _timer_ are required for the most simple example
+- stdout (+ stderr?) from the unit are stored automatically by `journalctl -u NAME`
+    - This means that you do not need to set up complicated file logging in your scripts. It is possible to take a script that is run manually outputting information to screen and create a timer from it that will log automatically to `journalctl`
+- Basic systemd commands
+    - `systemctl daemon-reload`
+    - `systemctl status NAME`
+    - `systemctl start NAME`
+    - `systemctl enable NAME`
+    - `systemctl enable --now NAME` (start + enable)
+    - `systemctl stop NAME`
+    - `systemctl disable NAME`
+- "Persistent" timers will run on bootup if a past scheduled run was missed due to the system being offline
+
+### User
+
+- Create user timers in `~/.config/systemd/user`
+- Use `systemctl --user` or `journalctl --user` as your local user
+- Remember that `systemctl --user daemon-reload` may be needed after timers are created/modified
+
+A simple example that runs a bash script from the user's home directory:
+
+`~/.config/systemd/user/example.service`
+
+```yaml
+[Unit]
+Description="INSERT DESCRIPTION HERE"
+
+[Service]
+ExecStart=/home/USER/bin/example.sh
+```
+
+`~/.config/systemd/user/example.timer`
+
+```yaml
+[Unit]
+Description="Run example.service every day at 06:00:00"
+
+[Timer]
+OnCalendar=Mon..Sun *-*-* 06:00:00
+Unit=example.service
+
+[Install]
+WantedBy=timers.target
+```
+
+- `WantedBy=timers.target` means to wait until systemd timers are running
+    - Your user must be logged in for the timer to be triggered
+    - There are ways around this but it is usually better to make a root systemd in this case
+- `WantedBy=multi-user.target` **does not exist** for user systemd timers. It is the example most commonly given online for custom systemd timers that assume you will be using root
+
+### System Wide
+
+- Create systemd timers in `/etc/systemd/system`
+- Use `systemctl` or `journalctl` as root (`sudo` or similar)
+- Remember that `systemctl daemon-reload` may be needed after timers are created/modified
+
+```yaml
+[Install]
+WantedBy=multi-user.target
+```
+
+- `WantedBy=multi-user.target` means to wait until all network services are started and system will accept logins, but local GUI not yet started
+- It is the most common default given for system (root user) timers
+- This target does not exist for user timers
+
