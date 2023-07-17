@@ -21,10 +21,10 @@ ln -s /usr/local/bin/monitor-* $HOME/bin/
 - Test and seed an initial value in terminal e.g. `monitor-update.sh 35`
 - Create keyboard shortcuts
     - Monitor Up
-        - `$HOME/bin/monitor-adjust-up.sh`
+        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-adjust-up.sh; sleep 2s"'`
         - `Super`+`=`
     - Monitor Down
-        - `$HOME/bin/monitor-adjust-down.sh`
+        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-adjust-down.sh; sleep 2s"'`
         - `Super`+`-`
     - Monitor Reset
         - `$HOME/bin/monitor-daytime.sh`
