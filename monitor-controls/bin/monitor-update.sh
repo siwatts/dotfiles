@@ -49,7 +49,7 @@ tput setaf 2; tput bold
 echo -n "$arg"
 tput sgr0
 echo -n "' to file... "
-echo "$arg" > "$fname"
+echo "$arg" | sudo tee "$fname" > /dev/null
 echo "Done"
 tput setaf 2; tput bold
 echo "Update Complete"
