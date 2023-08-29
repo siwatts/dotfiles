@@ -1048,3 +1048,11 @@ WantedBy=multi-user.target
 - It is the most common default given for system (root user) timers
 - This target does not exist for user timers
 
+## Slack
+
+Slack Dracula theme:
+
+```
+#282A36,#44475A,#44475A,#8BE9FD,#6272A4,#FFFFFF,#50FA7B,#FF79C6,#282A36,#FFFFFF
+```
+

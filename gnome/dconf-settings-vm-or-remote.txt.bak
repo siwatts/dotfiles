@@ -1,0 +1,17 @@
+
+[org/gnome/desktop/session]
+idle-delay=uint32 0
+
+[org/gnome/desktop/interface]
+enable-animations=false
+
+[org/gnome/desktop/background]
+picture-uri='file:///home/swatts@argans.local/.local/share/backgrounds/2022-12-20-17-40-04-blobs-l.svg'
+picture-uri-dark='file:///home/swatts@argans.local/.local/share/backgrounds/2022-12-20-17-40-04-blobs-l.svg'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///home/swatts@argans.local/.local/share/backgrounds/2022-12-20-17-40-04-blobs-l.svg'
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+

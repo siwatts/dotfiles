@@ -1,0 +1,17 @@
+
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+
+[org/gnome/desktop/interface]
+enable-animations=true
+
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/f27/default/f27.xml'
+picture-uri-dark='file:///usr/share/backgrounds/f27/default/f27.xml'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/f27/default/f27.xml'
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+

@@ -9,4 +9,14 @@ if [ ! -d "../../gnome" ]; then
 fi
 
 ../load-dconf-settings.sh ../dconf-settings-vm-or-remote.txt
+
+# Switch wallpaper
+#../load-dconf-settings.sh ../wallremote.txt
+
+# Display scaling if we are using 1440p RDP
+#../load-dconf-settings.sh ../dconf-settings-1440p.txt
+
+# Enable Window List Extension
+#gnome-extensions enable 'window-list@gnome-shell-extensions.gcampax.github.com'
+
 exit 0

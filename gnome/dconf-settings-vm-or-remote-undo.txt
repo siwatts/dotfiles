@@ -4,4 +4,5 @@ idle-delay=uint32 900
 
 [org/gnome/desktop/interface]
 enable-animations=true
+cursor-size=24
 

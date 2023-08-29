@@ -85,6 +85,14 @@ set scrolloff=0             " Always keep N lines visible top/bottom of screen p
 set nocursorline            " Highlight line the cursor is currently on
 set nocursorcolumn          " Highlight column the cursor is currently on
 set norelativenumber        " Relative line numbers
+if has("nvim")
+    " This also exists for vim, but the undo file are not shared so we don't use them in order to
+    " remove a source of confusion
+    " They also save in different places by default
+    " nvim in ~/.local/state/nvim/undo/"
+    " vim in current working dir. set undodir to override
+    set undofile
+endif
 " Printers:
 " Enable linenumbers when printing, and equal margins on all sides (default 10,5,5,5).
 if !has("nvim")
@@ -667,6 +675,9 @@ let g:rehash256=1
 " hi Search cterm=reverse ctermfg=84 ctermbg=NONE gui=reverse guifg=#50FA7B guibg=NONE
 " hi IncSearch ctermfg=236 ctermbg=215 guifg=#282A36 guibg=#FFB86C cterm=NONE gui=NONE
 " We have inverted Search and IncSearch
+" = High Contrast Comments =
+" Take the String colour from jellybeans.vim, hi Comment guifg=#99ad6a
+" Or StorageClass, hi Comment guifg=#c59f6f
 autocmd ColorScheme molokai hi Comment guifg=#a09080 | hi IncSearch cterm=reverse ctermfg=84 ctermbg=NONE gui=reverse guifg=#50FA7B guibg=NONE
 
 " If using a base16 theme that also reassigns colours 16-21.
@@ -855,7 +866,7 @@ endif
 " Apply base16 theme
 noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
-noremap <F9> :call SetCustomScheme(use_dark_theme)<CR>
+noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>

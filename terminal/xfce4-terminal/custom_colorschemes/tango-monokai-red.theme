@@ -1,0 +1,6 @@
+[Scheme]
+Name=Tango (Monokai + Red)
+ColorForeground=#f8f8f2
+ColorBackground=#272822
+ColorCursor=x
+ColorPalette=#000000;#f92672;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#f92672;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
