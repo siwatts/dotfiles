@@ -95,6 +95,32 @@ if [ "$color_prompt" = yes ]; then
     else
         # Local machine, green & blue
         export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
+
+        # # Truecolor PS1 using 0-255 RGB values
+        # # Below example is orange + purple which looks good for WSL Ubuntu
+        # #
+        # # https://superuser.com/questions/1220633/true-colors-in-bash-prompt
+        # # --
+        # # set your RGB colors
+        # cname='253;151;31'
+        # cdir='174;129;255'
+        # # Orange3, 172, d78700, 215;135;0
+        # # Molokai orange, #FD971F, 253;151;31
+        # # Molokai purple, #AE81FF, 174;129;255
+
+        # # leave this block alone
+        # code_color_name="\x1b[1;38;2;${cname}m"
+        # code_color_dir="\x1b[1;38;2;${cdir}m"
+        # code_color_reset='\x1b[0m'
+
+        # # leave this block alone
+        # c_name=$(printf "${code_color_name}")
+        # c_dir=$(printf "${code_color_dir}")
+        # c_rst=$(printf "${code_color_reset}")
+
+        # # your PS1 prompt. configure as desired
+        # export PS1='\[${c_name}\]\u@\h\[${c_rst}\] \[${c_dir}\]\w\[${c_rst}\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
+        # # --
     fi
 
     # Alternative styles:
