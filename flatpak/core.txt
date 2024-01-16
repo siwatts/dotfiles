@@ -2,6 +2,9 @@ flathub
 com.bitwarden.desktop
 com.google.Chrome
 com.discordapp.Discord
+com.mattjakeman.ExtensionManager
+com.github.tchx84.Flatseal
 nl.hjdskes.gcolor3
+com.github.finefindus.eyedropper
 com.transmissionbt.Transmission
 app.drey.Dialect

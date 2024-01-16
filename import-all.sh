@@ -111,13 +111,12 @@ else
     echo "    - xfce4-terminal"
     echo "    - vim-enhanced"
     echo "    - vim-X11"
-    echo "    - neovim-qt"
     echo "    - gnome-extensions-app"
     echo "    - gnome-tweaks"
     echo "    - gimp"
     echo "    - remmina"
     echo "    - htop"
-    echo "    - mediawriter"
+    echo "    - neovim-qt"
     echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before doing this if this is a clean install, as dnf can error otherwise"
     read -r -p 'DNF upgrade all packages and reboot now? (y/[N]): ' response
     case "$response" in
@@ -140,7 +139,8 @@ else
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "Working..."
-            sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 neovim-qt gnome-extensions-app gnome-tweaks gimp remmina htop mediawriter
+            sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks gimp remmina htop
+            sudo dnf install -y neovim-qt
             ;;
         *)
             ;;

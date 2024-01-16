@@ -944,11 +944,12 @@ Browse ssh files/directories through emacs
     - `sudo vim /etc/ssh/sshd_config.d/ssh-nopw.conf`
     - Name should not matter, `/etc/ssh/sshd_config` sources `/etc/ssh/sshd_config.d/*.conf`
     - Should be more resilient than manually editing `sshd_config`
+- Note: `UsePAM` not always required, can break things. But try it if password access still allowed without it
 
 ```
 ChallengeResponseAuthentication no
 PasswordAuthentication no
-UsePAM no
+#UsePAM no
 PermitRootLogin no
 PermitRootLogin prohibit-password
 ```

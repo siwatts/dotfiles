@@ -41,7 +41,7 @@ let jb_dracula_colors=0
 let jb_terminal_colors=0
 let jb_universal_colors=0
 
-let g:dark_theme='molokai'
+let g:dark_theme='jellybeans'
 "let g:dark_theme_truecolor='jellybeans'
 let g:light_theme='lucius'
 " Gui overrides (default to terminal if unset)
