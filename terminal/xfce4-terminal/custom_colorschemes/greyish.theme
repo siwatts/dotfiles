@@ -1,0 +1,7 @@
+[Scheme]
+Name=Greyish
+ColorForeground=#e0e0e0
+ColorBackground=#303030
+ColorCursor=x
+ColorPalette=#303030;#e0c0c0;#c0e0c0;#e0e0c0;#c0c0e0;#e0c0e0;#c0e0e0;#e0e0e0;#888888;#f0e0e0;#e0f0e0;#f0f0e0;#e0e0f0;#f0e0f0;#e0f0f0;#ffffff
+
