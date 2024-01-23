@@ -29,7 +29,7 @@ name='Firefox Private Browsing'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
 binding='<Super>g'
-command='gvim'
+command='env GTK_CSD=1 GTK_THEME=Adwaita:dark gvim'
 name='GVim'
 
 [org/gnome/desktop/peripherals/touchpad]

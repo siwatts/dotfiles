@@ -1,4 +1,4 @@
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>t'
-command='env GTK_THEME=Adwaita:dark xfce4-terminal'
+command='env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal'
 name='Terminal'

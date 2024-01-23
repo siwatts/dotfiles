@@ -627,7 +627,9 @@ GTK 4 apps usually have a toggle in their preferences for this already
 
 Modified from https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis
 
-`GTK_THEME=Adwaita:dark xfce4-terminal`, directly in a terminal
+`GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal`, directly in a terminal
+
+Also as of around Fedora 38/39 `GTK_CSD=1` is required from https://forum.xfce.org/viewtopic.php?id=15380. Can also try `--disable-server` if this is not sufficient
 
 #### .desktop launcher
 
@@ -638,10 +640,12 @@ These are located in `/usr/share/applications/`, but will be overwritten on upda
 Using `xfce4-terminal` as example
 
 - Copy it to `~/.local/share/applications/`
-- Modify line containing launch command `Exec=xfce4-terminal` to prepend with `env GTK_THEME=Adwaita:dark `
-    - I.e. `Exec=env GTK_THEME=Adwaita:dark xfce4-terminal`
+- Modify line containing launch command `Exec=xfce4-terminal` to prepend with `env GTK_CSD=1 GTK_THEME=Adwaita:dark `
+    - I.e. `Exec=env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal`
 
 App should now launch with chosen theme when launched via shortcut (close all running instances first)
+
+This can also be done for GVim, since the in vim setting for gtk theme to dark does not appear to work anymore under GNOME
 
 #### Keyboard shortcuts
 
@@ -649,7 +653,7 @@ Keyboard shortcuts usually launch the app directly, rather than going through th
 
 Prepend the same string onto the desired launch command in the keyboard shortcut e.g.
 
-`xfce4-terminal` -> `env GTK_THEME=Adwaita:dark xfce4-terminal`
+`xfce4-terminal` -> `env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal`
 
 ### Neovim & TreeSitter Plugin
 

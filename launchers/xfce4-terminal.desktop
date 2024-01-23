@@ -170,7 +170,7 @@ GenericName[ur_PK]=ٹرمنل ایمولیٹر
 GenericName[vi]=Trình giả lập Terminal
 GenericName[zh_CN]=终端模拟器
 GenericName[zh_TW]=終端機程式
-Exec=env GTK_THEME=Adwaita:dark xfce4-terminal
+Exec=env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal
 Icon=org.xfce.terminal
 Terminal=false
 Type=Application
