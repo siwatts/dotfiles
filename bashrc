@@ -249,7 +249,16 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-#alias dotfiles='cd ~/repos/dotfiles'
+# Neovim must come before other aliases, to be recursive (for view etc.)
+# Uncomment if using nvim.appimage in ~/bin or similar
+#alias nvim="nvim.appimage"
+#if [ "$HOSTNAME" = host.with.nvim ]; then
+#    alias vim="nvim"
+#    alias vimdiff="nvim -d"
+#fi
+
+# Generic handy aliases
+alias dotfiles='cd ~/repos/dotfiles'
 alias i3c="$EDITOR ~/.config/i3/config"
 alias mpvdvd="mpv dvd://"
 alias vlcdvd="vlc dvd://"
