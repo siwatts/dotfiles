@@ -56,15 +56,11 @@ else
 endif
 
 " JELLYBEANS:
-let jb_twilight_colors=0
-let jb_dracula_colors=0
 let jb_terminal_colors=0
-let jb_universal_colors=0
-
+let jb_twilight_colors=0
 
 "let g:hybrid_custom_term_colors = 1 "Does nothing
 "let g:gruvbox_termcolors=16
-
 
 " Use the terminal themes if not set.
 if !exists("g:dark_gui_theme")
@@ -231,49 +227,39 @@ endif
 
 syntax on
 
-"" Jellybeans:
-"let g:jellybeans_overrides = {
-"\   'background': { 'guibg': '212121', '256ctermbg': '234' },
-"\}
-"let g:jellybeans_overrides = {
-"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
-"\}
-""lucius bg
-"let g:jellybeans_overrides = {
-"\   'background': { 'guibg': '303030', '256ctermbg': '236' },
-"\}
-"let g:jellybeans_overrides = {
-"\   'background': { 'guibg': '3f3f3f', '256ctermbg': '237' },
-"\}
-"let g:jellybeans_overrides = {
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\}
-"" JellybeansCustom:
-"\   'Constant': { 'guifg': 'e5786d', '256ctermfg': '173' },
-"\   'Constant': { 'guifg': 'ff5f5f', '256ctermfg': '203' },
-"\   'Constant': { 'guifg': 'ff8787', '256ctermfg': '210' },
-"\   'Identifier': { 'guifg': 'af87ff', '256ctermfg': '141' },
-"\   'Identifier': { 'guifg': 'af87d7', '256ctermfg': '140' },
-"\   'Special': { 'guifg': 'f1fa8c', '256ctermfg': '228' },
-"\   'Special': { 'guifg': 'ffff60', '256ctermfg': '227' },
-"\   'Special': { 'guifg': 'd4d987', '256ctermfg': '186' },
-"let g:jellybeans_overrides = {
-"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
-"\   'Constant': { 'guifg': 'ff875f', '256ctermfg': '209' },
-"\   'Special': { 'guifg': 'd7d75f', '256ctermfg': '185' },
-"\   'String': { 'guifg': '95e454', '256ctermfg': '113' },
-"\   'Statement': { 'guifg': 'ff79c6', '256ctermfg': '212' },
-"\   'Todo': { 'guibg': '000000', '256ctermbg': 'black' },
-"\   'StatusLineNC': { 'guibg': '3a3a3a', '256ctermbg': '237' },
-"\   'VertSplit': { 'guibg': '3a3a3a', 'guifg': '4e4e4e', '256ctermbg': '237', '256ctermfg': '239' },
-"\}
-" AltTermColours:
-"\    'Normal': { '256ctermfg': '7' },
-"\    'SpecialKey': { '256ctermfg': '112', '256ctermbg':'16' }, " desert256
-"\    'Visual': { '256ctermbg': '18' }, " blue
-"\    'Visual': { '256ctermbg': '53' }, " purple
-"\    'Comment': { '256ctermfg': '103' }, " dracula 256 approx comment
-if jb_twilight_colors
+" JELLYBEANS:
+if exists("jb_terminal_colors") && jb_terminal_colors
+    " Created to work with our jellybeans terminal theme (xfce4-terminal etc.)
+    " and emulate truecolor GVim jellybeans.vim using the terminal ANSI colours
+    " ANSI 0-15:
+    " ColorPalette=#151515;#cf6a4c;#799d6a;#ffb964;#8197bf;#c6b6ee;#8fbfdc;#e8e8d3;#888888;#cf6a4c;#99ad6a;#fad07a;#8197bf;#c6b6ee;#8fbfdc;#adadad
+    " --
+    " BrightTermColours:
+    " Remove storage class for more authentic jellybeans
+    "\    'StorageClass': { '256ctermfg': '3' },
+    "\    'StorageClass': { '256ctermfg': '136' },
+    "\    'StorageClass': { '256ctermfg': '172' },
+    "\    'StorageClass': { '256ctermfg': '173' },
+    "\    'Visual': { '256ctermbg': '52' },
+    "\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': 'none', 'cterm': 'reverse' },
+    let g:jellybeans_overrides = {
+    \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
+    \    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \    'Comment': { '256ctermfg': '8' },
+    \    'Constant': { '256ctermfg': '9' },
+    \    'Identifier': { '256ctermfg': '13' },
+    \    'Statement': { '256ctermfg': '12' },
+    \    'PreProc': { '256ctermfg': '14' },
+    \    'Type': { '256ctermfg': '3' },
+    \    'Special': { '256ctermfg': '2' },
+    \    'Function': { '256ctermfg': '11' },
+    \    'String': { '256ctermfg': '10' },
+    \    'Structure': { '256ctermfg': '14' },
+    \    'SpecialKey': { '256ctermbg': 'none', 'cterm': 'reverse' },
+    \}
+elseif exists("jb_twilight_colors") && jb_twilight_colors
+    " As above, but for twilight.vim instead
     " Twilight:
     let g:jellybeans_overrides = {
     \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none', 'ctermfg': 'none', '256ctermfg': 'none' },
@@ -293,327 +279,19 @@ if jb_twilight_colors
     \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
     \    'Visual': { '256ctermbg': '52' },
     \}
-elseif jb_dracula_colors
-    "\    'Comment': { '256ctermfg': '8' },
-    "\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '111' },
-    "\    'LineNr': { '256ctermfg': '111', '256ctermbg': 'none' },
-    "\    'Visual': { '256ctermbg': '52' },
-    "\    'Visual': { '256ctermbg': '88' },
-    "\    'Statement': { '256ctermfg': '13' },
-    "" Actual dracula 256 used val.
-    "\    'Visual': { '256ctermbg': '239' },
-    " DraculaInspired:
-    let g:jellybeans_overrides = {
-    \    'Normal': { 'ctermbg': 'none', '256ctermbg': 'none', 'ctermfg': 'none', '256ctermfg': 'none' },
-    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
-    \    'Comment': { '256ctermfg': '103' },
-    \    'LineNr': { '256ctermfg': '103', '256ctermbg': 'none' },
-    \    'Constant': { '256ctermfg': '4' },
-    \    'Identifier': { '256ctermfg': '7' },
-    \    'Statement': { '256ctermfg': '13' },
-    \    'PreProc': { '256ctermfg': '6' },
-    \    'Type': { '256ctermfg': '3' },
-    \    'Directory': { '256ctermfg': '4', 'cterm': 'bold' },
-    \    'netrwExe': { '256ctermfg': '13' },
-    \    'netrwLink': { '256ctermfg': '13' },
-    \    'netrwSymLink': { '256ctermfg': '7', 'cterm': 'bold' },
-    \    'StorageClass': { '256ctermfg': '3' },
-    \    'Special': { '256ctermfg': '215' },
-    \    'Delimiter': { '256ctermfg': '215' },
-    \    'Function': { '256ctermfg': '2' },
-    \    'String': { '256ctermfg': '3' },
-    \    'Structure': { '256ctermfg': '6' },
-    \    'SpecialKey': { '256ctermfg': '4', '256ctermbg': 'none', 'cterm': 'reverse' },
-    \    'Visual': { '256ctermbg': '60', '256ctermfg': '231' },
-    \    'Search': { '256ctermbg': '2', '256ctermfg': '0', 'cterm': 'NONE', 'term': 'NONE' },
-    \}
-elseif jb_terminal_colors
-    " BrightTermColours:
-    " Remove storage class for more authentic jellybeans
-    "\    'StorageClass': { '256ctermfg': '3' },
-    "\    'StorageClass': { '256ctermfg': '136' },
-    "\    'StorageClass': { '256ctermfg': '172' },
-    "\    'StorageClass': { '256ctermfg': '173' },
-    "\    'Visual': { '256ctermbg': '52' },
-    "\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': 'none', 'cterm': 'reverse' },
-    "\    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-    let g:jellybeans_overrides = {
-    \    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
-    \    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
-    \    'Comment': { '256ctermfg': '8' },
-    \    'Constant': { '256ctermfg': '9' },
-    \    'Identifier': { '256ctermfg': '13' },
-    \    'Statement': { '256ctermfg': '12' },
-    \    'PreProc': { '256ctermfg': '14' },
-    \    'Type': { '256ctermfg': '3' },
-    \    'Special': { '256ctermfg': '2' },
-    \    'Function': { '256ctermfg': '11' },
-    \    'String': { '256ctermfg': '10' },
-    \    'Structure': { '256ctermfg': '14' },
-    \    'SpecialKey': { '256ctermbg': 'none', 'cterm': 'reverse' },
-    \}
-elseif jb_universal_colors
-    " UniversalTermColours:
-    "" Zenburn green
-    "\    'LineNr': { '256ctermfg': '108', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '108' },
-    "" Equiv. red
-    "\    'LineNr': { '256ctermfg': '138', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '138' },
-    "" Grey
-    "\    'LineNr': { '256ctermfg': '248', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '248' },
-    "\    'LineNr': { '256ctermfg': '246', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '246' },
-    "" Dracula 256
-    "\    'LineNr': { '256ctermfg': '103', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '103' },
-    " Blue?
-    "\    'LineNr': { '256ctermfg': '6', '256ctermbg': 'none' },
-    "\    'Comment': { '256ctermfg': '6' },
-    let g:jellybeans_overrides = {
-    \    'Normal': { 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-    \    'LineNr': { '256ctermfg': '9', '256ctermbg': 'none' },
-    \    'Comment': { '256ctermfg': '9' },
-    \    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
-    \    'Constant': { '256ctermfg': '13' },
-    \    'Identifier': { '256ctermfg': '13' },
-    \    'Statement': { '256ctermfg': '12' },
-    \    'PreProc': { '256ctermfg': '14' },
-    \    'Type': { '256ctermfg': '11' },
-    \    'Directory': { '256ctermfg': '11' },
-    \    'StorageClass': { '256ctermfg': '3' },
-    \    'Special': { '256ctermfg': '2' },
-    \    'Function': { '256ctermfg': '11' },
-    \    'String': { '256ctermfg': '10' },
-    \    'Structure': { '256ctermfg': '14' },
-    \    'SpecialKey': { '256ctermfg': '1', '256ctermbg': '16', 'cterm': 'reverse' },
-    \    'Visual': { '256ctermbg': '52' },
-    \    'Search': { '256ctermbg': '2', '256ctermfg': '16', 'cterm': 'none' },
-    \}
 else
-    " Constant: 167-> 203(more vibrant red), 209(closest to GUI), 210(light red), 173(wombat+twilight256), 174, 176 (VSCodeDark+ purple)
-    " StorageClass: 179 -> 137 (like real but darker), 180 (like real but lighter), 208 (Gruvbox orange)
-    " Special: 107 (string) -> 192 (greeny/yellow from wombat), 66 (jb delimiter), 113 (wombat256 string), 208 (GruvboxOrange)
-    " Special: 30, 29 (very dark greenyblues)
-    " Special: 34, 35*, 36**, 37* (dark greenyblues)
-    " Special: 40, 41, 42* (Brighter greens)
-    " Special: 192, (wombat256mod greeny/yellow)
-    "" Normal:
-    "\   'StorageClass': { '256ctermfg': '180' },
-    "\   'StorageClass': { '256ctermfg': '208' },
-    "\   'Constant': { '256ctermfg': '173' },
-    " Constant: twilight.vim
-    "\   'Constant': { 'guifg': 'd08356' },
-    " Comment: zenburn constant, comment
-    "\   'Comment': { 'guifg': 'dca3a3' },
-    "\   'Comment': { 'guifg': '7f9f7f' }, "Zenburn comment
-    " Comment: Custom
-    "\   'Comment': { 'guifg': '889588' }, "Greeny
-    "\   'Comment': { 'guifg': '7f9f8f' },
-    "\   'Comment': { 'guifg': '959288' }, "Red green **
-    "\   'Comment': { 'guifg': '959292' }, "Red grey
-    "\   'Comment': { 'guifg': '9c998e' }, "Wombat comment
-    " Special: See above
-    "\   'Special': { '256ctermfg': '36' },
+    " Fixes to normal theme
     let g:jellybeans_overrides = {
     \   'SpecialKey': { '256ctermfg': '239', '256ctermbg': '233' },
     \   'Search': { '256ctermbg': '16' },
     \}
-    " SwapLightAndDarkBlue:
-    "let g:jellybeans_overrides = {
-    "\   'SpecialKey': { '256ctermfg': '239', '256ctermbg': '233' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'PreProc': { '256ctermfg': '103' },
-    "\   'Statement': { '256ctermfg': '110' },
-    "\}
-    " SlightlyBrighter:
-    "let g:jellybeans_overrides = {
-    "\   'SpecialKey': { '256ctermbg': '233' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Visual': { '256ctermbg': '52' },
-    "\   'Statement': { '256ctermfg': '104' },
-    "\   'Constant': { '256ctermfg': '209' },
-    "\}
-    " MiddleGround:
-    "let g:jellybeans_overrides = {
-    "\   'background': { '256ctermbg': '234' },
-    "\   'SpecialKey': { '256ctermbg': '234' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Visual': { '256ctermbg': '52' },
-    "\   'Statement': { '256ctermfg': '104' },
-    "\   'Constant': { '256ctermfg': '203' },
-    "\}
-    " BrighterBlues:
-    "" Even brighter blues
-    ""\   'PreProc': { '256ctermfg': '109' }, " <- Like hybrid
-    "let g:jellybeans_overrides = {
-    "\   'Statement': { '256ctermfg': '110' },
-    "\   'PreProc': { '256ctermfg': '152' },
-    "\   'Constant': { '256ctermfg': '203' },
-    "\}
-    " BrighterWombatLike:
-    "\   'Statement': { '256ctermfg': '104' },
-    "\   'Constant': { '256ctermfg': '209' },
-    "\   'StorageClass': { '256ctermfg': '192' },
-    "let g:jellybeans_overrides = {
-    "\   'background': { '256ctermbg': '234' },
-    "\   'SpecialKey': { '256ctermbg': '234' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Constant': { '256ctermfg': '210' },
-    "\   'Visual': { '256ctermbg': '52' },
-    "\   'Statement': { '256ctermfg': '111' },
-    "\   'PreProc': { '256ctermfg': '117' },
-    "\   'Structure': { '256ctermfg': '117' },
-    "\   'String': { '256ctermfg': '113' },
-    "\   'Comment': { '256ctermfg': '246' },
-    "\   'Normal': { '256ctermfg': '254', '256ctermbg': '234' },
-    "\   'Special': { '256ctermfg': '192' },
-    "\}
-    " Lucius:
-    "let g:jellybeans_overrides = {
-    "\   'Normal': { '256ctermfg': '253', '256ctermbg': '235' },
-    "\   'SpecialKey': { '256ctermbg': '235' },
-    "\   'NonText': { '256ctermfg': '240', '256ctermbg': '235' },
-    "\   'LineNr': { '256ctermfg': '243', '256ctermbg': '235' },
-    "\   'Constant': { '256ctermfg': '209' },
-    "\   'String': { '256ctermfg': '150' },
-    "\   'Statement': { '256ctermfg': '117' },
-    "\   'Operator': { '256ctermfg': '116' },
-    "\   'PreProc': { '256ctermfg': '116' },
-    "\   'Type': { '256ctermfg': '187' },
-    "\   'StorageClass': { '256ctermfg': '215' },
-    "\   'Structure': { '256ctermfg': '116' },
-    "\   'Special': { '256ctermfg': '107' },
-    "\   'Delimiter': { '256ctermfg': '107' },
-    "\}
-    " Darkblue256:
-    " MOVED TO jb_darkblue256.vim custom settings
-    " Brighter:
-    "let g:jellybeans_overrides = {
-    "\   'Normal': { '256ctermfg': '253', '256ctermbg': '235' },
-    "\   'NonText': { '256ctermfg': '240', '256ctermbg': '235' },
-    "\   'LineNr': { '256ctermfg': '243', '256ctermbg': '235' },
-    "\   'SpecialKey': { '256ctermfg': '240', '256ctermbg': '235' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Comment': { '256ctermfg': '245' },
-    "\   'Statement': { '256ctermfg': '104' },
-    "\   'Constant': { '256ctermfg': '210' }
-    "\}
-    " Notes:
-    "" Blue more vibrant
-    "\   'Statement': { '256ctermfg': '104' },
-    "" Red from twilight256, wombat256mod, Tomorrow-Night etc.
-    "\   'Constant': { '256ctermfg': '173' } 
-    "" Next Red up
-    "\   'Constant': { '256ctermfg': '203' } 
-    "" Most similar to GVIM (but out of step with rest of cterm)
-    "\   'Constant': { '256ctermfg': '209' } 
-    "" Most similar to GVIM (but out of step with rest of cterm), lighter to draw more difference to cterm approx
-    "\   'Constant': { '256ctermfg': '210' } 
-    " Backgrounds:
-    " #151515 = Default GUI
-    " #121212 = 233 (Default 256)
-    " #1c1c1c = 234
-    " #262626 = 235
-    " #303030 = 236 (Lucius desert etc.?)
-    "\   'Normal': { '256ctermbg': '235' },
-    "\   'NonText': { '256ctermbg': '234' },
-    "\   'LineNr': { '256ctermbg': '234' },
-    " Comments:
-    " With brighter bg, also helps to raise comment
-    " #888888 = Default GUI
-    " 244 = Default
-    """"""""""""""""""""""""""""""""
-    " MORE VIBRANT JELLYBEANS 256
-    """"""""""""""""""""""""""""""""
-    "let g:jellybeans_overrides = {
-    "\   'SpecialKey': { '256ctermfg': '239', '256ctermbg': '233' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Statement': { '256ctermfg': '105' },
-    "\   'Constant': { '256ctermfg': '203' },
-    "\   'String': { '256ctermfg': '113' }
-    "\}
-    " String, 107 -> 106 or 113
-    " Statement, 103 -> 104, 105
-    " Darkblue256:
-    "\   'Constant': { '256ctermfg': '217' }, " darkblue256.vim Constant
-    "let g:jellybeans_overrides = {
-    "\   'Normal': { '256ctermfg': '255', '256ctermbg': '16' },
-    "\   'NonText': { '256ctermfg': '240', '256ctermbg': '16' },
-    "\   'LineNr': { '256ctermbg': '16' },
-    "\   'SpecialKey': { '256ctermbg': '233' },
-    "\   'Search': { '256ctermbg': '16' },
-    "\   'Visual': { '256ctermbg': '52' },
-    "\   'Constant': { '256ctermfg': '209' },
-    "\   'String': { '256ctermfg': '83' },
-    "\   'Identifier': { '256ctermfg': '213' },
-    "\   'Function': { '256ctermfg': '227' },
-    "\   'Statement': { '256ctermfg': '111' },
-    "\   'Operator': { '256ctermfg': '51' },
-    "\   'PreProc': { '256ctermfg': '51' },
-    "\   'Type': { '256ctermfg': '227' },
-    "\   'StorageClass': { '256ctermfg': '214' },
-    "\   'Structure': { '256ctermfg': '51' },
-    "\   'Special': { '256ctermfg': '83' },
-    "\   'Delimiter': { '256ctermfg': '107' },
-    "\}
 endif
-" TermColours:
-"let g:jellybeans_overrides = {
-"\    'LineNr': { '256ctermfg': '8', '256ctermbg': 'none' },
-"\    'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
-"\    'NonText': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\    'Comment': { '256ctermfg': '8' },
-"\    'Constant': { '256ctermfg': '1' },
-"\    'Identifier': { '256ctermfg': '5' },
-"\    'Statement': { '256ctermfg': '4' },
-"\    'PreProc': { '256ctermfg': '6' },
-"\    'Type': { '256ctermfg': '3' },
-"\    'Special': { '256ctermfg': '2' },
-"\    'Function': { '256ctermfg': '11' },
-"\    'String': { '256ctermfg': '10' },
-"\    'Structure': { '256ctermfg': '6' },
-"\    'SpecialKey': { '256ctermfg': '4', '256ctermbg': '16', 'cterm': 'reverse' },
-"\    'Visual': { '256ctermbg': '52' },
-"\}
 
-"" Darkblue256:
-"" GreyBg:
-"\   'background': { 'guibg': '212121', '256ctermbg': '235' },
-"\   'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4', 'guibg': '212121', '256ctermbg': '235' },
-"" BlankBg:
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-"\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-"" BlueBgBetterFg:
+" Darkblue256:
+" BlueBgBetterFg:
 "\   'background': { '256ctermbg': '17' },
-"\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', '256ctermbg': '17' },
-"let g:darkblue256_overrides = {
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-"\   'Normal': { 'guifg': 'f0f0f0', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
-"\   'Todo': { 'guifg': 'ffffff', '256ctermfg': '231' },
-"\   'Visual': { 'guifg': 'ffffff', '256ctermfg': '231' },
-"\}
-"\   'background': { 'guibg': '262626', '256ctermbg': '235' },
-"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4', 'guibg': '262626', '256ctermbg': '235' },
-"\   'Normal': { '256ctermfg': '7', 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'NonText': { 'guifg': '0030ff', '256ctermfg': '4' },
-"" BlankFgBg:
-"\   'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-"\   'Normal': { 'guifg': 'e4e4e4', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
-"" BlueBgBetterFg:
-"\   'background': { '256ctermbg': '17' },
-"\   'Normal': { 'guifg': 'e4e4e4', 'ctermfg': 'none', '256ctermfg': '254', '256ctermbg': '17' },
-"" BlueBgWhiteFg:
-"\   'background': { '256ctermbg': '17' },
-"\   'Normal': { 'guifg': 'ffffff', 'ctermfg': 'none', '256ctermfg': '231', '256ctermbg': '17' },
-"" GreyBg:
-"\   'background': { 'guibg': '262626', '256ctermbg': '235' },
-"\   'Normal': { 'guifg': 'eeeeee', 'ctermfg': 'none', '256ctermfg': '255', '256ctermbg': '235' },
+"\   'Normal': { 'guifg': 'eeeeee', 'ctermfg': 'none', '256ctermfg': '255', '256ctermbg': '17' },
+" Transparent:
 let g:darkblue256_overrides = {
 \   'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
 \   'Normal': { 'guifg': 'none', 'guibg': 'none', 'ctermfg': 'none', '256ctermfg': 'none', 'ctermbg': 'none', '256ctermbg': 'none' },
@@ -674,44 +352,8 @@ function! ApplyEnhancedDefaultTheme(use_dark_theme)
         hi! link diffAdded Type
         hi! link diffFile Identifier
         hi! link diffRemoved Constant
-
-        " Now replaced by default-enhanced
-        " " Dark specific customisations
-        " hi Search ctermfg=0 ctermbg=2 cterm=NONE
-        " hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
-        " hi PMenu ctermfg=7 ctermbg=8
-        " hi PMenuSel ctermfg=0 ctermbg=7
-        " hi Todo ctermfg=231 ctermbg=20
-        " hi Error ctermfg=231 ctermbg=1
-        " hi ErrorMsg ctermfg=231 ctermbg=1
-        " hi Visual ctermfg=NONE ctermbg=52
-        " "" Replace red/green/blue with their terminal equivalents:
-        " "if !has("gui_running") && ( $TERM == 'linux' || $TERM == 'cygwin' )
-        " "    " Seems like tty needs to set brights using bold attribute.
-        " "    hi LineNr ctermfg=3 cterm=bold
-        " "    hi PreProc ctermfg=4 cterm=bold
-        " "    hi Type ctermfg=2 cterm=bold
-        " "    hi Special ctermfg=1 cterm=bold
-        " "else
-        " "    hi LineNr ctermfg=11 cterm=NONE
-        " "    hi PreProc ctermfg=12 cterm=NONE
-        " "    hi Type ctermfg=10 cterm=NONE
-        " "    hi Special ctermfg=9 cterm=NONE
-        " "endif
     else
         set background=light
-
-        " " Light specific customisations
-        " hi Error term=standout ctermfg=231 ctermbg=1
-        " hi ErrorMsg term=standout ctermfg=231 ctermbg=1
-        " hi Visual ctermfg=NONE ctermbg=222
-        " hi LineNr ctermfg=3
-        " hi Search ctermfg=0 ctermbg=2 cterm=NONE
-        " hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE
-        " hi PMenu ctermfg=0 ctermbg=14
-        " hi PMenuSel ctermfg=0 ctermbg=7
-        " " Replace yellow with terminal equivalent:
-        " hi Statement ctermfg=3
     endif
 endfunction
 
@@ -756,23 +398,6 @@ endif
 "autocmd ColorScheme lucius hi Comment ctermfg=108
 "autocmd ColorScheme lucius hi Comment ctermfg=108 || hi constant ctermfg=217 || hi string ctermfg=187
 "autocmd ColorScheme jellybeans hi Comment ctermfg=65
-
-" Take some aspects of default-enhanced and apply them to ron, but only
-" subtle usability things. Keep the 'character' of ron
-" TODO: Not term < 256 col safe?
-" Can still use `:color default | set bg=dark` to get true defaults (ie. ron)
-            "\ hi Visual ctermfg=NONE ctermbg=52 cterm=NONE |
-            "\ hi String ctermfg=217 |
-autocmd ColorScheme ron hi Search ctermfg=0 ctermbg=2 cterm=NONE |
-            \ hi IncSearch ctermfg=0 ctermbg=5 cterm=NONE |
-            \ hi PMenu ctermfg=7 ctermbg=8 |
-            \ hi PMenuSel ctermfg=0 ctermbg=7 |
-            \ hi Todo ctermfg=231 ctermbg=20 |
-            \ hi Error ctermfg=231 ctermbg=1 |
-            \ hi ErrorMsg ctermfg=231 ctermbg=1 |
-            \ hi Visual ctermfg=NONE ctermbg=24 cterm=NONE |
-            \ hi MatchParen ctermfg=231 ctermbg=60 |
-            \ hi Constant ctermfg=219
 
 " Default is a dim grey, 'Grey80'
 " 255 = #eeeeee, 231 = #ffffff
@@ -897,13 +522,12 @@ let g:gruvbox_italic = 0
 "let g:gruvbox_contrast_light='white'
 "let g:gruvbox_contrast_light='solarized'
 
-let g:gruvbox_material_background = 'hard'
-
-let g:vem_colors_italic = 0
-
 "let g:gruvbox_contrast_dark='soft'
 "let g:gruvbox_contrast_dark='medium'
 "let g:gruvbox_contrast_dark='hard'
+
+let g:gruvbox_material_background = 'hard'
+let g:vem_colors_italic = 0
 
 let g:seoul256_background=237
 let g:seoul256_light_background=256
