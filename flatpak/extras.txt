@@ -5,11 +5,11 @@ org.gnome.Mines
 org.gnome.Sudoku
 org.gnome.Solanum
 org.gnome.design.Contrast
-com.github.liferooter.textpieces
 de.haeckerfelix.AudioSharing
 org.onlyoffice.desktopeditors
 com.spotify.Client
 tv.kodi.Kodi
-tv.plex.PlexDesktop
 tv.plex.PlexHTPC
 com.github.k4zmu2a.spacecadetpinball
+com.github.unrud.RemoteTouchpad
+com.chatterino.chatterino
