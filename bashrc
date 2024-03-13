@@ -320,14 +320,14 @@ alias reboot-message-wait='echo "Initiating REBOOT, 1 minute from $(date). Save 
 if command -v rpm-ostree &> /dev/null
 then
     # Silverblue
-    alias upgrade='echo "Working..."; sudo rpm-ostree upgrade'
-    alias offline-upgrade-download='echo "Working..."; sudo rpm-ostree upgrade --download-only'
+    alias upgrade='flatpak upgrade -y && echo "Working..."; sudo rpm-ostree upgrade'
+    alias offline-upgrade-download='flatpak upgrade -y && echo "Working..."; sudo rpm-ostree upgrade --download-only'
     alias offline-upgrade-apply='sudo rpm-ostree upgrade && sudo shutdown -r 1'
 elif command -v dnf &> /dev/null
 then
     # Fedora or similar
-    alias upgrade='echo "Working..."; sudo dnf upgrade -y'
-    alias offline-upgrade-download='echo "Working..."; sudo dnf offline-upgrade download -y'
+    alias upgrade='flatpak upgrade -y && echo "Working..."; sudo dnf upgrade -y'
+    alias offline-upgrade-download='flatpak upgrade -y && echo "Working..."; sudo dnf offline-upgrade download -y'
     alias offline-upgrade-apply='reboot-message-wait && sudo dnf offline-upgrade reboot'
     alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
 elif command -v apt &> /dev/null
