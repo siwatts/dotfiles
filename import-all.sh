@@ -117,6 +117,7 @@ else
     echo "    - remmina"
     echo "    - htop"
     echo "    - neovim-qt"
+    echo "    - virt-manager"
     echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before doing this if this is a clean install, as dnf can error otherwise"
     read -r -p 'DNF upgrade all packages and reboot now? (y/[N]): ' response
     case "$response" in
@@ -139,7 +140,7 @@ else
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "Working..."
-            sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks gimp remmina htop
+            sudo dnf install -y git tmux xfce4-terminal vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks gimp remmina htop virt-manager
             sudo dnf install -y neovim-qt
             ;;
         *)
@@ -252,6 +253,18 @@ case "$response" in
             *)
                 ;;
         esac
+        ;;
+    *)
+        ;;
+esac
+
+echo "Fedora GNOME is now set to suspend automatically after 15 minutes inactivity at gdm login screen,"
+echo "irrespective of the user's power settings. This can be disabled with the command:"
+echo "    sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0"
+read -r -p 'Run this now, to disable automatic suspend at gdm? (y/[N]): ' response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
         ;;
     *)
         ;;
@@ -389,35 +402,22 @@ echo "- Sign into Firefox account"
 echo "- Install GNOME Extensions from https://extensions.gnome.org/"
 echo "    - E.g. https://extensions.gnome.org/extension/615/appindicator-support/"
 if [[ "$silverblue" == "no" ]]; then
-    echo "- Enable RPM Fusion and Multimedia codecs:"
-    echo "    - https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/"
-    echo "    - https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/"
-    echo "    - Install mpv player"
-    echo "Warning, make sure dnf packages up to date. Commands correct as of Fedora 37 26/11/2022 22:05"
-    read -r -p '- Carry out the above steps as retrieved on 26/11/2022 22:03? (y/[N]): ' response
+    echo "- Enable RPM Fusion"
+    echo "    - https://rpmfusion.org/Configuration"
+    echo "Warning, make sure dnf packages up to date. Commands correct as of Fedora 39 13/03/2024 20:45"
+    read -r -p '- Carry out the above steps as retrieved on 13/03/2024 20:45? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "RPM Fusion..."
-            sudo dnf install -y \
-                https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-            sudo dnf install -y \
-                https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-            echo "RPM Fusion Appstream data..."
-            sudo dnf group update -y core
-            echo "Multimedia libraries..."
-            echo "1/3"
-            sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-            echo "2/3"
-            sudo dnf install -y lame\* --exclude=lame-devel
-            echo "3/3"
-            sudo dnf group upgrade -y --with-optional Multimedia
-            echo "mpv..."
-            sudo dnf install -y mpv
-            echo "Done"
+            sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+            sudo dnf config-manager --enable fedora-cisco-openh264 -y
             ;;
         *)
             ;;
     esac
+    echo "Multimedia codecs should be done manually, since they depend on your CPU and/or GPU architecture (Intel, AMD, Nvidea etc.):"
+    echo "    - https://rpmfusion.org/Howto/Multimedia?highlight=%28%5CbCategoryHowto%5Cb%29"
+    echo "    - Install mpv, vlc player"
 fi
 echo "- Install VS Code"
 echo "- Set up SSH config file and known hosts, distribute public key (bitwarden?)"

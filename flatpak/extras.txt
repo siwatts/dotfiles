@@ -12,4 +12,5 @@ tv.kodi.Kodi
 tv.plex.PlexHTPC
 com.github.k4zmu2a.spacecadetpinball
 com.github.unrud.RemoteTouchpad
-com.chatterino.chatterino
+com.chatterino.chatterino/x86_64/stable
+com.valvesoftware.Steam/x86_64/stable
