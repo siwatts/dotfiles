@@ -2,6 +2,7 @@
 activate-on-hover=true
 arc-menu-icon=48
 arc-menu-placement='Panel'
+arcmenu-hotkey=['<Super>x']
 available-placement=[true, false, false]
 button-item-icon-size='Medium'
 button-padding=5

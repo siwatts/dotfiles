@@ -64,7 +64,7 @@ toggle-fullscreen=['<Alt>F11']
 button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/mutter]
-attach-modal-dialogs=true
+attach-modal-dialogs=false
 workspaces-only-on-primary=true
 
 [org/gnome/shell/world-clocks]
@@ -80,5 +80,24 @@ scrollbar-policy='never'
 use-system-font=true
 
 [org/gnome/settings-daemon/plugins/color]
-night-light-enabled=true
+night-light-enabled=false
 night-light-temperature=uint32 4700
+
+[org/gnome/nautilus/icon-view]
+default-zoom-level='small-plus'
+
+[org/gnome/nautilus/list-view]
+use-tree-view=true
+
+[org/gnome/nautilus/preferences]
+show-create-link=true
+show-delete-permanently=true
+show-image-thumbnails='always'
+
+[org/gtk/gtk4/settings/file-chooser]
+sort-directories-first=true
+
+[org/gnome/software]
+download-updates=false
+download-updates-notify=false
+

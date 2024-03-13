@@ -1,5 +1,5 @@
 [org/gnome/shell]
-favorite-apps=['firefox.desktop', 'xfce4-terminal.desktop', 'org.gnome.Nautilus.desktop', 'gvim.desktop']
+favorite-apps=['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'gvim.desktop']
 
 [org/gnome/desktop/session]
 idle-delay=uint32 900
@@ -14,13 +14,13 @@ www=['<Super>w']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>t'
-command='env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal'
+command='gnome-terminal'
 name='Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Control><Alt>t'
-command='gnome-terminal'
-name='Gnome Terminal'
+command='env GTK_CSD=1 GTK_THEME=Adwaita:dark xfce4-terminal'
+name='Xfce4 Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Super>f'
@@ -36,3 +36,7 @@ name='GVim'
 natural-scroll=false
 tap-to-click=true
 two-finger-scrolling-enabled=true
+
+[org/gnome/nautilus/window-state]
+initial-size=(1075, 760)
+

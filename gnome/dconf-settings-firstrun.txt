@@ -36,3 +36,7 @@ name='GVim'
 natural-scroll=false
 tap-to-click=true
 two-finger-scrolling-enabled=true
+
+[org/gnome/nautilus/window-state]
+initial-size=(1075, 760)
+
