@@ -8,5 +8,5 @@ if [ ! -d "../../gnome" ]; then
     exit 1
 fi
 
-../load-dconf-settings.sh ../dconf-settings.txt
+../load-dconf-settings.sh ../dconf-settings.ini
 exit 0

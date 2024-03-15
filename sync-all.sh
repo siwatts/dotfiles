@@ -82,11 +82,11 @@ read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
         # Idempotent settings, can be re-run later
-        gnome/load-dconf-settings.sh gnome/dconf-settings.txt
+        gnome/load-dconf-settings.sh gnome/dconf-settings.ini
         # Any firstrun settings that we later want to change to be in an update file (so far only xfce4-terminal)
         if command -v xfce4-terminal &> /dev/null ; then
             # Try update xfce4-terminal shortcut command
-            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun-update-xfce4terminal.txt
+            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun-update-xfce4terminal.ini
         fi
         ;;
     *)

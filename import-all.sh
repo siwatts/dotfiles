@@ -227,18 +227,18 @@ read -r -p 'Load GNOME settings via dconf? (y/[N]): ' response
 case "$response" in
     [yY][eE][sS]|[yY])
         # Idempotent settings, can be re-run later
-        gnome/load-dconf-settings.sh gnome/dconf-settings.txt
+        gnome/load-dconf-settings.sh gnome/dconf-settings.ini
         # Additional settings for first run on clean install only (e.g. favourite pinned apps, don't want to remove extras added later)
         if command -v xfce4-terminal &> /dev/null ; then
-            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun-xfce4terminal.txt
+            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun-xfce4terminal.ini
         else
-            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun.txt
+            gnome/load-dconf-settings.sh gnome/dconf-settings-firstrun.ini
         fi
         # User's choice x2
         read -r -p 'Enable 1.2x scaling for 1440p displays? (y/[N]): ' response2
         case "$response2" in
             [yY][eE][sS]|[yY])
-                gnome/load-dconf-settings.sh gnome/dconf-settings-1440p.txt
+                gnome/load-dconf-settings.sh gnome/dconf-settings-1440p.ini
                 # Update neovim-qt fonts while we're here
                 sed -i 's/h10/h13/g' ~/.config/nvim/ginit.vim
                 ;;
@@ -248,7 +248,7 @@ case "$response" in
         read -r -p 'Optimise for VM / RDP? (No idle lockscreen or animations etc.)? (y/[N]): ' response2
         case "$response2" in
             [yY][eE][sS]|[yY])
-                gnome/load-dconf-settings.sh gnome/dconf-settings-vm-or-remote.txt
+                gnome/load-dconf-settings.sh gnome/dconf-settings-vm-or-remote.ini
                 ;;
             *)
                 ;;
