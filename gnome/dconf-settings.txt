@@ -48,6 +48,7 @@ sort-order=['org.gnome.Settings.desktop', 'org.gnome.Documents.desktop', 'org.gn
 
 [org/gnome/desktop/wm/keybindings]
 minimize=['<Alt>F9', '<Super>h']
+move-to-center=['<Super>Home']
 panel-run-dialog=['<Alt>F2', '<Super>r']
 show-desktop=['<Super>d']
 switch-applications=['<Super>Tab']
@@ -87,6 +88,7 @@ night-light-temperature=uint32 4700
 default-zoom-level='small-plus'
 
 [org/gnome/nautilus/list-view]
+default-zoom-level='small'
 use-tree-view=true
 
 [org/gnome/nautilus/preferences]
