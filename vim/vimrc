@@ -571,11 +571,13 @@ let base16colorspace=256
 " 254 = e4e4e4
 " 253 = dadada
 " 252 = d0d0d0
-"autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254
-autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255
-"autocmd ColorScheme darkblue hi Normal guifg=#ffffff ctermfg=231
+" And take MatchParen from jellybeans.vim so cursor doesn't disappear over opening
+" paren: hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+"autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+"autocmd ColorScheme darkblue hi Normal guifg=#ffffff ctermfg=231 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 " Or transparent
-"autocmd ColorScheme darkblue hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE
+"autocmd ColorScheme darkblue hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 
 function! SetCustomScheme(use_dark)
     if has("gui_running")
@@ -699,33 +701,31 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     let g:schemes_dark = [ 'jellybeans',
                 \ 'wombat256mod',
                 \ 'twilight',
-                \ 'molokai',
-                \ 'monokai',
                 \ 'darkblue',
                 \ 'default-enhanced',
                 \ 'darkblue256',
-                \ 'desert',
+                \ 'molokai',
+                \ 'monokai',
                 \ 'slate',
-                \ 'slateblue',
-                \ 'cobalt2',
-                \ 'dracula',
+                \ 'desert',
                 \ 'lucius',
                 \ 'zenburn',
+                \ 'dracula',
                 \ 'gruvbox',
-                \ 'nord',
-                \ 'Tomorrow-Night',
-                \ 'Tomorrow-Night-Eighties',
+                \ 'hybrid',
+                \ 'cobalt2',
                 \ 'one',
                 \ 'vim-material',
+                \ 'Tomorrow-Night',
+                \ 'Tomorrow-Night-Eighties',
                 \ 'Tomorrow-Night-Blue',
                 \ 'jellybeans-bright',
-                \ 'twilight256',
+                \ 'nord',
                 \ 'iceberg',
-                \ 'hybrid',
-                \ 'night-owl',
-                \ 'base16-eighties',
+                \ 'twilight256',
                 \ 'vilight',
                 \ 'triplejelly',
+                \ 'night-owl',
                 \ 'ir_dark',
                 \ 'Mustang',
                 \ 'evening',
@@ -751,10 +751,13 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'nofrils-dark',
                 \ 'simple-green',
                 \ 'simple-orange',
+                \ 'base16-eighties',
                 \ ]
     " Curated:
     " First n+1 elements
     let g:schemes_dark = g:schemes_dark[0:16]
+    "let g:schemes_dark = g:schemes_dark[0:29]
+    "let g:schemes_dark = g:schemes_dark[0:37]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
