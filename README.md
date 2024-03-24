@@ -1057,3 +1057,12 @@ Slack Dracula theme:
 #282A36,#44475A,#44475A,#8BE9FD,#6272A4,#FFFFFF,#50FA7B,#FF79C6,#282A36,#FFFFFF
 ```
 
+## MPV
+
+MPV config file, e.g. make mpv always start in fullscreen mode for HTPCs:
+
+`~/.config/mpv/mpv.conf`
+```
+fs=yes
+```
+
