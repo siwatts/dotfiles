@@ -29,5 +29,6 @@ ln -sfn "$CURRENT_DIR/bin/scale-display-1440p.sh" "$PATH_TO_BIN/laptop-dock"
 ln -sfn "$CURRENT_DIR/bin/scale-display-normal.sh" "$PATH_TO_BIN/laptop-undock"
 ln -sfn "$CURRENT_DIR/bin/work-local.sh" "$PATH_TO_BIN/work-local"
 ln -sfn "$CURRENT_DIR/bin/work-remote.sh" "$PATH_TO_BIN/work-remote"
+ln -sfn "$CURRENT_DIR/bin/set-mouse-sens.sh" "$PATH_TO_BIN/set-mouse-sens"
 echo "Done"
 
