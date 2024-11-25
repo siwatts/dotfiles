@@ -209,6 +209,10 @@ if command -v xfce4-terminal &> /dev/null ; then
     launchers/create-launcher.sh launchers/xfce4-terminal.desktop
 fi
 
+# Ptyxis terminal
+echo "ptyxis themes..."
+terminal/sync-ptyxis-terminal-themes.sh
+
 # Tmux.conf
 echo "tmux.conf..."
 cp -a tmux.conf ~/.tmux.conf
