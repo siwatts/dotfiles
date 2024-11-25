@@ -8,3 +8,5 @@ nl.hjdskes.gcolor3
 com.github.finefindus.eyedropper
 com.transmissionbt.Transmission
 app.drey.Dialect
+com.github.wwmm.easyeffects
+me.timschneeberger.jdsp4linux
