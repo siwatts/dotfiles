@@ -83,7 +83,6 @@ if [[ "$silverblue" == "yes" ]]; then
     echo "    - tmux"
     echo "    - vim-enhanced"
     echo "    - vim-X11"
-    echo "    - gnome-extensions-app"
     echo "    - gnome-tweaks"
     echo "    - htop"
     echo "Upgrade base system image before continuing? (Will reboot system)"
@@ -99,7 +98,7 @@ if [[ "$silverblue" == "yes" ]]; then
     case "$response" in
         [yY][eE][sS]|[yY])
             echo "Working..."
-            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-extensions-app gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
+            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
             ;;
         *)
             ;;
