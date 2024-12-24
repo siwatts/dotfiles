@@ -414,7 +414,7 @@ autocmd ColorScheme torte hi Normal guifg=#f8f8f8 ctermfg=255
 " Jellybeans Normal hi Normal guifg=#e8e8d3 |
 " Brighter Comment, 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
 " Ideas from Jellybeans overrides: 959288
-autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi Normal guifg=#e8e8d3
+autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi Normal guifg=#e8e8d3 | hi SpecialKey guifg=#444444 guibg=#212121
 
 "" Dracula:
 "" Use brighter magenta from term
@@ -574,7 +574,8 @@ let base16colorspace=256
 " And take MatchParen from jellybeans.vim so cursor doesn't disappear over opening
 " paren: hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 "autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
-autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+"autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+autocmd ColorScheme darkblue hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 "autocmd ColorScheme darkblue hi Normal guifg=#ffffff ctermfg=231 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 " Or transparent
 "autocmd ColorScheme darkblue hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
@@ -798,24 +799,28 @@ noremap <F6> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Reset to default theme
 if use_dark_theme
     "noremap <F7> :call ApplyEnhancedDefaultTheme(1)<CR>
-    noremap <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
+    noremap <Leader><F6> :set notermguicolors<CR>:set t_Co=16<CR>:colorscheme default<CR>:set background=dark<CR>
 else
     "noremap <F7> :call ApplyEnhancedDefaultTheme(0)<CR>
-    noremap <Leader><F6> :set t_Co=16<CR>:colorscheme default<CR>
+    noremap <Leader><F6> :set notermguicolors<CR>:set t_Co=16<CR>:colorscheme default<CR>:set background=light<CR>
 endif
 " Apply transparency to any theme
 noremap <F7> :hi Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE<CR>
+noremap <Leader><F7> :hi Normal ctermfg=NONE guifg=NONE<CR>
 " Apply base16 theme
 noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
 noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
-noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+"noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 "noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 " Daily light/dark
 noremap <Leader><F9> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 noremap <Leader><F10> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
+
+noremap <F12> :set notermguicolors<CR>:set t_Co=256<CR>:set bg=dark<CR>:color default-enhanced<CR>
+noremap <Leader><F12> :set termguicolors<CR>:set t_Co=256<CR>:set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
 
 " Choose a random theme on startup, if requested and supported.
 if exists("use_custom_theme")
@@ -1036,7 +1041,8 @@ vnoremap <Leader>y "+y
 nnoremap <C-Enter> "+p
 inoremap <C-Enter> <C-R>+
 
-nnoremap <CR> o<Esc>
+"nnoremap <CR> o<Esc>
+nnoremap <CR> <CR>zz
 "nnoremap <S-Enter> O<Esc>
 "inoremap <S-Enter> <C-O>O
 

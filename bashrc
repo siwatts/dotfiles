@@ -27,12 +27,12 @@ git_prompt () {
         # Get the status:
         if [ -n "$(git status --porcelain)" ]; then
             # Working tree dirty
-            echo -e " (\001\033[01;31m\002$BRANCH\001\033[00m\002)" # Red
+            echo -e " (\001\033[31m\002$BRANCH\001\033[00m\002)" # Red
             #echo -e " (\001\033[01;35m\002$BRANCH\001\033[00m\002)" # Magenta
             #echo -e " ($BRANCH)*" # No colour
         else
             # Working tree clean
-            echo -e " (\001\033[01;32m\002$BRANCH\001\033[00m\002)" # Green
+            echo -e " (\001\033[32m\002$BRANCH\001\033[00m\002)" # Green
             #echo -e " (\001\033[01;33m\002$BRANCH\001\033[00m\002)" # Yellow
             #echo -e " ($BRANCH)" # No colour
         fi
@@ -86,15 +86,15 @@ if [ "$color_prompt" = yes ]; then
     # Choose prompt based on whether this is local or remote session
     if [ -n "${SSH_CONNECTION}" ]; then
         # Connected to remote via ssh, cyan & yellow
-        export PS1='\[\033[01;36m\]\u@\h \[\033[01;33m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
+        export PS1='\[\033[36m\]\u@\h \[\033[33m\]\w\[\033[00m\] $(git_prompt) [\D{%H:%M}]\n\$ '
         # Can share the above across multiple hosts using
         # if [ "$HOSTNAME" = fullhostname ]; then
     elif [[ "${DISPLAY%%:0*}" != "" ]]; then
         # Connected to remote but not via ssh, yellow & cyan
-        export PS1='\[\033[01;33m\]\u@\h(?) \[\033[01;36m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
+        export PS1='\[\033[33m\]\u@\h(?) \[\033[36m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
     else
         # Local machine, green & blue
-        export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\] (\D{%d/%m/%y %H:%M})$(git_prompt)\n\$ '
+        export PS1='\[\033[32m\]\u@\h \[\033[34m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
 
         # # Truecolor PS1 using 0-255 RGB values
         # # Below example is orange + purple which looks good for WSL Ubuntu
@@ -320,15 +320,15 @@ alias reboot-message-wait='echo "Initiating REBOOT, 1 minute from $(date). Save 
 if command -v rpm-ostree &> /dev/null
 then
     # Silverblue
-    alias upgrade='flatpak upgrade -y && echo "Working..."; sudo rpm-ostree upgrade'
-    alias offline-upgrade-download='flatpak upgrade -y && echo "Working..."; sudo rpm-ostree upgrade --download-only'
-    alias offline-upgrade-apply='sudo rpm-ostree upgrade && sudo shutdown -r 1'
+    alias upgrade='flatpak upgrade -y ; echo "Working..."; sudo rpm-ostree upgrade'
+    alias offline-upgrade-download='flatpak upgrade -y ; echo "Working..."; sudo rpm-ostree upgrade --download-only'
+    alias offline-upgrade-apply='sudo rpm-ostree upgrade ; sudo shutdown -r 1'
 elif command -v dnf &> /dev/null
 then
     # Fedora or similar
-    alias upgrade='flatpak upgrade -y && echo "Working..."; sudo dnf upgrade -y'
-    alias offline-upgrade-download='flatpak upgrade -y && echo "Working..."; sudo dnf offline-upgrade download -y'
-    alias offline-upgrade-apply='reboot-message-wait && sudo dnf offline-upgrade reboot'
+    alias upgrade='flatpak upgrade -y ; echo "Working..."; sudo dnf upgrade -y'
+    alias offline-upgrade-download='flatpak upgrade -y ; echo "Working..."; sudo dnf offline-upgrade download -y'
+    alias offline-upgrade-apply='reboot-message-wait && sudo dnf5 offline reboot -y'
     alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
 elif command -v apt &> /dev/null
 then
@@ -338,8 +338,8 @@ then
     alias offline-upgrade-apply='echo "Offline upgrade not known for apt"'
 fi
 # Common
-alias upgrade-reboot='upgrade && sudo shutdown -r 1'
-alias upgrade-shutdown='upgrade && sudo shutdown 1'
+alias upgrade-reboot='upgrade ; sudo shutdown -r 1'
+alias upgrade-shutdown='upgrade ; sudo shutdown 1'
 alias offline-upgrade-download-and-apply='offline-upgrade-download && offline-upgrade-apply'
 
 # Generic Helpful Aliases
