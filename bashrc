@@ -86,7 +86,7 @@ if [ "$color_prompt" = yes ]; then
     # Choose prompt based on whether this is local or remote session
     if [ -n "${SSH_CONNECTION}" ]; then
         # Connected to remote via ssh, cyan & yellow
-        export PS1='\[\033[36m\]\u@\h \[\033[33m\]\w\[\033[00m\] $(git_prompt) [\D{%H:%M}]\n\$ '
+        export PS1='\[\033[36m\]\u@\h \[\033[33m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
         # Can share the above across multiple hosts using
         # if [ "$HOSTNAME" = fullhostname ]; then
     elif [[ "${DISPLAY%%:0*}" != "" ]]; then

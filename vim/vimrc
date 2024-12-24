@@ -460,6 +460,22 @@ autocmd ColorScheme twilight hi NonText guibg=NONE gui=bold
 autocmd ColorScheme evening hi NonText guibg=NONE
 autocmd ColorScheme twilight256 hi NonText guifg=#505050 gui=NONE
 
+autocmd ColorScheme evening hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE | hi Identifier gui=NONE cterm=NONE
+" Neovim 'legacy' vim theme is like darkblue256
+autocmd ColorScheme vim hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE
+
+" Old fixes from dotfiles
+" Alt const. from wombat256mod #e5786d
+autocmd ColorScheme twilight256 hi Normal guifg=#e8e8d3 guibg=#212121 ctermfg=188 ctermbg=234 |
+            \ hi Function ctermfg=139 guifg=#a999ac |
+            \ hi Comment ctermfg=245 guifg=#949494 |
+            \ hi Constant ctermfg=173 guifg=#d08356 |
+            \ hi FoldColumn ctermfg=180 ctermbg=238 guifg=#d2b48c guibg=#4d4d4d |
+            \ hi Folded ctermfg=220 ctermbg=238 guifg=#ffd700 guibg=#4d4d4d |
+            \ hi Statement gui=NONE cterm=NONE |
+            \ hi Type guifg=#e3d796 gui=NONE cterm=NONE |
+            \ hi MatchParen cterm=reverse ctermbg=16 gui=reverse guibg=#000000
+
 " Search from jellybeans
 autocmd ColorScheme ir_dark,ir_blue,ir_black hi NonText guifg=#605550 | hi Search cterm=underline ctermfg=0 ctermbg=16 gui=underline guifg=#f0a0c0 guibg=#302028
 
@@ -1106,7 +1122,8 @@ nnoremap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 " Save and execute currently open buffer:
 "nnoremap <F5> :w<CR>:!./%<CR>
 autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.out<CR>
-autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -Wall && ./a.out<CR>
+" C++23: -std=c++2b
+autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -std=c++2b -Wall && ./a.out<CR>
 autocmd FileType python,bash,sh nnoremap <buffer> <F5> :w<CR>:!./%<CR>
 
 " Convenient brace insertion map for C/C++
