@@ -22,7 +22,29 @@ call plug#begin()
 
 " Make sure you use single quotes
 
+" Better syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Language server stuff
+Plug 'neovim/nvim-lspconfig'
+
+" Colours
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/gruvbox-material'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'navarasu/onedark.nvim'
+Plug 'tanvirtin/monokai.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'shaunsingh/nord.nvim'
+Plug 'Mofiqul/dracula.nvim'
+Plug 'folke/tokyonight.nvim'
+"Plug 'rebelot/kanagawa.nvim'
+"Plug 'marko-cerovac/material.nvim'
+"Plug 'EdenEast/nightfox.nvim'
+" For jellybeans
+Plug 'rktjmp/lush.nvim'
+Plug 'metalelf0/jellybeans-nvim'
 
 "" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 "Plug 'junegunn/vim-easy-align'
@@ -61,3 +83,88 @@ call plug#end()
 
 " Tree Sitter
 lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+
+" Language servers
+lua require'lspconfig'.csharp_ls.setup{}
+lua require'lspconfig'.clangd.setup{}
+" Set sign column permanent size, otherwise it pops in and out during LSP
+" stuff and is very distracting
+set signcolumn=yes
+"" Enable update in insert mode, to show warnings and errors.
+"" Stops them popping in and out, but they are updated live as you type which
+"" can be distracting
+""lua vim.diagnostic.config({ update_in_insert = true, })
+" Better solution to hide warnings entirely until we reveal them with keyboard
+" shortcuts:
+lua << EOF
+vim.diagnostic.config({
+    virtual_text = false,       -- Disable virtual text (the inline text warnings/errors)
+    signs = true,               -- Keep signs in the sign column
+    underline = true,           -- Keep underline for errors
+    update_in_insert = false,   -- Don't update diagnostics while in insert mode
+})
+
+-- Show the floating window for the diagnostic under the cursor
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = "Show diagnostic in floating window" })
+
+-- Go to the next diagnostic
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+
+-- Go to the previous diagnostic
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+
+-- Toggle diagnostics visibility (virtual text, signs, underline)
+vim.keymap.set('n', '<Leader>td', function()
+    local config = vim.diagnostic.config()
+    if config.virtual_text then
+        vim.diagnostic.config({ virtual_text = false, underline = false })
+    else
+        vim.diagnostic.config({ virtual_text = true, underline = true })
+    end
+end, { desc = "Toggle diagnostics" })
+
+-- Bonus:
+
+-- Jump to the definition
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+
+-- Show hover information
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover information" })
+
+-- Show signature help
+vim.keymap.set('n', '<Leader>k', vim.lsp.buf.signature_help, { desc = "Show signature help" })
+
+-- Jump to the declaration
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration" })
+
+-- Jump to references
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references" })
+
+-- Rename a symbol
+vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
+
+---- Show the workspace diagnostics
+--vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+--vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
+--vim.keymap.set('n', '<Leader>wl', function()
+--    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--end, { desc = "List workspace folders" })
+
+---- Format the current buffer
+--vim.keymap.set('n', '<Leader>f', function()
+--    vim.lsp.buf.format { async = true }
+--end, { desc = "Format buffer" })
+
+-- Insert mode, hints
+vim.keymap.set('i', '<C-k>', vim.lsp.buf.hover, { desc = "Show hover information" })
+
+--vim.g.mapleader = ' '  -- Set <Leader> to space
+
+EOF
+
+" Override colourscheme for neovim now all the plugins have loaded
+" Pure vim themes don't support neovim any more since they introduced breaking
+" changes
+colorscheme dracula
+"colorscheme catppuccin-macchiato
+
