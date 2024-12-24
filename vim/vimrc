@@ -178,7 +178,7 @@ set tw=0
 
 " Disable highlighting until a search. Toggle with F12, or quick hide with ??.
 let hlstate=0
-nnoremap <F12> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR>
+"nnoremap <F12> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate <CR>
 nnoremap ?? :noh<CR>
 
 " Mintty change cursor style for insert
@@ -1045,9 +1045,9 @@ nnoremap Y y$
 " Preserve indentation in VsVim
 "nnoremap S ^C
 
-nnoremap // I// <Esc>$
-vnoremap // :v/^\s*$/norm 0i//<CR>
-nnoremap <Leader>// ^dw
+"nnoremap // I// <Esc>$
+"vnoremap // :v/^\s*$/norm 0i//<CR>
+"nnoremap <Leader>// ^dw
 
 " Press ENTER with a visual selection to copy it to clipboard.
 vnoremap <CR> "+y
