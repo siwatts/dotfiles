@@ -39,9 +39,9 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug 'shaunsingh/nord.nvim'
 Plug 'Mofiqul/dracula.nvim'
 Plug 'folke/tokyonight.nvim'
-"Plug 'rebelot/kanagawa.nvim'
-"Plug 'marko-cerovac/material.nvim'
-"Plug 'EdenEast/nightfox.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'marko-cerovac/material.nvim'
+Plug 'EdenEast/nightfox.nvim'
 " For jellybeans
 Plug 'rktjmp/lush.nvim'
 Plug 'metalelf0/jellybeans-nvim'
@@ -162,9 +162,21 @@ vim.keymap.set('i', '<C-k>', vim.lsp.buf.hover, { desc = "Show hover information
 
 EOF
 
+" -- Neovim colorscheme fixes as of v0.10.2 --
+" A neovim update breaks some old vim themes due to neovim specific highlight groups being left
+" undefined. This may be fixed (or worsened) by a future neovim update?
+autocmd ColorScheme jellybeans,wombat256mod,twilight,solarized8,lucius,hybrid,vilight,twilight256 hi @variable guifg=NONE
+autocmd ColorScheme molokai,one,zenburn,cobalt2,iceberg hi @variable guifg=NONE
+autocmd ColorScheme Tomorrow-Night,Tomorrow-Night-Eighties,Tomorrow-Night-Blue hi @variable guifg=NONE
+
+autocmd ColorScheme vilight hi! link Function Identifier
+autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
+
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
 " changes
-colorscheme dracula
+"colorscheme dracula
 "colorscheme catppuccin-macchiato
+"colorscheme sonokai
+colorscheme jellybeans-nvim
 

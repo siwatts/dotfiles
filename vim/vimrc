@@ -443,7 +443,8 @@ autocmd ColorScheme nord hi Comment guifg=#808090
 autocmd ColorScheme desert hi Pmenu      ctermfg=231 ctermbg=240 guifg=#ffffff guibg=#606060 |
             \ hi PmenuSel   ctermfg=232 ctermbg=254 guifg=#101010 guibg=#eeeeee |
             \ hi PmenuSbar  ctermbg=248 guibg=Grey |
-            \ hi PmenuThumb ctermbg=15 guibg=White
+            \ hi PmenuThumb ctermbg=15 guibg=White |
+            \ hi Identifier gui=NONE cterm=NONE
 
 " Material:
 " Original comment, guifg=#5D818E
@@ -455,7 +456,7 @@ autocmd ColorScheme night-owl hi Comment cterm=NONE
 
 " NonText (whitespace etc.) fixes:
 autocmd ColorScheme desert,default-enhanced hi NonText guibg=NONE ctermfg=60 guifg=#5f5f87
-autocmd ColorScheme wombat256mod hi NonText guibg=NONE ctermfg=241 guifg=#857b6f gui=NONE
+autocmd ColorScheme wombat256mod hi NonText guibg=NONE ctermfg=241 guifg=#857b6f gui=NONE | hi Comment gui=NONE
 autocmd ColorScheme twilight hi NonText guibg=NONE gui=bold
 autocmd ColorScheme evening hi NonText guibg=NONE
 autocmd ColorScheme twilight256 hi NonText guifg=#505050 gui=NONE
@@ -465,8 +466,9 @@ autocmd ColorScheme evening hi Statement cterm=NONE gui=NONE | hi Type cterm=NON
 autocmd ColorScheme vim hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE
 
 " Old fixes from dotfiles
+" Jellybeans Normal fg: guifg=#e8e8d3
 " Alt const. from wombat256mod #e5786d
-autocmd ColorScheme twilight256 hi Normal guifg=#e8e8d3 guibg=#212121 ctermfg=188 ctermbg=234 |
+autocmd ColorScheme twilight256 hi Normal guifg=#e0e0e0 guibg=#212121 ctermfg=188 ctermbg=234 |
             \ hi Function ctermfg=139 guifg=#a999ac |
             \ hi Comment ctermfg=245 guifg=#949494 |
             \ hi Constant ctermfg=173 guifg=#d08356 |
@@ -716,65 +718,79 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     " ==================== GUI Dark ====================
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
+                \ 'jellybeans-nvim',
                 \ 'wombat256mod',
                 \ 'twilight',
                 \ 'darkblue',
-                \ 'default-enhanced',
-                \ 'darkblue256',
-                \ 'molokai',
+                \ 'hybrid',
+                \ 'twilight256',
+                \ 'vilight',
+                \ 'sonokai',
+                \ 'dracula',
+                \ 'dracula-soft',
                 \ 'monokai',
+                \ 'molokai',
+                \ 'gruvbox',
+                \ 'retrobox',
                 \ 'slate',
                 \ 'desert',
+                \ 'vim',
+                \ 'evening',
+                \ 'default',
                 \ 'lucius',
-                \ 'zenburn',
-                \ 'dracula',
-                \ 'gruvbox',
-                \ 'hybrid',
-                \ 'cobalt2',
+                \ 'onedark',
                 \ 'one',
-                \ 'vim-material',
+                \ 'solarized8',
+                \ 'everforest',
+                \ 'gruvbox-material',
+                \ 'habamax',
+                \ 'wildcharm',
+                \ 'zaibatsu',
+                \ 'elflord',
+                \ 'murphy',
+                \ 'default-enhanced',
+                \ 'darkblue256',
+                \ 'torte',
+                \ 'catppuccin-macchiato',
+                \ 'catppuccin-frappe',
+                \ 'catppuccin-mocha',
+                \ 'tokyonight-moon',
+                \ 'tokyonight-storm',
+                \ 'tokyonight-night',
+                \ 'iceberg',
+                \ 'nord',
+                \ 'zenburn',
                 \ 'Tomorrow-Night',
                 \ 'Tomorrow-Night-Eighties',
                 \ 'Tomorrow-Night-Blue',
+                \ 'cobalt2',
+                \ 'nofrils-dark',
+                \ 'vim-material',
                 \ 'jellybeans-bright',
-                \ 'nord',
-                \ 'iceberg',
-                \ 'twilight256',
-                \ 'vilight',
                 \ 'triplejelly',
                 \ 'night-owl',
                 \ 'ir_dark',
-                \ 'Mustang',
-                \ 'evening',
-                \ 'torte',
-                \ 'elflord',
-                \ 'murphy',
-                \ 'codedark',
-                \ 'solarized8',
-                \ 'everforest',
-                \ 'sonokai',
-                \ 'badwolf',
-                \ 'hemisu',
+                \ 'ir_black',
+                \ 'ir_blue',
                 \ 'shades_of_purple',
-                \ 'gruvbox-material',
+                \ 'badwolf',
+                \ 'simple-green',
+                \ 'simple-orange',
+                \ 'hemisu',
+                \ 'codedark',
                 \ 'github_dark_default',
-                \ 'habamax',
                 \ 'apprentice',
-                \ 'bespin',
                 \ 'blackboard',
                 \ 'lucario',
                 \ 'seoul256',
                 \ 'seoul8',
-                \ 'nofrils-dark',
-                \ 'simple-green',
-                \ 'simple-orange',
                 \ 'base16-eighties',
+                \ 'Mustang',
+                \ 'bespin',
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:16]
-    "let g:schemes_dark = g:schemes_dark[0:29]
-    "let g:schemes_dark = g:schemes_dark[0:37]
+    let g:schemes_dark = g:schemes_dark[0:47]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
