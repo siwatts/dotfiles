@@ -168,9 +168,12 @@ EOF
 autocmd ColorScheme jellybeans,wombat256mod,twilight,solarized8,lucius,hybrid,vilight,twilight256 hi @variable guifg=NONE
 autocmd ColorScheme molokai,one,zenburn,cobalt2,iceberg hi @variable guifg=NONE
 autocmd ColorScheme Tomorrow-Night,Tomorrow-Night-Eighties,Tomorrow-Night-Blue hi @variable guifg=NONE
-
+" Other broken syntax
 autocmd ColorScheme vilight hi! link Function Identifier
 autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
+" Remove italics
+autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
+autocmd ColorScheme twilight hi Comment gui=NONE
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking

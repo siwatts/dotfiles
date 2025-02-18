@@ -719,8 +719,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
-                \ 'wombat256mod',
                 \ 'twilight',
+                \ 'wombat256mod',
                 \ 'darkblue',
                 \ 'hybrid',
                 \ 'vilight',
@@ -737,11 +737,19 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'vim',
                 \ 'evening',
                 \ 'lucius',
+                \ 'solarized8',
                 \ 'onedark',
                 \ 'one',
-                \ 'solarized8',
-                \ 'everforest',
+                \ 'catppuccin-macchiato',
+                \ 'catppuccin-frappe',
+                \ 'catppuccin-mocha',
+                \ 'tokyonight-moon',
+                \ 'tokyonight-storm',
+                \ 'tokyonight-night',
+                \ 'iceberg',
                 \ 'gruvbox-material',
+                \ 'everforest',
+                \ 'kanagawa',
                 \ 'habamax',
                 \ 'wildcharm',
                 \ 'zaibatsu',
@@ -751,13 +759,6 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'darkblue256',
                 \ 'default',
                 \ 'torte',
-                \ 'catppuccin-macchiato',
-                \ 'catppuccin-frappe',
-                \ 'catppuccin-mocha',
-                \ 'tokyonight-moon',
-                \ 'tokyonight-storm',
-                \ 'tokyonight-night',
-                \ 'iceberg',
                 \ 'nord',
                 \ 'zenburn',
                 \ 'Tomorrow-Night',
@@ -790,7 +791,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:47]
+    let g:schemes_dark = g:schemes_dark[0:48]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
