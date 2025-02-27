@@ -746,32 +746,33 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'unokai',
                 \ 'wildcharm',
                 \ 'zaibatsu',
+                \ 'lunaperche',
                 \ 'gruvbox-material',
                 \ 'everforest',
                 \ 'kanagawa',
+                \ 'iceberg',
                 \ 'catppuccin-macchiato',
                 \ 'catppuccin-frappe',
                 \ 'catppuccin-mocha',
                 \ 'tokyonight-moon',
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
-                \ 'iceberg',
                 \ 'default-enhanced',
                 \ 'darkblue256',
                 \ 'default',
+                \ 'quiet',
+                \ 'nofrils-dark',
                 \ 'torte',
                 \ 'koehler',
                 \ 'elflord',
                 \ 'murphy',
                 \ 'ron',
                 \ 'industry',
-                \ 'lunaperche',
                 \ 'pablo',
                 \ 'blue',
                 \ 'nord',
                 \ 'cobalt2',
                 \ 'jellybeans-bright',
-                \ 'nofrils-dark',
                 \ 'Tomorrow-Night',
                 \ 'Tomorrow-Night-Eighties',
                 \ 'Tomorrow-Night-Blue',
@@ -799,7 +800,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:54]
+    "let g:schemes_dark = g:schemes_dark[0:55]
+    let g:schemes_dark = g:schemes_dark[0:44]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]

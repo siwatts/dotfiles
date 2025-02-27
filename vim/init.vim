@@ -176,7 +176,7 @@ autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
 autocmd ColorScheme twilight hi Comment gui=NONE
 " Add italics back (Wombat256mod when used in neovim has Identifier and
 " Function look the same, could also bold Functions instead)
-autocmd ColorScheme wombat256mod hi Identifier gui=italic
+autocmd ColorScheme wombat256mod hi Identifier gui=italic | hi String gui=NONE
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
