@@ -27,7 +27,7 @@ let g:dark_theme='jellybeans'
 " TRUECOLOR:
 "let g:dark_theme_truecolor='twilight'
 " LIGHT:
-let g:light_theme='lucius'
+let g:light_theme='default'
 " OTHER:
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='twilight'
@@ -378,7 +378,7 @@ endif
 if exists("use_term_bg")
             \ && use_term_bg
             \ && !has("gui_running")
-    autocmd ColorScheme * hi Normal ctermbg=NONE
+    autocmd ColorScheme * hi Normal ctermbg=NONE guibg=NONE
 endif
 if exists("use_white_gui_bg")
             \ && use_white_gui_bg
@@ -414,7 +414,8 @@ autocmd ColorScheme torte hi Normal guifg=#f8f8f8 ctermfg=255
 " Jellybeans Normal hi Normal guifg=#e8e8d3 |
 " Brighter Comment, 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
 " Ideas from Jellybeans overrides: 959288
-autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi Normal guifg=#e8e8d3 | hi SpecialKey guifg=#444444 guibg=#212121
+" hi Normal guifg=#e8e8d3 | 
+autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi SpecialKey guifg=#444444 guibg=#212121
 
 "" Dracula:
 "" Use brighter magenta from term
@@ -511,6 +512,15 @@ let g:PaperColor_Theme_Options = {
 \}
 
 "autocmd ColorScheme lucius hi Constant ctermfg=186
+if exists("use_dark_theme") && !use_dark_theme
+    " On neovim lucius ignores the bg setting sometimes
+    "autocmd ColorScheme lucius hi Normal ctermbg=231 guibg=White
+    " Neovim gruvbox theme doesn't have the "hard" light bg option, taking
+    " from gruvbox vim theme by morhetz: guibg=#f9f5d7
+    " or from solarized8 vim theme: guibg=#fdf6e3
+    " ,retrobox,peachpuff
+    autocmd ColorScheme gruvbox,retrobox hi Normal guibg=#f9f5d7
+endif
 
 " Dracula:
 let g:dracula_italic=0
@@ -549,6 +559,9 @@ let g:vem_colors_italic = 0
 
 let g:seoul256_background=237
 let g:seoul256_light_background=256
+
+" Restore to solarized green & yellow highlight groups
+let g:selenized_green_keywords=1
 
 " Molokai:
 let g:molokai_original=1
@@ -713,8 +726,42 @@ endif
 " Need extra conditions here to check we are actually truecolor capable, in case we fall back on older vim like CentOS 7. Rather than just if it's desired
 if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('nvim') && v:version >= 800) || has('nvim') ) && (has("termguicolors") && &t_Co >= 256) )
     " ==================== GUI Light ====================
-    "let g:schemes_light = [ 'lucius', 'default-enhanced', 'gruvbox', 'solarized8', 'solarized8_high', 'zellner', 'summerfruit256', 'hybrid', 'hybrid-light', 'hybrid-bright', 'hemisu', ]
-    let g:schemes_light = [ 'lucius', 'hybrid-light', 'default-enhanced', 'one', 'gruvbox', 'solarized8', ]
+    let g:schemes_light = [ 'default',
+                \ 'vim',
+                \ 'morning',
+                \ 'zellner',
+                \ 'lunaperche',
+                \ 'gruvbox',
+                \ 'retrobox',
+                \ 'peachpuff',
+                \ 'delek',
+                \ 'shine',
+                \ 'lucius',
+                \ 'hybrid',
+                \ 'hybrid-light',
+                \ 'hybrid-bright',
+                \ 'solarized8',
+                \ 'selenized',
+                \ 'selenized_bw',
+                \ 'catppuccin-latte',
+                \ 'tokyonight-day',
+                \ 'gruvbox-material',
+                \ 'everforest',
+                \ 'kanagawa',
+                \ 'summerfruit256',
+                \ 'default-enhanced',
+                \ 'onedark',
+                \ 'one',
+                \ 'github_light',
+                \ 'github_light_default',
+                \ 'hemisu',
+                \ 'Tomorrow',
+                \ 'PaperColor',
+                \ 'seoul256',
+                \ 'seoul8',
+                \ 'nofrils-light',
+                \ 'nofrils-acme',
+                \ ]
     " ==================== GUI Dark ====================
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
@@ -730,6 +777,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'dracula-soft',
                 \ 'molokai',
                 \ 'monokai',
+                \ 'unokai',
                 \ 'gruvbox',
                 \ 'retrobox',
                 \ 'slate',
@@ -737,13 +785,14 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'vim',
                 \ 'evening',
                 \ 'lucius',
+                \ 'solarized8',
+                \ 'selenized',
+                \ 'selenized_bw',
                 \ 'zenburn',
                 \ 'onedark',
                 \ 'one',
-                \ 'solarized8',
                 \ 'sorbet',
                 \ 'habamax',
-                \ 'unokai',
                 \ 'wildcharm',
                 \ 'zaibatsu',
                 \ 'lunaperche',
@@ -751,6 +800,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'everforest',
                 \ 'kanagawa',
                 \ 'iceberg',
+                \ 'nord',
                 \ 'catppuccin-macchiato',
                 \ 'catppuccin-frappe',
                 \ 'catppuccin-mocha',
@@ -770,22 +820,23 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'industry',
                 \ 'pablo',
                 \ 'blue',
-                \ 'nord',
                 \ 'cobalt2',
-                \ 'jellybeans-bright',
-                \ 'Tomorrow-Night',
-                \ 'Tomorrow-Night-Eighties',
-                \ 'Tomorrow-Night-Blue',
                 \ 'vim-material',
                 \ 'triplejelly',
                 \ 'night-owl',
+                \ 'jellybeans-bright',
                 \ 'ir_dark',
                 \ 'ir_black',
                 \ 'ir_blue',
-                \ 'shades_of_purple',
-                \ 'badwolf',
+                \ 'PaperColor',
                 \ 'simple-green',
                 \ 'simple-orange',
+                \ 'xoria256',
+                \ 'Tomorrow-Night',
+                \ 'Tomorrow-Night-Eighties',
+                \ 'Tomorrow-Night-Blue',
+                \ 'shades_of_purple',
+                \ 'badwolf',
                 \ 'hemisu',
                 \ 'codedark',
                 \ 'github_dark_default',
@@ -800,8 +851,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    "let g:schemes_dark = g:schemes_dark[0:55]
-    let g:schemes_dark = g:schemes_dark[0:44]
+    let g:schemes_dark = g:schemes_dark[0:58]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
@@ -853,7 +903,11 @@ noremap <Leader><F7> :hi Normal ctermfg=NONE guifg=NONE<CR>
 " Apply base16 theme
 noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
-noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
+if exists("use_dark_theme") && use_dark_theme
+    noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
+else
+    noremap <F9> :set background=light<CR>:execute 'colorscheme ' . g:schemes_light[0]<CR>
+endif
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 "noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>

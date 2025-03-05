@@ -165,9 +165,10 @@ EOF
 " -- Neovim colorscheme fixes as of v0.10.2 --
 " A neovim update breaks some old vim themes due to neovim specific highlight groups being left
 " undefined. This may be fixed (or worsened) by a future neovim update?
-autocmd ColorScheme jellybeans,wombat256mod,twilight,solarized8,lucius,hybrid,vilight,twilight256 hi @variable guifg=NONE
-autocmd ColorScheme molokai,one,zenburn,cobalt2,iceberg hi @variable guifg=NONE
+autocmd ColorScheme jellybeans,wombat256mod,twilight,solarized8,solarized8_high,lucius,hybrid,vilight,twilight256 hi @variable guifg=NONE
+autocmd ColorScheme molokai,one,zenburn,cobalt2,iceberg,selenized,selenized_bw hi @variable guifg=NONE
 autocmd ColorScheme Tomorrow-Night,Tomorrow-Night-Eighties,Tomorrow-Night-Blue hi @variable guifg=NONE
+autocmd ColorScheme simple-green,simple-orange hi @variable guifg=NONE
 " Other broken syntax
 autocmd ColorScheme vilight hi! link Function Identifier
 autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
@@ -180,9 +181,12 @@ autocmd ColorScheme wombat256mod hi Identifier gui=italic | hi String gui=NONE
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
-" changes
+" changes, so setting them in .vimrc doesn't work even if we fix them later
 "colorscheme dracula
 "colorscheme catppuccin-macchiato
 "colorscheme sonokai
-colorscheme jellybeans-nvim
+"colorscheme jellybeans-nvim
+
+" Light theme override
+"colorscheme vim
 
