@@ -8,9 +8,7 @@ exit 1
 fname="/usr/local/bin/monitor-brightness.txt"
 
 if [ -z "$1" ]; then
-    tput setaf 1; tput bold
-    echo "ERROR: Give integer brightness arg"
-    tput sgr0
+    notify-send "Monitor Update" "ERROR: Give integer brightness arg"
     exit 1
 fi
 
@@ -21,37 +19,16 @@ fi
 arg="$1"
 re='^[0-9]+$'
 if ! [[ $arg =~ $re ]] ; then
-    tput setaf 1; tput bold
-    echo 'Must be an integer!'
-    tput sgr0
+    notify-send "Monitor Update" "ERROR: Must be an integer! Got '$arg'"
     exit 1
 elif [ $arg -lt 0 ] || [ $arg -gt 100 ] ; then
-    tput setaf 1; tput bold
-    echo 'Brightness must be between 0-100!'
-    tput sgr0
+    notify-send "Monitor Update" "ERROR: Brightness '$arg' out of bounds 0-100. Aborting"
     exit 1
-else
-    echo -n "New brightness value: "
-    tput setaf 2; tput bold
-    echo "$arg"
-    tput sgr0
 fi
 
-echo -n "Monitor 1... "
+notify-send -e "Monitor Update" "$arg"
 sudo ddccontrol -r 0x10 -w $arg dev:/dev/i2c-3 &> /dev/null
-echo "Done"
-echo -n "Monitor 2... "
 sudo ddccontrol -r 0x10 -w $arg dev:/dev/i2c-4 &> /dev/null
-echo "Done"
 
-echo -n "Writing current brightness '"
-tput setaf 2; tput bold
-echo -n "$arg"
-tput sgr0
-echo -n "' to file... "
 echo "$arg" | sudo tee "$fname" > /dev/null
-echo "Done"
-tput setaf 2; tput bold
-echo "Update Complete"
-tput sgr0
 

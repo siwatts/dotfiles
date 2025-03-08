@@ -21,17 +21,17 @@ ln -s /usr/local/bin/monitor-* $HOME/bin/
 - Test and seed an initial value in terminal e.g. `monitor-update.sh 35`
 - Create keyboard shortcuts
     - Monitor Up
-        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-adjust-up.sh; sleep 2s"'`
+        - `/usr/local/bin/monitor-adjust-up.sh`
         - `Super`+`=`
     - Monitor Down
-        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-adjust-down.sh; sleep 2s"'`
+        - `/usr/local/bin/monitor-adjust-down.sh`
         - `Super`+`-`
-    - Monitor Reset
-        - `$HOME/bin/monitor-daytime.sh`
+    - Monitor Current (Display current brightness setting)
+        - `/usr/local/bin/monitor-current.sh`
         - `Super`+`0`
-    - Monitor Current (spawns `xfce4-terminal` and briefly shows the current brightness)
-        - `xfce4-terminal -e '/bin/bash -c "$HOME/bin/monitor-current.sh; sleep 2s"'`
-        - `Super`+`KP/` (Numpad `/`)
+- Previously spawned `xfce4-terminal` for these keyboard shortcuts, can revert to this if `notify-send` does not work
+    - E.g. `xfce4-terminal -e '/bin/bash -c "/usr/local/bin/monitor-adjust-up.sh; sleep 2s"'`
+
 
 # Limitations
 
@@ -42,3 +42,4 @@ ln -s /usr/local/bin/monitor-* $HOME/bin/
 # Future
 
 - There is a GNOME Extension which accomplishes this using the built in brightness slider?
+

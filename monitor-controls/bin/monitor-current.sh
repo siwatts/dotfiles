@@ -4,6 +4,6 @@
 # Store current brightness in a file
 fname="/usr/local/bin/monitor-brightness.txt"
 
-printf "Current brightness: "
-cat "$fname"
+val=`cat "$fname"`
+notify-send -e "Current Brightness" $val
 
