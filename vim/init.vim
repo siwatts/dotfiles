@@ -175,9 +175,9 @@ autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifi
 " Remove italics
 autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
 autocmd ColorScheme twilight,vilight hi Comment gui=NONE
-autocmd ColorScheme sonokai hi Comment gui=NONE
+autocmd ColorScheme sonokai,monokai hi Comment gui=NONE
 autocmd ColorScheme wombat256mod hi String gui=NONE
-"autocmd ColorScheme gruvbox hi Comment gui=NONE | hi String gui=NONE
+autocmd ColorScheme gruvbox hi Comment gui=NONE | hi String gui=NONE
 autocmd ColorScheme gruvbox-material hi Comment gui=NONE
 
 " Add italics back (Wombat256mod when used in neovim has Identifier and
@@ -195,7 +195,7 @@ autocmd ColorScheme monokai hi @keyword gui=NONE | hi @function gui=NONE
 "colorscheme dracula
 "colorscheme catppuccin-macchiato
 "colorscheme sonokai
-"colorscheme jellybeans-nvim
+colorscheme jellybeans-nvim
 
 " Light theme override
 "colorscheme vim
