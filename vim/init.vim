@@ -174,10 +174,20 @@ autocmd ColorScheme vilight hi! link Function Identifier
 autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
 " Remove italics
 autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
-autocmd ColorScheme twilight hi Comment gui=NONE
+autocmd ColorScheme twilight,vilight hi Comment gui=NONE
+autocmd ColorScheme sonokai hi Comment gui=NONE
+autocmd ColorScheme wombat256mod hi String gui=NONE
+"autocmd ColorScheme gruvbox hi Comment gui=NONE | hi String gui=NONE
+autocmd ColorScheme gruvbox-material hi Comment gui=NONE
+
 " Add italics back (Wombat256mod when used in neovim has Identifier and
 " Function look the same, could also bold Functions instead)
-autocmd ColorScheme wombat256mod hi Identifier gui=italic | hi String gui=NONE
+"autocmd ColorScheme wombat256mod hi Identifier gui=italic
+
+" Optional complete italic removal
+autocmd ColorScheme twilight hi Type gui=NONE
+autocmd ColorScheme molokai,molokayo hi Storageclass gui=NONE | hi Special gui=NONE | hi Tag gui=NONE
+autocmd ColorScheme monokai hi @keyword gui=NONE | hi @function gui=NONE
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
@@ -189,4 +199,5 @@ autocmd ColorScheme wombat256mod hi Identifier gui=italic | hi String gui=NONE
 
 " Light theme override
 "colorscheme vim
+"colorscheme gruvbox
 
