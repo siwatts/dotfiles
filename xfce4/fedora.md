@@ -34,8 +34,10 @@ Other packages (can use dnf dragora or CLI):
 
 - Session & Startup
     - Disable `dnfdragora-updater`
+    - Enable `Secret Storage Service (GNOME Keyring: Secret Service)`
 - Appearance
     - Change font, 'Sans 11' (for 1440 monitor)
+    - 'Cantarell 11' looks better, it's what GNOME uses but they are moving away from it so it may not be around in future
     - Monospace font to preferred font ('Source Code Pro Regular' or 'Liberation Mono Regular' size 11)
     - RGB subpixel enable
     - GTK theme and xfwm4 theme to preferred theme
@@ -43,7 +45,7 @@ Other packages (can use dnf dragora or CLI):
         - 'Greybird accessibility' xfwm4 themes good on 1440 screen for larger buttons, but not necessary, "Default" xfwm4 also good even for themes like Greybird as it matches their colour but is large and usable
     - Icon theme 'elementary Xfce dark'
 - Window Manager
-    - Title font, 'Sans Bold 10' or 11
+    - Title font, 'Sans Bold 10' or 11, or Cantarell bold to match UI if chosen earlier
     - Remove 'Shade'
 - Window Manager Tweaks
     - Cycling
@@ -61,7 +63,10 @@ Other packages (can use dnf dragora or CLI):
 - Move 1st panel to bottom of screen
     - Add launchers: Firefox, `firefox --private-window`, Terminal, Files, GVim
     - Or add `Places` instead of Thunar
-- Clock, display Time only, 'Sans 11', Custom format: `%d/%m/%y %R`
+    - Thickness 26 by default, on 1440 30 or 32 is good
+    - Panel appearance, Icons, Adjust size automatically default is 16, set to 20 (for panel 30), or adjust size automatically (this is larger than 20)
+    - Status Tray Plugin, Icons, Match above icon size settings
+- Clock, display Time only, font match UI, Custom format: `%a %d/%m/%y %R` or `%a %d %b %R` like GNOME for cleaner look
 - Remove 'Action Buttons' from end of panel
 - Add 'Show Desktop' to end of panel
 - Further customisation possible with other plugins but the basic panel is very usable
@@ -70,6 +75,33 @@ Other packages (can use dnf dragora or CLI):
     - Sorting order: 'Timestamp', or 'None allow drag and drop'
     - Show flat buttons, enable (if this clashes with GTK theme)
 - Background to `#151515` or the dark purple above black, if switching GTK themes and panel becomes too light
+- Genmon
+    - Monitor brightness display in panel:
+        - Label `Scr: `
+        - `sed -n 's/$/% /p' /usr/local/bin/monitor-brightness.txt`
+        - This is like `cat /usr/local/bin/monitor-brightness.txt`, but adds a trailing `% ` for spacing. Can remove space if panel layout does not require it
+        - Period 30s
+- TODO: Add panel layout here
+- CPU Graph
+    - Colour 1: `#008000`
+    - Colour 2: Red 2nd up from bottom
+    - Mode: Normal
+    - Colour mode: Gradient
+    - Update Slow ~1s, or Normal ~750ms
+    - Show frame, enable
+    - Show border, disable
+    - Width 40, or 50
+- System Load Monitor
+    - Update interval 1500ms or 1000ms
+    - Swap monitor label to `swp`
+    - CPU monitor colour: `#008000`
+    - Memory monitor colour: Blue at bottom
+    - Network monitor colour: Red at bottom
+    - Swap monitor colour: Yellow at bottom
+- Workspace switcher
+    - Switch to 2 row view
+- Add Action Buttons before show desktop at end of panel
+    - Switch to custom label, with hostname of system
 
 # WhiskerMenu
 
@@ -115,6 +147,8 @@ These don't currently seem to work
     - PDF to Atril
 - `xfconf-query -c xsettings -p /Net/CursorBlink -s 'false'`
 - Mouse and Touchpad theme to Adwaita
+- Desktop Settings
+    - Icons -> Single click to activate items, enable
 
 # Screensaver
 
@@ -122,6 +156,17 @@ These don't currently seem to work
 - 15 minutes
 - Inhibit screensaver for fullscreen applications, enable
 - Lock Screen after the screensaver is active for 1 minute
+
+## XScreensaver
+
+Replace xfce4-screensaver with xscreensaver (optional)
+
+- `sudo dnf install xscreensaver xscreensaver-extras -y`
+- Run xscreensaver settings program (from menu) or `xscreensaver-demo` to configure settings
+- Session & Startup
+    - Disable xfce4-screensaver process from starting automatically on login by unchecking
+    - Add xscreensaver process automatically on login, process `xscreensaver -nosplash`
+        - Or enable the one that was added automatically? `/usr/libexec/xscreensaver-autostart`
 
 # Power Management
 
@@ -139,10 +184,18 @@ These don't currently seem to work
 - Other keyboard shortcuts
 - Automate as much of this as possible
     - E.g. cursor blink disable etc. salvage from old dotfiles xfce
+    - Should be possible to script everything with `xfconf` or config files `~/.config/xfce4`
 - Centre window script cannot handle dual monitors
     - See if it can be modified. Set to centre on single primary monitor if possible
     - `xdpyinfo` reads X11 monitors as one combined monitor, may have to hardcode
 - Investigate broken mouse cursor, for loading
 - Check workspace keyboard shortcuts
     - They are `Ctrl+Shift+Left`, `Ctrl+Shift+Right`
+- Capslock to ESC key
+- Check keyring unlock (was triggered once opening dnf-dragora?)
+- Keyboard layout
+    - UK on 1, UK Extended on 2
+    - Sensible shortcut to switch
+- Flameshot shortcuts
+- Redshift
 
