@@ -11,6 +11,27 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+" Neovim setup:
+" -------------
+" 1) Install Plug (https://github.com/junegunn/vim-plug)
+"       - Command retrieved 14/03/2025
+"       - sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" 2) Re-open nvim
+" 3) :PlugInstall
+" 4) Remove or rename any old legacy vim themes from `~/.vim/colors` that clash with new nvim Plug sourced themes
+" 5) Install required language servers:
+"       - C#: csharp_ls - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#csharp_ls
+"           - Retrieved 14/03/2025
+"           - Need .NET SDK for dotnet development and csharp-ls
+"               - `sudo dnf install dotnet-sdk-9.0`
+"               - `dotnet tool install --global csharp-ls`
+"               - currently also need .NET 8.0 for csharp_ls as they are a version behind, this should change in future
+"                   - Try the above first, if .NET 8 is missing reported by neovim then
+"                   - `sudo dnf install dotnet-sdk-8.0`
+"       - C/C++: clangd - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#clangd
+"           - Retrieved 14/03/2025
+"               - `sudo dnf provides clangd` -> `sudo dnf install clang-devel`
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -23,7 +44,7 @@ call plug#begin()
 " Make sure you use single quotes
 
 " Better syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Language server stuff
 Plug 'neovim/nvim-lspconfig'
 
@@ -82,7 +103,7 @@ call plug#end()
 "   syntax off            " Disable syntax highlighting
 
 " Tree Sitter
-lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+"lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 
 " Language servers
 lua require'lspconfig'.csharp_ls.setup{}
