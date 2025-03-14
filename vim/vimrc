@@ -522,6 +522,9 @@ if exists("use_dark_theme") && !use_dark_theme
     autocmd ColorScheme gruvbox,retrobox hi Normal guibg=#f9f5d7
 endif
 
+" Morning
+autocmd ColorScheme morning hi Normal guibg=#eeeeee | hi NonText guibg=gray90
+
 " Dracula:
 let g:dracula_italic=0
 let g:dracula_colorterm=1 " 0 = Transparent terminal bg.
@@ -766,22 +769,29 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
-                \ 'twilight',
                 \ 'wombat256mod',
                 \ 'darkblue',
+                \ 'twilight',
                 \ 'hybrid',
                 \ 'vilight',
                 \ 'twilight256',
+                \ 'desert',
+                \ 'slate',
                 \ 'sonokai',
-                \ 'dracula',
-                \ 'dracula-soft',
                 \ 'molokai',
+                \ 'molokayo',
                 \ 'monokai',
                 \ 'unokai',
+                \ 'dracula',
+                \ 'dracula-soft',
                 \ 'gruvbox',
                 \ 'retrobox',
-                \ 'slate',
-                \ 'desert',
+                \ 'sorbet',
+                \ 'habamax',
+                \ 'wildcharm',
+                \ 'lunaperche',
+                \ 'zaibatsu',
+                \ 'default',
                 \ 'vim',
                 \ 'evening',
                 \ 'lucius',
@@ -791,14 +801,10 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'zenburn',
                 \ 'onedark',
                 \ 'one',
-                \ 'sorbet',
-                \ 'habamax',
-                \ 'wildcharm',
-                \ 'zaibatsu',
-                \ 'lunaperche',
                 \ 'gruvbox-material',
                 \ 'everforest',
                 \ 'kanagawa',
+                \ 'cobalt2',
                 \ 'iceberg',
                 \ 'nord',
                 \ 'catppuccin-macchiato',
@@ -807,11 +813,14 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'tokyonight-moon',
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
-                \ 'default-enhanced',
-                \ 'darkblue256',
-                \ 'default',
                 \ 'quiet',
                 \ 'nofrils-dark',
+                \ 'default-enhanced',
+                \ 'darkblue256',
+                \ 'vim-material',
+                \ 'triplejelly',
+                \ 'night-owl',
+                \ 'jellybeans-bright',
                 \ 'torte',
                 \ 'koehler',
                 \ 'elflord',
@@ -820,11 +829,6 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'industry',
                 \ 'pablo',
                 \ 'blue',
-                \ 'cobalt2',
-                \ 'vim-material',
-                \ 'triplejelly',
-                \ 'night-owl',
-                \ 'jellybeans-bright',
                 \ 'ir_dark',
                 \ 'ir_black',
                 \ 'ir_blue',
@@ -851,7 +855,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:58]
+    let g:schemes_dark = g:schemes_dark[0:47]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
