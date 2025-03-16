@@ -99,6 +99,7 @@ set scrolloff=0             " Always keep N lines visible top/bottom of screen p
 set nocursorline            " Highlight line the cursor is currently on
 set nocursorcolumn          " Highlight column the cursor is currently on
 set norelativenumber        " Relative line numbers
+set visualbell              " No noises
 if has("nvim")
     " This also exists for vim, but the undo file are not shared so we don't use them in order to
     " remove a source of confusion
