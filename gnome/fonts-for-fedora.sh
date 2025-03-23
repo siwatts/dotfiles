@@ -13,7 +13,10 @@ fi
 # Other fonts may change in future versions of fedora and this command not be updated so could fail
 sudo dnf install -y fira-code-fonts cascadia-fonts-all terminus-fonts google-droid-* google-go-* redhat-mono-fonts
 sudo dnf install -y levien-inconsolata-fonts gnu-free-mono-fonts jetbrains-mono-fonts-all msimonson-anonymouspro-fonts
-# Bitstream vera, and bitmap fonts?
+sudo dnf install -y google-roboto-mono-fonts
+# Non monospace fonts for UI, like Inter
+sudo dnf install -y rsms-inter-fonts
+sudo dnf install -y dejavu-fonts-all google-roboto-fonts mozilla-fira-sans-fonts adobe-source-sans-pro-fonts
 
 # Hack font, COPR: https://copr.fedorainfracloud.org/coprs/zawertun/hack-fonts/
 # Repos for F37 and F38 as of 17/06/2023
