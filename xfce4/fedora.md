@@ -52,6 +52,9 @@ Other packages (can use dnf dragora or CLI):
         - Draw frame around windows, disable
         - Raise windows while cycling, disable
         - Cycle through windows in a list, enable
+    - Compositor
+        - Show shadows under dock windows, disable
+            - **Important if using top panel, otherwise window title bars get shadows on them and are hard to read**
 - Notifications
     - Set a more legible theme (Smoke or Retro). Opacity to 100%
     - Show on primary monitor
@@ -132,6 +135,14 @@ For GUI program shortcuts, set 'Use startup notification' enabled
 - `Super+Home` to `~/bin/centre-window.sh`
 - `Super` to WhiskerMenu: `xfce4-popup-whiskermenu`
 
+If no media keys on keyboard, add some volume control keyboard shortcuts e.g. `Super`+`[`/`]`, `BKSPC` to toggle mute
+
+```
+pactl set-sink-volume 0 -5%
+pactl set-sink-volume 0 +5%
+pactl set-sink-mute 0 toggle
+```
+
 # Window Manager Keyboard
 
 These don't currently seem to work
@@ -171,6 +182,38 @@ Replace xfce4-screensaver with xscreensaver (optional)
 # Power Management
 
 - Display power management, 30 min
+
+# Caps Lock Key Map
+
+*Optional*
+
+Set the Caps Lock key to an additional ESC key, using xkbmap
+
+- `setxkbmap -option caps:escape_shifted_capslock`
+- Other options
+    - `caps:swapescape`
+        - Just swap Caps and ESC
+    - `caps:escape`
+        - Just make Caps an additional ESC, without retaining Caps Lock functionality on Shift+Caps
+
+Persist on reboot:
+- Session and Startup
+- Add application
+- Name:
+    - `Caps to Esc`
+- Description:
+    - `Set Caps Lock key to an additional ESC, and Shift+Caps to function as Caps Lock`
+- Command:
+    - `setxkbmap -option caps:escape_shifted_capslock`
+- Trigger:
+    - on login
+
+Alternative:
+- You can use Caps as an extra Ctrl when held as a modifier key, and also use `xcape` to remap single presses to ESC
+    - `setxkbmap -option 'caps:ctrl_modifier'`
+    - `xcape -e 'Caps_Lock=Escape'`
+
+It is also possible to make this permanent using `localectl` instead e.g. **for US keyboard layout** `localectl set-x11-keymap us "" "" caps:swapescape`, investigate how this would work for us. (This writes a config file in `/etc/X11/xorg.conf.d/`, other options available here `/usr/share/X11/xkb/rules/base.lst`)
 
 # TODO
 
