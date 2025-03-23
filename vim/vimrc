@@ -27,7 +27,7 @@ let g:dark_theme='jellybeans'
 " TRUECOLOR:
 "let g:dark_theme_truecolor='twilight'
 " LIGHT:
-let g:light_theme='default'
+let g:light_theme='morning'
 " OTHER:
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='twilight'
@@ -733,24 +733,24 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     let g:schemes_light = [ 'default',
                 \ 'vim',
                 \ 'morning',
+                \ 'lucius',
+                \ 'hybrid',
                 \ 'zellner',
                 \ 'lunaperche',
                 \ 'gruvbox',
                 \ 'retrobox',
-                \ 'peachpuff',
-                \ 'delek',
-                \ 'shine',
-                \ 'lucius',
-                \ 'hybrid',
-                \ 'hybrid-light',
-                \ 'hybrid-bright',
+                \ 'gruvbox-material',
+                \ 'everforest',
                 \ 'solarized8',
                 \ 'selenized',
                 \ 'selenized_bw',
+                \ 'peachpuff',
+                \ 'delek',
+                \ 'shine',
+                \ 'hybrid-light',
+                \ 'hybrid-bright',
                 \ 'catppuccin-latte',
                 \ 'tokyonight-day',
-                \ 'gruvbox-material',
-                \ 'everforest',
                 \ 'kanagawa',
                 \ 'summerfruit256',
                 \ 'default-enhanced',
@@ -770,18 +770,19 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
+                \ 'twilight',
                 \ 'wombat256mod',
                 \ 'darkblue',
-                \ 'twilight',
                 \ 'hybrid',
                 \ 'vilight',
                 \ 'twilight256',
-                \ 'desert',
                 \ 'slate',
-                \ 'sonokai',
+                \ 'desert',
+                \ 'evening',
                 \ 'molokai',
-                \ 'molokayo',
                 \ 'monokai',
+                \ 'sonokai',
+                \ 'molokayo',
                 \ 'unokai',
                 \ 'dracula',
                 \ 'dracula-soft',
@@ -794,18 +795,21 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'zaibatsu',
                 \ 'default',
                 \ 'vim',
-                \ 'evening',
+                \ 'torte',
+                \ 'elflord',
                 \ 'lucius',
                 \ 'solarized8',
                 \ 'selenized',
                 \ 'selenized_bw',
                 \ 'zenburn',
+                \ 'cobalt2',
+                \ 'quiet',
+                \ 'nofrils-dark',
                 \ 'onedark',
                 \ 'one',
                 \ 'gruvbox-material',
                 \ 'everforest',
                 \ 'kanagawa',
-                \ 'cobalt2',
                 \ 'iceberg',
                 \ 'nord',
                 \ 'catppuccin-macchiato',
@@ -814,17 +818,13 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'tokyonight-moon',
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
-                \ 'quiet',
-                \ 'nofrils-dark',
                 \ 'default-enhanced',
                 \ 'darkblue256',
                 \ 'vim-material',
                 \ 'triplejelly',
                 \ 'night-owl',
                 \ 'jellybeans-bright',
-                \ 'torte',
                 \ 'koehler',
-                \ 'elflord',
                 \ 'murphy',
                 \ 'ron',
                 \ 'industry',
@@ -856,7 +856,7 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:47]
+    let g:schemes_dark = g:schemes_dark[0:36]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
