@@ -67,6 +67,7 @@ Other packages (can use dnf dragora or CLI):
     - Add launchers: Firefox, `firefox --private-window`, Terminal, Files, GVim
     - Or add `Places` instead of Thunar
     - Thickness 26 by default, on 1440 30 or 32 is good
+        - Larger: 36, icons 22
     - Panel appearance, Icons, Adjust size automatically default is 16, set to 20 (for panel 30), or adjust size automatically (this is larger than 20)
     - Status Tray Plugin, Icons, Match above icon size settings
 - Clock, display Time only, font match UI, Custom format: `%a %d/%m/%y %R` or `%a %d %b %R` like GNOME for cleaner look
@@ -133,6 +134,7 @@ For GUI program shortcuts, set 'Use startup notification' enabled
 - `Super+G` to `gvim`
 - `Super+T` to `exo-open --launch TerminalEmulator` (xfce4-terminal)
 - `Super+Home` to `~/bin/centre-window.sh`
+- `Super+Shift+Home` to `bash -c "~/bin/resize-window-for-reading.sh && ~/bin/centre-window.sh"`
 - `Super` to WhiskerMenu: `xfce4-popup-whiskermenu`
 
 If no media keys on keyboard, add some volume control keyboard shortcuts e.g. `Super`+`[`/`]`, `BKSPC` to toggle mute
