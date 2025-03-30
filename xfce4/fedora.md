@@ -84,7 +84,11 @@ Other packages (can use dnf dragora or CLI):
         - Label `Scr: `
         - `sed -n 's/$/% /p' /usr/local/bin/monitor-brightness.txt`
         - This is like `cat /usr/local/bin/monitor-brightness.txt`, but adds a trailing `% ` for spacing. Can remove space if panel layout does not require it
-        - Period 30s
+        - Period 15s
+    - Volume % in panel:
+        - No label
+        - Command: `bash -c "pactl get-sink-volume 0 | head -n1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1%,'"`
+        - Period 15s
 - TODO: Add panel layout here
 - CPU Graph
     - Colour 1: `#008000`
