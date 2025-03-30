@@ -9,6 +9,11 @@ if ! [ -f "$fname" ]; then
     notify-send "Monitor Adjust Up" "ERROR: File '$fname' not found"
     exit 1
 fi
+if [ -z "$1" ]; then
+    notify-send "Monitor Adjust Up" "ERROR: Supply an integer amount to modify brightness by"
+    exit 1
+fi
+mod=$1
 # Read integer
 typeset -i cur_bri="$(cat $fname)"
 
@@ -21,8 +26,8 @@ if ! [[ $cur_bri =~ $re ]] ; then
     exit 1
 fi
 
-#echo "Adding 10"
-new_bri=$((cur_bri+10))
+#echo "Adding $mod"
+new_bri=$((cur_bri+mod))
 
 #echo "Brightness will be '$new_bri'"
 

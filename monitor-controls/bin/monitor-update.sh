@@ -26,8 +26,7 @@ elif [ $arg -lt 0 ] || [ $arg -gt 100 ] ; then
     exit 1
 fi
 
-notify-send -e "Monitor Update" "$arg"
-sudo ddccontrol -r 0x10 -w $arg dev:/dev/i2c-3 &> /dev/null
+notify-send -e "Monitor Update" "Brightness: $arg"
 sudo ddccontrol -r 0x10 -w $arg dev:/dev/i2c-4 &> /dev/null
 
 echo "$arg" | sudo tee "$fname" > /dev/null

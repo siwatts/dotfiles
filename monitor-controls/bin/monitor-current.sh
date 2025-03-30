@@ -5,5 +5,5 @@
 fname="/usr/local/bin/monitor-brightness.txt"
 
 val=`cat "$fname"`
-notify-send -e "Current Brightness" $val
+notify-send -e "Current Brightness" "Brightness: $val"
 
