@@ -81,9 +81,10 @@ Other packages (can use dnf dragora or CLI):
 - Background to `#151515` or the dark purple above black, if switching GTK themes and panel becomes too light
 - Genmon
     - Monitor brightness display in panel:
-        - Label `Scr: `
-        - `sed -n 's/$/% /p' /usr/local/bin/monitor-brightness.txt`
-        - This is like `cat /usr/local/bin/monitor-brightness.txt`, but adds a trailing `% ` for spacing. Can remove space if panel layout does not require it
+        - Label `Scr: `, or a brightness emoji like `🔆`
+        - `bash -c "sed -n 's/$/%/p' /usr/local/bin/monitor-brightness.txt || echo 'XX%'"`
+        - This is like `cat /usr/local/bin/monitor-brightness.txt`, but adds a trailing `%` for spacing and formatting
+        - If the file is missing (which can happen if genmon refreshes at the same time the script is running) a clean fallback "XX%" is returned instead of a sed error message
         - Period 15s
     - Volume % in panel:
         - No label
