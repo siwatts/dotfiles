@@ -586,8 +586,16 @@ autocmd ColorScheme molokai hi Comment guifg=#a09080 | hi IncSearch cterm=revers
 
 " Monokai:
 " Default comment is #75715E, same as molokai.vim
-autocmd ColorScheme monokai hi Comment guifg=#898470 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E | hi Search ctermfg=16 guifg=#000000 ctermbg=208 guibg=#FD971F
-"autocmd ColorScheme monokai hi Comment guifg=#a09080 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E
+if has("nvim")
+    " Nvim is a different theme entirely sourced via Plug in ~/.config/nvim/init.vim
+    autocmd ColorScheme monokai hi Function gui=NONE | hi Keyword gui=NONE | hi Include gui=NONE | hi SpecialComment gui=NONE
+else
+    " Original vim monokai.vim
+    autocmd ColorScheme monokai hi Comment guifg=#898470 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E | hi Search ctermfg=16 guifg=#000000 ctermbg=208 guibg=#FD971F
+    "autocmd ColorScheme monokai hi Comment guifg=#a09080 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E
+endif
+" Rename the original vim theme to 'monokai_classic'
+autocmd ColorScheme monokai_classic hi Comment guifg=#898470 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E | hi Search ctermfg=16 guifg=#000000 ctermbg=208 guibg=#FD971F
 
 " Sonokai:
 let g:sonokai_style='default'
@@ -773,9 +781,6 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'twilight',
                 \ 'wombat256mod',
                 \ 'darkblue',
-                \ 'hybrid',
-                \ 'vilight',
-                \ 'twilight256',
                 \ 'slate',
                 \ 'desert',
                 \ 'evening',
@@ -788,6 +793,9 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'dracula-soft',
                 \ 'gruvbox',
                 \ 'retrobox',
+                \ 'hybrid',
+                \ 'vilight',
+                \ 'twilight256',
                 \ 'sorbet',
                 \ 'habamax',
                 \ 'wildcharm',

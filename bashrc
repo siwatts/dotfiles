@@ -85,16 +85,16 @@ if [ "$color_prompt" = yes ]; then
 
     # Choose prompt based on whether this is local or remote session
     if [ -n "${SSH_CONNECTION}" ]; then
-        # Connected to remote via ssh, cyan & yellow
-        export PS1='\[\033[36m\]\u@\h \[\033[33m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        # Connected to remote via ssh, cyan
+        export PS1='\[\033[36m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
         # Can share the above across multiple hosts using
         # if [ "$HOSTNAME" = fullhostname ]; then
     elif [[ "${DISPLAY%%:0*}" != "" ]]; then
-        # Connected to remote but not via ssh, yellow & cyan
-        export PS1='\[\033[33m\]\u@\h(?) \[\033[36m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        # Connected to remote but not via ssh, yellow
+        export PS1='\[\033[33m\]\u@\h(?)\[\033[00m\]:\[\033[33m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
     else
-        # Local machine, green & blue
-        export PS1='\[\033[32m\]\u@\h \[\033[34m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        # Local machine, green
+        export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[32m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
 
         # # Truecolor PS1 using 0-255 RGB values
         # # Below example is orange + purple which looks good for WSL Ubuntu
