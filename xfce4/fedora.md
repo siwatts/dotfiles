@@ -10,13 +10,17 @@ sudo dnf install -y @xfce-desktop-environment
 
 Other packages (can use dnf dragora or CLI):
 
+- General
+    - `vim vim-X11 git gitk tmux htop`
 - Xfce Desktop
     - Applications for the Xfce Desktop
         - `atril`
         - `galculator`
         - `mousepad`
         - `ristretto`
-- Misc
+- Settings
+    - `lightdm-gtk-greeter-settings`
+- GTK Themes and Icons
     - `bluebird-gtk3-theme`
     - `bluebird-gtk2-theme`
     - `bluebird-xfwm4-theme`
@@ -29,6 +33,10 @@ Other packages (can use dnf dragora or CLI):
     - `sudo dnf install -y xdpyinfo xdotool`
 - Panel plugins
     - `xfce4-whiskermenu-plugin`
+- Media
+    - `smplayer`
+- Misc
+    - `flameshot`, screenshot util
 
 # Settings
 
@@ -221,6 +229,18 @@ Alternative:
     - `xcape -e 'Caps_Lock=Escape'`
 
 It is also possible to make this permanent using `localectl` instead e.g. **for US keyboard layout** `localectl set-x11-keymap us "" "" caps:swapescape`, investigate how this would work for us. (This writes a config file in `/etc/X11/xorg.conf.d/`, other options available here `/usr/share/X11/xkb/rules/base.lst`)
+
+# Misc
+
+Fedora 41 -> 42 GNOME removed X11, thus also removing ability for GNOME gdm login screen to launch an Xfce session if this was added afterwards to a Workstation install
+
+Switch to lightdm gtk greeter to be able to log into either GNOME or Xfce:
+
+```bash
+sudo dnf in lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings -y
+sudo systemctl enable lightdm --force
+sudo systemctl disable gdm
+```
 
 # TODO
 
