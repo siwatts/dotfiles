@@ -5,23 +5,28 @@
 
 # First import xfce4-terminal config:
 # Terminalrc file is not used anymore, but it seems to work to seed initial settings
-if [ ! -d ~/.config/xfce4/terminal ]; then
-    # Make it
-    mkdir -p ~/.config/xfce4/terminal
-fi
 if [ -f terminal/terminalrc ]; then
+    if [ ! -d ~/.config/xfce4/terminal ]; then
+        # Make dir.
+        mkdir -p ~/.config/xfce4/terminal
+    fi
+    echo "Importing xfce4-terminal config file..."
     if [ -f ~/.config/xfce4/terminal/terminalrc ]; then
         # There is already a terminal config file, diff it.
+        echo "User already has a terminal config file, opening in vimdiff for comparison..."
+        read -r -p 'PRESS ENTER TO CONTINUE...' response
         vim -d ~/.config/xfce4/terminal/terminalrc terminal/terminalrc
-        # Or backup and replace
     else
         # None, so copy ours.
         cp terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
-        echo "Imported xfce4-terminal settings. Close all running instances to take effect."
+        echo "Imported xfce4-terminal config file. Close all running instances to reload."
     fi
 else
     echo "Warning: Could not find dotfiles xfce4-terminal 'terminalrc' file. Please run from dotfiles 'xfce4' directory to import this."
 fi
+
+# For helper script keyboard shortcuts
+BIN_PATH="/home/${USER}/bin"
 
 echo "Configuring xfce with 'xfconf-query'..."
 
@@ -156,14 +161,13 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Primar
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Alt>Print' --type 'string' --set 'xfce4-screenshooter -w'
 
 # Scripts (~/bin)
-# TODO: Fix username path for scripts dynamically
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>Home' --type 'string' --set '/home/simon/bin/centre-window.sh'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>Home' --type 'string' --set 'bash -c "/home/simon/bin/resize-window-for-reading.sh && /home/simon/bin/centre-window.sh"'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>plus' --type 'string' --set '/home/simon/bin/monitor-adjust-up.sh 5'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>underscore' --type 'string' --set '/home/simon/bin/monitor-adjust-down.sh 5'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>equal' --type 'string' --set '/home/simon/bin/monitor-adjust-up.sh 10'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>minus' --type 'string' --set '/home/simon/bin/monitor-adjust-down.sh 10'
-xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>0' --type 'string' --set '/home/simon/bin/monitor-current.sh'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>Home' --type 'string' --set "${BIN_PATH}/centre-window.sh"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>Home' --type 'string' --set 'bash -c "'"${BIN_PATH}/resize-window-for-reading.sh && ${BIN_PATH}"'/centre-window.sh"'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>plus' --type 'string' --set "${BIN_PATH}/monitor-adjust-up.sh 5"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>underscore' --type 'string' --set "${BIN_PATH}/monitor-adjust-down.sh 5"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>equal' --type 'string' --set "${BIN_PATH}/monitor-adjust-up.sh 10"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>minus' --type 'string' --set "${BIN_PATH}/monitor-adjust-down.sh 10"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>0' --type 'string' --set "${BIN_PATH}/monitor-current.sh"
 
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketleft' --type 'string' --set 'pactl set-sink-volume 0 -5%'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketright' --type 'string' --set 'pactl set-sink-volume 0 +5%'
