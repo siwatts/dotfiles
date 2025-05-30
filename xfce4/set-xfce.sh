@@ -95,7 +95,7 @@ if [ $MON_1440 -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
-else if [ $MON_1080 -eq 1 ]; then
+elif [ $MON_1080 -eq 1 ]; then
     # Fonts 1080
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
     xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
@@ -103,7 +103,7 @@ else if [ $MON_1080 -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
-else if [ $MON_1080_HTPC -eq 1 ]; then
+elif [ $MON_1080_HTPC -eq 1 ]; then
     # Fonts 1080 HTPC 10 ft UI
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 14'
     xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 14'
@@ -112,7 +112,7 @@ else if [ $MON_1080_HTPC -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 12'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '32'
-else if [ $MON_768 -eq 1 ]; then
+elif [ $MON_768 -eq 1 ]; then
     # Fonts 768
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
     xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 9'
@@ -322,11 +322,11 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Dow
 echo "Loading panel config file..."
 if [ $MON_1440 -eq 1 ]; then
     xfce4-panel-profiles load xfce4/panel/SW_1440_12pt.tar.bz2
-else if [ $MON_1080 -eq 1 ]; then
+elif [ $MON_1080 -eq 1 ]; then
     xfce4-panel-profiles load xfce4/panel/SW_1080.tar.bz2
-else if [ $MON_1080_HTPC -eq 1 ]; then
+elif [ $MON_1080_HTPC -eq 1 ]; then
     xfce4-panel-profiles load xfce4/panel/SW_1080_htpc.tar.bz2
-else if [ $MON_768 -eq 1 ]; then
+elif [ $MON_768 -eq 1 ]; then
     xfce4-panel-profiles load xfce4/panel/SW_768.tar.bz2
 fi
 

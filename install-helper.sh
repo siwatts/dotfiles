@@ -134,7 +134,7 @@ if [ $FEDORA -eq 1 ]; then
     if [ $XFCE -eq 1 ]; then
         fedora/dnf-install.sh fedora/dnf-xfce.txt
         fedora/dnf-install.sh fedora/dnf-xfce-extra-themes.txt
-    else if [ $GNOME -eq 1 ]; then
+    elif [ $GNOME -eq 1 ]; then
         fedora/dnf-install.sh fedora/dnf-gnome.txt
     fi
 fi
@@ -230,7 +230,7 @@ if [ $XFCE -eq 1 ]; then
         *)
             ;;
     esac
-else if [ $GNOME -eq 1 ]; then
+elif [ $GNOME -eq 1 ]; then
     # Home bin
     echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
     gnome/softlink-gnome-bin.sh

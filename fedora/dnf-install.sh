@@ -20,7 +20,7 @@ cat "$filelist"
 echo "---"
 echo "HINT: Respond 'e' to edit the list of packages before continuing"
 read -r -p 'Install the above packages now via dnf? (y/e/[N]): ' response
-while [ $response -eq "e" ]; do
+while [ $response == "e" ]; do
     echo "Opening in vi..."
     sleep 1s
     vi "$filelist"
