@@ -126,6 +126,15 @@ xfconf-query --create -c 'xfwm4' -p '/general/placement_ratio' --type 'int' --se
 # Default value is 20, to restore smart placement for some windows
 # xfconf-query --create -c 'xfwm4' -p '/general/placement_ratio' --type 'int' --set '20'
 
+# Workspace count & names
+# By default there are usually 4, make it 10 temporarily so we can rename all 10, then reset back to 4
+# Rename all to be "1", "2", ... instead of "Workspace 1", "Workspace 2"...
+# This means in future if we make more workspaces dynamically like 5, 6 etc. they are named correctly
+# There is a keyboard shortcut for the creation and deletion of workspaces also
+xfconf-query --create -c 'xfwm4' -p '/general/workspace_count' --type int --set 10
+xfconf-query --create -c 'xfwm4' -p '/general/workspace_names' --type string --set "1" --type string --set "2" --type string --set "3" --type string --set "4" --type string --set "5" --type string --set "6" --type string --set "7" --type string --set "8" --type string --set "9" --type string --set "10"
+xfconf-query --create -c 'xfwm4' -p '/general/workspace_count' --type int --set 4
+
 # Keyboard shortcuts
 # This did not always work before, but seems fixed as of xfce 4.18 with <Primary> used for Ctrl key
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>w' --type 'string' --set 'exo-open --launch WebBrowser'
@@ -268,6 +277,10 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Lef
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Right' --type 'string' --set 'tile_right_key'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Up' --type 'string' --set 'tile_up_key'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Down' --type 'string' --set 'tile_down_key'
+
+# Load panel config
+echo "Loading panel config file..."
+xfce4-panel-profiles load panel/SW_1440_12pt.tar.bz2
 
 echo "Configuration complete."
 
