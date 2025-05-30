@@ -3,9 +3,12 @@
 # - 20/05/2025 - SW -
 # Configure xfce settings using xfconf-query, and import terminal settings:
 
+# cd to location of script, even if soft-linked
+pushd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
 # First import xfce4-terminal config:
 # Terminalrc file is not used anymore, but it seems to work to seed initial settings
-if [ -f terminal/terminalrc ]; then
+if [ -f ../terminal/terminalrc ]; then
     if [ ! -d ~/.config/xfce4/terminal ]; then
         # Make dir.
         mkdir -p ~/.config/xfce4/terminal
@@ -15,10 +18,10 @@ if [ -f terminal/terminalrc ]; then
         # There is already a terminal config file, diff it.
         echo "User already has a terminal config file, opening in vimdiff for comparison..."
         read -r -p 'PRESS ENTER TO CONTINUE...' response
-        vim -d ~/.config/xfce4/terminal/terminalrc terminal/terminalrc
+        vim -d ~/.config/xfce4/terminal/terminalrc ../terminal/terminalrc
     else
         # None, so copy ours.
-        cp terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+        cp ../terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
         echo "Imported xfce4-terminal config file. Close all running instances to reload."
     fi
 else
@@ -30,17 +33,52 @@ BIN_PATH="/home/${USER}/bin"
 
 echo "Configuring xfce with 'xfconf-query'..."
 
-# TODO: Choose screensize by user prompt or try detecting it
+# Choose screensize + fontsize
+echo "Choose screen & font configuration:"
+echo "- [1] 1440"
+echo "- [2] 1080"
+echo "- [3] 1080 HTPC (10ft UI)"
+echo "- [4] 768"
+echo ""
+read -r -p 'Please select a configuration to continue (1-4): ' response
+MON_1440=0
+MON_1080=0
+MON_1080_HTPC=0
+MON_768=0
+case "$response" in
+    1)
+        echo "Selected: 1440"
+        MON_1440=1
+        ;;
+    2)
+        echo "Selected: 1080"
+        MON_1080=1
+        ;;
+    3)
+        echo "Selected: 1080 HTPC (10ft UI)"
+        MON_1080_HTPC=1
+        ;;
+    4)
+        echo "Selected: 768"
+        MON_768=1
+        ;;
+    *)
+        echo "Invalid choice, aborting"
+        exit 1
+        ;;
+esac
 
-# Thunar 1440 (last rough size used on 1440 screen)
-xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '1080'
-xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '810'
-xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
-
-## Thunar 1080
-#xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '870'
-#xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '620'
-#xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
+if [ $MON_1440 -eq 1 ]; then
+    # Thunar 1440 (last rough size used on 1440 screen)
+    xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '1080'
+    xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '810'
+    xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
+else
+    # Thunar 1080
+    xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '870'
+    xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '620'
+    xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
+fi
 
 # GTK theme
 #xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Adwaita'
@@ -49,41 +87,43 @@ xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --se
 #xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Greybird-dark-accessibility'
 xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --set 'elementary-xfce-dark'
 
-# Fonts 1440
-xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 12'
-xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 12'
-xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
-xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
-# Mouse
-xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
-
-## Fonts 1080
-#xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
-#xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
-#xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
-#xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
-## Mouse
-#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
-
-## Fonts 768
-#xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
-#xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 9'
-#xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
-#xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 8'
-## And make thunar slightly smaller for small screen, default is 100% and 24px icons
-#xfconf-query --create -c 'thunar' -p '/last-icon-view-zoom-level' --type 'string' --set 'THUNAR_ZOOM_LEVEL_75_PERCENT'
-#xfconf-query --create -c 'thunar' -p '/shortcuts-icon-size' --type 'string' --set 'THUNAR_ICON_SIZE_16'
-## Mouse
-#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
-
-## Fonts 1080 HTPC 10 ft UI
-#xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 14'
-#xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 14'
-## Disable subpixel RGB for 4K TVs because this config is for 1080 output resolution
-#xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'none'
-#xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 12'
-## Mouse
-#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '32'
+if [ $MON_1440 -eq 1 ]; then
+    # Fonts 1440
+    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 12'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 12'
+    xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
+    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
+    # Mouse
+    xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+else if [ $MON_1080 -eq 1 ]; then
+    # Fonts 1080
+    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
+    xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
+    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
+    # Mouse
+    xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+else if [ $MON_1080_HTPC -eq 1 ]; then
+    # Fonts 1080 HTPC 10 ft UI
+    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 14'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 14'
+    # Disable subpixel RGB for 4K TVs because this config is for 1080 output resolution
+    xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'none'
+    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 12'
+    # Mouse
+    xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '32'
+else if [ $MON_768 -eq 1 ]; then
+    # Fonts 768
+    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 9'
+    xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
+    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 8'
+    # And make thunar slightly smaller for small screen, default is 100% and 24px icons
+    xfconf-query --create -c 'thunar' -p '/last-icon-view-zoom-level' --type 'string' --set 'THUNAR_ZOOM_LEVEL_75_PERCENT'
+    xfconf-query --create -c 'thunar' -p '/shortcuts-icon-size' --type 'string' --set 'THUNAR_ICON_SIZE_16'
+    # Mouse
+    xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+fi
 
 # Xfwm4
 xfconf-query --create -c 'xfwm4' -p '/general/button_layout' --type 'string' --set 'O|HMC'
@@ -280,7 +320,16 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Dow
 
 # Load panel config
 echo "Loading panel config file..."
-xfce4-panel-profiles load panel/SW_1440_12pt.tar.bz2
+if [ $MON_1440 -eq 1 ]; then
+    xfce4-panel-profiles load xfce4/panel/SW_1440_12pt.tar.bz2
+else if [ $MON_1080 -eq 1 ]; then
+    xfce4-panel-profiles load xfce4/panel/SW_1080.tar.bz2
+else if [ $MON_1080_HTPC -eq 1 ]; then
+    xfce4-panel-profiles load xfce4/panel/SW_1080_htpc.tar.bz2
+else if [ $MON_768 -eq 1 ]; then
+    xfce4-panel-profiles load xfce4/panel/SW_768.tar.bz2
+fi
 
-echo "Configuration complete."
+echo "Xfce setings configuration complete."
+exit 0
 

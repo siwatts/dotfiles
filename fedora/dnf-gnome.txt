@@ -1,0 +1,3 @@
+gnome-tweaks
+gnome-extensions-app
+xfce4-terminal

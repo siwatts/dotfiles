@@ -1,0 +1,17 @@
+ibm-plex-fonts-all
+fira-code-fonts
+cascadia-fonts-all
+terminus-fonts
+google-droid-*
+google-go-*
+redhat-mono-fonts
+levien-inconsolata-fonts
+gnu-free-mono-fonts
+jetbrains-mono-fonts-all
+msimonson-anonymouspro-fonts
+google-roboto-mono-fonts
+rsms-inter-fonts
+dejavu-fonts-all
+google-roboto-fonts
+mozilla-fira-sans-fonts
+adobe-source-sans-pro-fonts

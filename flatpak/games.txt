@@ -1,0 +1,12 @@
+flathub
+org.gnome.Chess
+org.gnome.Aisleriot
+org.gnome.Mines
+org.gnome.Sudoku
+org.gnome.Solanum
+org.gnome.Mahjongg
+org.kde.kigo
+org.kde.kmines
+org.kde.knights
+org.kde.kpat
+com.github.k4zmu2a.spacecadetpinball

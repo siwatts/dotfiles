@@ -1,0 +1,6 @@
+flathub
+com.mattjakeman.ExtensionManager
+nl.hjdskes.gcolor3
+com.github.finefindus.eyedropper
+org.gnome.design.Contrast
+io.github.celluloid_player.Celluloid

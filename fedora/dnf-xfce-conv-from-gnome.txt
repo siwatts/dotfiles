@@ -1,0 +1,6 @@
+xfce4-whiskermenu-plugin
+xfce4-genmon-plugin
+atril
+galculator
+mousepad
+ristretto

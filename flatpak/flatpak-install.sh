@@ -23,7 +23,32 @@ if [ "$1" == "--user" ] || [ "$1" == "-u" ]; then
     shift
 fi
 
-# Install from file content
-flatpak install $user "$@" $(cat "$filelist")
+echo "Flatpaks from file '$filelist':"
+echo "---"
+cat "$filelist"
+echo "---"
+echo "HINT: Respond 'e' to edit the list of flatpaks before continuing"
+read -r -p 'Install the above packages now via flatpak? (y/e/[N]): ' response
+while [ $response -eq "e" ]; do
+    echo "Opening in vi..."
+    sleep 1s
+    vi "$filelist"
+    echo "Flatpaks from file '$filelist':"
+    echo "---"
+    cat "$filelist"
+    echo "---"
+    echo "HINT: Respond 'e' to edit the list of flatpaks before continuing"
+    read -r -p 'Install the above packages now via flatpak? (y/e/[N]): ' response
+done
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "Working..."
+        # Install from file content
+        flatpak install -y $user "$@" $(cat "$filelist") && exit 0
+        ;;
+    *)
+        echo "Skipping"
+        exit 1
+        ;;
+esac
 
-exit 0

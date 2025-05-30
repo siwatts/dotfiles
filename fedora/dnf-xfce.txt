@@ -1,0 +1,16 @@
+lightdm-gtk-greeter-settings
+xdpyinfo
+xdotool
+flameshot
+redshift-gtk
+catfish
+xscreensaver
+xscreensaver-extras
+bluebird-gtk3-theme
+bluebird-gtk2-theme
+bluebird-xfwm4-theme
+elementary-xfce-icon-theme
+numix-gtk-theme
+numix-icon-theme
+numix-icon-circle
+numix-icon-square

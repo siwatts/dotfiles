@@ -1,0 +1,8 @@
+adw-gtk3-theme
+deepin-gtk-theme
+flat-remix-gtk4-theme
+materia-gtk-theme
+human-theme-gtk
+oxygen-gtk2
+pop-gtk4-theme
+yaru-gtk4-theme

@@ -1,0 +1,6 @@
+htop
+gitk
+gimp
+remmina
+virt-manager
+neovim-qt
