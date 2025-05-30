@@ -50,10 +50,10 @@ xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --se
 xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --set 'elementary-xfce-dark'
 
 # Fonts 1440
-xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 11'
-xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 11'
+xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 12'
+xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 12'
 xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
-xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 10'
+xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
 
 ## Fonts 1080
 #xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
