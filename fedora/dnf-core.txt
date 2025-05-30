@@ -2,3 +2,4 @@ vim-enhanced
 vim-X11
 git
 tmux
+flatpak
