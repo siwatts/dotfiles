@@ -54,12 +54,16 @@ xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'N
 xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 12'
 xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
 xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
+# Mouse
+xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
 
 ## Fonts 1080
 #xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
 #xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
 #xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
 #xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
+## Mouse
+#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
 
 ## Fonts 768
 #xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
@@ -69,8 +73,17 @@ xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 
 ## And make thunar slightly smaller for small screen, default is 100% and 24px icons
 #xfconf-query --create -c 'thunar' -p '/last-icon-view-zoom-level' --type 'string' --set 'THUNAR_ZOOM_LEVEL_75_PERCENT'
 #xfconf-query --create -c 'thunar' -p '/shortcuts-icon-size' --type 'string' --set 'THUNAR_ICON_SIZE_16'
+## Mouse
+#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
 
-# TODO: Add HTPC fonts (even larger)
+## Fonts 1080 HTPC 10 ft UI
+#xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 14'
+#xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 14'
+## Disable subpixel RGB for 4K TVs because this config is for 1080 output resolution
+#xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'none'
+#xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 12'
+## Mouse
+#xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '32'
 
 # Xfwm4
 xfconf-query --create -c 'xfwm4' -p '/general/button_layout' --type 'string' --set 'O|HMC'
