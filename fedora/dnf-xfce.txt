@@ -12,5 +12,3 @@ bluebird-xfwm4-theme
 elementary-xfce-icon-theme
 numix-gtk-theme
 numix-icon-theme
-numix-icon-circle
-numix-icon-square
