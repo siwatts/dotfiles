@@ -29,7 +29,7 @@ cat "$filelist"
 echo "---"
 echo "HINT: Respond 'e' to edit the list of flatpaks before continuing"
 read -r -p 'Install the above packages now via flatpak? (y/e/[N]): ' response
-while [ $response == "e" ]; do
+while [ "$response" == "e" ]; do
     echo "Opening in vi..."
     sleep 1s
     vi "$filelist"

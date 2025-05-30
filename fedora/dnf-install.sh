@@ -20,7 +20,7 @@ cat "$filelist"
 echo "---"
 echo "HINT: Respond 'e' to edit the list of packages before continuing"
 read -r -p 'Install the above packages now via dnf? (y/e/[N]): ' response
-while [ $response == "e" ]; do
+while [ "$response" == "e" ]; do
     echo "Opening in vi..."
     sleep 1s
     vi "$filelist"
@@ -35,7 +35,7 @@ case "$response" in
     [yY][eE][sS]|[yY])
         echo "Working..."
         # Install from file content
-        sudo dnf install -y $(cat "$filelist") "$@" && exit 0
+        sudo dnf install -y --skip-unavailable $(cat "$filelist") "$@" && exit 0
         ;;
     *)
         echo "Skipping"
