@@ -130,7 +130,6 @@ if [ -f ~/.bashrc.bak ]; then
             ;;
     esac
 fi
-echo
 
 echo
 echo "Program complete"

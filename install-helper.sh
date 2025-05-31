@@ -49,7 +49,21 @@ echo "- [2] Fedora (GNOME)"
 echo "- [3] Fedora (Other)"
 echo "- [4] Silverblue (GNOME)"
 echo ""
-read -r -p 'Please select a desktop to continue (1-4): ' response
+if [ -f "fedora-xfce-1.txt" ]; then
+    echo "Found decision from previous run, loading..."
+    response=1
+elif [ -f "fedora-gnome-2.txt" ]; then
+    echo "Found decision from previous run, loading..."
+    response=2
+elif [ -f "fedora-other-3.txt" ]; then
+    echo "Found decision from previous run, loading..."
+    response=3
+elif [ -f "silverblue-gnome-4.txt" ]; then
+    echo "Found decision from previous run, loading..."
+    response=4
+else
+    read -r -p 'Please select a desktop to continue (1-4): ' response
+fi
 FEDORA=0
 SILVERBLUE=0
 XFCE=0
@@ -59,20 +73,24 @@ case "$response" in
         echo "Selected: Fedora (Xfce)"
         FEDORA=1
         XFCE=1
+        echo "User selected Fedora (Xfce) 1 on $(date)" >> fedora-xfce-1.txt
         ;;
     2)
         echo "Selected: Fedora (GNOME)"
         FEDORA=1
         GNOME=1
+        echo "User selected Fedora (GNOME) 2 on $(date)" >> fedora-gnome-2.txt
         ;;
     3)
         echo "Selected: Fedora (Other)"
         FEDORA=1
+        echo "User selected Fedora (Other) 3 on $(date)" >> fedora-other-3.txt
         ;;
     4)
         echo "Selected: Silverblue (GNOME)"
         SILVERBLUE=1
         GNOME=1
+        echo "User selected Silverblue (GNOME) 4 on $(date)" >> silverblue-gnome-4.txt
         ;;
     *)
         echo "Invalid choice, aborting"
@@ -118,7 +136,6 @@ if [ $FEDORA -eq 1 ]; then
         echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before continuing if this is a clean install, as dnf installs can fail otherwise"
         fedora/update.sh && echo "$(date)" > fedora-updated.txt && exit 0
     fi
-    echo
     echo "Installing fedora packages..."
     fedora/dnf-install.sh fedora/dnf-core.txt
     fedora/dnf-install.sh fedora/dnf-productivity.txt
@@ -183,7 +200,9 @@ case "$response" in
         flatpak/flatpak-install.sh flatpak/core.txt
         flatpak/flatpak-install.sh flatpak/games.txt
         flatpak/flatpak-install.sh flatpak/extras.txt
-        if [ $GNOME -eq 1 ]; then
+        if [ $XFCE -eq 1 ]; then
+            flatpak/flatpak-install.sh flatpak/xfce.txt
+        elif [ $GNOME -eq 1 ]; then
             flatpak/flatpak-install.sh flatpak/gnome.txt
         fi
         ;;
@@ -211,6 +230,25 @@ if [ $GNOME -eq 1 ]; then
     case "$response" in
         [yY][eE][sS]|[yY])
             sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+            ;;
+        *)
+            ;;
+    esac
+fi
+
+# Import all dotfiles and individual misc. config files
+./import-all.sh
+
+# Reboot here for xfce
+# Needs the reboot (or just restart session) so flatpak apps show up, otherwise they are left out of the menu and other config
+if [ $XFCE -eq 1 ]; then
+    echo "Reboot is required to see flatpaks in the xfce session before we can import xfce desktop / whiskermenu settings and launchers"
+    echo "A log file will be created to return to this point after reboot, simply re-run the install script"
+    read -r -p 'Reboot now? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "Part 1 completed on $(date)" > install-part-1.txt
+            sudo shutdown -r 1 && exit 0
             ;;
         *)
             ;;
@@ -280,9 +318,6 @@ elif [ $GNOME -eq 1 ]; then
             ;;
     esac
 fi
-
-# Import all remaining dotfiles (should this come earlier?)
-./import-all.sh
 
 # SSH keygen
 if [ ! -f ~/.ssh/id_ed25519.pub ]; then

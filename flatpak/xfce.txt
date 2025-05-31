@@ -1,0 +1,3 @@
+flathub
+org.gnome.clocks
+org.gnome.Calculator
