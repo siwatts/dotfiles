@@ -6,28 +6,6 @@
 # cd to location of script, even if soft-linked
 pushd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
-# First import xfce4-terminal config:
-# Terminalrc file is not used anymore, but it seems to work to seed initial settings
-if [ -f terminal/terminalrc ]; then
-    if [ ! -d ~/.config/xfce4/terminal ]; then
-        # Make dir.
-        mkdir -p ~/.config/xfce4/terminal
-    fi
-    echo "Importing xfce4-terminal config file..."
-    if [ -f ~/.config/xfce4/terminal/terminalrc ]; then
-        # There is already a terminal config file, diff it.
-        echo "User already has a terminal config file, opening in vimdiff for comparison..."
-        read -r -p 'PRESS ENTER TO CONTINUE...' response
-        vim -d ~/.config/xfce4/terminal/terminalrc terminal/terminalrc
-    else
-        # None, so copy ours.
-        cp terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
-        echo "Imported xfce4-terminal config file. Close all running instances to reload."
-    fi
-else
-    echo "Warning: Could not find dotfiles xfce4-terminal 'terminalrc' file. Skipping"
-fi
-
 # For helper script keyboard shortcuts
 BIN_PATH="/home/${USER}/bin"
 

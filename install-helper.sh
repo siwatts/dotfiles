@@ -222,7 +222,7 @@ if [ $XFCE -eq 1 ]; then
     # Home bin
     echo 'Soft-link Xfce4 scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
     xfce4/softlink-xfce-bin.sh
-    read -r -p 'Load Xfce4 settings via xfconf? (y/[N]): ' response
+    read -r -p 'Load Xfce4 settings via xfconf-query? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
             xfce4/set-xfce.sh
@@ -284,9 +284,17 @@ fi
 # Import all remaining dotfiles (should this come earlier?)
 ./import-all.sh
 
+# SSH keygen
 if [ ! -f ~/.ssh/id_ed25519.pub ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -a 100
+fi
+
+# virt-manager libvirt group
+# If it exists then assume we want to be in it
+if [ $(getent group libvirt) ]; then
+    echo "Adding user '$USER' to 'libvirt' group..."
+    sudo usermod -a -G libvirt $USER
 fi
 
 echo
@@ -319,7 +327,14 @@ fi
 if [ $FEDORA -eq 1 ]; then
     echo "- Enable RPM Fusion"
     echo "    - https://rpmfusion.org/Configuration"
-    fedora/rpmfusion.sh
+    read -r -p "Enable and install RPM Fusion repositories now? (y/[N]): " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            fedora/rpmfusion.sh
+            ;;
+        *)
+            ;;
+    esac
     echo "Multimedia codecs should be done manually, since they depend on your CPU and/or GPU architecture (Intel, AMD, Nvidea etc.):"
     echo "    - https://rpmfusion.org/Howto/Multimedia?highlight=%28%5CbCategoryHowto%5Cb%29"
     echo "    - Install mpv, vlc, smplayer"
@@ -332,6 +347,7 @@ echo "    cd ../ && rm -rf dotfiles/ && git clone git@github.com:siwatts/dotfile
 echo "- Run included './diff-all.sh' script to catch any remaining files"
 echo "- Monitor brightness scripts './monitor-controls/README.md'"
 echo "- Install Microsoft Windows fonts"
+echo "- Reboot so that flatpaks and autostart applications take effect"
 
 # Other helpful system config or prompts from import-all script
 # TODO: Add an SSH service enable and password login disable
