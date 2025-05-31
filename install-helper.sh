@@ -98,162 +98,176 @@ case "$response" in
         ;;
 esac
 
-# Passwordless sudo
-echo
-echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
-echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
-echo
-read -r -p "Run 'sudo visudo' with 'vi' now? (y/[N]): " response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        sudo EDITOR=vi visudo
-        ;;
-    *)
-        ;;
-esac
+if [ -f "install-part-1.txt" ]; then
 
-# Hostname
-echo
-read -r -p 'Set hostname of new system? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        read -p 'Enter desired hostname: ' NEWHOSTNAME
-        while [[ -z "$NEWHOSTNAME" ]]; do
-            # Also catches whitespace
-            echo "ERROR: Cannot be blank."
+    echo "Part 1 already complete, skipping..."
+
+else
+
+    echo "Part 1:"
+
+    # Passwordless sudo
+    echo
+    echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
+    echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
+    echo
+    read -r -p "Run 'sudo visudo' with 'vi' now? (y/[N]): " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            sudo EDITOR=vi visudo
+            ;;
+        *)
+            ;;
+    esac
+
+    # Hostname
+    echo
+    read -r -p 'Set hostname of new system? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
             read -p 'Enter desired hostname: ' NEWHOSTNAME
-        done
-        sudo hostnamectl set-hostname "$NEWHOSTNAME"
-        ;;
-    *)
-        ;;
-esac
-
-# Do standard linux install things first like update + reboot, install base packages
-echo
-if [ $FEDORA -eq 1 ]; then
-    if [ ! -f fedora-updated.txt ]; then
-        echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before continuing if this is a clean install, as dnf installs can fail otherwise"
-        fedora/update.sh && echo "$(date)" > fedora-updated.txt && exit 0
-    fi
-    echo "Installing fedora packages..."
-    fedora/dnf-install.sh fedora/dnf-core.txt
-    fedora/dnf-install.sh fedora/dnf-productivity.txt
-    fedora/dnf-install.sh fedora/dnf-fonts.txt
-    read -r -p 'Add hack-fonts COPR and install? (y/[N]): ' response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            sudo dnf copr enable zawertun/hack-fonts -y && sudo dnf install hack-fonts -y
+            while [[ -z "$NEWHOSTNAME" ]]; do
+                # Also catches whitespace
+                echo "ERROR: Cannot be blank."
+                read -p 'Enter desired hostname: ' NEWHOSTNAME
+            done
+            sudo hostnamectl set-hostname "$NEWHOSTNAME"
             ;;
         *)
             ;;
     esac
-    if [ $XFCE -eq 1 ]; then
-        fedora/dnf-install.sh fedora/dnf-xfce.txt
-        fedora/dnf-install.sh fedora/dnf-xfce-extra-themes.txt
-    elif [ $GNOME -eq 1 ]; then
-        fedora/dnf-install.sh fedora/dnf-gnome.txt
-    fi
-fi
-if [ $SILVERBLUE -eq 1 ]; then
-    # TODO: Clean this up, like dnf-install
-    echo "Recommended Fedora Silverblue layered packages:"
-    echo "    - git"
-    echo "    - tmux"
-    echo "    - vim-enhanced"
-    echo "    - vim-X11"
-    echo "    - gnome-tweaks"
-    echo "    - htop"
-    echo "Upgrade base system image before continuing? (Will reboot system)"
-    read -r -p "rpm-ostree upgrade and reboot? (y/[N]): " response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
-            ;;
-        *)
-            ;;
-    esac
-    read -r -p 'Install recommended packages now via rpm-ostree install and reboot? (y/[N]): ' response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            echo "Working..."
-            rpm-ostree install git tmux vim-enhanced vim-X11 gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
-            ;;
-        *)
-            ;;
-    esac
-fi
 
-# Prompt for additional packages
-
-# Flatpaks
-read -r -p '- Enable flathub (SYSTEMWIDE) source for flatpak? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        echo "Done"
-        echo "You can now browse and install flatpaks at https://flathub.org/home"
-        echo
-        if [ $SILVERBLUE -eq 1 ]; then
-            flatpak/flatpak-install.sh flatpak/silverblue-core.txt
+    # Do standard linux install things first like update + reboot, install base packages
+    echo
+    if [ $FEDORA -eq 1 ]; then
+        if [ ! -f fedora-updated.txt ]; then
+            echo "It is HIGHLY RECOMMENDED that you dnf upgrade all packages and reboot before continuing if this is a clean install, as dnf installs can fail otherwise"
+            fedora/update.sh && echo "$(date)" >> fedora-updated.txt && exit 0
         fi
-        flatpak/flatpak-install.sh flatpak/core.txt
-        flatpak/flatpak-install.sh flatpak/games.txt
-        flatpak/flatpak-install.sh flatpak/extras.txt
+        echo "Installing fedora packages..."
+        fedora/dnf-install.sh fedora/dnf-core.txt
+        fedora/dnf-install.sh fedora/dnf-productivity.txt
+        fedora/dnf-install.sh fedora/dnf-fonts.txt
+        read -r -p 'Add hack-fonts COPR and install? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                sudo dnf copr enable zawertun/hack-fonts -y && sudo dnf install hack-fonts -y
+                ;;
+            *)
+                ;;
+        esac
         if [ $XFCE -eq 1 ]; then
-            flatpak/flatpak-install.sh flatpak/xfce.txt
+            fedora/dnf-install.sh fedora/dnf-xfce.txt
+            fedora/dnf-install.sh fedora/dnf-xfce-extra-themes.txt
         elif [ $GNOME -eq 1 ]; then
-            flatpak/flatpak-install.sh flatpak/gnome.txt
+            fedora/dnf-install.sh fedora/dnf-gnome.txt
         fi
-        ;;
-    *)
-        ;;
-esac
-read -r -p '- Enable flathub (USER) source for flatpak for this user only? (y/[N]): ' response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        echo "Done"
-        echo "You can now install flatpaks for this user only with command 'flatpak install --user'"
-        flatpak/flatpak-install.sh --user flatpak/work-core.txt
-        ;;
-    *)
-        ;;
-esac
+    fi
+    if [ $SILVERBLUE -eq 1 ]; then
+        # TODO: Clean this up, like dnf-install
+        echo "Recommended Fedora Silverblue layered packages:"
+        echo "    - git"
+        echo "    - tmux"
+        echo "    - vim-enhanced"
+        echo "    - vim-X11"
+        echo "    - gnome-tweaks"
+        echo "    - htop"
+        echo "Upgrade base system image before continuing? (Will reboot system)"
+        read -r -p "rpm-ostree upgrade and reboot? (y/[N]): " response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                echo "Working..."; rpm-ostree upgrade && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
+                ;;
+            *)
+                ;;
+        esac
+        read -r -p 'Install recommended packages now via rpm-ostree install and reboot? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                echo "Working..."
+                rpm-ostree install git tmux vim-enhanced vim-X11 gnome-tweaks htop && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && ( onemintimer || sleep 1m ) && systemctl reboot && exit 0 || exit 1
+                ;;
+            *)
+                ;;
+        esac
+    fi
 
-# GNOME power saving
-if [ $GNOME -eq 1 ]; then
-    echo "Fedora GNOME is now set to suspend automatically after 15 minutes inactivity at gdm login screen,"
-    echo "irrespective of the user's power settings. This can be disabled with the command:"
-    echo "    sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0"
-    read -r -p 'Run this now, to disable automatic suspend at gdm? (y/[N]): ' response
+    # Prompt for additional packages
+
+    # Flatpaks
+    read -r -p '- Enable flathub (SYSTEMWIDE) source for flatpak? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
-            sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            echo "Done"
+            echo "You can now browse and install flatpaks at https://flathub.org/home"
+            echo
+            if [ $SILVERBLUE -eq 1 ]; then
+                flatpak/flatpak-install.sh flatpak/silverblue-core.txt
+            fi
+            flatpak/flatpak-install.sh flatpak/core.txt
+            flatpak/flatpak-install.sh flatpak/games.txt
+            flatpak/flatpak-install.sh flatpak/extras.txt
+            if [ $XFCE -eq 1 ]; then
+                flatpak/flatpak-install.sh flatpak/xfce.txt
+            elif [ $GNOME -eq 1 ]; then
+                flatpak/flatpak-install.sh flatpak/gnome.txt
+            fi
             ;;
         *)
             ;;
     esac
-fi
-
-# Import all dotfiles and individual misc. config files
-./import-all.sh
-
-# Reboot here for xfce
-# Needs the reboot (or just restart session) so flatpak apps show up, otherwise they are left out of the menu and other config
-if [ $XFCE -eq 1 ]; then
-    echo "Reboot is required to see flatpaks in the xfce session before we can import xfce desktop / whiskermenu settings and launchers"
-    echo "A log file will be created to return to this point after reboot, simply re-run the install script"
-    read -r -p 'Reboot now? (y/[N]): ' response
+    read -r -p '- Enable flathub (USER) source for flatpak for this user only? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
-            echo "Part 1 completed on $(date)" > install-part-1.txt
-            sudo shutdown -r 1 && exit 0
+            flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            echo "Done"
+            echo "You can now install flatpaks for this user only with command 'flatpak install --user'"
+            flatpak/flatpak-install.sh --user flatpak/work-core.txt
             ;;
         *)
             ;;
     esac
+
+    # GNOME power saving
+    if [ $GNOME -eq 1 ]; then
+        echo "Fedora GNOME is now set to suspend automatically after 15 minutes inactivity at gdm login screen,"
+        echo "irrespective of the user's power settings. This can be disabled with the command:"
+        echo "    sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0"
+        read -r -p 'Run this now, to disable automatic suspend at gdm? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+                ;;
+            *)
+                ;;
+        esac
+    fi
+
+    # Import all dotfiles and individual misc. config files
+    ./import-all.sh
+
+    echo "Part 1 complete"
+    echo "Part 1 completed on $(date)" > install-part-1.txt
+
+    # Reboot here for xfce
+    # TODO: What about GNOME and other DEs?
+    if [ $XFCE -eq 1 ]; then
+        echo "A reboot or reload of the user session is required for flatpaks to be on the user's path"
+        echo "This is needed to properly import desktop / whiskermenu settings and launchers"
+        echo "A log file has been created to return to this point after reboot, simply re-run the install script"
+        read -r -p 'Reboot now? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                sudo shutdown -r 1 && exit 0
+                ;;
+            *)
+                ;;
+        esac
+    fi
 fi
+
+echo "Part 2:"
 
 # Configure chosen desktop now that we have all the required programs installed
 if [ $XFCE -eq 1 ]; then
