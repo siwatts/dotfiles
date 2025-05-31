@@ -43,6 +43,7 @@ Other packages (can use dnf dragora or CLI):
 - Session & Startup
     - Disable `dnfdragora-updater`
     - Enable `Secret Storage Service (GNOME Keyring: Secret Service)`
+    - Both of these can be done by copying the files in `autostart/` to `~/.config/autostart`, this is what the GUI creates
 - Appearance
     - Change font, 'Sans 11' (for 1440 monitor)
     - 'Cantarell 11' looks better, it's what GNOME uses but they are moving away from it so it may not be around in future

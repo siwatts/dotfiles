@@ -230,6 +230,14 @@ if [ $XFCE -eq 1 ]; then
         *)
             ;;
     esac
+    echo "Import Session & Startup autostart config files..."
+    if [ ! -d ~/.config/autostart ]; then
+        echo "Creating '~/.config/autostart' directory..."
+        mkdir -p ~/.config/autostart
+    fi
+    echo -n "Copying files... "
+    cp -a xfce4/autostart/. ~/.config/autostart
+    echo "Done"
 elif [ $GNOME -eq 1 ]; then
     # Home bin
     echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
