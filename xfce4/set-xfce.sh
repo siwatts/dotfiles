@@ -46,6 +46,8 @@ case "$response" in
         ;;
 esac
 
+echo "Running xfconf-query commands..."
+
 if [ $MON_1440 -eq 1 ]; then
     # Thunar 1440 (last rough size used on 1440 screen)
     xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '1080'

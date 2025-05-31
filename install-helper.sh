@@ -247,12 +247,14 @@ else
     # Import all dotfiles and individual misc. config files
     ./import-all.sh
 
+    echo
     echo "Part 1 complete"
     echo "Part 1 completed on $(date)" > install-part-1.txt
 
     # Reboot here for xfce
     # TODO: What about GNOME and other DEs?
     if [ $XFCE -eq 1 ]; then
+        echo
         echo "A reboot or reload of the user session is required for flatpaks to be on the user's path"
         echo "This is needed to properly import desktop / whiskermenu settings and launchers"
         echo "A log file has been created to return to this point after reboot, simply re-run the install script"
@@ -267,6 +269,7 @@ else
     fi
 fi
 
+echo
 echo "Part 2:"
 
 # Configure chosen desktop now that we have all the required programs installed
