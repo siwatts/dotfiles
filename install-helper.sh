@@ -277,6 +277,8 @@ if [ $XFCE -eq 1 ]; then
     # Home bin
     echo 'Soft-link Xfce4 scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
     xfce4/softlink-xfce-bin.sh
+
+    # General xfce settings & panel
     read -r -p 'Load Xfce4 settings via xfconf-query? (y/[N]): ' response
     case "$response" in
         [yY][eE][sS]|[yY])
@@ -285,6 +287,8 @@ if [ $XFCE -eq 1 ]; then
         *)
             ;;
     esac
+
+    # Session & Startup
     echo "Import Session & Startup autostart config files..."
     if [ ! -d ~/.config/autostart ]; then
         echo "Creating '~/.config/autostart' directory..."
@@ -293,6 +297,22 @@ if [ $XFCE -eq 1 ]; then
     echo -n "Copying files... "
     cp -a xfce4/autostart/. ~/.config/autostart
     echo "Done"
+
+    # Flameshot
+    echo "Flameshot config..."
+    if [ ! -d ~/Pictures/Screenshots ]; then
+        echo "Making '~/Pictures/Screenshots' dir..."
+        mkdir -p ~/Pictures/Screenshots
+    fi
+    if [ ! -d ~/.config/flameshot ]; then
+        echo "Making '~/.config/flameshot' dir..."
+        mkdir -p ~/.config/flameshot
+    fi
+    echo "Creating flameshot config file '~/.config/flameshot/flameshot.ini'..."
+    echo "[General]" >> ~/.config/flameshot/flameshot.ini
+    echo "filenamePattern=Screenshot_%F_%H-%M-%S" >> ~/.config/flameshot/flameshot.ini
+    echo "savePath=/home/${USER}/Pictures/Screenshots" >> ~/.config/flameshot/flameshot.ini
+    echo "savePathFixed=true" >> ~/.config/flameshot/flameshot.ini
 elif [ $GNOME -eq 1 ]; then
     # Home bin
     echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
