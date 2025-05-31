@@ -308,11 +308,15 @@ if [ $XFCE -eq 1 ]; then
         echo "Making '~/.config/flameshot' dir..."
         mkdir -p ~/.config/flameshot
     fi
-    echo "Creating flameshot config file '~/.config/flameshot/flameshot.ini'..."
-    echo "[General]" >> ~/.config/flameshot/flameshot.ini
-    echo "filenamePattern=Screenshot_%F_%H-%M-%S" >> ~/.config/flameshot/flameshot.ini
-    echo "savePath=/home/${USER}/Pictures/Screenshots" >> ~/.config/flameshot/flameshot.ini
-    echo "savePathFixed=true" >> ~/.config/flameshot/flameshot.ini
+    if [ -f ~/.config/flameshot/flameshot.ini ]; then
+        echo "File '~/.config/flameshot/flameshot.ini' already exists, skipping"
+    else
+        echo "Creating flameshot config file '~/.config/flameshot/flameshot.ini'..."
+        echo "[General]" > ~/.config/flameshot/flameshot.ini
+        echo "filenamePattern=Screenshot_%F_%H-%M-%S" >> ~/.config/flameshot/flameshot.ini
+        echo "savePath=/home/${USER}/Pictures/Screenshots" >> ~/.config/flameshot/flameshot.ini
+        echo "savePathFixed=true" >> ~/.config/flameshot/flameshot.ini
+    fi
 elif [ $GNOME -eq 1 ]; then
     # Home bin
     echo 'Soft-link GNOME scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
