@@ -60,11 +60,27 @@ else
     xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
 fi
 
-# GTK theme
+## GTK theme, override below based on screen size
 #xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Adwaita'
-#xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Greybird'
-#xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Mint-Y-Dark-Blue'
-#xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Greybird-dark-accessibility'
+#xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Default'
+##
+## GTK options:
+## - Adwaita
+## - Adwaita-dark
+## - Greybird
+## - Greybird-dark
+##
+## Xfwm4 options:
+## - Default
+## - Default-hdpi
+## - Greybird
+## - Greybird-dark
+## - Greybird-accessibility
+## - Greybird-dark-accessibility
+## - Greybird-compact
+## - Mint-Y-Dark-Blue
+
+# Icons
 xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --set 'elementary-xfce-dark'
 
 if [ $MON_1440 -eq 1 ]; then
@@ -75,14 +91,20 @@ if [ $MON_1440 -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+    # GTK theme
+    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Adwaita'
+    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Default'
 elif [ $MON_1080 -eq 1 ]; then
     # Fonts 1080
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
-    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 10'
     xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+    # GTK theme
+    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Greybird'
+    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Greybird'
 elif [ $MON_1080_HTPC -eq 1 ]; then
     # Fonts 1080 HTPC 10 ft UI
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 14'
@@ -92,6 +114,9 @@ elif [ $MON_1080_HTPC -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 12'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '32'
+    # GTK theme
+    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Adwaita-dark'
+    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Default-hdpi'
 elif [ $MON_768 -eq 1 ]; then
     # Fonts 768
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
@@ -103,6 +128,9 @@ elif [ $MON_768 -eq 1 ]; then
     xfconf-query --create -c 'thunar' -p '/shortcuts-icon-size' --type 'string' --set 'THUNAR_ICON_SIZE_16'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
+    # GTK theme
+    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Greybird-dark'
+    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Greybird-dark'
 fi
 
 # Xfwm4
