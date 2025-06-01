@@ -392,6 +392,8 @@ windo diffthis
             - Other `^w` commands also work, eg. leave open terminal under code
               and move up to code buffer with `^w k`
 - `:cq`, quit with error code
+- Convert decimal to hex:
+    - `:%s/\d\+/\=printf("0x%04x", submatch(0))`
 
 ### Window splits
 
