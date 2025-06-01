@@ -243,6 +243,28 @@ sudo systemctl enable lightdm --force
 sudo systemctl disable gdm
 ```
 
+# Gaming
+
+Tested with Fedora 42, RPM Fusion Steam, game Insurgency Sandstorm
+
+- Disable xfwm4 compositing or there is very bad input lag
+    - May be an alternate compositor we can use more suited to gaming? (picom?)
+- Runs very fast and smooth but with screen tearing
+- Enabling in game vsync adds some input lag similar to Windows, not preferred solution
+- Using xrandr tearfree works to remove tearing without adding much lag. This is the preferred solution
+    - Test this with `xrandr --output DISPLAY --set TearFree on` where `DISPLAY` is the monitor name (get this with `xrandr -q`)
+- Make this permanent with the following config file (example for AMD graphics)
+
+`/etc/X11/xorg.conf.d/20-amdgpu.conf`
+```
+Section "OutputClass"
+    Identifier "AMD"
+    MatchDriver "amdgpu"
+    Driver "amdgpu"
+    Option "TearFree" "true"
+EndSection
+```
+
 # TODO
 
 - Investigate tearing
