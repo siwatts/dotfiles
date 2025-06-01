@@ -3,7 +3,9 @@ Name=Cobalt2 (iTerm Wes Bos)
 ColorForeground=#ffffff
 ColorBackground=#173448
 ColorCursor=#f4d300
-ColorSelection=#1f4562
+ColorCursorForeground=#173448
+ColorCursorUseDefault=FALSE
+ColorSelectionBackground=#1f4562
 ColorSelectionUseDefault=FALSE
 ColorPalette=#000000;#ff2600;#3ddf2b;#f4d300;#1478db;#ff2c70;#00c5c7;#c7c7c7;#686868;#f92a1c;#43d426;#f1d000;#6871ff;#ff77ff;#79e8fb;#ffffff
 
