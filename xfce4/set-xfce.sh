@@ -155,6 +155,24 @@ xfconf-query --create -c 'thunar' -p '/misc-single-click' --type 'bool' --set 'f
 xfconf-query --create -c 'thunar' -p '/misc-show-delete-action' --type 'bool' --set 'true'
 xfconf-query --create -c 'thunar' -p '/misc-thumbnail-mode' --type 'string' --set 'THUNAR_THUMBNAIL_MODE_ALWAYS'
 
+# Ristretto Image Viewer
+xfconf-query --create -c 'ristretto' -p '/image/wrap' --type 'bool' --set 'false'
+xfconf-query --create -c 'ristretto' -p '/window/bgcolor-override' --type 'bool' --set 'true'
+xfconf-query --create -c 'ristretto' -p '/window/bgcolor' --type 'double' --set '0.133333' --type 'double' --set '0.133333' --type 'double' --set '0.133333' --type 'double' --set '1.000000'
+
+# Mousepad (uses gsettings instead of xfconf-query)
+if command -v gsettings &> /dev/null ; then
+    gsettings set org.xfce.mousepad.preferences.view color-scheme 'oblivion'
+    gsettings set org.xfce.mousepad.preferences.view show-line-numbers true
+    gsettings set org.xfce.mousepad.preferences.view word-wrap true
+    gsettings set org.xfce.mousepad.preferences.view auto-indent true
+    gsettings set org.xfce.mousepad.preferences.view tab-width 4
+    gsettings set org.xfce.mousepad.preferences.view insert-spaces true
+    gsettings set org.xfce.mousepad.preferences.view use-default-monospace-font true
+else
+    echo "WARN: Do not see 'gsettings', unable to configure mousepad"
+fi
+
 # Screen Power
 xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/blank-on-ac' --type 'int' --set '30'
 xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/dpms-on-ac-sleep' --type 'uint' --set '31'
