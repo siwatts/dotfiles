@@ -181,6 +181,23 @@ vim.keymap.set('i', '<C-k>', vim.lsp.buf.hover, { desc = "Show hover information
 
 --vim.g.mapleader = ' '  -- Set <Leader> to space
 
+-- Intellisense
+-- NOTE: <C-x><C-o> by default, this should work also, but add some extras here
+-- Map Ctrl-Space in insert mode to trigger omnifunc (intellisense)
+vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
+
+-- -- Intellisense example nvim-cmp config snippet in Lua, ChatGPT. Requires cmp
+-- local cmp = require'cmp'
+-- 
+-- cmp.setup({
+--   mapping = {
+--     ['<C-Space>'] = cmp.mapping.complete(),  -- Trigger completion manually
+--     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+--     ['<Tab>'] = cmp.mapping.select_next_item(),
+--     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+--   },
+-- })
+
 EOF
 
 " -- Neovim colorscheme fixes as of v0.10.2 --
@@ -209,6 +226,12 @@ autocmd ColorScheme gruvbox-material hi Comment gui=NONE
 autocmd ColorScheme twilight hi Type gui=NONE
 autocmd ColorScheme molokai,molokayo hi Storageclass gui=NONE | hi Special gui=NONE | hi Tag gui=NONE
 autocmd ColorScheme monokai hi @keyword gui=NONE | hi @function gui=NONE
+autocmd ColorScheme kanagawa hi Comment gui=NONE
+autocmd ColorScheme zenburn hi Comment gui=NONE
+autocmd ColorScheme solarized8,selenized,selenized_bw hi Comment gui=NONE
+autocmd ColorScheme cobalt2 hi Comment gui=NONE
+autocmd ColorScheme onedark,everforest hi Comment gui=NONE
+autocmd ColorScheme tokyonight-moon,tokyonight-storm,tokyonight-night hi Comment gui=NONE
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
