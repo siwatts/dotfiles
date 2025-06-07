@@ -588,7 +588,7 @@ autocmd ColorScheme molokai hi Comment guifg=#a09080 | hi IncSearch cterm=revers
 " Default comment is #75715E, same as molokai.vim
 if has("nvim")
     " Nvim is a different theme entirely sourced via Plug in ~/.config/nvim/init.vim
-    autocmd ColorScheme monokai hi Function gui=NONE | hi Keyword gui=NONE | hi Include gui=NONE | hi SpecialComment gui=NONE
+    autocmd ColorScheme monokai hi Function gui=NONE | hi Keyword gui=NONE | hi Include gui=NONE | hi SpecialComment gui=NONE | hi @comment gui=NONE
 else
     " Original vim monokai.vim
     autocmd ColorScheme monokai hi Comment guifg=#898470 | hi IncSearch cterm=reverse ctermbg=NONE gui=reverse guibg=NONE ctermfg=154 guifg=#A6E22E | hi Search ctermfg=16 guifg=#000000 ctermbg=208 guibg=#FD971F
