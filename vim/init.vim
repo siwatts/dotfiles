@@ -63,6 +63,8 @@ Plug 'folke/tokyonight.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'marko-cerovac/material.nvim'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'ramojus/mellifluous.nvim'
+Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
 " For jellybeans
 Plug 'rktjmp/lush.nvim'
 Plug 'metalelf0/jellybeans-nvim'
@@ -210,6 +212,7 @@ autocmd ColorScheme simple-green,simple-orange hi @variable guifg=NONE
 " Other broken syntax
 autocmd ColorScheme vilight hi! link Function Identifier
 autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
+autocmd ColorScheme vilight,twilight256,wombat256mod hi! link Operator Statement
 " Remove italics
 autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
 autocmd ColorScheme twilight,vilight hi Comment gui=NONE
