@@ -231,6 +231,20 @@ Alternative:
 
 It is also possible to make this permanent using `localectl` instead e.g. **for US keyboard layout** `localectl set-x11-keymap us "" "" caps:swapescape`, investigate how this would work for us. (This writes a config file in `/etc/X11/xorg.conf.d/`, other options available here `/usr/share/X11/xkb/rules/base.lst`)
 
+# Workspace Switching
+
+Keyboard shortcuts for workspace switching are in Window Manager, but can only accept 1 value and certain key combinations like `Super+1` do not work
+
+We can switch using `xdotool` and overload with multiple shortcuts using commands like `xdotool set_desktop 0` for 1st workspace and so on
+
+Some ideas for workspace N:
+
+- `Super+N`
+- `Super+KP_N`
+- `Ctrl+Alt+1`
+- `Ctrl+Alt+KP_1`
+    - Requires unbind from Window Manager, as this is already "send window to workspace 1", replace it with `Shift+Alt+KP_1`
+
 # Misc
 
 Fedora 41 -> 42 GNOME removed X11, thus also removing ability for GNOME gdm login screen to launch an Xfce session if this was added afterwards to a Workstation install
