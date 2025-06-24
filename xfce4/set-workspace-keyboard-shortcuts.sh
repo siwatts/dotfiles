@@ -19,6 +19,8 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>7' --type 'string' --set 'xdotool set_desktop 6'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>8' --type 'string' --set 'xdotool set_desktop 7'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>9' --type 'string' --set 'xdotool set_desktop 8'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>Page_Down' --type 'string' --set 'xdotool set_desktop --relative 1'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>Page_Up' --type 'string' --set 'xdotool set_desktop --relative -- -1'
 
 echo "Shortcut settings complete."
 exit 0
