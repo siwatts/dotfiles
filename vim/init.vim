@@ -200,6 +200,11 @@ vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
 --   },
 -- })
 
+require("rose-pine").setup({
+    variant = "auto", -- auto, main, moon, or dawn
+    dark_variant = "moon", -- main, moon, or dawn
+})
+
 EOF
 
 " -- Neovim colorscheme fixes as of v0.10.2 --
@@ -213,6 +218,11 @@ autocmd ColorScheme simple-green,simple-orange hi @variable guifg=NONE
 autocmd ColorScheme vilight hi! link Function Identifier
 autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifier
 autocmd ColorScheme vilight,twilight256,wombat256mod hi! link Operator Statement
+" Remove LSP variable highlights for legacy vim themes, they do not
+" distinguish class member properties vs method param vs local variables and
+" every token becomes emphasised a variable. unokai,
+autocmd ColorScheme darkblue,desert,evening,slate,retrobox,wildcharm,sorbet,torte,zaibatsu,vim,habamax,blue hi! link @lsp.type.variable Normal
+autocmd ColorScheme nord hi! link @lsp.type.variable Normal
 " Remove italics
 autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
 autocmd ColorScheme twilight,vilight hi Comment gui=NONE
