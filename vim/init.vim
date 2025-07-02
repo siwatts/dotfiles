@@ -220,9 +220,10 @@ autocmd ColorScheme lucius hi! link String Constant | hi! link Function Identifi
 autocmd ColorScheme vilight,twilight256,wombat256mod hi! link Operator Statement
 " Remove LSP variable highlights for legacy vim themes, they do not
 " distinguish class member properties vs method param vs local variables and
-" every token becomes emphasised a variable. unokai,
-autocmd ColorScheme darkblue,desert,evening,slate,retrobox,wildcharm,sorbet,torte,zaibatsu,vim,habamax,blue hi! link @lsp.type.variable Normal
+" every token becomes emphasised as a variable.
+autocmd ColorScheme unokai,darkblue,desert,evening,slate,retrobox,wildcharm,sorbet,torte,zaibatsu,vim,habamax,blue hi! link @lsp.type.variable Normal
 autocmd ColorScheme nord hi! link @lsp.type.variable Normal
+autocmd ColorScheme morning,zellner,peachpuff,delek,shine hi! link @lsp.type.variable Normal
 " Remove italics
 autocmd ColorScheme jellybeans-nvim hi Type gui=NONE
 autocmd ColorScheme twilight,vilight hi Comment gui=NONE
