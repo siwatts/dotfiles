@@ -446,7 +446,8 @@ autocmd ColorScheme desert hi Pmenu      ctermfg=231 ctermbg=240 guifg=#ffffff g
             \ hi PmenuSel   ctermfg=232 ctermbg=254 guifg=#101010 guibg=#eeeeee |
             \ hi PmenuSbar  ctermbg=248 guibg=Grey |
             \ hi PmenuThumb ctermbg=15 guibg=White |
-            \ hi Identifier gui=NONE cterm=NONE
+            \ hi Identifier gui=NONE cterm=NONE |
+            \ hi Normal guifg=#f0f0f0
 
 " Material:
 " Original comment, guifg=#5D818E
@@ -463,7 +464,8 @@ autocmd ColorScheme twilight hi NonText guibg=NONE gui=bold
 autocmd ColorScheme evening hi NonText guibg=NONE
 autocmd ColorScheme twilight256 hi NonText guifg=#505050 gui=NONE
 
-autocmd ColorScheme evening hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE | hi Identifier gui=NONE cterm=NONE
+autocmd ColorScheme evening hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE | hi Identifier gui=NONE cterm=NONE |
+            \ hi Normal guifg=#f0f0f0
 " Neovim 'legacy' vim theme is like darkblue256
 autocmd ColorScheme vim hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE
 
@@ -490,7 +492,7 @@ autocmd ColorScheme ir_dark,ir_blue,ir_black hi NonText guifg=#605550 | hi Searc
 " TODO: Pick a NonText colour to use for every theme?
 " Like #606090 used for cobalt2, or the other blue/grey colours in
 " this file. Desert override also good
-autocmd ColorScheme slate hi Comment guifg=#8a8a8a ctermfg=245 | hi NonText guifg=#606060 guibg=NONE
+autocmd ColorScheme slate hi Normal guifg=#f0f0f0 | hi Comment guifg=#8a8a8a ctermfg=245 | hi NonText guifg=#606060 guibg=NONE
 autocmd ColorScheme Mustang hi NonText guifg=#606060 guibg=NONE
 
 " Cobalt2 fixing Search highlight, IncSearch already green
@@ -524,7 +526,8 @@ if exists("use_dark_theme") && !use_dark_theme
 endif
 
 " Morning
-autocmd ColorScheme morning hi Normal guibg=#eeeeee | hi NonText guibg=gray90
+" NonText guifg=#afafd7, from lucius
+autocmd ColorScheme morning hi Normal guibg=#eeeeee | hi NonText guifg=#afafd7 guibg=#eeeeee
 
 " Dracula:
 let g:dracula_italic=0
@@ -571,8 +574,8 @@ let g:selenized_green_keywords=1
 let g:molokai_original=1
 let g:rehash256=1
 " Default comment is #75715E
-" VS Code - #898470
-" Code (mine) - #a09580, (a09080, 908070 also good)
+" VS Code - **#898470**
+" Code (mine) - #a09580, (**a09080**, 908070 also good) [** = used for many years]
 " = Search and IncSearch direct from Dracula =
 " hi Search cterm=reverse ctermfg=84 ctermbg=NONE gui=reverse guifg=#50FA7B guibg=NONE
 " hi IncSearch ctermfg=236 ctermbg=215 guifg=#282A36 guibg=#FFB86C cterm=NONE gui=NONE
@@ -738,20 +741,16 @@ endif
 " Need extra conditions here to check we are actually truecolor capable, in case we fall back on older vim like CentOS 7. Rather than just if it's desired
 if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('nvim') && v:version >= 800) || has('nvim') ) && (has("termguicolors") && &t_Co >= 256) )
     " ==================== GUI Light ====================
-    let g:schemes_light = [ 'default',
+    let g:schemes_light = [ 'morning',
                 \ 'vim',
-                \ 'morning',
+                \ 'default',
                 \ 'lucius',
                 \ 'hybrid',
                 \ 'zellner',
                 \ 'lunaperche',
-                \ 'gruvbox',
+                \ 'kanagawa',
                 \ 'retrobox',
-                \ 'gruvbox-material',
-                \ 'everforest',
-                \ 'solarized8',
-                \ 'selenized',
-                \ 'selenized_bw',
+                \ 'gruvbox',
                 \ 'peachpuff',
                 \ 'delek',
                 \ 'shine',
@@ -759,7 +758,11 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'hybrid-bright',
                 \ 'catppuccin-latte',
                 \ 'tokyonight-day',
-                \ 'kanagawa',
+                \ 'gruvbox-material',
+                \ 'everforest',
+                \ 'solarized8',
+                \ 'selenized',
+                \ 'selenized_bw',
                 \ 'summerfruit256',
                 \ 'default-enhanced',
                 \ 'onedark',
@@ -778,56 +781,58 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
-                \ 'twilight',
                 \ 'wombat256mod',
                 \ 'darkblue',
+                \ 'twilight',
+                \ 'twilight256',
                 \ 'desert',
                 \ 'evening',
-                \ 'slate',
+                \ 'vim',
+                \ 'default',
+                \ 'retrobox',
+                \ 'gruvbox',
+                \ 'kanagawa',
+                \ 'dracula',
+                \ 'dracula-soft',
+                \ 'lucius',
+                \ 'zenburn',
                 \ 'unokai',
                 \ 'molokai',
                 \ 'monokai',
                 \ 'sonokai',
-                \ 'retrobox',
-                \ 'gruvbox',
-                \ 'wildcharm',
-                \ 'lunaperche',
-                \ 'dracula',
-                \ 'dracula-soft',
+                \ 'rose-pine',
                 \ 'hybrid',
                 \ 'vilight',
-                \ 'twilight256',
-                \ 'quiet',
-                \ 'nofrils-dark',
-                \ 'sorbet',
-                \ 'habamax',
-                \ 'zaibatsu',
-                \ 'default',
-                \ 'vim',
+                \ 'slate',
                 \ 'torte',
-                \ 'elflord',
-                \ 'lucius',
-                \ 'solarized8',
-                \ 'selenized',
-                \ 'selenized_bw',
-                \ 'zenburn',
-                \ 'kanagawa',
-                \ 'onedark',
-                \ 'one',
-                \ 'gruvbox-material',
-                \ 'everforest',
-                \ 'Tomorrow-Night',
-                \ 'Tomorrow-Night-Eighties',
-                \ 'Tomorrow-Night-Blue',
-                \ 'cobalt2',
-                \ 'iceberg',
-                \ 'nord',
+                \ 'wildcharm',
+                \ 'lunaperche',
+                \ 'sorbet',
                 \ 'catppuccin-macchiato',
                 \ 'catppuccin-frappe',
                 \ 'catppuccin-mocha',
                 \ 'tokyonight-moon',
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
+                \ 'jellybeans-bright',
+                \ 'habamax',
+                \ 'zaibatsu',
+                \ 'elflord',
+                \ 'quiet',
+                \ 'nofrils-dark',
+                \ 'solarized8',
+                \ 'selenized',
+                \ 'selenized_bw',
+                \ 'Tomorrow-Night',
+                \ 'Tomorrow-Night-Eighties',
+                \ 'Tomorrow-Night-Blue',
+                \ 'cobalt2',
+                \ 'onedark',
+                \ 'one',
+                \ 'gruvbox-material',
+                \ 'everforest',
+                \ 'iceberg',
+                \ 'nord',
                 \ 'simple-green',
                 \ 'simple-orange',
                 \ 'molokayo',
@@ -836,7 +841,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'vim-material',
                 \ 'triplejelly',
                 \ 'night-owl',
-                \ 'jellybeans-bright',
+                \ 'nightfly',
+                \ 'darcula',
                 \ 'koehler',
                 \ 'murphy',
                 \ 'ron',
@@ -864,8 +870,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    "let g:schemes_dark = g:schemes_dark[0:53]
-    let g:schemes_dark = g:schemes_dark[0:35]
+    let g:schemes_dark = g:schemes_dark[0:29]
+    "let g:schemes_dark = g:schemes_dark[0:25]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
@@ -879,9 +885,18 @@ else
     let g:schemes_random = g:schemes_light
 endif
 
+if has("nvim") || v:version > 800
+    " We can make use of srand() and rand for RandomiseTheme
+    let g:seed = srand()
+endif
+
 function! RandomiseTheme(schemes)
-    let seconds = str2nr(strftime('%S'))
-    call RandomiseThemeByNumber(seconds, a:schemes)
+    if has("nvim") || v:version > 800
+        let randomnum = rand(g:seed) % 100
+    else
+        let randomnum = str2nr(strftime('%S'))
+    endif
+    call RandomiseThemeByNumber(randomnum, a:schemes)
 endfunction
 
 function! RandomiseThemeByDay(schemes)
@@ -924,10 +939,10 @@ else
 endif
 noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
-"noremap <Leader><F7> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
+noremap <Leader><F9> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 "noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
 " Daily light/dark
-noremap <Leader><F9> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
+"noremap <Leader><F9> :set background=dark<CR>:call RandomiseThemeByDay(g:schemes_dark)<CR>
 noremap <Leader><F10> :set background=light<CR>:call RandomiseThemeByDay(g:schemes_light)<CR>
 
 noremap <F12> :set notermguicolors<CR>:set t_Co=256<CR>:set bg=dark<CR>:color default-enhanced<CR>
@@ -1065,10 +1080,10 @@ noremap <Leader>Y "+y$
 noremap <Leader>p "+p
 noremap <Leader>P "+P
 
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa<CR>
-nnoremap <Leader>x :wq<CR>
+"nnoremap <Leader>w :w<CR>
+"nnoremap <Leader>q :q<CR>
+"nnoremap <Leader>Q :qa<CR>
+"nnoremap <Leader>x :wq<CR>
 
 nnoremap <Leader>s :Vex<CR>
 nnoremap <Leader>v :vnew<CR>
@@ -1218,13 +1233,14 @@ nnoremap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 "nnoremap <F5> :w<CR>:!./%<CR>
 autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.out<CR>
 " C++23: -std=c++2b
-autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -std=c++2b -Wall && ./a.out<CR>
+autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -std=c++23 -Wall && ./a.out<CR>
 autocmd FileType python,bash,sh nnoremap <buffer> <F5> :w<CR>:!./%<CR>
+autocmd FileType cs nnoremap <buffer> <F5> :w<CR>:!dotnet run<CR>
 
 " Convenient brace insertion map for C/C++
 " TODO: Or remap the single brace, to match IDE behaviour, and add <Leader>{ to insert a single {
-autocmd FileType c,cpp inoremap <buffer> {{ {<CR>}<Esc>O
-autocmd FileType c,cpp inoremap <buffer> {<CR> {<CR>}<Esc>O
+autocmd FileType c,cpp,cs inoremap <buffer> {{ {<CR>}<Esc>O
+autocmd FileType c,cpp,cs inoremap <buffer> {<CR> {<CR>}<Esc>O
 
 " Code folding for known languages
 "autocmd FileType c,cpp,python,bash,sh setlocal foldmethod=syntax | setlocal foldcolumn=2 | normal zR
