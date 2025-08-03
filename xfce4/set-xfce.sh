@@ -259,6 +259,8 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>
 
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketleft' --type 'string' --set 'pactl set-sink-volume 0 -5%'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketright' --type 'string' --set 'pactl set-sink-volume 0 +5%'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>braceleft' --type 'string' --set 'pactl set-sink-volume 0 -1%'
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>braceright' --type 'string' --set 'pactl set-sink-volume 0 +1%'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>BackSpace' --type 'string' --set 'pactl set-sink-mute 0 toggle'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>d' --type 'string' --set 'xfdashboard'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>grave' --type 'string' --set 'xfce4-terminal --drop-down'
