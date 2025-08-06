@@ -349,7 +349,7 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Dow
 # Load panel config
 echo "Loading panel config file..."
 if [ $MON_1440 -eq 1 ]; then
-    xfce4-panel-profiles load panel/SW_1440_12pt.tar.bz2
+    xfce4-panel-profiles load panel/SW_1440.tar.bz2
 elif [ $MON_1080 -eq 1 ]; then
     xfce4-panel-profiles load panel/SW_1080.tar.bz2
 elif [ $MON_1080_HTPC -eq 1 ]; then
