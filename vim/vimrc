@@ -470,17 +470,22 @@ autocmd ColorScheme evening hi Statement cterm=NONE gui=NONE | hi Type cterm=NON
 autocmd ColorScheme vim hi Statement cterm=NONE gui=NONE | hi Type cterm=NONE gui=NONE
 
 " Old fixes from dotfiles
-" Jellybeans Normal fg: guifg=#e8e8d3
+" Jellybeans Normal fg: guifg=#e8e8d3, dimmer #d8d8c3***, dimmer #d0d0c3, less yellow #d0d0c8**, maintain diff. #d0d0bb, brighter #e0e0d0****, (prior #e0e0e0)
 " Alt const. from wombat256mod #e5786d
-autocmd ColorScheme twilight256 hi Normal guifg=#e0e0e0 guibg=#212121 ctermfg=188 ctermbg=234 |
+" Alt function from vilight guifg=#9b859d (prior guifg=#a999ac)
+" Try String and Identifier from twilight.vim (add here if removed:)
+            "\ hi Comment ctermfg=245 guifg=#949494 |
+autocmd ColorScheme twilight256 hi Normal guifg=#e8e8d3 guibg=#212121 ctermfg=188 ctermbg=234 |
             \ hi Function ctermfg=139 guifg=#a999ac |
-            \ hi Comment ctermfg=245 guifg=#949494 |
+            \ hi! link LineNr Comment |
             \ hi Constant ctermfg=173 guifg=#d08356 |
             \ hi FoldColumn ctermfg=180 ctermbg=238 guifg=#d2b48c guibg=#4d4d4d |
             \ hi Folded ctermfg=220 ctermbg=238 guifg=#ffd700 guibg=#4d4d4d |
             \ hi Statement gui=NONE cterm=NONE |
             \ hi Type guifg=#e3d796 gui=NONE cterm=NONE |
-            \ hi MatchParen cterm=reverse ctermbg=16 gui=reverse guibg=#000000
+            \ hi MatchParen cterm=bold gui=bold guifg=#ffffff guibg=#556779 |
+            \ hi String guifg=#a2a96f |
+            \ hi Identifier guifg=#8a9597
 
 " Search from jellybeans
 autocmd ColorScheme ir_dark,ir_blue,ir_black hi NonText guifg=#605550 | hi Search cterm=underline ctermfg=0 ctermbg=16 gui=underline guifg=#f0a0c0 guibg=#302028
