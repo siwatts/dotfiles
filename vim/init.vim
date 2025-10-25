@@ -250,12 +250,11 @@ autocmd ColorScheme tokyonight-moon,tokyonight-storm,tokyonight-night hi Comment
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
 " changes, so setting them in .vimrc doesn't work even if we fix them later
-"colorscheme dracula
-"colorscheme catppuccin-macchiato
-"colorscheme sonokai
-colorscheme jellybeans-nvim
-
-" Light theme override
-"colorscheme vim
-"colorscheme gruvbox
+if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
+    " Dark theme
+    colorscheme jellybeans
+else
+    " Light theme
+    colorscheme lucius
+endif
 
