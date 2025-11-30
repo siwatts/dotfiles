@@ -46,8 +46,9 @@ echo "==========================================================================
 echo "Supported desktops:"
 echo "- [1] Fedora (Xfce)"
 echo "- [2] Fedora (GNOME)"
-echo "- [3] Fedora (Other)"
-echo "- [4] Silverblue (GNOME)"
+echo "- [3] Fedora (KDE)"
+echo "- [4] Fedora (Other)"
+echo "- [5] Silverblue (GNOME)"
 echo ""
 if [ -f "fedora-xfce-1.txt" ]; then
     echo "Found decision from previous run, loading..."
@@ -55,12 +56,15 @@ if [ -f "fedora-xfce-1.txt" ]; then
 elif [ -f "fedora-gnome-2.txt" ]; then
     echo "Found decision from previous run, loading..."
     response=2
-elif [ -f "fedora-other-3.txt" ]; then
+elif [ -f "fedora-kde-3.txt" ]; then
     echo "Found decision from previous run, loading..."
     response=3
-elif [ -f "silverblue-gnome-4.txt" ]; then
+elif [ -f "fedora-other-4.txt" ]; then
     echo "Found decision from previous run, loading..."
     response=4
+elif [ -f "silverblue-gnome-5.txt" ]; then
+    echo "Found decision from previous run, loading..."
+    response=5
 else
     read -r -p 'Please select a desktop to continue (1-4): ' response
 fi
@@ -68,6 +72,7 @@ FEDORA=0
 SILVERBLUE=0
 XFCE=0
 GNOME=0
+KDE=0
 case "$response" in
     1)
         echo "Selected: Fedora (Xfce)"
@@ -82,15 +87,21 @@ case "$response" in
         echo "User selected Fedora (GNOME) 2 on $(date)" >> fedora-gnome-2.txt
         ;;
     3)
+        echo "Selected: Fedora (KDE)"
+        FEDORA=1
+        KDE=1
+        echo "User selected Fedora (KDE) 3 on $(date)" >> fedora-kde-3.txt
+        ;;
+    3)
         echo "Selected: Fedora (Other)"
         FEDORA=1
-        echo "User selected Fedora (Other) 3 on $(date)" >> fedora-other-3.txt
+        echo "User selected Fedora (Other) 4 on $(date)" >> fedora-other-4.txt
         ;;
     4)
         echo "Selected: Silverblue (GNOME)"
         SILVERBLUE=1
         GNOME=1
-        echo "User selected Silverblue (GNOME) 4 on $(date)" >> silverblue-gnome-4.txt
+        echo "User selected Silverblue (GNOME) 5 on $(date)" >> silverblue-gnome-5.txt
         ;;
     *)
         echo "Invalid choice, aborting"
@@ -106,36 +117,38 @@ else
 
     echo "Part 1:"
 
-    # Passwordless sudo
-    echo
-    echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
-    echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
-    echo
-    read -r -p "Run 'sudo visudo' with 'vi' now? (y/[N]): " response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            sudo EDITOR=vi visudo
-            ;;
-        *)
-            ;;
-    esac
+    if [ ! -f fedora-updated.txt ]; then
+        # Passwordless sudo
+        echo
+        echo "Hint: Disable sudo password prompts with 'sudo visudo' and line"
+        echo "    %wheel        ALL=(ALL)       NOPASSWD: ALL"
+        echo
+        read -r -p "Run 'sudo visudo' with 'vi' now? (y/[N]): " response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                sudo EDITOR=vi visudo
+                ;;
+            *)
+                ;;
+        esac
 
-    # Hostname
-    echo
-    read -r -p 'Set hostname of new system? (y/[N]): ' response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            read -p 'Enter desired hostname: ' NEWHOSTNAME
-            while [[ -z "$NEWHOSTNAME" ]]; do
-                # Also catches whitespace
-                echo "ERROR: Cannot be blank."
+        # Hostname
+        echo
+        read -r -p 'Set hostname of new system? (y/[N]): ' response
+        case "$response" in
+            [yY][eE][sS]|[yY])
                 read -p 'Enter desired hostname: ' NEWHOSTNAME
-            done
-            sudo hostnamectl set-hostname "$NEWHOSTNAME"
-            ;;
-        *)
-            ;;
-    esac
+                while [[ -z "$NEWHOSTNAME" ]]; do
+                    # Also catches whitespace
+                    echo "ERROR: Cannot be blank."
+                    read -p 'Enter desired hostname: ' NEWHOSTNAME
+                done
+                sudo hostnamectl set-hostname "$NEWHOSTNAME"
+                ;;
+            *)
+                ;;
+        esac
+    fi
 
     # Do standard linux install things first like update + reboot, install base packages
     echo
@@ -161,6 +174,8 @@ else
             fedora/dnf-install.sh fedora/dnf-xfce-extra-themes.txt
         elif [ $GNOME -eq 1 ]; then
             fedora/dnf-install.sh fedora/dnf-gnome.txt
+        elif [ $KDE -eq 1 ]; then
+            fedora/dnf-install.sh fedora/dnf-kde.txt
         fi
     fi
     if [ $SILVERBLUE -eq 1 ]; then

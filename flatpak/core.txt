@@ -13,3 +13,4 @@ com.github.iwalton3.jellyfin-media-player
 com.chatterino.chatterino/x86_64/stable
 io.missioncenter.MissionCenter
 org.zealdocs.Zeal
+org.gnome.Solanum
