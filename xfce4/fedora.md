@@ -306,6 +306,14 @@ xfconf-query --create -c 'xfwm4' -p '/general/activate_action' --type 'string' -
 
 There are also `--type 'int'` and `--type 'bool'`, as well as a list?
 
+## Other xfconf-query
+
+List all properties for a channel
+- `xfconf-query -c xfwm4 -l`
+
+Dump all properties & their values (can compare before and after a change or just use it to read values)
+- `xfconf-query -c xfwm4 -lv`
+
 # TODO
 
 - Investigate tearing
