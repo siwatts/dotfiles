@@ -279,6 +279,33 @@ Section "OutputClass"
 EndSection
 ```
 
+# Scripting Settings
+
+Use `xfconf-query`
+
+There are programs to generate these commands but it's possible to monitor a single channel using something like `xfconf-query -c xfwm4 -m`. Then change the appropriate setting (an xfwm4 related one in this case) and the setting name will be shown. You can then query to find the setting value
+
+E.g. monitoring the channel `xfwm4`:
+
+```
+$ xfconf-query -c xfwm4 -m
+Start monitoring channel "xfwm4":
+
+set: /general/activate_action
+```
+We now query the property `/general/activate_action` to find its value
+
+```
+$ xfconf-query -c 'xfwm4' -p '/general/activate_action'
+switch
+```
+Allowing us to set it on any xfce system with the command
+```
+xfconf-query --create -c 'xfwm4' -p '/general/activate_action' --type 'string' --set 'switch'
+```
+
+There are also `--type 'int'` and `--type 'bool'`, as well as a list?
+
 # TODO
 
 - Investigate tearing

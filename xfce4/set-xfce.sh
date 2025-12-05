@@ -139,6 +139,8 @@ xfconf-query --create -c 'xfwm4' -p '/general/wrap_windows' --type 'bool' --set 
 xfconf-query --create -c 'xfwm4' -p '/general/cycle_tabwin_mode' --type 'int' --set '1'
 xfconf-query --create -c 'xfwm4' -p '/general/cycle_draw_frame' --type 'bool' --set 'false'
 xfconf-query --create -c 'xfwm4' -p '/general/show_dock_shadow' --type 'bool' --set 'false'
+# When window gets focus, switch to workspace containing it instead of pulling it to this workspace
+xfconf-query --create -c 'xfwm4' -p '/general/activate_action' --type 'string' --set 'switch'
 
 # Notifications
 xfconf-query --create -c 'xfce4-notifyd' -p '/date-time-custom-format' --type 'string' --set '%a %H:%M:%S'
