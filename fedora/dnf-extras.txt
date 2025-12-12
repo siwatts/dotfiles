@@ -1,0 +1,7 @@
+fuse-sshfs
+lshw
+iotop
+unrar
+p7zip-plugins
+bchunk
+stress

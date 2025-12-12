@@ -160,6 +160,8 @@ else
         echo "Installing fedora packages..."
         fedora/dnf-install.sh fedora/dnf-core.txt
         fedora/dnf-install.sh fedora/dnf-productivity.txt
+        fedora/dnf-install.sh fedora/dnf-coding.txt
+        fedora/dnf-install.sh fedora/dnf-extras.txt
         fedora/dnf-install.sh fedora/dnf-fonts.txt
         read -r -p 'Add hack-fonts COPR and install? (y/[N]): ' response
         case "$response" in

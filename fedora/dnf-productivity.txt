@@ -3,3 +3,4 @@ gimp
 remmina
 virt-manager
 neovim-qt
+geany

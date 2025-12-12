@@ -86,18 +86,18 @@ xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --s
 if [ $MON_1440 -eq 1 ]; then
     # Fonts 1440
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 12'
-    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 12'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 13'
     xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 11'
     # Mouse
     xfconf-query --create -c 'xsettings' -p '/Gtk/CursorThemeSize' --type 'int' --set '24'
     # GTK theme
-    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Adwaita'
-    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Default'
+    xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Greybird'
+    xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Mint-Y-Dark-Blue'
 elif [ $MON_1080 -eq 1 ]; then
     # Fonts 1080
     xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
-    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono Text 10'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
     xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
     xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
     # Mouse
