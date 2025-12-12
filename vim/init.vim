@@ -255,6 +255,6 @@ if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
     colorscheme jellybeans
 else
     " Light theme
-    colorscheme lucius
+    colorscheme morning
 endif
 
