@@ -532,7 +532,10 @@ endif
 
 " Morning
 " NonText guifg=#afafd7, from lucius
-autocmd ColorScheme morning hi Normal guibg=#eeeeee | hi NonText guifg=#afafd7 guibg=#eeeeee
+" hi MatchParen guifg=#f0a0f0 gui=reverse cterm=reverse
+autocmd ColorScheme morning hi Normal guibg=#eeeeee | hi NonText guifg=#afafd7 guibg=#eeeeee | hi MatchParen guifg=#ffc0ff gui=reverse cterm=reverse
+" Zellner
+autocmd ColorScheme zellner hi MatchParen gui=reverse cterm=reverse
 
 " Dracula:
 let g:dracula_italic=0
@@ -791,31 +794,36 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'jellybeans-nvim',
                 \ 'wombat256mod',
                 \ 'darkblue',
-                \ 'twilight',
-                \ 'twilight256',
                 \ 'desert',
                 \ 'evening',
                 \ 'vim',
                 \ 'default',
+                \ 'twilight',
+                \ 'twilight256',
+                \ 'lucius',
+                \ 'zenburn',
                 \ 'retrobox',
                 \ 'gruvbox',
                 \ 'kanagawa',
                 \ 'dracula',
                 \ 'dracula-soft',
-                \ 'lucius',
-                \ 'zenburn',
                 \ 'unokai',
                 \ 'molokai',
+                \ 'monokai_classic',
                 \ 'monokai',
                 \ 'sonokai',
                 \ 'rose-pine',
                 \ 'hybrid',
                 \ 'vilight',
+                \ 'sorbet',
+                \ 'solarized8',
+                \ 'selenized',
+                \ 'selenized_bw',
+                \ 'cobalt2',
                 \ 'slate',
                 \ 'torte',
                 \ 'wildcharm',
                 \ 'lunaperche',
-                \ 'sorbet',
                 \ 'catppuccin-macchiato',
                 \ 'catppuccin-frappe',
                 \ 'catppuccin-mocha',
@@ -823,18 +831,14 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
                 \ 'jellybeans-bright',
-                \ 'habamax',
-                \ 'zaibatsu',
-                \ 'elflord',
                 \ 'quiet',
                 \ 'nofrils-dark',
-                \ 'solarized8',
-                \ 'selenized',
-                \ 'selenized_bw',
                 \ 'Tomorrow-Night',
                 \ 'Tomorrow-Night-Eighties',
                 \ 'Tomorrow-Night-Blue',
-                \ 'cobalt2',
+                \ 'habamax',
+                \ 'zaibatsu',
+                \ 'elflord',
                 \ 'onedark',
                 \ 'one',
                 \ 'gruvbox-material',
@@ -878,8 +882,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:29]
-    "let g:schemes_dark = g:schemes_dark[0:25]
+    let g:schemes_dark = g:schemes_dark[0:42]
+    "let g:schemes_dark = g:schemes_dark[0:48]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
