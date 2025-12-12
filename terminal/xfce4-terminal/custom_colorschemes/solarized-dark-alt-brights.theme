@@ -1,0 +1,10 @@
+[Scheme]
+Name=Solarized (dark) (Alternate with Brights)
+ColorForeground=#99a7a9
+ColorBackground=#002b36
+ColorCursor=#93a1a1
+TabActivityColor=#dc322f
+ColorPalette=#073642;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#859900;#b58900;#268bd2;#d33682;#2aa198;#fdf6e3
+ColorBold=#93a1a1
+ColorBoldUseDefault=FALSE
+ColorBoldIsBright=FALSE
