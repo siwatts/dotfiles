@@ -81,7 +81,7 @@ fi
 ## - Mint-Y-Dark-Blue
 
 # Icons
-xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --set 'elementary-xfce-dark'
+xfconf-query --create -c 'xsettings' -p '/Net/IconThemeName' --type 'string' --set 'elementary-xfce'
 
 if [ $MON_1440 -eq 1 ]; then
     # Fonts 1440
