@@ -8,3 +8,4 @@ com.github.unrud.RemoteTouchpad
 com.transmissionbt.Transmission
 app.drey.Dialect
 io.gitlab.liferooter.TextPieces
+dev.zed.Zed

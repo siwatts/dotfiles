@@ -222,6 +222,7 @@ else
             fi
             flatpak/flatpak-install.sh flatpak/core.txt
             flatpak/flatpak-install.sh flatpak/games.txt
+            flatpak/flatpak-install.sh flatpak/emulators.txt
             flatpak/flatpak-install.sh flatpak/extras.txt
             if [ $XFCE -eq 1 ]; then
                 flatpak/flatpak-install.sh flatpak/xfce.txt
