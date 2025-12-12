@@ -7,7 +7,7 @@ IFS='x' read screenWidth screenHeight < <(xdpyinfo | grep dimensions | grep -o '
 # Hardcode when dual monitors, because it just combines them
 #screenWidth=2560
 # Subtract height of bottom panel off the screenheight
-#screenHeight=$((screenHeight-34))
+#screenHeight=$((screenHeight-38))
 
 width=$(xdotool getactivewindow getwindowgeometry --shell | head -4 | tail -1 | sed 's/[^0-9]*//')
 height=$(xdotool getactivewindow getwindowgeometry --shell | head -5 | tail -1 | sed 's/[^0-9]*//')
