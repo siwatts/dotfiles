@@ -718,7 +718,8 @@ if has("gui_running") && !has("nvim")
     endif
 
     " Window size
-    "set lines=40 columns=115
+    "set lines=32 columns=120
+    "set lines=40 columns=125
     set lines=45 columns=130
     "set lines=48 columns=150
 
