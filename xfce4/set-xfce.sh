@@ -53,6 +53,11 @@ if [ $MON_1440 -eq 1 ]; then
     xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '1080'
     xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '810'
     xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
+elif [ $MON_768 -eq 1 ]; then
+    # Thunar 768 (laptop)
+    xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '800'
+    xfconf-query --create -c 'thunar' -p '/last-window-height' --type 'int' --set '560'
+    xfconf-query --create -c 'thunar' -p '/last-window-maximized' --type 'bool' --set 'false'
 else
     # Thunar 1080
     xfconf-query --create -c 'thunar' -p '/last-window-width' --type 'int' --set '870'
@@ -119,10 +124,10 @@ elif [ $MON_1080_HTPC -eq 1 ]; then
     xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Default-hdpi'
 elif [ $MON_768 -eq 1 ]; then
     # Fonts 768
-    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 9'
-    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 9'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/FontName' --type 'string' --set 'Noto Sans 10'
+    xfconf-query --create -c 'xsettings' -p '/Gtk/MonospaceFontName' --type 'string' --set 'IBM Plex Mono 10'
     xfconf-query --create -c 'xsettings' -p '/Xft/RGBA' --type 'string' --set 'rgb'
-    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 8'
+    xfconf-query --create -c 'xfwm4' -p '/general/title_font' --type 'string' --set 'Noto Sans Bold 9'
     # And make thunar slightly smaller for small screen, default is 100% and 24px icons
     xfconf-query --create -c 'thunar' -p '/last-icon-view-zoom-level' --type 'string' --set 'THUNAR_ZOOM_LEVEL_75_PERCENT'
     xfconf-query --create -c 'thunar' -p '/shortcuts-icon-size' --type 'string' --set 'THUNAR_ICON_SIZE_16'
@@ -131,7 +136,11 @@ elif [ $MON_768 -eq 1 ]; then
     # GTK theme
     xfconf-query --create -c 'xsettings' -p '/Net/ThemeName' --type 'string' --set 'Greybird-dark'
     xfconf-query --create -c 'xfwm4' -p '/general/theme' --type 'string' --set 'Greybird-dark'
+    # Hide window titles on maximise, false by default but true saves some space
+    #xfconf-query --create -c 'xfwm4' -p '/general/titleless_maximize' --type 'bool' --set 'true'
 fi
+xfconf-query --create -c 'xsettings' -p '/Xft/Hinting' --type 'int' --set 1
+xfconf-query --create -c 'xsettings' -p '/Xft/HintStyle' --type 'string' --set 'hintslight'
 
 # Xfwm4
 xfconf-query --create -c 'xfwm4' -p '/general/button_layout' --type 'string' --set 'O|HMC'
@@ -179,6 +188,12 @@ fi
 xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/blank-on-ac' --type 'int' --set '30'
 xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/dpms-on-ac-sleep' --type 'uint' --set '31'
 xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/dpms-on-ac-off' --type 'uint' --set '32'
+# Laptops
+xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/dpms-on-battery-sleep' --type 'uint' --set '20'
+xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/dpms-on-battery-off' --type 'uint' --set '21'
+# Laptop action on lid close
+xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/lid-action-on-ac' --type 'uint' --set '0'
+xfconf-query --create -c 'xfce4-power-manager' -p '/xfce4-power-manager/lid-action-on-battery' --type 'uint' --set '0'
 
 # Screensaver
 # /saver/mode?

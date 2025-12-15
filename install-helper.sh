@@ -301,6 +301,10 @@ if [ $XFCE -eq 1 ]; then
     case "$response" in
         [yY][eE][sS]|[yY])
             xfce4/set-xfce.sh
+            if command -v xdotool &> /dev/null ; then
+                # Use xdotool to add additional workspace shortcuts
+                xfce4/set-workspace-keyboard-shortcuts.sh
+            fi
             ;;
         *)
             ;;

@@ -14,3 +14,4 @@ com.chatterino.chatterino/x86_64/stable
 io.missioncenter.MissionCenter
 org.zealdocs.Zeal
 org.gnome.Solanum
+org.kde.kclock
