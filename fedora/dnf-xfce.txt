@@ -5,12 +5,6 @@ xrandr
 flameshot
 redshift-gtk
 catfish
-xscreensaver
-xscreensaver-extras
-bluebird-gtk3-theme
-bluebird-gtk2-theme
-bluebird-xfwm4-theme
 elementary-xfce-icon-theme
 tango-icon-theme
-numix-gtk-theme
-numix-icon-theme
+xfce4-docklike-plugin

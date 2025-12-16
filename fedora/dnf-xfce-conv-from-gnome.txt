@@ -4,3 +4,4 @@ atril
 galculator
 mousepad
 ristretto
+xfce4-docklike-plugin

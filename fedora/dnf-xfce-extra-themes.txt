@@ -1,3 +1,8 @@
+bluebird-gtk3-theme
+bluebird-gtk2-theme
+bluebird-xfwm4-theme
+numix-gtk-theme
+numix-icon-theme
 adw-gtk3-theme
 deepin-gtk-theme
 flat-remix-gtk4-theme
