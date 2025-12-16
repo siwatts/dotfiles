@@ -1,4 +1,5 @@
 flathub
+com.valvesoftware.Steam/x86_64/stable
 org.gnome.Chess
 org.gnome.Aisleriot
 org.gnome.Mines

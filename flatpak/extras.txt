@@ -1,5 +1,4 @@
 flathub
-com.valvesoftware.Steam/x86_64/stable
 com.spotify.Client
 fr.handbrake.ghb
 de.haeckerfelix.AudioSharing
@@ -8,4 +7,3 @@ com.github.unrud.RemoteTouchpad
 com.transmissionbt.Transmission
 app.drey.Dialect
 io.gitlab.liferooter.TextPieces
-dev.zed.Zed
