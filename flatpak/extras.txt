@@ -1,4 +1,7 @@
 flathub
+io.missioncenter.MissionCenter
+org.gnome.Solanum
+com.github.tchx84.Flatseal
 com.spotify.Client
 fr.handbrake.ghb
 de.haeckerfelix.AudioSharing
