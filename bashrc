@@ -327,8 +327,8 @@ elif command -v dnf &> /dev/null
 then
     # Fedora or similar
     alias upgrade='flatpak upgrade -y ; echo "Working..."; sudo dnf upgrade -y'
-    alias offline-upgrade-download='flatpak upgrade -y ; echo "Working..."; sudo dnf offline-upgrade download -y'
-    alias offline-upgrade-apply='reboot-message-wait && sudo dnf5 offline reboot -y'
+    alias offline-upgrade-download='flatpak upgrade -y ; echo "Working..."; sudo dnf upgrade --offline -y'
+    alias offline-upgrade-apply='reboot-message-wait && sudo dnf offline reboot -y'
     alias offline-upgrade-cancel='sudo dnf offline-upgrade clean'
 elif command -v apt &> /dev/null
 then

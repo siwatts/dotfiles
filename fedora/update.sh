@@ -11,7 +11,7 @@ case "$response" in
                 echo "Working..."; sudo dnf upgrade -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sudo shutdown -r 1 && exit 0 || exit 1
                 ;;
             *)
-                echo "Working..."; sudo dnf offline-upgrade download -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline-upgrade reboot && exit 0 || exit 1
+                echo "Working..."; sudo dnf upgrade --offline -y && echo "Initiating REBOOT, 1 minute from $(date). Save and close all work." && sleep 1m && sudo dnf offline reboot -y && exit 0 || exit 1
                 ;;
         esac
         exit 0
