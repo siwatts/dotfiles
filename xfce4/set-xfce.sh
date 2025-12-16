@@ -273,6 +273,8 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift>
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>equal' --type 'string' --set "${BIN_PATH}/monitor-adjust-up.sh 10"
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>minus' --type 'string' --set "${BIN_PATH}/monitor-adjust-down.sh 10"
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>0' --type 'string' --set "${BIN_PATH}/monitor-current.sh"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>Pause' --type 'string' --set "${BIN_PATH}/system-shutdown-timer.sh"
+xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Shift><Super>Pause' --type 'string' --set "${BIN_PATH}/system-shutdown-cancel.sh"
 
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketleft' --type 'string' --set 'pactl set-sink-volume 0 -5%'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/commands/custom/<Super>bracketright' --type 'string' --set 'pactl set-sink-volume 0 +5%'

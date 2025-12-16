@@ -381,6 +381,9 @@ elif [ $GNOME -eq 1 ]; then
             ;;
     esac
 fi
+# General scripts independent of DE
+echo 'Soft-link scripts to "~/bin", creating dir. and adding to ".bashrc" "$PATH" if necessary...'
+bin/softlink-bin.sh
 
 # SSH keygen
 if [ ! -f ~/.ssh/id_ed25519.pub ]; then
