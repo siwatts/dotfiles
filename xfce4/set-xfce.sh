@@ -364,16 +364,24 @@ xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Up'
 xfconf-query --create -c 'xfce4-keyboard-shortcuts' -p '/xfwm4/custom/<Super>Down' --type 'string' --set 'tile_down_key'
 
 # Load panel config
-echo "Loading panel config file..."
-if [ $MON_1440 -eq 1 ]; then
-    xfce4-panel-profiles load panel/SW_1440.tar.bz2
-elif [ $MON_1080 -eq 1 ]; then
-    xfce4-panel-profiles load panel/SW_1080.tar.bz2
-elif [ $MON_1080_HTPC -eq 1 ]; then
-    xfce4-panel-profiles load panel/SW_1080_htpc.tar.bz2
-elif [ $MON_768 -eq 1 ]; then
-    xfce4-panel-profiles load panel/SW_768.tar.bz2
-fi
+read -r -p "Load a starter xfce panel config now? (y/[N]): " response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "Loading panel config file..."
+        if [ $MON_1440 -eq 1 ]; then
+            xfce4-panel-profiles load panel/SW_1440.tar.bz2
+        elif [ $MON_1080 -eq 1 ]; then
+            xfce4-panel-profiles load panel/SW_1080.tar.bz2
+        elif [ $MON_1080_HTPC -eq 1 ]; then
+            xfce4-panel-profiles load panel/SW_1080_htpc.tar.bz2
+        elif [ $MON_768 -eq 1 ]; then
+            xfce4-panel-profiles load panel/SW_768.tar.bz2
+        fi
+        ;;
+    *)
+        echo "Skipping panel config file"
+        ;;
+esac
 
 echo "Xfce setings configuration complete."
 exit 0
