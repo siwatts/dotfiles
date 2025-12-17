@@ -66,7 +66,7 @@ elif [ -f "silverblue-gnome-5.txt" ]; then
     echo "Found decision from previous run, loading..."
     response=5
 else
-    read -r -p 'Please select a desktop to continue (1-4): ' response
+    read -r -p 'Please select a desktop to continue (1-5): ' response
 fi
 FEDORA=0
 SILVERBLUE=0

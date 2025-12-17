@@ -385,6 +385,6 @@ case "$response" in
         ;;
 esac
 
-echo "Xfce setings configuration complete."
+echo "Xfce settings configuration complete."
 exit 0
 
