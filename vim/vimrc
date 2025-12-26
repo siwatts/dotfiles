@@ -227,6 +227,8 @@ if use_truecolor
 endif
 
 syntax on
+" To turn all colours, syntax, and formatting off in vim:
+" set notermguicolors | set t_Co=1 | syntax off | hi LineNr term=NONE
 
 " JELLYBEANS:
 if exists("jb_terminal_colors") && jb_terminal_colors
