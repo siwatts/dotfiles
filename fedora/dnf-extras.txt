@@ -6,3 +6,4 @@ p7zip-plugins
 bchunk
 stress
 flatseal
+ddccontrol

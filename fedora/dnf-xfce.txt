@@ -2,9 +2,13 @@ lightdm-gtk-greeter-settings
 xdpyinfo
 xdotool
 xrandr
+wmctrl
 flameshot
 redshift-gtk
 catfish
 elementary-xfce-icon-theme
 tango-icon-theme
 xfce4-docklike-plugin
+xfce4-calculator-plugin
+xfce4-notes-plugin
+xfce4-timer-plugin

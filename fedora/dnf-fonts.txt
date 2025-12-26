@@ -15,3 +15,4 @@ dejavu-fonts-all
 google-roboto-fonts
 mozilla-fira-sans-fonts
 adobe-source-sans-pro-fonts
+adwaita-fonts-all
