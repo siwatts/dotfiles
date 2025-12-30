@@ -1,2 +1,3 @@
 xscreensaver
 xscreensaver-extras
+ffmpegthumbnailer

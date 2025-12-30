@@ -12,3 +12,4 @@ xfce4-docklike-plugin
 xfce4-calculator-plugin
 xfce4-notes-plugin
 xfce4-timer-plugin
+tumbler-extras

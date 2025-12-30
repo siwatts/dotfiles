@@ -314,6 +314,20 @@ List all properties for a channel
 Dump all properties & their values (can compare before and after a change or just use it to read values)
 - `xfconf-query -c xfwm4 -lv`
 
+# NAS / NFS mounts
+
+- Sometimes NAS NFS mounts don't show up in thunar as devices, to make this happen add a comment as a mount option in fstab
+    - `comment=x-gvfs-show`
+        - E.g. `192.168.0.123:/mnt/NAS1 /mnt/NAS1 nfs defaults,bg,comment=x-gvfs-show 0 0`
+
+# Thumbnails
+
+- Thumbnail generation is handled by `tumbler`, check this is running
+- Fedora 43 Xfce has no video thumbnailer, after multimedia codecs and things are installed from RPM fusion, add one
+    - `tumbler-extras` contains a video thumbnailer that asserts itself first over ffmpeg
+    - `ffmpegthumbnailer` is a desktop agnostic fallback
+- Thumbnails are cached in `~/.cache/thumbnails/normal`, clear out this directory if switching between thumbnailers to ensure a consistent look
+
 # TODO
 
 - Investigate tearing
