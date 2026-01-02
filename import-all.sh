@@ -111,6 +111,16 @@ cp -a tmux.conf ~/.tmux.conf
 echo "gitconfig..."
 cp -a gitconfig ~/.gitconfig
 
+# Galculator
+echo "galculator..."
+if [ ! -d ~/.config/galculator ]; then
+    mkdir ~/.config/galculator
+fi
+if [ -f ~/.config/galculator/galculator.conf ]; then
+    mv ~/.config/galculator/galculator.conf ~/.config/galculator/galculator.conf.bak
+fi
+ln -s `pwd`/xfce4/galculator/galculator.conf ~/.config/galculator
+
 echo
 echo "Import complete"
 
