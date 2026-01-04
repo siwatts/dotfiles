@@ -1,0 +1,7 @@
+[window]
+dimensions = { columns = 125, lines = 40 }
+
+[font]
+normal = { family = "IBM Plex Mono", style = "regular" }
+size = 13
+
