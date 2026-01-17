@@ -15,12 +15,13 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
 #font pango:Liberation Mono 10
 #font pango:Source Code Pro 10
 #font pango:Inconsolata 10
 #font pango:Noto Mono 10
 #font pango:Noto Sans 10
+font pango:IBM Plex Mono 11
 #font -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 #font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*
 #font pango:Terminus 12
@@ -42,6 +43,7 @@ floating_modifier $mod
 # Floating window apps
 for_window [Class="Thunar"] floating enable
 for_window [Class="Gimp-2.8"] floating enable
+for_window [Class="Xfce4-appfinder"] floating enable
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -60,6 +62,7 @@ bindsym $mod+d exec dmenu_run
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --entry-type=command
 #bindsym $mod+d exec --no-startup-id "rofi -show run"
+#bindsym $mod+d exec --no-startup-id xfce4-appfinder
 
 # change focus
 bindsym $mod+h focus left
@@ -257,6 +260,8 @@ mode "launcher" {
         bindsym w exec --no-startup-id firefox ; mode "default"
         bindsym e exec --no-startup-id thunar ; mode "default"
         bindsym g exec --no-startup-id gvim ; mode "default"
+        bindsym t exec --no-startup-id xterm ; mode "default"
+        bindsym y exec --no-startup-id urxvt ; mode "default"
         #bindsym p exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/* ; mode "default"
 
         # back to normal: Enter or Escape, or triggering shortcut
@@ -292,6 +297,10 @@ bindsym $mod+Shift+s exec ~/bin/i3_suspend.sh
 #bindsym --release Mod1+Print exec "xfce4-screenshooter -w"
 #bindsym --release Control+Print exec "xfce4-screenshooter"
 # TODO: Control+Shift+Print, and Mod1+Print don't work.
+# Flameshot
+bindsym --release Print exec "flameshot gui"
+bindsym --release Shift+Print exec "flameshot launcher"
+bindsym --release Control+Print exec "flameshot screen"
 
 # Volume up:
 bindsym $mod+equal exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
