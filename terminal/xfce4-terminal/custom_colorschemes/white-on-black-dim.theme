@@ -1,6 +1,6 @@
 [Scheme]
-Name=White on Black (Alt)
-ColorForeground=#deddda
-ColorBackground=#242424
+Name=White on Black (Dim)
+ColorForeground=#c0bfbc
+ColorBackground=#151515
 ColorCursor=x
 ColorPalette=#000000;#aa0000;#00aa00;#aa5500;#0000aa;#aa00aa;#00aaaa;#aaaaaa;#555555;#ff5555;#55ff55;#ffff55;#5555ff;#ff55ff;#55ffff;#ffffff

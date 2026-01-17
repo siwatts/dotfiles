@@ -336,8 +336,14 @@ if [ $XFCE -eq 1 ]; then
         echo "Creating flameshot config file '~/.config/flameshot/flameshot.ini'..."
         echo "[General]" > ~/.config/flameshot/flameshot.ini
         echo "filenamePattern=Screenshot_%F_%H-%M-%S" >> ~/.config/flameshot/flameshot.ini
+        echo "insecurePixelate=false" >> ~/.config/flameshot/flameshot.ini
+        echo "saveLastRegion=true" >> ~/.config/flameshot/flameshot.ini
         echo "savePath=/home/${USER}/Pictures/Screenshots" >> ~/.config/flameshot/flameshot.ini
         echo "savePathFixed=true" >> ~/.config/flameshot/flameshot.ini
+        echo "" >> ~/.config/flameshot/flameshot.ini
+        echo "[Shortcuts]" >> ~/.config/flameshot/flameshot.ini
+        echo "TYPE_ACCEPT=Shift+Return" >> ~/.config/flameshot/flameshot.ini
+        echo "TYPE_SAVE=Return" >> ~/.config/flameshot/flameshot.ini
     fi
 elif [ $GNOME -eq 1 ]; then
     # Home bin
