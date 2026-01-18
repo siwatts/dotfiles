@@ -41,7 +41,7 @@ font pango:IBM Plex Mono 11
 floating_modifier $mod
 
 # Floating window apps
-for_window [Class="Thunar"] floating enable
+#for_window [Class="Thunar"] floating enable
 for_window [Class="Gimp-2.8"] floating enable
 for_window [Class="Xfce4-appfinder"] floating enable
 
@@ -50,6 +50,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec uxterm
 #bindsym $mod+Return exec urxvt256c
+bindsym $mod+t exec xfce4-terminal
+bindsym $mod+y exec --no-startup-id urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -90,9 +92,10 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+v split h
-
 # split in vertical orientation
 bindsym $mod+b split v
+# Toggle between
+bindsym $mod+m split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -110,6 +113,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# Centre window
+bindsym $mod+Home move absolute position center
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -203,14 +209,16 @@ exec --no-startup-id i3-msg 'exec pulseaudio --start'
 #exec --no-startup-id redshift
 #exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/xfce-wall/*
 #exec_always --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/wallpapers
+exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/default-dark.jxl
 # Background with while loop:
 #exec --no-startup-id ~/bin/i3_set_background.sh
 # To change wallpaper periodically, use script (while loop), cron, or systemd timer:
 # See https://wiki.archlinux.org/index.php/feh
 exec --no-startup-id nm-applet
 
-focus_follows_mouse no # / yes
-mouse_warping none # / output
+focus_follows_mouse no
+# none / output
+mouse_warping none
 
 bindsym $mod+semicolon exec i3lock -c 282A36
 bindsym $mod+apostrophe exec ~/bin/i3_lock.sh
@@ -241,10 +249,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 #exec_always xrandr --output DisplayPort-0 --off --output DVI-0 --mode 1280x1024 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 1280x0 --rotate normal
 
 # Screen bindings.
-bindsym $mod+bracketleft move container to output left
-bindsym $mod+bracketright move container to output right
-bindsym $mod+Shift+bracketleft move workspace to output left
-bindsym $mod+Shift+bracketright move workspace to output right
+#bindsym $mod+bracketleft move container to output left
+#bindsym $mod+bracketright move container to output right
+#bindsym $mod+Shift+bracketleft move workspace to output left
+#bindsym $mod+Shift+bracketright move workspace to output right
 
 #exec --no-startup-id compton -f
 # Play more with fading values to eliminate bg flicker as descr. here:
@@ -256,10 +264,10 @@ bindsym $mod+Shift+bracketright move workspace to output right
 # Make a custom launcher mode:
 mode "launcher" {
         # These bindings trigger as soon as you enter the launcher mode
-        bindsym f exec --no-startup-id firefox --private-window ; mode "default"
-        bindsym w exec --no-startup-id firefox ; mode "default"
-        bindsym e exec --no-startup-id thunar ; mode "default"
-        bindsym g exec --no-startup-id gvim ; mode "default"
+        bindsym f exec firefox --private-window ; mode "default"
+        bindsym w exec firefox ; mode "default"
+        bindsym e exec thunar ; mode "default"
+        bindsym g exec gvim ; mode "default"
         bindsym t exec --no-startup-id xterm ; mode "default"
         bindsym y exec --no-startup-id urxvt ; mode "default"
         #bindsym p exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/* ; mode "default"
@@ -271,7 +279,11 @@ mode "launcher" {
 }
 bindsym $mod+o mode "launcher"
 
-# exec --no-startup-id xfce4-panel --disable-wm-check
+# Integrate xfce services, note xfsettingsd will also listen for keyboard shortcuts and override i3 ones
+# To use the panel, disable i3status bar
+#exec --no-startup-id xfce4-panel --disable-wm-check
+#exec --no-startup-id xfsettingsd
+#exec --no-startup-id xfce4-notifyd
 
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Tab workspace back_and_forth
@@ -288,6 +300,7 @@ bindsym $mod+c exec --no-startup-id ~/bin/i3_empty_workspace.sh
 bindsym $mod+Shift+Escape exec i3-msg exit
 bindsym $mod+Shift+e exec ~/bin/i3_exit.sh
 bindsym $mod+Pause exec ~/bin/i3_shutdown.sh
+#bindsym $mod+Pause exec xfce4-session-logout
 bindsym $mod+Shift+s exec ~/bin/i3_suspend.sh
 
 # Printscreen.
@@ -298,31 +311,42 @@ bindsym $mod+Shift+s exec ~/bin/i3_suspend.sh
 #bindsym --release Control+Print exec "xfce4-screenshooter"
 # TODO: Control+Shift+Print, and Mod1+Print don't work.
 # Flameshot
-bindsym --release Print exec "flameshot gui"
-bindsym --release Shift+Print exec "flameshot launcher"
-bindsym --release Control+Print exec "flameshot screen"
+#bindsym --release Print exec "flameshot gui"
+#bindsym --release Shift+Print exec "flameshot launcher"
+#bindsym --release Control+Print exec "flameshot screen"
 
-# Volume up:
-bindsym $mod+equal exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym $mod+Shift+KP_Add exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym Control+KP_Add exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym Control+Prior exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym $mod+Shift+Prior exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+# # Volume up:
+bindsym $mod+bracketright exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym $mod+Shift+bracketright exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
 # Volume down:
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym $mod+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym $mod+Shift+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym Control+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym $mod+Next exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym Control+Next exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym $mod+Shift+Next exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+bindsym $mod+bracketleft exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym $mod+Shift+bracketleft exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
 # Volume mute:
-bindsym $mod+KP_Enter exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym $mod+m exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+BackSpace exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # Volume reset:
-bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-volume 0 50% # reset sound
+#bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-volume 0 50% # reset sound
+
+## Volume up:
+#bindsym $mod+equal exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym $mod+Shift+KP_Add exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+#bindsym Control+KP_Add exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+#bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym Control+Prior exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+#bindsym $mod+Shift+Prior exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+## Volume down:
+#bindsym $mod+minus exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym $mod+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym $mod+Shift+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+#bindsym Control+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+#bindsym $mod+Next exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym Control+Next exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+#bindsym $mod+Shift+Next exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+## Volume mute:
+#bindsym $mod+KP_Enter exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym $mod+m exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+## Volume reset:
+#bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-volume 0 50% # reset sound
 
 # KP_Decimal
 # KP_Delete doesnt work, stolen by vim?
@@ -332,3 +356,9 @@ bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-volume 0 50% # rese
 # KP_Right
 # KP_Prior
 # KP_Next
+
+# i3 Gaps (now included by default in i3)
+gaps inner 15
+gaps outer 5
+# Hide titlebars for gaps
+#for_window [class=.] border pixel 0
