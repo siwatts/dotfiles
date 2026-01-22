@@ -7,6 +7,7 @@ xterm*faceName: Monospace
 !xterm*faceName: Hack
 !xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
+!xterm*faceName: IBM Plex Mono
 xterm*faceSize: 10
 !xterm*faceSize: 13
 !! -- X11 core fonts --
@@ -80,10 +81,11 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:Inconsolata:size=10
 !URxvt*font: xft:NotoMono:size=10
 !URxvt*font: xft:LiberationMono:size=10
+URxvt*font: xft:IBMPlexMono:size=13
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 !URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
-URxvt*font: 9x15
-URxvt*lineSpace: +1
+!URxvt*font: 9x15
+!URxvt*lineSpace: +1
 !! -------------
 !! X11 core fonts.
 !! 6x13  | Tiny
@@ -98,7 +100,8 @@ URxvt*lineSpace: +1
 !! -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-* | Terminus, condensed height
 !! -------------
 !! Change letter spacing (-letsp).
-!URxvt*letterSpace: -1
+!! Needed sometimes for font hinting + RGB subpixel
+URxvt*letterSpace: -1
 !! -------------
 !! Disable bold font.
 !URxvt*boldFont: 9x15
@@ -109,7 +112,8 @@ URxvt*lineSpace: +1
 ! Stop bold fonts using the brighter 8-15 colours with 'false'.
 ! (Good for themes which re-use the bright colours for additional colours, 
 ! base16 with non-256 or solarized etc.)
-URxvt*intensityStyles: true
+! NOTE: Overridden in URxvt colour settings
+!URxvt*intensityStyles: true
 
 ! Load config etc.
 URxvt*loginshell: false
@@ -127,10 +131,14 @@ URxvt*scrollTtyOutput: false
 ! Window size (large -> small).
 !URxvt*geometry: 150x50
 !URxvt*geometry: 130x40
+URxvt*geometry: 125x40
 !URxvt*geometry: 120x34
-URxvt*geometry: 115x30
+!URxvt*geometry: 115x30
 !URxvt*geometry: 100x30
 !URxvt*geometry: 80x30
+
+! Padding
+!URxvt*internalBorder: 4
 
 ! 256 color mode for vim etc. Can make program specific.
 !URxvt*termName: rxvt-unicode-256color
@@ -163,21 +171,34 @@ URxvt*geometry: 115x30
 !URxvt*backgroundPixmap: /location/of/pic.jpg;style=tiled
 
 ! Invert to white on black, if not overriding colors below.
+! Note: Most programs assume dark terminal themes but the default for xterm/urxvt is light
+!       so using this to reverse colours has unintended consequences
 !URxvt*reverseVideo: true
 
-! ============= Colours =============
+! ============= XTerm Colours =============
 
 ! Manually set cursor (magenta / yellow / cyan / green)
-XTerm*cursorColor: #ff66ff
+!XTerm*cursorColor: #ff66ff
 !XTerm*cursorColor: #ffd700
 !XTerm*cursorColor: #00ccff
 !XTerm*cursorColor: #00ff00
 ! Cursor foreground colour.
-XTerm*cursorColor2: #000000
+!XTerm*cursorColor2: #000000
+! Reset to a dark cursor
+!XTerm*cursorColor: #deddda
+!XTerm*cursorColor2: #000000
+
+! Cursors for light themes that also work in vim dark theme
+!XTerm*cursorColor: #ff00ff
+!XTerm*cursorColor: #0000ff
+!XTerm*cursorColor: #4040a0
+!XTerm*cursorColor: #4040ff
 
 ! Apply a default colourscheme:
 ! https://github.com/dracula/xresources
 ! Dracula Xresources palette
+XTerm*cursorColor:  #F8F8F2
+XTerm*cursorColor2: #000000
 XTerm*foreground: #F8F8F2
 XTerm*background: #282A36
 XTerm*color0:     #000000
@@ -196,4 +217,146 @@ XTerm*color6:     #8BE9FD
 XTerm*color14:    #9AEDFE
 XTerm*color7:     #F8F8F2
 XTerm*color15:    #BFBFBF
+
+!! Dark Alt FG/BG
+!XTerm*foreground: #deddda
+!XTerm*background: #242424
+!! White on Black FG/BG
+!XTerm*foreground: #ffffff
+!XTerm*background: #000000
+!! Black on White FG/BG
+!!XTerm*foreground: #000000
+!!XTerm*background: #ffffff
+!XTerm*cursorColor: #000000
+!XTerm*cursorColor2: #ffffff
+
+!! White on Black / Black on White (xfce4-terminal)
+!! (just add the desired fg/bg colours)
+!XTerm*color0:     #000000
+!XTerm*color1:     #aa0000
+!XTerm*color2:     #00aa00
+!XTerm*color3:     #aa5500
+!XTerm*color4:     #0000aa
+!XTerm*color5:     #aa00aa
+!XTerm*color6:     #00aaaa
+!XTerm*color7:     #aaaaaa
+!XTerm*color8:     #555555
+!XTerm*color9:     #ff5555
+!XTerm*color10:    #55ff55
+!XTerm*color11:    #ffff55
+!XTerm*color12:    #5555ff
+!XTerm*color13:    #ff55ff
+!XTerm*color14:    #55ffff
+!XTerm*color15:    #ffffff
+
+!! XTerm colours (from xfce4-terminal)
+!! (same as default xterm but the brightblack and brightblue are slightly brighter)
+!XTerm*color0:     #000000
+!XTerm*color1:     #cd0000
+!XTerm*color2:     #00cd00
+!XTerm*color3:     #cdcd00
+!XTerm*color4:     #0000cd
+!XTerm*color5:     #cd00cd
+!XTerm*color6:     #00cdcd
+!XTerm*color7:     #e5e5e5
+!XTerm*color8:     #7f7f7f
+!XTerm*color9:     #ff0000
+!XTerm*color10:    #00ff00
+!XTerm*color11:    #ffff00
+!XTerm*color12:    #5c5cff
+!XTerm*color13:    #ff00ff
+!XTerm*color14:    #00ffff
+!XTerm*color15:    #ffffff
+
+! ============= URxvt Colours =============
+
+! Cursors for light themes that also work in vim dark theme (otherwise leave it blank for reverse effect)
+!URxvt*cursorColor: #4040ff
+!URxvt*cursorColor: #ff00ff
+!URxvt*cursorColor: #0000ff
+!URxvt*cursorColor: #4040a0
+!URxvt*cursorColor2: #ffffff
+! Reset to a dark cursor
+URxvt*cursorColor: #deddda
+URxvt*cursorColor2: #000000
+! Another
+!URxvt*cursorColor: #d7d7d7
+!URxvt*cursorColor2: #000000
+
+! Use brights for bold (dark theme)
+URxvt*intensityStyles: true
+! Disable brights for bold (light theme)
+!URxvt*intensityStyles: false
+
+! Dark Alt FG/BG
+URxvt*foreground: #deddda
+URxvt*background: #242424
+! Jellybeans BG
+!URxvt*background: #151515
+! Dark Pastels
+!URxvt*foreground: #dcdcdc
+!URxvt*background: #2c2c2c
+! Black on white
+!URxvt*foreground: #000000
+!URxvt*background: #ffffff
+!URxvt*background: #eeeeee
+
+! White on Black / Black on White (xfce4-terminal)
+URxvt*color0:     #000000
+URxvt*color1:     #aa0000
+URxvt*color2:     #00aa00
+URxvt*color3:     #aa5500
+URxvt*color4:     #0000aa
+URxvt*color5:     #aa00aa
+URxvt*color6:     #00aaaa
+URxvt*color7:     #aaaaaa
+URxvt*color8:     #555555
+URxvt*color9:     #ff5555
+URxvt*color10:    #55ff55
+URxvt*color11:    #ffff55
+URxvt*color12:    #5555ff
+URxvt*color13:    #ff55ff
+URxvt*color14:    #55ffff
+URxvt*color15:    #ffffff
+
+!! XTerm colours (from xfce4-terminal)
+!! (same as default xterm but the brightblack and brightblue are slightly brighter)
+!URxvt*color0:     #000000
+!URxvt*color1:     #cd0000
+!URxvt*color2:     #00cd00
+!URxvt*color3:     #cdcd00
+!URxvt*color4:     #0000cd
+!URxvt*color5:     #cd00cd
+!URxvt*color6:     #00cdcd
+!URxvt*color7:     #e5e5e5
+!URxvt*color8:     #7f7f7f
+!URxvt*color9:     #ff0000
+!URxvt*color10:    #00ff00
+!URxvt*color11:    #ffff00
+!URxvt*color12:    #5c5cff
+!URxvt*color13:    #ff00ff
+!URxvt*color14:    #00ffff
+!URxvt*color15:    #ffffff
+
+!! Xubuntu Light (Custom)
+!URxvt*cursorColor: #0f4999
+!URxvt*cursorColor2: #ffffff
+!URxvt*foreground: #1f3566
+!URxvt*background: #f1f1f1
+!URxvt*color0:     #ffffff
+!URxvt*color1:     #aa0000
+!URxvt*color2:     #44aa44
+!URxvt*color3:     #aa5500
+!URxvt*color4:     #0039aa
+!URxvt*color5:     #aa22aa
+!URxvt*color6:     #1a92aa
+!URxvt*color7:     #000000
+!URxvt*color8:     #aaaaaa
+!URxvt*color9:     #ff8787
+!URxvt*color10:    #4ce64c
+!URxvt*color11:    #ded82c
+!URxvt*color12:    #295fcc
+!URxvt*color13:    #cc58cc
+!URxvt*color14:    #4ccce6
+!URxvt*color15:    #888888
 
