@@ -1,0 +1,5 @@
+style "myscrollbar"
+{
+     GtkScrollbar::slider-width=10
+}
+class "GtkScrollbar" style "myscrollbar"

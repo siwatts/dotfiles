@@ -310,6 +310,21 @@ if [ $XFCE -eq 1 ]; then
             ;;
     esac
 
+    # GTK settings
+    read -r -p 'Load gtk settings (e.g. scrollbars)? (y/[N]): ' response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            ln -s `pwd`/xfce4/gtk/gtkrc2.0 ~/.gtkrc2.0
+            echo '~/.gtkrc2.0 softlinked'
+            ln -s `pwd`/xfce4/gtk/gtk.css ~/.config/gtk-3.0/
+            echo '~/.config/gtk-3.0/ softlinked'
+            ln -s `pwd`/xfce4/gtk/profile ~/.profile
+            echo '~/.profile softlinked'
+            ;;
+        *)
+            ;;
+    esac
+
     # Session & Startup
     echo "Import Session & Startup autostart config files..."
     if [ ! -d ~/.config/autostart ]; then
