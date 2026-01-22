@@ -1,0 +1,8 @@
+xfce4-terminal
+xterm
+rxvt-unicode
+gnome-terminal
+qterminal
+lxterminal
+kitty
+alacritty

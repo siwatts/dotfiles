@@ -160,6 +160,7 @@ else
         echo "Installing fedora packages..."
         fedora/dnf-install.sh fedora/dnf-core.txt
         fedora/dnf-install.sh fedora/dnf-productivity.txt
+        fedora/dnf-install.sh fedora/dnf-terminals.txt
         fedora/dnf-install.sh fedora/dnf-coding.txt
         fedora/dnf-install.sh fedora/dnf-extras.txt
         fedora/dnf-install.sh fedora/dnf-fonts.txt
@@ -223,6 +224,7 @@ else
                 flatpak/flatpak-install.sh flatpak/silverblue-core.txt
             fi
             flatpak/flatpak-install.sh flatpak/core.txt
+            flatpak/flatpak-install.sh flatpak/terminals.txt
             flatpak/flatpak-install.sh flatpak/games.txt
             flatpak/flatpak-install.sh flatpak/emulators.txt
             flatpak/flatpak-install.sh flatpak/extras.txt

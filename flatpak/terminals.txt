@@ -1,0 +1,5 @@
+flathub
+app.devsuite.Ptyxis
+org.kde.konsole
+org.wezfurlong.wezterm
+com.raggesilver.BlackBox
