@@ -47,6 +47,8 @@ config.color_scheme = 'Monokai (base16)'
 --config.color_scheme = 'Selenized Light (Gogh)'
 --config.color_scheme = 'Tomorrow'
 
+config.force_reverse_video_cursor = true
+
 config.hide_tab_bar_if_only_one_tab = true
 
 config.window_padding = {
