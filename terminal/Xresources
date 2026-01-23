@@ -1,15 +1,15 @@
 ! ============= Xterm =============
 
 !! -- Fonts --
-xterm*faceName: Monospace
+!xterm*faceName: Monospace
 !xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Liberation Mono
 !xterm*faceName: Hack
 !xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
-!xterm*faceName: IBM Plex Mono
-xterm*faceSize: 10
-!xterm*faceSize: 13
+xterm*faceName: IBM Plex Mono
+!xterm*faceSize: 10
+xterm*faceSize: 13
 !! -- X11 core fonts --
 !! 6x13  | Tiny
 !! 7x13  | Small, condensed
@@ -100,7 +100,7 @@ URxvt*font: xft:IBMPlexMono:size=13
 !! -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-* | Terminus, condensed height
 !! -------------
 !! Change letter spacing (-letsp).
-!! Needed sometimes for font hinting + RGB subpixel
+!! Needed sometimes for font hinting + RGB subpixel on xfce
 URxvt*letterSpace: -1
 !! -------------
 !! Disable bold font.
@@ -110,7 +110,7 @@ URxvt*letterSpace: -1
 !URxvt*boldItalicFont: 9x15
 
 ! Stop bold fonts using the brighter 8-15 colours with 'false'.
-! (Good for themes which re-use the bright colours for additional colours, 
+! (Good for themes which re-use the bright colours for additional colours,
 ! base16 with non-256 or solarized etc.)
 ! NOTE: Overridden in URxvt colour settings
 !URxvt*intensityStyles: true
@@ -177,16 +177,17 @@ URxvt*geometry: 125x40
 
 ! ============= XTerm Colours =============
 
-! Manually set cursor (magenta / yellow / cyan / green)
+!! Manually set cursor (magenta / yellow / cyan / green)
 !XTerm*cursorColor: #ff66ff
 !XTerm*cursorColor: #ffd700
 !XTerm*cursorColor: #00ccff
 !XTerm*cursorColor: #00ff00
-! Cursor foreground colour.
+!XTerm*cursorColor: #ffffff
+!! Cursor foreground colour.
 !XTerm*cursorColor2: #000000
 ! Reset to a dark cursor
-!XTerm*cursorColor: #deddda
-!XTerm*cursorColor2: #000000
+XTerm*cursorColor: #deddda
+XTerm*cursorColor2: #000000
 
 ! Cursors for light themes that also work in vim dark theme
 !XTerm*cursorColor: #ff00ff
@@ -194,29 +195,29 @@ URxvt*geometry: 125x40
 !XTerm*cursorColor: #4040a0
 !XTerm*cursorColor: #4040ff
 
-! Apply a default colourscheme:
-! https://github.com/dracula/xresources
-! Dracula Xresources palette
-XTerm*cursorColor:  #F8F8F2
-XTerm*cursorColor2: #000000
-XTerm*foreground: #F8F8F2
-XTerm*background: #282A36
-XTerm*color0:     #000000
-XTerm*color8:     #6272A4
-XTerm*color1:     #FF5555
-XTerm*color9:     #FF6E67
-XTerm*color2:     #50FA7B
-XTerm*color10:    #5AF78E
-XTerm*color3:     #F1FA8C
-XTerm*color11:    #F4F99D
-XTerm*color4:     #BD93F9
-XTerm*color12:    #CAA9FA
-XTerm*color5:     #FF79C6
-XTerm*color13:    #FF92D0
-XTerm*color6:     #8BE9FD
-XTerm*color14:    #9AEDFE
-XTerm*color7:     #F8F8F2
-XTerm*color15:    #BFBFBF
+!! Apply a default colourscheme:
+!! https://github.com/dracula/xresources
+!! Dracula Xresources palette
+!XTerm*cursorColor:  #F8F8F2
+!XTerm*cursorColor2: #000000
+!XTerm*foreground: #F8F8F2
+!XTerm*background: #282A36
+!XTerm*color0:     #000000
+!XTerm*color8:     #6272A4
+!XTerm*color1:     #FF5555
+!XTerm*color9:     #FF6E67
+!XTerm*color2:     #50FA7B
+!XTerm*color10:    #5AF78E
+!XTerm*color3:     #F1FA8C
+!XTerm*color11:    #F4F99D
+!XTerm*color4:     #BD93F9
+!XTerm*color12:    #CAA9FA
+!XTerm*color5:     #FF79C6
+!XTerm*color13:    #FF92D0
+!XTerm*color6:     #8BE9FD
+!XTerm*color14:    #9AEDFE
+!XTerm*color7:     #F8F8F2
+!XTerm*color15:    #BFBFBF
 
 !! Dark Alt FG/BG
 !XTerm*foreground: #deddda
@@ -224,30 +225,33 @@ XTerm*color15:    #BFBFBF
 !! White on Black FG/BG
 !XTerm*foreground: #ffffff
 !XTerm*background: #000000
+! ChatGPT chosen FG/BG
+XTerm*foreground: #d6d6d6
+XTerm*background: #181818
 !! Black on White FG/BG
 !!XTerm*foreground: #000000
 !!XTerm*background: #ffffff
 !XTerm*cursorColor: #000000
 !XTerm*cursorColor2: #ffffff
 
-!! White on Black / Black on White (xfce4-terminal)
-!! (just add the desired fg/bg colours)
-!XTerm*color0:     #000000
-!XTerm*color1:     #aa0000
-!XTerm*color2:     #00aa00
-!XTerm*color3:     #aa5500
-!XTerm*color4:     #0000aa
-!XTerm*color5:     #aa00aa
-!XTerm*color6:     #00aaaa
-!XTerm*color7:     #aaaaaa
-!XTerm*color8:     #555555
-!XTerm*color9:     #ff5555
-!XTerm*color10:    #55ff55
-!XTerm*color11:    #ffff55
-!XTerm*color12:    #5555ff
-!XTerm*color13:    #ff55ff
-!XTerm*color14:    #55ffff
-!XTerm*color15:    #ffffff
+! White on Black / Black on White (xfce4-terminal)
+! (just add the desired fg/bg colours)
+XTerm*color0:     #000000
+XTerm*color1:     #aa0000
+XTerm*color2:     #00aa00
+XTerm*color3:     #aa5500
+XTerm*color4:     #0000aa
+XTerm*color5:     #aa00aa
+XTerm*color6:     #00aaaa
+XTerm*color7:     #aaaaaa
+XTerm*color8:     #555555
+XTerm*color9:     #ff5555
+XTerm*color10:    #55ff55
+XTerm*color11:    #ffff55
+XTerm*color12:    #5555ff
+XTerm*color13:    #ff55ff
+XTerm*color14:    #55ffff
+XTerm*color15:    #ffffff
 
 !! XTerm colours (from xfce4-terminal)
 !! (same as default xterm but the brightblack and brightblue are slightly brighter)
@@ -293,6 +297,9 @@ URxvt*foreground: #deddda
 URxvt*background: #242424
 ! Jellybeans BG
 !URxvt*background: #151515
+! ChatGPT chosen FG/BG
+!URxvt*foreground: #d6d6d6
+!URxvt*background: #181818
 ! Dark Pastels
 !URxvt*foreground: #dcdcdc
 !URxvt*background: #2c2c2c
