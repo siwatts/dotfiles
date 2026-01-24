@@ -283,9 +283,6 @@ XTerm*color15:    #ffffff
 ! Reset to a dark cursor
 URxvt*cursorColor: #deddda
 URxvt*cursorColor2: #000000
-! Another
-!URxvt*cursorColor: #d7d7d7
-!URxvt*cursorColor2: #000000
 
 ! Use brights for bold (dark theme)
 URxvt*intensityStyles: true
@@ -294,12 +291,30 @@ URxvt*intensityStyles: true
 
 ! Dark Alt FG/BG
 URxvt*foreground: #deddda
-URxvt*background: #242424
+!URxvt*background: #242424
+!URxvt*background: #212121
 ! Jellybeans BG
-!URxvt*background: #151515
+URxvt*background: #151515
+! Darker
+!URxvt*foreground: #d7d7d7
+!URxvt*background: #1b1b1b
+!!URxvt*background: #212121
+!URxvt*cursorColor: #d7d7d7
+!URxvt*cursorColor2: #000000
 ! ChatGPT chosen FG/BG
 !URxvt*foreground: #d6d6d6
 !URxvt*background: #181818
+! GNOME Ptyxis
+!URxvt*foreground: #cfcfcf
+!URxvt*background: #1d1d20
+!URxvt*cursorColor: #cfcfcf
+!URxvt*cursorColor2: #000000
+!! White on Black FG/BG (xfce4-terminal, lxterminal "VGA" theme, darkblue.vim FG, bonus)
+!URxvt*foreground: #ffffff
+!URxvt*foreground: #aaaaaa
+!URxvt*foreground: #c0c0c0
+!URxvt*foreground: #d0d0d0
+!URxvt*background: #000000
 ! Dark Pastels
 !URxvt*foreground: #dcdcdc
 !URxvt*background: #2c2c2c
