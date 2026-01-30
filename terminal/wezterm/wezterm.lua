@@ -12,14 +12,15 @@ config.initial_rows = 40
 
 -- or, changing the font size and color scheme.
 config.font_size = 13
-config.font = wezterm.font 'IBM Plex Mono'
+--config.font = wezterm.font 'IBM Plex Mono'
+config.font = wezterm.font 'Source Code Pro'
 config.freetype_load_target = "HorizontalLcd"
 config.display_pixel_geometry = "RGB"
 --Deprecated:
 --config.font_antialias = "Subpixel"
 
---config.color_scheme = 'Dracula (Official)'
-config.color_scheme = 'Monokai (base16)'
+config.color_scheme = 'Dracula (Official)'
+--config.color_scheme = 'Monokai (base16)'
 
 --config.color_scheme = 'Cobalt2'
 --config.color_scheme = 'Default (dark) (terminal.sexy)'
@@ -35,6 +36,9 @@ config.color_scheme = 'Monokai (base16)'
 --config.color_scheme = 'nightfox'
 --config.color_scheme = 'nord'
 --config.color_scheme = 'Snazzy (Gogh)'
+--config.color_scheme = 'Tokyo Night'
+--config.color_scheme = 'Tokyo Night Moon'
+--config.color_scheme = 'Tokyo Night Storm'
 --config.color_scheme = 'Tomorrow (dark) (terminal.sexy)'
 --config.color_scheme = 'Twilight (dark) (terminal.sexy)'
 --config.color_scheme = 'Wombat'
