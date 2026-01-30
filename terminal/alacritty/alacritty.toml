@@ -1,7 +1,28 @@
 [window]
 dimensions = { columns = 125, lines = 40 }
 
+[env]
+TERM = "xterm-256color"
+
 [font]
-normal = { family = "IBM Plex Mono", style = "regular" }
+#normal = { family = "IBM Plex Mono", style = "regular" }
+normal = { family = "Source Code Pro", style = "regular" }
 size = 13
+
+# Colours
+[general]
+import = [
+    # alacritty-theme
+    #"~/repos/dotfiles/terminal/alacritty/alacritty-theme/linux.toml"
+    #"~/repos/dotfiles/terminal/alacritty/alacritty-theme/xterm.toml"
+    # custom
+    #"~/repos/dotfiles/terminal/alacritty/custom-theme/xubuntu-dark.toml"
+    "~/repos/dotfiles/terminal/alacritty/custom-theme/vga-plus.toml"
+]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[mouse]
+hide_when_typing = true
 

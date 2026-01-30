@@ -1,0 +1,41 @@
+# Colors (Xubuntu Dark)
+
+# Default colors
+[colors.primary]
+background = '#131926'
+foreground = '#b7b7b7'
+
+[colors.cursor]
+text = '#131926'
+cursor = '#b7b7b7'
+
+[colors.vi_mode_cursor]
+text = '#131926'
+cursor = '#0f4999'
+
+[colors.selection]
+text = '#163b59'
+background = '#131926'
+
+# Normal colors
+[colors.normal]
+black   = '#000000'
+red     = '#aa0000'
+green   = '#44aa44'
+yellow  = '#aa5500'
+blue    = '#0039aa'
+magenta = '#aa22aa'
+cyan    = '#1a92aa'
+white   = '#aaaaaa'
+
+# Bright colors
+[colors.bright]
+black   = '#777777'
+red     = '#ff8787'
+green   = '#4ce64c'
+yellow  = '#ded82c'
+blue    = '#295fcc'
+magenta = '#cc58cc'
+cyan    = '#4ccce6'
+white   = '#ffffff'
+
