@@ -21,13 +21,11 @@ source ~/.vimrc
 " 4) Remove or rename any old legacy vim themes from `~/.vim/colors` that clash with new nvim Plug sourced themes
 " 5) Install required language servers:
 "       - C#: csharp_ls - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#csharp_ls
-"           - Retrieved 14/03/2025
+"           - Retrieved 25/01/2026
 "           - Need .NET SDK for dotnet development and csharp-ls
-"               - `sudo dnf install dotnet-sdk-9.0`
+"               - `sudo dnf install dotnet-sdk-10.0`
 "               - `dotnet tool install --global csharp-ls`
-"               - currently also need .NET 8.0 for csharp_ls as they are a version behind, this should change in future
-"                   - Try the above first, if .NET 8 is missing reported by neovim then
-"                   - `sudo dnf install dotnet-sdk-8.0`
+"                   - Installed into `~/.dotnet/tools/csharp-ls`
 "       - C/C++: clangd - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#clangd
 "           - Retrieved 14/03/2025
 "               - `sudo dnf provides clangd` -> `sudo dnf install clang-devel`
@@ -107,9 +105,10 @@ call plug#end()
 " Tree Sitter
 "lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 
-" Language servers
-lua require'lspconfig'.csharp_ls.setup{}
-lua require'lspconfig'.clangd.setup{}
+" Language servers (legacy)
+"lua require'lspconfig'.csharp_ls.setup{}
+"lua require'lspconfig'.clangd.setup{}
+
 " Set sign column permanent size, otherwise it pops in and out during LSP
 " stuff and is very distracting
 set signcolumn=yes
@@ -119,7 +118,13 @@ set signcolumn=yes
 ""lua vim.diagnostic.config({ update_in_insert = true, })
 " Better solution to hide warnings entirely until we reveal them with keyboard
 " shortcuts:
+
 lua << EOF
+-- vim.lsp.config('csharp_ls')
+-- vim.lsp.config('clangd')
+vim.lsp.enable('csharp_ls')
+vim.lsp.enable('clangd')
+
 vim.diagnostic.config({
     virtual_text = false,       -- Disable virtual text (the inline text warnings/errors)
     signs = true,               -- Keep signs in the sign column
