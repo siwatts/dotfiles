@@ -340,23 +340,23 @@ URxvt*background: #151515
 !URxvt*background: #ffffff
 !URxvt*background: #eeeeee
 
-!! White on Black / Black on White (xfce4-terminal)
-!URxvt*color0:     #000000
-!URxvt*color1:     #aa0000
-!URxvt*color2:     #00aa00
-!URxvt*color3:     #aa5500
-!URxvt*color4:     #0000aa
-!URxvt*color5:     #aa00aa
-!URxvt*color6:     #00aaaa
-!URxvt*color7:     #aaaaaa
-!URxvt*color8:     #555555
-!URxvt*color9:     #ff5555
-!URxvt*color10:    #55ff55
-!URxvt*color11:    #ffff55
-!URxvt*color12:    #5555ff
-!URxvt*color13:    #ff55ff
-!URxvt*color14:    #55ffff
-!URxvt*color15:    #ffffff
+! White on Black / Black on White (xfce4-terminal)
+URxvt*color0:     #000000
+URxvt*color1:     #aa0000
+URxvt*color2:     #00aa00
+URxvt*color3:     #aa5500
+URxvt*color4:     #0000aa
+URxvt*color5:     #aa00aa
+URxvt*color6:     #00aaaa
+URxvt*color7:     #aaaaaa
+URxvt*color8:     #555555
+URxvt*color9:     #ff5555
+URxvt*color10:    #55ff55
+URxvt*color11:    #ffff55
+URxvt*color12:    #5555ff
+URxvt*color13:    #ff55ff
+URxvt*color14:    #55ffff
+URxvt*color15:    #ffffff
 
 !! XTerm colours (from xfce4-terminal)
 !! (same as default xterm but the brightblack and brightblue are slightly brighter)
@@ -377,25 +377,25 @@ URxvt*background: #151515
 !URxvt*color14:    #00ffff
 !URxvt*color15:    #ffffff
 
-! Rxvt/XTerm + VGA colours (from xfce4-terminal custom rxvt-vga-jb.theme)
-! Base 8 colours are Rxvt / XTerm default (kept here for completeness)
-! Bright 8 colours are VGA (Linux terminal ie. xfce4-terminal "White on Black" or lxterminal "VGA" etc.)
-URxvt*color0:     #000000
-URxvt*color1:     #cd0000
-URxvt*color2:     #00cd00
-URxvt*color3:     #cdcd00
-URxvt*color4:     #0000cd
-URxvt*color5:     #cd00cd
-URxvt*color6:     #00cdcd
-URxvt*color7:     #e5e5e5
-URxvt*color8:     #555555
-URxvt*color9:     #ff5555
-URxvt*color10:    #55ff55
-URxvt*color11:    #ffff55
-URxvt*color12:    #5555ff
-URxvt*color13:    #ff55ff
-URxvt*color14:    #55ffff
-URxvt*color15:    #ffffff
+!! Rxvt/XTerm + VGA colours (from xfce4-terminal custom rxvt-vga-jb.theme)
+!! Base 8 colours are Rxvt / XTerm default (kept here for completeness)
+!! Bright 8 colours are VGA (Linux terminal ie. xfce4-terminal "White on Black" or lxterminal "VGA" etc.)
+!URxvt*color0:     #000000
+!URxvt*color1:     #cd0000
+!URxvt*color2:     #00cd00
+!URxvt*color3:     #cdcd00
+!URxvt*color4:     #0000cd
+!URxvt*color5:     #cd00cd
+!URxvt*color6:     #00cdcd
+!URxvt*color7:     #e5e5e5
+!URxvt*color8:     #555555
+!URxvt*color9:     #ff5555
+!URxvt*color10:    #55ff55
+!URxvt*color11:    #ffff55
+!URxvt*color12:    #5555ff
+!URxvt*color13:    #ff55ff
+!URxvt*color14:    #55ffff
+!URxvt*color15:    #ffffff
 
 !! Xubuntu Light (Custom)
 !URxvt*cursorColor: #0f4999
