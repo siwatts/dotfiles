@@ -9,11 +9,13 @@ if [ -d "terminal" ]; then
     SOURCE1="terminal/xfce4-terminal/colorschemes"
     SOURCE2="terminal/xfce4-terminal/custom_colorschemes"
     SOURCEDEFAULT="terminal/xfce4-terminal/default_colorschemes"
+    SOURCEGOGH="terminal/xfce4-terminal/gogh_colorschemes"
 elif [ -d "xfce4-terminal" ]; then
     # Terminal subdir
     SOURCE1="xfce4-terminal/colorschemes"
     SOURCE2="xfce4-terminal/custom_colorschemes"
     SOURCEDEFAULT="xfce4-terminal/default_colorschemes"
+    SOURCEGOGH="xfce4-terminal/gogh_colorschemes"
 else
     echo "ERROR: Don't see any themes to source"
     exit 1
@@ -46,6 +48,7 @@ echo "Creating softlinks to '$THEMESDIR'..."
 ln -s `pwd`/"$SOURCE1"/*.theme ~/.local/share/xfce4/terminal/colorschemes
 ln -s `pwd`/"$SOURCE2"/*.theme ~/.local/share/xfce4/terminal/colorschemes
 ln -s `pwd`/"$SOURCEDEFAULT"/xubuntu-*.theme ~/.local/share/xfce4/terminal/colorschemes
+ln -s `pwd`/"$SOURCEGOGH"/*.theme ~/.local/share/xfce4/terminal/colorschemes
 echo "Done"
 
 exit 0
