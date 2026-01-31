@@ -1,3 +1,12 @@
+! ============ General ============
+! General font settings
+! These are set by xfce, but we can set explicitly here if needed
+!Xft.antialias:  1
+!Xft.dpi:        96
+!Xft.hinting:    1
+!Xft.hintstyle:  hintslight
+!Xft.rgba:       rgb
+
 ! ============= Xterm =============
 
 !! -- Fonts --
@@ -5,9 +14,9 @@
 !xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Liberation Mono
 !xterm*faceName: Hack
-!xterm*faceName: Source Code Pro
+xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
-xterm*faceName: IBM Plex Mono
+!xterm*faceName: IBM Plex Mono
 !xterm*faceSize: 10
 xterm*faceSize: 13
 !! -- X11 core fonts --
@@ -75,13 +84,13 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:DejaVu Sans Mono:size=10
 !URxvt*font: xft:Monospace:size=10
 !URxvt*font: xft:Hack:size=10
-!URxvt*font: xft:Source Code Pro:size=10
+URxvt*font: xft:Source Code Pro:size=13
 !URxvt*font: xft:Terminus:size=10
 !URxvt*font: xft:Terminus:size=12
 !URxvt*font: xft:Inconsolata:size=10
 !URxvt*font: xft:NotoMono:size=10
 !URxvt*font: xft:LiberationMono:size=10
-URxvt*font: xft:IBMPlexMono:size=13
+!URxvt*font: xft:IBMPlexMono:size=13
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 !URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 !URxvt*font: 9x15
@@ -220,61 +229,69 @@ XTerm*cursorColor2: #000000
 !XTerm*color15:    #BFBFBF
 
 !! Dark Alt FG/BG
-!XTerm*foreground: #deddda
+XTerm*foreground: #deddda
+!XTerm*foreground: #d0d0d0
 !XTerm*background: #242424
-!! White on Black FG/BG
+!XTerm*background: #212121
+!XTerm*background: #1b1b1b
+XTerm*background: #151515
+!! White on Black FG/BG (xfce4-terminal, lxterminal "VGA" theme, and darkblue.vim FG)
 !XTerm*foreground: #ffffff
+!XTerm*foreground: #aaaaaa
+!XTerm*foreground: #c0c0c0
 !XTerm*background: #000000
 ! ChatGPT chosen FG/BG
-XTerm*foreground: #d6d6d6
-XTerm*background: #181818
+!XTerm*foreground: #d6d6d6
+!XTerm*background: #181818
 !! Black on White FG/BG
 !!XTerm*foreground: #000000
 !!XTerm*background: #ffffff
 !XTerm*cursorColor: #000000
 !XTerm*cursorColor2: #ffffff
 
-! White on Black / Black on White (xfce4-terminal)
-! (just add the desired fg/bg colours)
+!! White on Black / Black on White (xfce4-terminal)
+!! (just add the desired fg/bg colours)
+!XTerm*color0:     #000000
+!XTerm*color1:     #aa0000
+!XTerm*color2:     #00aa00
+!XTerm*color3:     #aa5500
+!XTerm*color4:     #0000aa
+!XTerm*color5:     #aa00aa
+!XTerm*color6:     #00aaaa
+!XTerm*color7:     #aaaaaa
+!XTerm*color8:     #555555
+!XTerm*color9:     #ff5555
+!XTerm*color10:    #55ff55
+!XTerm*color11:    #ffff55
+!XTerm*color12:    #5555ff
+!XTerm*color13:    #ff55ff
+!XTerm*color14:    #55ffff
+!XTerm*color15:    #ffffff
+
+! XTerm colours (from xfce4-terminal)
+! (same as default xterm but the brightblack and brightblue are slightly brighter)
 XTerm*color0:     #000000
-XTerm*color1:     #aa0000
-XTerm*color2:     #00aa00
-XTerm*color3:     #aa5500
-XTerm*color4:     #0000aa
-XTerm*color5:     #aa00aa
-XTerm*color6:     #00aaaa
-XTerm*color7:     #aaaaaa
-XTerm*color8:     #555555
-XTerm*color9:     #ff5555
-XTerm*color10:    #55ff55
-XTerm*color11:    #ffff55
-XTerm*color12:    #5555ff
-XTerm*color13:    #ff55ff
-XTerm*color14:    #55ffff
+XTerm*color1:     #cd0000
+XTerm*color2:     #00cd00
+XTerm*color3:     #cdcd00
+XTerm*color4:     #0000cd
+XTerm*color5:     #cd00cd
+XTerm*color6:     #00cdcd
+XTerm*color7:     #e5e5e5
+XTerm*color8:     #7f7f7f
+XTerm*color9:     #ff0000
+XTerm*color10:    #00ff00
+XTerm*color11:    #ffff00
+XTerm*color12:    #5c5cff
+XTerm*color13:    #ff00ff
+XTerm*color14:    #00ffff
 XTerm*color15:    #ffffff
 
-!! XTerm colours (from xfce4-terminal)
-!! (same as default xterm but the brightblack and brightblue are slightly brighter)
-!XTerm*color0:     #000000
-!XTerm*color1:     #cd0000
-!XTerm*color2:     #00cd00
-!XTerm*color3:     #cdcd00
-!XTerm*color4:     #0000cd
-!XTerm*color5:     #cd00cd
-!XTerm*color6:     #00cdcd
-!XTerm*color7:     #e5e5e5
-!XTerm*color8:     #7f7f7f
-!XTerm*color9:     #ff0000
-!XTerm*color10:    #00ff00
-!XTerm*color11:    #ffff00
-!XTerm*color12:    #5c5cff
-!XTerm*color13:    #ff00ff
-!XTerm*color14:    #00ffff
 !XTerm*color15:    #ffffff
 
 ! ============= URxvt Colours =============
 
-! Cursors for light themes that also work in vim dark theme (otherwise leave it blank for reverse effect)
+!! Cursors for light themes that also work in vim dark theme (otherwise leave it blank for reverse effect)
 !URxvt*cursorColor: #4040ff
 !URxvt*cursorColor: #ff00ff
 !URxvt*cursorColor: #0000ff
@@ -298,7 +315,7 @@ URxvt*background: #151515
 ! Darker
 !URxvt*foreground: #d7d7d7
 !URxvt*background: #1b1b1b
-!!URxvt*background: #212121
+!URxvt*background: #212121
 !URxvt*cursorColor: #d7d7d7
 !URxvt*cursorColor2: #000000
 ! ChatGPT chosen FG/BG
@@ -323,23 +340,23 @@ URxvt*background: #151515
 !URxvt*background: #ffffff
 !URxvt*background: #eeeeee
 
-! White on Black / Black on White (xfce4-terminal)
-URxvt*color0:     #000000
-URxvt*color1:     #aa0000
-URxvt*color2:     #00aa00
-URxvt*color3:     #aa5500
-URxvt*color4:     #0000aa
-URxvt*color5:     #aa00aa
-URxvt*color6:     #00aaaa
-URxvt*color7:     #aaaaaa
-URxvt*color8:     #555555
-URxvt*color9:     #ff5555
-URxvt*color10:    #55ff55
-URxvt*color11:    #ffff55
-URxvt*color12:    #5555ff
-URxvt*color13:    #ff55ff
-URxvt*color14:    #55ffff
-URxvt*color15:    #ffffff
+!! White on Black / Black on White (xfce4-terminal)
+!URxvt*color0:     #000000
+!URxvt*color1:     #aa0000
+!URxvt*color2:     #00aa00
+!URxvt*color3:     #aa5500
+!URxvt*color4:     #0000aa
+!URxvt*color5:     #aa00aa
+!URxvt*color6:     #00aaaa
+!URxvt*color7:     #aaaaaa
+!URxvt*color8:     #555555
+!URxvt*color9:     #ff5555
+!URxvt*color10:    #55ff55
+!URxvt*color11:    #ffff55
+!URxvt*color12:    #5555ff
+!URxvt*color13:    #ff55ff
+!URxvt*color14:    #55ffff
+!URxvt*color15:    #ffffff
 
 !! XTerm colours (from xfce4-terminal)
 !! (same as default xterm but the brightblack and brightblue are slightly brighter)
@@ -359,6 +376,26 @@ URxvt*color15:    #ffffff
 !URxvt*color13:    #ff00ff
 !URxvt*color14:    #00ffff
 !URxvt*color15:    #ffffff
+
+! Rxvt/XTerm + VGA colours (from xfce4-terminal custom rxvt-vga-jb.theme)
+! Base 8 colours are Rxvt / XTerm default (kept here for completeness)
+! Bright 8 colours are VGA (Linux terminal ie. xfce4-terminal "White on Black" or lxterminal "VGA" etc.)
+URxvt*color0:     #000000
+URxvt*color1:     #cd0000
+URxvt*color2:     #00cd00
+URxvt*color3:     #cdcd00
+URxvt*color4:     #0000cd
+URxvt*color5:     #cd00cd
+URxvt*color6:     #00cdcd
+URxvt*color7:     #e5e5e5
+URxvt*color8:     #555555
+URxvt*color9:     #ff5555
+URxvt*color10:    #55ff55
+URxvt*color11:    #ffff55
+URxvt*color12:    #5555ff
+URxvt*color13:    #ff55ff
+URxvt*color14:    #55ffff
+URxvt*color15:    #ffffff
 
 !! Xubuntu Light (Custom)
 !URxvt*cursorColor: #0f4999
