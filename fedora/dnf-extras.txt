@@ -1,4 +1,5 @@
 fuse-sshfs
+fuse-libs
 lshw
 iotop
 unrar
