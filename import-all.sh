@@ -121,6 +121,13 @@ if [ -f ~/.config/galculator/galculator.conf ]; then
 fi
 ln -s `pwd`/xfce4/galculator/galculator.conf ~/.config/galculator
 
+echo "Xresources and xinitrc..."
+if [ -f ~/.Xresources ]; then
+    mv ~/.Xresources ~/.Xresources.bak
+fi
+ln -s `pwd`/terminal/Xresources ~/.Xresources
+echo 'xrdb -merge ~/.Xresources' >> ~/.xinitrc
+
 echo
 echo "Import complete"
 
