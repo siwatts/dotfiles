@@ -5,12 +5,14 @@
 A distribution for Emacs called Doom emulates vim almost entirely and provides
 many other features
 
-Find and [install it here](https://github.com/hlissner/doom-emacs)
+Find and [install it here](https://github.com/doomemacs/doomemacs)
 
 ## Config
 
 Configuration files are generated in `~/.doom.d` at install. Configuration is
 to be done here, not in `~/.emacs.d`.
+
+**NOTE:** Config can be moved to `~/.config/doom`, but must delete `~/.doom.d` dir.
 
 It is probably best to diff the files in this repository against those created
 by Doom at install, since they are periodically updated with new Doom features
