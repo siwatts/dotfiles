@@ -12,11 +12,11 @@
 !! -- Fonts --
 !xterm*faceName: Monospace
 !xterm*faceName: DejaVu Sans Mono
-xterm*faceName: Liberation Mono
+!xterm*faceName: Liberation Mono
 !xterm*faceName: Hack
 !xterm*faceName: Source Code Pro
 !xterm*faceName: Terminus
-!xterm*faceName: IBM Plex Mono
+xterm*faceName: IBM Plex Mono
 !xterm*faceSize: 10
 xterm*faceSize: 13
 !! -- X11 core fonts --
@@ -89,8 +89,8 @@ xterm*metaSendsEscape: true
 !URxvt*font: xft:Terminus:size=12
 !URxvt*font: xft:Inconsolata:size=10
 !URxvt*font: xft:NotoMono:size=10
-URxvt*font: xft:LiberationMono:size=13
-!URxvt*font: xft:IBMPlexMono:size=13
+!URxvt*font: xft:LiberationMono:size=13
+URxvt*font: xft:IBMPlexMono:size=13
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 !URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 !URxvt*font: 9x15
@@ -112,7 +112,7 @@ URxvt*font: xft:LiberationMono:size=13
 !! Needed sometimes for font hinting + RGB subpixel on xfce
 !! DejaVu Sans Mono Book & Liberation Mono requires -2?
 !! Some fonts -1 or 0?
-URxvt*letterSpace: -2
+URxvt*letterSpace: -1
 !! -------------
 !! Disable bold font.
 !URxvt*boldFont: 9x15
@@ -360,24 +360,24 @@ URxvt*background: #151515
 !URxvt*background: #ffffff
 !URxvt*background: #eeeeee
 
-!! White on Black / Black on White (xfce4-terminal)
-!! also known as VGA / Linux
-!URxvt*color0:     #000000
-!URxvt*color1:     #aa0000
-!URxvt*color2:     #00aa00
-!URxvt*color3:     #aa5500
-!URxvt*color4:     #0000aa
-!URxvt*color5:     #aa00aa
-!URxvt*color6:     #00aaaa
-!URxvt*color7:     #aaaaaa
-!URxvt*color8:     #555555
-!URxvt*color9:     #ff5555
-!URxvt*color10:    #55ff55
-!URxvt*color11:    #ffff55
-!URxvt*color12:    #5555ff
-!URxvt*color13:    #ff55ff
-!URxvt*color14:    #55ffff
-!URxvt*color15:    #ffffff
+! White on Black / Black on White (xfce4-terminal)
+! also known as VGA / Linux
+URxvt*color0:     #000000
+URxvt*color1:     #aa0000
+URxvt*color2:     #00aa00
+URxvt*color3:     #aa5500
+URxvt*color4:     #0000aa
+URxvt*color5:     #aa00aa
+URxvt*color6:     #00aaaa
+URxvt*color7:     #aaaaaa
+URxvt*color8:     #555555
+URxvt*color9:     #ff5555
+URxvt*color10:    #55ff55
+URxvt*color11:    #ffff55
+URxvt*color12:    #5555ff
+URxvt*color13:    #ff55ff
+URxvt*color14:    #55ffff
+URxvt*color15:    #ffffff
 
 !! XTerm default colours
 !! NOT the xfce4-terminal version
@@ -399,22 +399,22 @@ URxvt*background: #151515
 !URxvt*color15:    #ffffff
 
 !! Rxvt default
-URxvt*color0:     #000000
-URxvt*color1:     #cd0000
-URxvt*color2:     #00cd00
-URxvt*color3:     #cdcd00
-URxvt*color4:     #0000cd
-URxvt*color5:     #cd00cd
-URxvt*color6:     #00cdcd
-URxvt*color7:     #e5e5e5
-URxvt*color8:     #4d4d4d
-URxvt*color9:     #ff0000
-URxvt*color10:    #00ff00
-URxvt*color11:    #ffff00
-URxvt*color12:    #0000ff
-URxvt*color13:    #ff00ff
-URxvt*color14:    #00ffff
-URxvt*color15:    #ffffff
+!URxvt*color0:     #000000
+!URxvt*color1:     #cd0000
+!URxvt*color2:     #00cd00
+!URxvt*color3:     #cdcd00
+!URxvt*color4:     #0000cd
+!URxvt*color5:     #cd00cd
+!URxvt*color6:     #00cdcd
+!URxvt*color7:     #e5e5e5
+!URxvt*color8:     #4d4d4d
+!URxvt*color9:     #ff0000
+!URxvt*color10:    #00ff00
+!URxvt*color11:    #ffff00
+!URxvt*color12:    #0000ff
+!URxvt*color13:    #ff00ff
+!URxvt*color14:    #00ffff
+!URxvt*color15:    #ffffff
 
 !! Rxvt + VGA colours (from xfce4-terminal custom rxvt-vga-jb.theme)
 !! Base 8 colours are Rxvt default (not XTerm!)
