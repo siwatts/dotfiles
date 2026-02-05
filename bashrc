@@ -378,3 +378,7 @@ HISTFILESIZE=2000
 shopt -s histappend
 # Or overwrite it: shopt -u histappend
 # Check it: shopt histappend
+
+if command -v fastfetch &> /dev/null && [ -z "$TMUX" ]; then
+    fastfetch
+fi
