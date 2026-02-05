@@ -52,7 +52,7 @@ if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme ) || ( ex
 else
     " LIGHT
     let g:lucius_contrast='normal'
-    let g:lucius_contrast_bg='high'
+    let g:lucius_contrast_bg='normal'
 endif
 
 " JELLYBEANS:
@@ -90,7 +90,11 @@ set showcmd                 " Show current partially input command at bottom of 
 set noshowmatch             " (SET TO OFF) Briefly jump to matching bracket.
 set ignorecase              " Make searches not case sensitive when searching with / or ?.
 set smartcase               " Except if they include one or more uppercase.
-set wildmenu                " Show possible completions on tab.
+if has('patch-8.2.4325')
+    set wildmenu wildoptions=pum "Fancy vertical completion menu in status bar
+else
+    set wildmenu                " Show possible completions on tab.
+endif
 set wildmode=longest:full   " Complete longest portion of compl. common to all, full compl. displ. in wildmenu
 set incsearch               " Show search matches as you type them
 "set foldcolumn=2            " Add an extra column width x left of linenrs to show fold locations
@@ -451,6 +455,10 @@ autocmd ColorScheme desert hi Pmenu      ctermfg=231 ctermbg=240 guifg=#ffffff g
             \ hi PmenuThumb ctermbg=15 guibg=White |
             \ hi Identifier gui=NONE cterm=NONE |
             \ hi Normal guifg=#f0f0f0
+autocmd ColorScheme vim hi Pmenu ctermfg=231 ctermbg=240 guifg=#ffffff guibg=#606060 |
+            \ hi PmenuSel   ctermfg=232 ctermbg=254 guifg=#101010 guibg=#eeeeee |
+            \ hi PmenuSbar  ctermbg=248 guibg=Grey |
+            \ hi PmenuThumb ctermbg=15 guibg=White
 
 " Material:
 " Original comment, guifg=#5D818E
@@ -527,10 +535,13 @@ if exists("use_dark_theme") && !use_dark_theme
     " On neovim lucius ignores the bg setting sometimes
     "autocmd ColorScheme lucius hi Normal ctermbg=231 guibg=White
     " Neovim gruvbox theme doesn't have the "hard" light bg option, taking
-    " from gruvbox vim theme by morhetz: guibg=#f9f5d7
+    " from gruvbox vim theme by morhetz:
+    "     Hard:     guibg=#f9f5d7
+    "     Medium:   guibg=#fbf1c7
+    "     Soft:     guibg=#f2e5bc
     " or from solarized8 vim theme: guibg=#fdf6e3
     " ,retrobox,peachpuff
-    autocmd ColorScheme gruvbox,retrobox hi Normal guibg=#f9f5d7
+    "autocmd ColorScheme gruvbox,retrobox hi Normal guibg=#f9f5d7
 endif
 
 " Morning
@@ -632,7 +643,7 @@ let base16colorspace=256
 " paren: hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 "autocmd ColorScheme darkblue hi Normal guifg=#e4e4e4 ctermfg=254 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 "autocmd ColorScheme darkblue hi Normal guifg=#eeeeee ctermfg=255 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
-autocmd ColorScheme darkblue hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
+autocmd ColorScheme darkblue hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779 | hi TODO term=standout cterm=NONE gui=NONE ctermfg=231 ctermbg=20 guifg=#ffffff guibg=#1248d1
 "autocmd ColorScheme darkblue hi Normal guifg=#ffffff ctermfg=231 | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
 " Or transparent
 "autocmd ColorScheme darkblue hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE | hi MatchParen cterm=bold ctermbg=6 gui=bold guifg=#ffffff guibg=#556779
@@ -711,16 +722,13 @@ if has("gui_running") && !has("nvim")
         "set guifont=Anonymous_Pro:h11
     elseif has("unix")
         " Or for Linux / Cygwin
-        set guifont=Monospace\ 10
-        "set guifont=DejaVu\ Sans\ Mono\ 10
-        "set guifont=Liberation\ Mono\ 10
+        set guifont=Monospace\ 13
+        "set guifont=DejaVu\ Sans\ Mono\ 13
+        "set guifont=Liberation\ Mono\ 13
         "set guifont=Terminus\ 12
-        "set guifont=Hack\ 10
         "set guifont=Hack\ 13
-        "set guifont=Source\ Code\ Pro\ 10
-        "set guifont=Noto\ Mono\ 10
-        "set guifont=Inconsolata\ 10
-        "set guifont=IBM\ Plex\ Mono\ 10
+        "set guifont=Source\ Code\ Pro\ 13
+        "set guifont=IBM\ Plex\ Mono\ 13
     endif
 
     " Window size
@@ -756,22 +764,24 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     let g:schemes_light = [ 'morning',
                 \ 'vim',
                 \ 'default',
-                \ 'zellner',
-                \ 'delek',
-                \ 'lunaperche',
                 \ 'lucius',
-                \ 'hybrid',
                 \ 'retrobox',
                 \ 'gruvbox',
+                \ 'gruvbox_vim',
                 \ 'kanagawa',
                 \ 'solarized8',
                 \ 'selenized',
+                \ 'peachpuff',
+                \ 'zellner',
+                \ 'delek',
+                \ 'shine',
+                \ 'lunaperche',
+                \ 'Tomorrow',
+                \ 'hybrid',
                 \ 'selenized_bw',
                 \ 'rose-pine',
                 \ 'hybrid-light',
                 \ 'hybrid-bright',
-                \ 'shine',
-                \ 'peachpuff',
                 \ 'nofrils-acme',
                 \ 'nofrils-light',
                 \ 'catppuccin-latte',
@@ -785,30 +795,35 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'github_light',
                 \ 'github_light_default',
                 \ 'hemisu',
-                \ 'Tomorrow',
                 \ 'PaperColor',
                 \ 'seoul256',
                 \ 'seoul8',
                 \ ]
-    let g:schemes_light = g:schemes_light[0:20]
+    "let g:schemes_light = g:schemes_light[0:22]
     " ==================== GUI Dark ====================
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
                 \ 'wombat256mod',
                 \ 'darkblue',
-                \ 'desert',
-                \ 'evening',
-                \ 'vim',
-                \ 'default',
                 \ 'twilight',
                 \ 'twilight256',
-                \ 'slate',
-                \ 'lucius',
-                \ 'zenburn',
+                \ 'desert',
+                \ 'evening',
                 \ 'retrobox',
                 \ 'gruvbox',
+                \ 'gruvbox_vim',
                 \ 'kanagawa',
+                \ 'sorbet',
+                \ 'hybrid',
+                \ 'vilight',
+                \ 'habamax',
+                \ 'lucius',
+                \ 'zenburn',
+                \ 'vim',
+                \ 'default',
+                \ 'slate',
+                \ 'wildcharm',
                 \ 'dracula',
                 \ 'dracula-soft',
                 \ 'unokai',
@@ -816,44 +831,42 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'monokai_classic',
                 \ 'monokai',
                 \ 'sonokai',
-                \ 'rose-pine',
-                \ 'hybrid',
-                \ 'vilight',
-                \ 'sorbet',
                 \ 'solarized8',
                 \ 'selenized',
                 \ 'selenized_bw',
                 \ 'cobalt2',
                 \ 'torte',
-                \ 'wildcharm',
                 \ 'lunaperche',
+                \ 'onedark',
+                \ 'one',
+                \ 'palenight',
                 \ 'catppuccin-macchiato',
                 \ 'catppuccin-frappe',
                 \ 'catppuccin-mocha',
                 \ 'tokyonight-moon',
                 \ 'tokyonight-storm',
                 \ 'tokyonight-night',
+                \ 'rose-pine',
+                \ 'iceberg',
+                \ 'nord',
+                \ 'nord_vim',
                 \ 'jellybeans-bright',
                 \ 'quiet',
                 \ 'nofrils-dark',
                 \ 'Tomorrow-Night',
                 \ 'Tomorrow-Night-Eighties',
+                \ 'Tomorrow-Night-Bright',
+                \ 'vim-material',
                 \ 'Tomorrow-Night-Blue',
-                \ 'habamax',
                 \ 'zaibatsu',
                 \ 'elflord',
-                \ 'onedark',
-                \ 'one',
                 \ 'gruvbox-material',
                 \ 'everforest',
-                \ 'iceberg',
-                \ 'nord',
                 \ 'simple-green',
                 \ 'simple-orange',
                 \ 'molokayo',
                 \ 'default-enhanced',
                 \ 'darkblue256',
-                \ 'vim-material',
                 \ 'triplejelly',
                 \ 'night-owl',
                 \ 'nightfly',
@@ -885,8 +898,8 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ ]
     " Curated:
     " First n+1 elements
-    let g:schemes_dark = g:schemes_dark[0:42]
-    "let g:schemes_dark = g:schemes_dark[0:48]
+    let g:schemes_dark = g:schemes_dark[0:50]
+    "let g:schemes_dark = g:schemes_dark[0:57]
 else
     " ==================== Term Light ====================
     let g:schemes_light = [ 'gruvbox', 'lucius', 'seoul256-light' ]
@@ -947,12 +960,9 @@ noremap <Leader><F7> :hi Normal ctermfg=NONE guifg=NONE<CR>
 " Apply base16 theme
 noremap <F11> :colorscheme base16-eighties<CR>
 " Regular light/dark
-if exists("use_dark_theme") && use_dark_theme
-    noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
-else
-    noremap <F9> :set background=light<CR>:execute 'colorscheme ' . g:schemes_light[0]<CR>
-endif
-noremap <F10> :call SetCustomScheme(1)<CR>
+noremap <F9> :set background=dark<CR>:execute 'colorscheme ' . g:schemes_dark[0]<CR>
+noremap <F10> :set background=light<CR>:execute 'colorscheme ' . g:schemes_light[0]<CR>
+"noremap <F10> :call SetCustomScheme(1)<CR>
 " Random light/dark
 noremap <Leader><F9> :set background=dark<CR>:call RandomiseTheme(g:schemes_dark)<CR>
 "noremap <Leader><F8> :set background=light<CR>:call RandomiseTheme(g:schemes_light)<CR>
@@ -1120,10 +1130,10 @@ nnoremap <Leader>o o<ESC>o
 nnoremap <Leader>O O<ESC>O
 nnoremap <Leader><CR> o<ESC>o<ESC>O
 
-nnoremap <Leader>h 5h
-nnoremap <Leader>j 5j
-nnoremap <Leader>k 5k
-nnoremap <Leader>l 5l
+"nnoremap <Leader>h 5h
+"nnoremap <Leader>j 5j
+"nnoremap <Leader>k 5k
+"nnoremap <Leader>l 5l
 
 "nnoremap <Leader>c o// 
 "nnoremap <Leader>C O// 
@@ -1137,15 +1147,16 @@ nnoremap <Leader>T O// TODO:
 
 "nnoremap <Leader>m :tabe $MYVIMRC<CR>
 " Hardcode it because neovim takes us to its own config file instead but we
-" want this file
+" (usually) want this file
 nnoremap <Leader>m :tabe ~/.vimrc<CR>
+nnoremap <Leader>M :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>i :set paste!<CR>
 nnoremap <Leader>n :set number! \| set list!<CR>
 nnoremap <Leader>u yypVr-
 nnoremap <Leader>U yypVr=
 
-nnoremap <Leader>M :set modifiable!<CR>
-nnoremap <Leader>R :set readonly!<CR>
+"nnoremap <Leader>M :set modifiable!<CR>
+"nnoremap <Leader>R :set readonly!<CR>
 
 nnoremap <Leader>g :vimgrep ""g **<Left><Left><Left><Left><Left>
 cnoremap <Leader>g vimgrep ""g **<Left><Left><Left><Left><Left>
@@ -1203,6 +1214,9 @@ nnoremap [q :cp<CR>zz
 " Buffer list:
 nnoremap ]b :bn<CR>
 nnoremap [b :bp<CR>
+" Location list:
+nnoremap ]l :lnext<CR>zz
+nnoremap [l :lprev<CR>zz
 
 " And a bit more quickfix list stuff
 " Open quickfix list to the right:
@@ -1274,7 +1288,6 @@ vnoremap <Leader>a :norm A
 
 cmap <Leader>cc while 1\|sleep 10\|call NextColor(1)\|endwhile<CR>
 
-
 " From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -1289,61 +1302,10 @@ endif
 au BufRead,BufNewFile *.org set filetype=org-mode
 
 " Integrated Terminal:
-" Terminal ESC return to NORMAL mode
+" Terminal C-[ return to NORMAL mode (like vim INSERT mode, but passthrough actual Esc)
 " TODO: Find when tnoremap was introduced, because it is not in version 800
 " but :term is
 if has("terminal") && v:version > 800
-    tnoremap <Esc> <C-\><C-n>
-endif
-
-" Neovim:
-if has("nvim")
-    augroup neovim_terminal
-        autocmd!
-        " Enter INSERT mode in terminal buffers automatically
-        autocmd TermOpen * startinsert
-        " Disable all line numbers in terminal buffers
-        autocmd  TermOpen * :set nonumber norelativenumber
-    augroup END
-
-    " Disable annoying mouse input
-    set mouse=
-
-    " Truecolour terminal colours
-    " (256 mode uses the terminal ANSI 16)
-    " " Dracula Xresources terminal theme
-    " let g:terminal_color_0='#000000'
-    " let g:terminal_color_1='#FF5555'
-    " let g:terminal_color_2='#50FA7B'
-    " let g:terminal_color_3='#F1FA8C'
-    " let g:terminal_color_4='#BD93F9'
-    " let g:terminal_color_5='#FF79C6'
-    " let g:terminal_color_6='#8BE9FD'
-    " let g:terminal_color_7='#BFBFBF'
-    " let g:terminal_color_8='#4D4D4D'
-    " let g:terminal_color_9='#FF6E67'
-    " let g:terminal_color_10='#5AF78E'
-    " let g:terminal_color_11='#F4F99D'
-    " let g:terminal_color_12='#CAA9FA'
-    " let g:terminal_color_13='#FF92D0'
-    " let g:terminal_color_14='#9AEDFE'
-    " let g:terminal_color_15='#E6E6E6'
-    " Jellybeans xfce4-terminal theme (since nvim-qt uses theme FG)
-    let g:terminal_color_0='#151515'
-    let g:terminal_color_1='#cf6a4c'
-    let g:terminal_color_2='#799d6a'
-    let g:terminal_color_3='#ffb964'
-    let g:terminal_color_4='#8197bf'
-    let g:terminal_color_5='#c6b6ee'
-    let g:terminal_color_6='#8fbfdc'
-    let g:terminal_color_7='#e8e8d3'
-    let g:terminal_color_8='#888888'
-    let g:terminal_color_9='#cf6a4c'
-    let g:terminal_color_10='#99ad6a'
-    let g:terminal_color_11='#fad07a'
-    let g:terminal_color_12='#8197bf'
-    let g:terminal_color_13='#c6b6ee'
-    let g:terminal_color_14='#8fbfdc'
-    let g:terminal_color_15='#adadad'
+    tnoremap <C-[> <C-\><C-n>
 endif
 

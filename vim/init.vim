@@ -63,6 +63,7 @@ Plug 'marko-cerovac/material.nvim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'ramojus/mellifluous.nvim'
 Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
+Plug 'drewtempelmeyer/palenight.vim'
 " For jellybeans
 Plug 'rktjmp/lush.nvim'
 Plug 'metalelf0/jellybeans-nvim'
@@ -143,6 +144,14 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnos
 
 -- Toggle diagnostics visibility (virtual text, signs, underline)
 vim.keymap.set('n', '<Leader>td', function()
+    local config = vim.diagnostic.config()
+    if config.virtual_text then
+        vim.diagnostic.config({ virtual_text = false, underline = false })
+    else
+        vim.diagnostic.config({ virtual_text = true, underline = true })
+    end
+end, { desc = "Toggle diagnostics" })
+vim.keymap.set('n', '<Leader>E', function()
     local config = vim.diagnostic.config()
     if config.virtual_text then
         vim.diagnostic.config({ virtual_text = false, underline = false })
@@ -252,14 +261,70 @@ autocmd ColorScheme cobalt2 hi Comment gui=NONE
 autocmd ColorScheme onedark,everforest hi Comment gui=NONE
 autocmd ColorScheme tokyonight-moon,tokyonight-storm,tokyonight-night hi Comment gui=NONE
 
+" Terminal
+augroup neovim_terminal
+    autocmd!
+    " Enter INSERT mode in terminal buffers automatically
+    autocmd TermOpen * startinsert
+    " Disable all line numbers in terminal buffers
+    autocmd  TermOpen * :set nonumber norelativenumber
+augroup END
+
+" Traditional remaps
+tnoremap <C-[> <C-\><C-n>
+
+" Disable annoying mouse input
+set mouse=
+
+" Truecolour terminal colours
+" (256 mode uses the terminal ANSI 16)
+" " Dracula Xresources terminal theme
+" let g:terminal_color_0='#000000'
+" let g:terminal_color_1='#FF5555'
+" let g:terminal_color_2='#50FA7B'
+" let g:terminal_color_3='#F1FA8C'
+" let g:terminal_color_4='#BD93F9'
+" let g:terminal_color_5='#FF79C6'
+" let g:terminal_color_6='#8BE9FD'
+" let g:terminal_color_7='#BFBFBF'
+" let g:terminal_color_8='#4D4D4D'
+" let g:terminal_color_9='#FF6E67'
+" let g:terminal_color_10='#5AF78E'
+" let g:terminal_color_11='#F4F99D'
+" let g:terminal_color_12='#CAA9FA'
+" let g:terminal_color_13='#FF92D0'
+" let g:terminal_color_14='#9AEDFE'
+" let g:terminal_color_15='#E6E6E6'
+" Jellybeans xfce4-terminal theme (since nvim-qt uses theme FG)
+let g:terminal_color_0='#151515'
+let g:terminal_color_1='#cf6a4c'
+let g:terminal_color_2='#799d6a'
+let g:terminal_color_3='#ffb964'
+let g:terminal_color_4='#8197bf'
+let g:terminal_color_5='#c6b6ee'
+let g:terminal_color_6='#8fbfdc'
+let g:terminal_color_7='#e8e8d3'
+let g:terminal_color_8='#888888'
+let g:terminal_color_9='#cf6a4c'
+let g:terminal_color_10='#99ad6a'
+let g:terminal_color_11='#fad07a'
+let g:terminal_color_12='#8197bf'
+let g:terminal_color_13='#c6b6ee'
+let g:terminal_color_14='#8fbfdc'
+let g:terminal_color_15='#adadad'
+
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
 " changes, so setting them in .vimrc doesn't work even if we fix them later
 if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
-    " Dark theme
-    colorscheme jellybeans
+    " Dark theme override
+    "colorscheme jellybeans
+    " Or just re-apply the vim one
+    execute "colorscheme " . g:dark_theme
 else
-    " Light theme
-    colorscheme morning
+    " Light theme override
+    "colorscheme morning
+    " Or just re-apply the vim one
+    execute "colorscheme " . g:light_theme
 endif
 
