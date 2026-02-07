@@ -29,6 +29,10 @@ let g:dark_theme='jellybeans'
 "let g:dark_theme_truecolor='twilight'
 " LIGHT:
 let g:light_theme='morning'
+" NVIM:
+" This only exists to be read by neovim init.vim / init.lua
+"let g:dark_theme_nvim='jellybeans-nvim'
+"let g:light_theme_nvim='gruvbox'
 " OTHER:
 " Gui overrides (default to terminal if unset)
 "let g:dark_gui_theme='twilight'
@@ -673,7 +677,7 @@ endif
 
 " Default is a dim grey, 'Grey80'
 " 255 = #eeeeee, 231 = #ffffff
-autocmd ColorScheme torte hi Normal guifg=#f8f8f8 ctermfg=255
+"autocmd ColorScheme torte hi Normal guifg=#f8f8f8 ctermfg=255
 
 " DefaultEnhanced:
 " Transparent fg/bg
@@ -683,11 +687,12 @@ autocmd ColorScheme torte hi Normal guifg=#f8f8f8 ctermfg=255
 "autocmd ColorScheme darkblue256 hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE | hi LineNr guibg=NONE ctermbg=NONE
 
 " Twilight:
-" Jellybeans Normal hi Normal guifg=#e8e8d3 |
-" Brighter Comment, 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
+" Jellybeans Normal: hi Normal guifg=#e8e8d3 |
+" Brighter Comment: 808080 (grey), 9f8f7f (reddish **958f7f** bit more subtle), 7f9f8f (blueish(greenish))
 " Ideas from Jellybeans overrides: 959288
-" hi Normal guifg=#e8e8d3 | 
-autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi SpecialKey guifg=#444444 guibg=#212121
+" Pmenu from jellybeans
+autocmd ColorScheme twilight hi Comment guifg=#958f7f | hi SpecialKey guifg=#444444 guibg=#212121 |
+            \ hi Pmenu guifg=#ffffff guibg=#606060 | hi PmenuSel guifg=#101010 guibg=#eeeeee
 
 "" Dracula:
 "" Use brighter magenta from term
@@ -1068,12 +1073,15 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
     "let g:schemes_dark = [ 'jellybeans', 'wombat256mod', 'molokai', 'monokai', 'darkblue', 'darkblue256', 'default-enhanced', 'desert', 'lucius', 'twilight', 'zenburn', 'dracula', 'gruvbox', ]
     let g:schemes_dark = [ 'jellybeans',
                 \ 'jellybeans-nvim',
-                \ 'wombat256mod',
-                \ 'darkblue',
                 \ 'twilight',
                 \ 'twilight256',
+                \ 'wombat256mod',
+                \ 'darkblue',
                 \ 'desert',
                 \ 'evening',
+                \ 'vim',
+                \ 'default',
+                \ 'torte',
                 \ 'retrobox',
                 \ 'gruvbox',
                 \ 'gruvbox_vim',
@@ -1084,8 +1092,6 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'habamax',
                 \ 'lucius',
                 \ 'zenburn',
-                \ 'vim',
-                \ 'default',
                 \ 'slate',
                 \ 'wildcharm',
                 \ 'dracula',
@@ -1099,7 +1105,6 @@ if has("gui_running") || ( exists("use_truecolor") && use_truecolor && ( (!has('
                 \ 'selenized',
                 \ 'selenized_bw',
                 \ 'cobalt2',
-                \ 'torte',
                 \ 'lunaperche',
                 \ 'onedark',
                 \ 'one',

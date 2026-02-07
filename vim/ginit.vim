@@ -6,8 +6,8 @@
 "GuiFont Liberation\ Mono:h13
 "GuiFont Source\ Code\ Pro:h13
 "GuiFont Hack:h13
-"GuiFont IBM\ Plex\ Mono:h10
-GuiFont Source\ Code\ Pro:h13
+GuiFont IBM\ Plex\ Mono:h13
+"GuiFont Source\ Code\ Pro:h13
 
 " Same as gvim
 set lines=45 columns=130

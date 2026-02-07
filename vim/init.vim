@@ -317,14 +317,22 @@ let g:terminal_color_15='#adadad'
 " Pure vim themes don't support neovim any more since they introduced breaking
 " changes, so setting them in .vimrc doesn't work even if we fix them later
 if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
-    " Dark theme override
-    "colorscheme jellybeans
-    " Or just re-apply the vim one
-    execute "colorscheme " . g:dark_theme
+    " Dark theme override for neovim, if we have one (from ~/.vimrc)
+    if exists("g:dark_theme_nvim")
+        execute "colorscheme " . g:dark_theme_nvim
+    else
+        " Or just re-apply the vim one
+        execute "colorscheme " . g:dark_theme
+    endif
+    "colorscheme jellybeans-nvim
 else
-    " Light theme override
+    " Light theme override for neovim, if we have one (from ~/.vimrc)
+    if exists("g:light_theme_nvim")
+        execute "colorscheme " . g:light_theme_nvim
+    else
+        " Or just re-apply the vim one
+        execute "colorscheme " . g:light_theme
+    endif
     "colorscheme morning
-    " Or just re-apply the vim one
-    execute "colorscheme " . g:light_theme
 endif
 
