@@ -1,0 +1,8 @@
+i3
+feh
+scrot
+xsettingsd
+dmenu
+i3lock
+i3status
+xss-lock

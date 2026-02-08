@@ -17,6 +17,16 @@ Subdirectories `i3/` and `i3status/` are located in `~/.config`. A good place to
 put the helper scripts from `bin/` is in the home directory `~/bin`. This could
 then be added the the user's `$PATH` variable.
 
+## GTK Settings
+
+`lxappearance` used to be a good app to configure gtk settings, but the files
+it sets are now ignored. An actual daemon is required to be running to provide
+settings to GTK apps and `xsettingsd` is a good choice. GTK theme and icons, and
+settings like font rendering or cursor blinking are done here
+
+`xfsettingsd` (xfce settings daemon) can be used but it will also set all the
+xfce keyboard shortcuts and clash with our desired i3 keyboard shortcuts
+
 ## Use
 
 - If no desktop environment and starting i3 manually, start X session with
