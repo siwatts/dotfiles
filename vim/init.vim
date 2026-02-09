@@ -219,6 +219,24 @@ require("rose-pine").setup({
     dark_variant = "moon", -- main, moon, or dawn
 })
 
+-- Attempt to set fg/bg locally in Terminal buffers
+-- Colourschemes may override this but we don't seem to have any that set terminal colours
+-- so our terminal theme is successfully inherited
+-- Anyway we probably don't want to fight them if they do
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    -- terminal window background / foreground
+    vim.opt_local.winhl =
+      "Normal:TermNormal,NormalNC:TermNormal"
+
+    -- define the terminal background
+    vim.api.nvim_set_hl(0, "TermNormal", {
+      bg = "#151515",
+      fg = "#deddda",
+    })
+  end,
+})
+
 EOF
 
 " -- Neovim colorscheme fixes as of v0.10.2 --
