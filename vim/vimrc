@@ -1578,9 +1578,10 @@ au BufRead,BufNewFile *.org set filetype=org-mode
 
 " Integrated Terminal:
 " Terminal C-[ return to NORMAL mode (like vim INSERT mode, but passthrough actual Esc)
-" TODO: Find when tnoremap was introduced, because it is not in version 800
-" but :term is
-if has("terminal") && v:version > 800
-    tnoremap <C-[> <C-\><C-n>
+if exists(":tnoremap")
+    " Cover vim + neovim
+    " This also applies to ESC though, since ESC just sends ^[ in a terminal, can
+    " we find another shortcut for this?
+    "tnoremap <C-[> <C-\><C-n>
 endif
 

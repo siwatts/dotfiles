@@ -266,15 +266,20 @@ augroup neovim_terminal
     autocmd!
     " Enter INSERT mode in terminal buffers automatically
     autocmd TermOpen * startinsert
-    " Disable all line numbers in terminal buffers
-    autocmd  TermOpen * :set nonumber norelativenumber
+    "" Disable all line numbers in terminal buffers - seems to not be default
+    "" any more
+    "autocmd TermOpen * :set nonumber norelativenumber
 augroup END
 
 " Traditional remaps
-tnoremap <C-[> <C-\><C-n>
+" NOTE: Moved to ~/.vimrc for vim too
+"tnoremap <C-[> <C-\><C-n>
 
 " Disable annoying mouse input
 set mouse=
+" Disable blinking cursor, this does wipe out the cursor changing to I-beam
+" if a: is used for all. t: for terminal only
+set guicursor+=t:blinkon0
 
 " Truecolour terminal colours
 " (256 mode uses the terminal ANSI 16)
