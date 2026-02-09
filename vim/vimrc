@@ -1427,14 +1427,12 @@ nnoremap <Leader>U yypVr=
 "nnoremap <Leader>M :set modifiable!<CR>
 "nnoremap <Leader>R :set readonly!<CR>
 
-nnoremap <Leader>g :vimgrep ""g **<Left><Left><Left><Left><Left>
-cnoremap <Leader>g vimgrep ""g **<Left><Left><Left><Left><Left>
-"cnoremap vimm vimgrep ""g `git ls-files src`<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" Try to make agnostic to location (assumes searching current location ie. that you `cd dev/`, `cd src/` first)
-cnoremap vimm vimgrep ""g `git ls-files .`<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-cnoremap vims vimgrep ""g src/**<Left><Left><Left><Left><Left><Left><Left><Left><Left>
-cnoremap vimd vimgrep ""g dev/**<Left><Left><Left><Left><Left><Left><Left><Left><Left>
-cnoremap vimg vimgrep ""g **<Left><Left><Left><Left><Left>
+nnoremap <Leader>vv :vimgrep //g **<Left><Left><Left><Left><Left>
+nnoremap <Leader>vg :vimgrep //g `git ls-files .`<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>vf :lvimgrep //g %<Left><Left><Left><Left>
+cnoremap <Leader>vv vimgrep //g **<Left><Left><Left><Left><Left>
+cnoremap <Leader>vg vimgrep //g `git ls-files .`<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+cnoremap <Leader>vf lvimgrep //g %<Left><Left><Left><Left>
 " Don't include .exe and other build files in vimgrep results, also affects filepath completion stuff
 "set wildignore+=*.exe,*.o,*.a
 " Only keep configure.ac, configure.in, Makefile.am
