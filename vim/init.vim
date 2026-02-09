@@ -282,41 +282,30 @@ set mouse=
 set guicursor+=t:blinkon0
 
 " Truecolour terminal colours
+" If you set these bold terminal text is not rendered using brights,
+" otherwise terminal colours are inherited and everything is fine so we leave them
 " (256 mode uses the terminal ANSI 16)
-" " Dracula Xresources terminal theme
-" let g:terminal_color_0='#000000'
-" let g:terminal_color_1='#FF5555'
-" let g:terminal_color_2='#50FA7B'
-" let g:terminal_color_3='#F1FA8C'
-" let g:terminal_color_4='#BD93F9'
-" let g:terminal_color_5='#FF79C6'
-" let g:terminal_color_6='#8BE9FD'
-" let g:terminal_color_7='#BFBFBF'
-" let g:terminal_color_8='#4D4D4D'
-" let g:terminal_color_9='#FF6E67'
-" let g:terminal_color_10='#5AF78E'
-" let g:terminal_color_11='#F4F99D'
-" let g:terminal_color_12='#CAA9FA'
-" let g:terminal_color_13='#FF92D0'
-" let g:terminal_color_14='#9AEDFE'
-" let g:terminal_color_15='#E6E6E6'
-" Jellybeans xfce4-terminal theme (since nvim-qt uses theme FG)
-let g:terminal_color_0='#151515'
-let g:terminal_color_1='#cf6a4c'
-let g:terminal_color_2='#799d6a'
-let g:terminal_color_3='#ffb964'
-let g:terminal_color_4='#8197bf'
-let g:terminal_color_5='#c6b6ee'
-let g:terminal_color_6='#8fbfdc'
-let g:terminal_color_7='#e8e8d3'
-let g:terminal_color_8='#888888'
-let g:terminal_color_9='#cf6a4c'
-let g:terminal_color_10='#99ad6a'
-let g:terminal_color_11='#fad07a'
-let g:terminal_color_12='#8197bf'
-let g:terminal_color_13='#c6b6ee'
-let g:terminal_color_14='#8fbfdc'
-let g:terminal_color_15='#adadad'
+if has("gui_running")
+    " If gui is running (nvim-qt) we may as well set them
+    " because the GUI doesn't inherit bolds in bright anyway
+    " Rxvt + VGA (xfce4-terminal custom)
+    let g:terminal_color_0='#000000'
+    let g:terminal_color_1='#cd0000'
+    let g:terminal_color_2='#00cd00'
+    let g:terminal_color_3='#cdcd00'
+    let g:terminal_color_4='#0000cd'
+    let g:terminal_color_5='#cd00cd'
+    let g:terminal_color_6='#00cdcd'
+    let g:terminal_color_7='#e5e5e5'
+    let g:terminal_color_8='#555555'
+    let g:terminal_color_9='#ff5555'
+    let g:terminal_color_10='#55ff55'
+    let g:terminal_color_11='#ffff55'
+    let g:terminal_color_12='#5555ff'
+    let g:terminal_color_13='#ff55ff'
+    let g:terminal_color_14='#55ffff'
+    let g:terminal_color_15='#ffffff'
+endif
 
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
