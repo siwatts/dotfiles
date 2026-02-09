@@ -9,3 +9,4 @@ stress
 flatseal
 ddccontrol
 lm_sensors
+xev
