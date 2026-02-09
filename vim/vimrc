@@ -1527,11 +1527,18 @@ nnoremap <Leader><F4> o<ESC><F3>$BhYPl8<C-A>F r-
 
 " Save and execute currently open buffer:
 "nnoremap <F5> :w<CR>:!./%<CR>
-autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc % -Wall -std=c99 && ./a.out<CR>
-" C++23: -std=c++2b
-autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!g++ % -std=c++23 -Wall && ./a.out<CR>
-autocmd FileType python,bash,sh nnoremap <buffer> <F5> :w<CR>:!./%<CR>
-autocmd FileType cs nnoremap <buffer> <F5> :w<CR>:!dotnet run<CR>
+" C99: -std=c99
+" TODO: Learn to use :make
+" C++23: -std=c++23
+autocmd FileType c nnoremap <buffer> <F5> :update<CR>:!echo "Building..."; gcc % -Wall && echo "Build: SUCCESS" \|\| echo "Build: FAIL"<CR>
+autocmd FileType cpp nnoremap <buffer> <F5> :update<CR>:!echo "Build: Compiling..."; g++ % -std=c++23 -Wall && echo "Build: SUCCESS" \|\| echo "Build: FAIL"<CR>
+autocmd FileType c,cpp nnoremap <buffer> <Leader><F5> :!./a.out<CR>
+autocmd FileType c cnoremap <buffer> <F5> update<CR>:!echo "Building..."; gcc % -Wall && echo "Build: SUCCESS" \|\| echo "Build: FAIL"
+autocmd FileType cpp cnoremap <buffer> <F5> update<CR>:!echo "Build: Compiling..."; g++ % -std=c++23 -Wall && echo "Build: SUCCESS" \|\| echo "Build: FAIL"
+autocmd FileType c,cpp cnoremap <buffer> <Leader><F5> !./a.out
+autocmd FileType python,bash,sh nnoremap <buffer> <Leader><F5> :update<CR>:!./%<CR>
+autocmd FileType cs nnoremap <buffer> <F5> :update<CR>:!dotnet build<CR>
+autocmd FileType cs nnoremap <buffer> <Leader><F5> :update<CR>:!dotnet run<CR>
 
 " Convenient brace insertion map for C/C++
 " TODO: Or remap the single brace, to match IDE behaviour, and add <Leader>{ to insert a single {
