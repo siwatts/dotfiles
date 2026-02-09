@@ -316,7 +316,7 @@ let g:terminal_color_15='#adadad'
 " Override colourscheme for neovim now all the plugins have loaded
 " Pure vim themes don't support neovim any more since they introduced breaking
 " changes, so setting them in .vimrc doesn't work even if we fix them later
-if ( !has("gui_running") && exists("use_dark_theme") && use_dark_theme )
+if exists("use_dark_theme") && use_dark_theme
     " Dark theme override for neovim, if we have one (from ~/.vimrc)
     if exists("g:dark_theme_nvim")
         execute "colorscheme " . g:dark_theme_nvim
