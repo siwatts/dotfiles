@@ -1406,8 +1406,8 @@ nnoremap <Leader><CR> o<ESC>o<ESC>O
 
 "nnoremap <Leader>c o// 
 "nnoremap <Leader>C O// 
-nnoremap <Leader>t o// TODO: 
-nnoremap <Leader>T O// TODO: 
+"nnoremap <Leader>t o// TODO: 
+"nnoremap <Leader>T O// TODO: 
 
 "nnoremap <Leader>s i <ESC>r
 "nnoremap <Leader>S a <ESC>r
@@ -1584,4 +1584,53 @@ if exists(":tnoremap")
     " we find another shortcut for this?
     "tnoremap <C-[> <C-\><C-n>
 endif
+if has("terminal") && !has("nvim")
+    " In vim terminals spawn in a split by default
+    " A terminal as the only currently displayed buffer will close vim entirely
+    " when it is closed, even if other buffers are open, so :bd! must be used
+    " Hence to replicate `:sh` we map `<leader>sh` to open a new tab first
+    "cnoremap <leader>tt terminal ++rows=10
+    cnoremap <leader>tt TermSplit
+    cnoremap <leader>ts terminal
+    cnoremap <leader>tv vertical terminal
+    cnoremap <leader>th terminal ++curwin
+    cnoremap <leader>sh tabnew \| terminal ++curwin
+    "nnoremap <leader>tt :terminal ++rows=10<CR>
+    nnoremap <leader>tt :TermSplit<CR>
+    nnoremap <leader>ts :terminal<CR>
+    nnoremap <leader>th :terminal ++curwin<CR>
+    nnoremap <leader>tv :vertical terminal<CR>
+    nnoremap <leader>sh :tabnew \| terminal ++curwin<CR>
+endif
+if has("nvim")
+    " In neovim terminals spawn in the current window by default
+    " When a terminal in the current window closes nvim returns to the
+    " previous buffer open so it is more like `:sh` behaviour from old vim
+    " We can :resize afterwards (in normal mode, z{nr}<CR> or <C-w>{nr}_)
+    "cnoremap <leader>tt 10split \| terminal
+    cnoremap <leader>tt TermSplit
+    cnoremap <leader>ts split \| terminal
+    cnoremap <leader>th terminal
+    cnoremap <leader>tv vsplit \| terminal
+    cnoremap <leader>sh terminal
+    "nnoremap <leader>tt :10split \| terminal<CR>
+    nnoremap <leader>tt :TermSplit<CR>
+    nnoremap <leader>ts :split \| terminal<CR>
+    nnoremap <leader>th :terminal<CR>
+    nnoremap <leader>tv :vsplit \| terminal<CR>
+    nnoremap <leader>sh :terminal<CR>
+endif
+" Define a :TermSplit command where rows is an optional arg with default
+" height to fallback to
+command! -nargs=? TermSplit call s:termsplit(<q-args>)
+function! s:termsplit(arg) abort
+  let l:rows = a:arg !=# '' ? a:arg : 10
+  if has('nvim')
+    execute 'botright' l:rows . 'split | terminal'
+  elseif has('terminal')
+    execute 'terminal ++rows=' . l:rows
+  else
+    echoerr 'Terminal not supported'
+  endif
+endfunction
 
