@@ -1561,6 +1561,7 @@ vnoremap <Leader>i :norm I
 vnoremap <Leader>a :norm A
 
 cmap <Leader>cc while 1\|sleep 10\|call NextColor(1)\|endwhile<CR>
+cmap <Leader>cr while 1 \| sleep 5 \| call RandomiseTheme(g:schemes_random)\| redraw \| endwhile<CR>
 
 " From: https://github.com/vim/vim/blob/master/runtime/defaults.vim
 " Convenient command to see the difference between the current buffer and the
