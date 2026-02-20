@@ -93,8 +93,13 @@ if [ "$color_prompt" = yes ]; then
         # Connected to remote but not via ssh, yellow
         export PS1='\[\033[33m\]\u@\h(?)\[\033[00m\]:\[\033[33m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
     else
-        # Local machine, green
-        export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[32m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        if [ "$HOSTNAME" = toolbx ]; then
+            # Toolbx, magenta
+            export PS1='\[\033[35m\]\u@\h\[\033[00m\]:\[\033[35m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        else
+            # Local machine, green
+            export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[32m\]\w\[\033[00m\]$(git_prompt) [\D{%H:%M}]\n\$ '
+        fi
 
         # # Truecolor PS1 using 0-255 RGB values
         # # Below example is orange + purple which looks good for WSL Ubuntu
